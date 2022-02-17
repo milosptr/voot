@@ -61,83 +61,12 @@ class Products extends Controller
       );
 
       try {
-          $product = Product::create($product);
-
-          // add categories to the product
-          $categories = $request->get('categories') ? explode(', ', $request->get('categories')) : [];
-          foreach($categories as $category) {
-            ProductCategories::create(['product_id' => $product->id, 'category_id' => (int) $category ]);
-          }
-
-          // add assets to the product
-          $assets = $request->get('media_ids') ? explode(', ', $request->get('media_ids')) : [];
-          array_push($assets, $request->get('featured_image_id'));
-          foreach($assets as $asset) {
-            ProductAssets::create([ 'product_id' => $product->id, 'asset_id' => $asset ]);
-          }
-
-          // add tags to the product
-          if($request->get('tags')) {
-            $tags = explode(',', $request->get('tags'));
-            $slugify = new Slugify();
-
-            foreach ($tags as $tag) {
-              $slug = $slugify->slugify($tag);
-              $t = Tag::where('slug', $slug)->first();
-              if($t) {
-                ProductTag::create([ 'product_id' => $product->id, 'tag_id' => $t->id ]);
-              } else {
-                $newTag = Tag::create([ 'name' => $tag, 'slug' => $slug ]);
-                ProductTag::create([ 'product_id' => $product->id, 'tag_id' => $newTag->id ]);
-              }
-            }
-          }
-
-          // add documents to the product
-          if($request->get('documents')) {
-            $documents = explode(',', $request->get('documents'));
-            foreach($documents as $id) {
-              $document = Document::find($id);
-              $document->product_id = $product->id;
-              $document->save();
-            }
-          }
-
-          // add variations to the product
-          $variations = $request->get('all_variations') ? json_decode($request->get('all_variations')) : [];
-          foreach ($variations as $variation) {
-            if(!isset($variation->sku)) continue;
-            $inventory = Inventory::where('sku', $variation->sku)->first();
-            if ($inventory) {
-                $inventory->variant = $variation->value;
-                $inventory->save();
-
-                ProductVariation::create([
-                'product_id' => $product->id,
-                'value' => $variation->value,
-                'sku' => isset($variation->sku) ? $variation->sku : '',
-                'quantity' => isset($variation->quantity) ? $variation->quantity : 0,
-                'file_path' => isset($variation->file_path) ? $variation->file_path : null
-              ]);
-            }
-          }
-
-          // add product information
-          $information = $request->has('product_information') ? json_decode($request->get('product_information')) : [];
-          foreach ($information as $info) {
-            if(!empty($info->name))
-              ProductInformation::create([
-                'product_id' => $product->id,
-                'name' => $info->name,
-                'value' => $info->value
-              ]);
-          }
-
+        $product = Product::create($product);
       } catch(Exception $e) {
         dd($e->getMessage());
       }
 
-      return back();
+      return redirect("/backend/products/edit/$product->id");
     }
 
     public function update(Request $request, $id)

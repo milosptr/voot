@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="mt-5 md:mt-0 md:col-span-2">
-  <form id="addNewProduct" action="/api/products" method="POST" class="flex">
+  <form action="/api/products" method="POST" class="flex">
     @csrf
     <div class="w-2/3 pr-3">
       <div class="bg-white overflow-hidden shadow rounded-lg">
@@ -30,51 +30,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
-        <div class="px-4 py-5 sm:p-6">
-          <div class="text-lg text-black font-medium">Pricing</div>
-          <div class="flex mt-6">
-            <div class="w-1/2 pr-5">
-              <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
-              <div class="relative input-price-wrapper">
-                <input type="text" name="price" id="price" class="mt-1 block w-full pl-10 shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="0.00" required>
-              </div>
-            </div>
-            <div class="w-1/2 pl-5">
-              <label for="sale_price" class="block text-sm font-medium text-gray-700">Sale price</label>
-              <div class="relative input-price-wrapper">
-                <input type="text" name="sale_price" id="sale_price" class="mt-1 block w-full pl-10 shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="0.00">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
-        <div class="px-4 py-5 sm:p-6">
-          <div class="text-lg text-black font-medium">Attach PDFs</div>
-          <div class="flex mt-6">
-
-          </div>
-        </div>
-      </div>
-      <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
-        <div class="px-4 py-5 sm:p-6">
-          <div class="text-lg text-black font-medium">Inventory</div>
-          <div class="flex mt-6">
-            <div class="w-1/2 pr-5">
-              <label for="sku" class="block text-sm font-medium text-gray-700">SKU (Stock Keeping Unit)</label>
-              <input type="text" name="sku" id="sku" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
-            </div>
-            <div class="w-1/2 pl-5">
-              <label for="barcode" class="block text-sm font-medium text-gray-700">Barcode (ISBN, UPC, GTIN, etc.)</label>
-              <input type="text" name="barcode" id="barcode" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="variations-app"></div>
-      <input type="text" hidden name="all_variations" id="all_variations" />
     </div>
     <div class="w-1/3 pl-3 flex-1">
       <div class="sticky top-0">
@@ -100,39 +55,6 @@
             </div>
           </div>
         </div>
-        <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
-          <div class="px-4 py-5 sm:p-6">
-            <div class="text-lg font-medium text-black">Organization</div>
-            <div class="mt-6">
-              <div>
-                @include('components.category.categories-dropdown', [
-                  'id' => 'category',
-                  'label' => 'Choose categories',
-                  'showAll' => true,
-                  'disableFirst' => true,
-                  'categories' => $categories,
-                  'selected_category' => ''
-                ])
-                <div class="selected-categories mt-3 pl-1 text-sm text-gray-500">
-                  <input id="categories" name="categories" hidden required />
-                </div>
-              </div>
-            </div>
-            <div class="mt-6">
-              <div class="text-sm font-medium text-gray-700">Add tags</div>
-              <div class="mt-2">
-                <div id="product-tags" data-productid="0"></div>
-              </div>
-            </div>
-            <div class="mt-6">
-              <div class="text-sm font-medium text-gray-700">Add documents</div>
-              <div class="mt-2">
-                <div id="product-documents" data-productid="0"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="media-upload"></div>
       </div>
     </div>
   </form>
