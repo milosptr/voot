@@ -29,7 +29,7 @@ if(document.querySelector('.admin-dashboard')) {
     editor.setData(document.getElementById('product-description').value)
 
     editor.on( 'change', debounce(function( evt ) {
-        document.getElementById('product-description').setAttribute('value', evt.editor.getData())
+        document.getElementById('product-description').innerHTML = evt.editor.getData()
     }, 500))
   }
 
