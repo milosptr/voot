@@ -22,6 +22,11 @@ class WebPages extends Controller
       return view('web.pages.about');
     }
 
+    public function contact()
+    {
+      return view('web.pages.contact');
+    }
+
     public function cart()
     {
       if(auth()->user() === NULL)

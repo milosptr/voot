@@ -68,6 +68,11 @@ class Product extends Model
       return '/product'. '/' . $this->slug;
     }
 
+    public function getSubcategoryAttribute()
+    {
+      return $this->categories()->get()->last();
+    }
+
     public function getfilteredVariationsAttribute()
     {
       $variations = [];

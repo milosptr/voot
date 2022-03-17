@@ -10,6 +10,8 @@ class Category extends Model
 {
     use HasFactory;
 
+    CONST SMURSPREY = 77;
+
     /**
      * The table associated with the model.
      *

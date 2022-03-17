@@ -70,3 +70,18 @@ if(searchBtn) {
     document.querySelector('#nav-search input').focus()
   })
 }
+
+const paginationPrev = document.getElementById('pagination--prev')
+const paginationNext = document.getElementById('pagination--next')
+if(paginationPrev || paginationNext) {
+  paginationPrev.addEventListener('click', (e) => {
+    const current = e.target.dataset.current
+    if(current - 1)
+      window.open(`?page=${current - 1}`, '_self')
+  })
+  paginationNext.addEventListener('click', (e) => {
+    const current = e.target.dataset.current
+    const page = parseInt(current) + 1;
+    window.open(`?page=${page}`, '_self')
+  })
+}

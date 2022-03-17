@@ -16,6 +16,9 @@
       @include('web.navigation')
     @endif
     @yield('content')
+    @if(!Route::is('login') && !Route::is('register'))
+      @include('web.footer')
+    @endif
     <script src="/js/app.js"></script>
   </body>
 </html>

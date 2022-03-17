@@ -33,6 +33,7 @@
               </a>
             </div>
           @endif
+          @include('common.pagination', ['pagination' => $pagination])
         </div>
       </div>
     </div>

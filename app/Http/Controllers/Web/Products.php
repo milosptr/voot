@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Services\PaginationService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Products as ResourcesProducts;
-use App\Models\Product;
 
 class Products extends Controller
 {
@@ -42,8 +43,10 @@ class Products extends Controller
     // if($request->has('category'))
 
     $products->orderBy('products.updated_at', 'DESC');
-    $products = ResourcesProducts::collection($products->get());
-    return view('web.pages.products', compact('categories', 'products'));
+    $products = $products->paginate(20);
+    $products = ResourcesProducts::collection($products);
+    $pagination = PaginationService::extract($products);
+    return view('web.pages.products', compact('categories', 'products', 'pagination'));
   }
 
   public function index(Request $request, $category, $product) {

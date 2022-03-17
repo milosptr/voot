@@ -73,13 +73,21 @@ Route::prefix('/backend')->middleware(['admin'])->group(function () {
 // Frontend + Language routes
 Route::prefix(parseLocaleLan())->group(function () {
   Route::get('/', [WebPages::class, 'index']);
-  Route::get('/about', [WebPages::class, 'about']);
-  Route::get('/um-okkur', [WebPages::class, 'about']);
+
+  Route::get('/about', [WebPages::class, 'about'])->name('about');
+  Route::get('/um-okkur', [WebPages::class, 'about'])->name('about');
+
+  Route::get('/contact', [WebPages::class, 'contact'])->name('contact');
+  Route::get('/hafa-samband', [WebPages::class, 'contact'])->name('contact');
+
   Route::get('/cart', [WebPages::class, 'cart']);
   Route::get('/thank-you', [WebPages::class, 'thanks']);
 
   Route::get('/tag/{slug}', [Tags::class, 'indexProducts'])->name('all.tag');
-  Route::get('/products', [Products::class, 'all'])->name('all.products');
+
+  Route::get('/products', [Products::class, 'all'])->name('all_products');
+  Route::get('/vorur', [Products::class, 'all'])->name('all_products');
+
   Route::get('products/search', [Products::class, 'search'])->name('products.search');
   Route::get('/product/{product}', [Products::class, 'uncategorised']);
   Route::get('/{category}', [Categories::class, 'index'])->name('category');

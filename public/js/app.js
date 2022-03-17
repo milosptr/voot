@@ -23636,6 +23636,21 @@ if (searchBtn) {
   });
 }
 
+var paginationPrev = document.getElementById('pagination--prev');
+var paginationNext = document.getElementById('pagination--next');
+
+if (paginationPrev || paginationNext) {
+  paginationPrev.addEventListener('click', function (e) {
+    var current = e.target.dataset.current;
+    if (current - 1) window.open("?page=".concat(current - 1), '_self');
+  });
+  paginationNext.addEventListener('click', function (e) {
+    var current = e.target.dataset.current;
+    var page = parseInt(current) + 1;
+    window.open("?page=".concat(page), '_self');
+  });
+}
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

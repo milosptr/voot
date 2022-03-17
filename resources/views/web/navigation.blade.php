@@ -14,8 +14,8 @@
             <a href="{{ __('header.current_language') }}/{{ __('header.about_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.about') }}</a>
             <a href="#" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.services') }}</a>
             <a href="#" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.about_our_products') }}</a>
-            <a href="{{ route('all.products') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.products') }}</a>
-            <a href="#" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.contact') }}</a>
+            <a href="{{ __('header.current_language') }}/{{ __('header.all_products_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.products') }}</a>
+            <a href="{{ __('header.current_language') }}/{{ __('header.contact_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.contact') }}</a>
           </div>
         </div>
       </div>
@@ -41,7 +41,12 @@
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
           </svg>
         </div>
-        <a href="{{ __('header.language_url') }}" class="ml-4">
+        @php
+          $lang = __('header.language');
+          $langUrl = $lang == 'en' ? '/en/' : '/';
+          $urlPath = Route::currentRouteName() ? __('header.'.Route::currentRouteName().'_url', [], $lang) : '';
+        @endphp
+        <a href="{{ $langUrl }}{{ $urlPath }}" class="ml-4">
           <img src="/images/{{ __('header.language') }}.png" width="24" alt="en" />
         </a>
         <a href="/app/favourites" class="ml-4 text-gray-600 hover:text-primary-lighter relative">
