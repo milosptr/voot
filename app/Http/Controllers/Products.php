@@ -129,6 +129,13 @@ class Products extends Controller
           foreach ($variations as $variation) {
             if(!isset($variation->sku)) continue;
             $inventory = Inventory::where('sku', $variation->sku)->first();
+            if(!$inventory) {
+              $inventory = Inventory::create([
+                'product_id' => $product->id,
+                'sku' => $variation->sku,
+                'name' => $product->name . ' - ' . $variation->value
+              ]);
+            }
             if ($inventory) {
               $inventory->variant = $variation->value;
               $inventory->save();
