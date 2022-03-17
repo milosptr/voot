@@ -12,9 +12,13 @@ class Product extends Model
 
     public $guarded = ['id'];
 
-    protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'available'];
+    protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'available', 'product_table'];
 
     protected $table = 'products';
+
+    public $cast = [
+      'product_table' => 'json',
+    ];
 
     public function categories()
     {

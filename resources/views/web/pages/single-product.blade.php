@@ -65,41 +65,72 @@
             Login to Order
           </a>
         @endif
-        @if(count($product->information))
-          <h4 class="font-medium text-lg text-gray-500 border-b border-gray-100 py-2 px-3 mt-10 rounded-md sm:rounded-r-none">Product Information</h4>
-          <div class="">
-            @foreach($product->information as $info)
-              @if($info->name)
-                <div class="flex flex-wrap py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-3 text-sm">
-                  <div class="w-full sm:w-1/2 text-gray-500 capitalize font-medium">
-                    {{ $info->name }}
-                  </div>
-                  <div class="w-full sm:w-1/2 text-right text-gray-500 font-light">
-                    {{ $info->value }}
-                  </div>
-                </div>
-              @endif
-            @endforeach
-          </div>
-        @endif
       </div>
     </div>
     <div class="mt-12 flex flex-wrap">
-      <div class="w-full sm:w-2/3">
-        <h4 class="font-medium text-lg text-gray-500 bg-gray-50 py-2 px-6">Standards and Approvals</h4>
-      </div>
+    @if(count($product->documents) && count($product->information))
       <div class="w-full sm:w-1/3">
-        <h4 class="font-medium text-lg text-gray-500 bg-gray-50 py-2 px-6 rounded-md sm:rounded-l-none">Downloads</h4>
-        @foreach($product->documents as $doc)
-            <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">
-              <div class="w-full text-gray-500 capitalize font-medium">
-                <a href="/{{ $doc->file_path }}" target="_blank" class="flex justify-between text-gray-500 hover:text-primary-lighter">
-                  <span class="font-medium">{{ $doc->documentName }}</span>
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                </a>
+          <h4 class="font-medium text-white bg-primary-light py-2 px-6">Product Information</h4>
+          @foreach($product->information as $info)
+                @if($info->name)
+                  <div class="flex flex-wrap py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-3 text-sm">
+                    <div class="w-full sm:w-1/2 text-gray-500 capitalize font-medium">
+                      {{ $info->name }}
+                    </div>
+                    <div class="w-full sm:w-1/2 text-right text-gray-500 font-light">
+                      {{ $info->value }}
+                    </div>
+                  </div>
+                @endif
+              @endforeach
+        </div>
+        <div class="w-full sm:w-1/3">
+          <h4 class="font-medium text-white bg-primary-light py-2 px-6">Standards and Approvals</h4>
+        </div>
+        <div class="w-full sm:w-1/3">
+          <h4 class="font-medium text-white bg-primary-light py-2 px-6">Downloads</h4>
+          @foreach($product->documents as $doc)
+              <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">
+                <div class="w-full text-gray-500 capitalize font-medium">
+                  <a href="/{{ $doc->file_path }}" target="_blank" class="flex justify-between text-gray-500 hover:text-primary-lighter">
+                    <span class="font-medium">{{ $doc->documentName }}</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                  </a>
+                </div>
               </div>
-            </div>
-          @endforeach
+            @endforeach
+        </div>
+      @endif
+      <div class="w-full mt-12">
+        @if ($product->product_table)
+            @php
+                $productTable = json_decode($product->product_table, true);
+            @endphp
+            <section class="product-table">
+                <table class="w-full">
+                    <thead class="bg-primary-light text-white">
+                    <tr class="text-center bg-primary-light text-white">
+                        @foreach($productTable[0] as $th)
+                            <th class="py-2 px-6">{{ $th }}</th>
+                        @endforeach
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(array_slice($productTable,1) as $key => $tr)
+                            <tr class="text-center {{ $key % 2 === 1 ? 'bg-gray-100' : '' }}">
+                                @foreach($tr as $td)
+                                    <td class="py-1">
+                                        <div class="flex justify-center w-full">
+                                            {!! $td !!}
+                                        </div>
+                                    </td>
+                                @endforeach
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </section>
+        @endif
       </div>
     </div>
     <div class="mt-12">

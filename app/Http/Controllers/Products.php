@@ -71,7 +71,7 @@ class Products extends Controller
 
     public function update(Request $request, $id)
     {
-      $data = $request->only(['name', 'description', 'species', 'sku', 'available']);
+      $data = $request->only(['name', 'description', 'species', 'sku', 'available', 'product_table']);
       $data['available'] = $request->get('available') == 'on' ? true : false;
 
       try {

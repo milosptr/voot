@@ -8,6 +8,7 @@ import Media from './components/Media/Media.vue'
 import ProductTags from './components/ProductTags.vue'
 import ProductDocuments from './components/ProductDocuments.vue'
 import ProductInformation from './components/ProductInformation.vue'
+import ProductTable from './components/ProductTable.vue'
 
 if(document.getElementById('variations-app')) {
   createApp({
@@ -41,4 +42,11 @@ if(document.getElementById('single-product-info')) {
     components: { ProductInformation },
     template: `<ProductInformation />`
   }).mount("#single-product-info")
+}
+
+if(document.getElementById('single-product-table')) {
+  createApp({
+    components: { ProductTable },
+    template: `<ProductTable />`
+  }).mount("#single-product-table")
 }

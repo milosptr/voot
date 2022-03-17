@@ -68,7 +68,9 @@
       <div id="product-documents" data-key="{{ $product->id }}"></div>
       <div id="single-product-info" data-key="{{ $product->id }}"></div>
       <div id="variations-app" data-productid="{{ $product->id }}"></div>
+      <div id="single-product-table" data-product-table="{{ $product->product_table }}"></div>
       <input type="text" hidden name="all_variations" id="all_variations" />
+      <input type="text" hidden name="product_table" id="product_table" value="{{ $product->product_table }}" />
     </div>
     <div class="w-1/3 pl-3 flex-1">
       <div class="sticky top-0">
