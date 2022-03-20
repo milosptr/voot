@@ -77,6 +77,9 @@ Route::prefix(parseLocaleLan())->group(function () {
   Route::get('/about', [WebPages::class, 'about'])->name('about');
   Route::get('/um-okkur', [WebPages::class, 'about'])->name('about');
 
+  Route::get('/services', [WebPages::class, 'services'])->name('services');
+  Route::get('/thjonusta', [WebPages::class, 'services'])->name('services');
+
   Route::get('/contact', [WebPages::class, 'contact'])->name('contact');
   Route::get('/hafa-samband', [WebPages::class, 'contact'])->name('contact');
 

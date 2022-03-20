@@ -20,6 +20,12 @@ return [
     'about_voot_title' => 'About Voot',
     'about_voot_short' => 'We make simple operations simpler with economical and varied products - and the farm focuses on what you do best!',
 
+    'services_title' => 'Services',
+    'services_p1' => 'Við aðstoðum þig við að meta þínar þarfir, hvort sem þú ert í sjávarútvegi eða tengdum rekstri, og veitum faglega og persónulega þjónustu.',
+    'services_p2' => 'Við leggjum mikla áherslu á að mæta kröfum viðskiptavina okkar með traustri og vandaðri þjónustu og þar er starfsfólkið okkar í lykilhlutverki. Við erum sérstaklega stolt af Mar Wear vörumerkinu, sem er hannað og framleitt af okkur og alfarið í eigu Voot. Við þekkjum íslenskar aðstæður vel af eigin reynslu og tökum mið af því við hönnun á Mar Wear fatnaði. Þá færð þú hreinsiefni, eldhúsvörur, salernisvörur ásamt ýmsum ræstiefnum einnig hjá okkur.',
+    'services_p3' => 'Við bjóðum auðvitað ennþá upp á hágæða beitu sem við fáum frá traustum alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og má þar nefna saury, síld og smokkfisk og koma þær allar í ýmsum stærðum.',
+
+
     'cart_title' => 'Shopping Cart',
     'orders_title' => 'Your orders',
 ];

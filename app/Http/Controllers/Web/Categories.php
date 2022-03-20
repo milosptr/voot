@@ -18,9 +18,9 @@ class Categories extends Controller
   public function index(Request $request, $category = null) {
     $categories = Category::tree();
     $category = Category::where('slug', $category)->get()->first();
-    $products = $category->products()->orderBy('category_order', 'ASC')->get();
 
     if($category) {
+      $products = $category->products()->orderBy('category_order', 'ASC')->get();
       return view('web.pages.category', compact('categories', 'category', 'products'));
     }
 

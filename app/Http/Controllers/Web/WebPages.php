@@ -22,6 +22,11 @@ class WebPages extends Controller
       return view('web.pages.about');
     }
 
+    public function services()
+    {
+      return view('web.pages.services');
+    }
+
     public function contact()
     {
       return view('web.pages.contact');

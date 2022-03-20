@@ -23,6 +23,12 @@ return [
     'about_p1' => 'Við hjá Voot seljum hágæða beitu fyrir allar stærðir línubáta ásamt veiðarfærum, öryggis- og vinnufatnaði og resktrarvörum fyrir skip og báta af öllum stærðum og gerðum. Við höfum frá upphafi lagt mikla áherslu á að mæta kröfum viðskiptavina okkar með traustri þjónustu og vönduðum vörum sem gerðar eru fyrir erfiðustu aðstæður. Á undanförnum árum höfum við aukið talsvert við vöruúrvalið og þjónustum nú fjölbreyttan hóp viðskiptavina, bæði íslenska og erlenda. Við bjóðum fjölbreyttar rekstrarvörur fyrir sjávarútveginn og framleiðum hágæða fatnað fyrir fiskvinnslu, bæði í landi og út á sjó, undir merki Mar Wear.',
     'about_p2' => 'Starfsfólk Voot býr yfir mikilli reynslu og þekkingu á vörum okkar og starfsemi viðskiptavina okkar. Skrifstofur okkar eru við Skarfagarð 4 í Reykjavík.',
 
+    'services_title' => 'Þjónusta',
+    'services_p1' => 'Við aðstoðum þig við að meta þínar þarfir, hvort sem þú ert í sjávarútvegi eða tengdum rekstri, og veitum faglega og persónulega þjónustu.',
+    'services_p2' => 'Við leggjum mikla áherslu á að mæta kröfum viðskiptavina okkar með traustri og vandaðri þjónustu og þar er starfsfólkið okkar í lykilhlutverki. Við erum sérstaklega stolt af Mar Wear vörumerkinu, sem er hannað og framleitt af okkur og alfarið í eigu Voot. Við þekkjum íslenskar aðstæður vel af eigin reynslu og tökum mið af því við hönnun á Mar Wear fatnaði. Þá færð þú hreinsiefni, eldhúsvörur, salernisvörur ásamt ýmsum ræstiefnum einnig hjá okkur.',
+    'services_p3' => 'Við bjóðum auðvitað ennþá upp á hágæða beitu sem við fáum frá traustum alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og má þar nefna saury, síld og smokkfisk og koma þær allar í ýmsum stærðum.',
+
+
     'cart_title' => 'Innkaupakarfa',
     'orders_title' => 'Pantanir þínar',
 ];

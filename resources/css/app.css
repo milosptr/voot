@@ -67,7 +67,7 @@ body a {
 
 #products,
 .page-not-found-section {
-  height: calc(100vh - 65px);
+  min-height: calc(100vh - 65px);
 }
 
 #dropzone-placeholder,

@@ -4,6 +4,7 @@ return [
     'about' => 'About Us',
     'about_url' => 'about',
     'services' => 'Services',
+    'services_url' => 'services',
     'about_our_products' => 'About our products',
     'products' => 'Products',
     'all_products_url' => 'products',

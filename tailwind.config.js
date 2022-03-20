@@ -20,11 +20,20 @@ module.exports = {
         },
         yellow: {
           DEFAULT: '#FFDA00',
+        },
+        transparent: {
+          DEFAULT: 'transparent',
         }
       },
       extend: {
+        background: {
+          transparent: 'rbga(0,0,0,0)',
+        },
         borderWidth: {
           '1': '1px'
+        },
+        maxHeight: {
+          '290' : '290px'
         }
       },
     },

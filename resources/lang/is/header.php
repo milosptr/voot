@@ -3,7 +3,8 @@
 return [
     'about' => 'Um Okkur',
     'about_url' => 'um-okkur',
-    'services' => 'þjónusta',
+    'services' => 'Þjónusta',
+    'services_url' => 'thjonusta',
     'about_our_products' => 'Um Vörurnar Okkar',
     'products' => 'Allar Vörur',
     'all_products_url' => 'vorur',

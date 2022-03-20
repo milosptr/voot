@@ -10,12 +10,14 @@
         </div>
         <div class="hidden lg:block lg:ml-6">
           <div class="flex space-x-4 ">
+            @php
+              $route = \Request::route()->getName();
+            @endphp
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="{{ __('header.current_language') }}/{{ __('header.about_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.about') }}</a>
-            <a href="#" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.services') }}</a>
-            <a href="#" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.about_our_products') }}</a>
-            <a href="{{ __('header.current_language') }}/{{ __('header.all_products_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.products') }}</a>
-            <a href="{{ __('header.current_language') }}/{{ __('header.contact_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light">{{ __('header.contact') }}</a>
+            <a href="{{ __('header.current_language') }}/{{ __('header.about_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'about' ? 'font-medium' : '' }}">{{ __('header.about') }}</a>
+            <a href="{{ __('header.current_language') }}/{{ __('header.services_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'services' ? 'font-medium' : '' }}">{{ __('header.services') }}</a>
+            <a href="{{ __('header.current_language') }}/{{ __('header.all_products_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'all_products' ? 'font-medium' : '' }}">{{ __('header.products') }}</a>
+            <a href="{{ __('header.current_language') }}/{{ __('header.contact_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'contact' ? 'font-medium' : '' }}">{{ __('header.contact') }}</a>
           </div>
         </div>
       </div>
