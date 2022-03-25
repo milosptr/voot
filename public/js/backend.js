@@ -19568,8 +19568,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.updateTable();
     },
     resetTable: function resetTable() {
-      this.table = JSON.parse(document.getElementById('single-product-table').dataset['productTable']);
-      this.table_org = JSON.parse(document.getElementById('single-product-table').dataset['productTable']);
+      var table = document.getElementById('single-product-table').dataset['productTable'];
+      this.table = table ? JSON.parse(table) : [];
+      this.table_org = table ? JSON.parse(table) : [];
       if (this.table.length) this.nRows = this.table.length;
       if (this.table.length && this.table[0].length) this.nColumns = this.table[0].length;
       document.getElementById('product_table').value = JSON.stringify(this.table_org);

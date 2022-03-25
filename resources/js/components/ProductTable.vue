@@ -61,8 +61,9 @@
         this.updateTable()
       },
       resetTable() {
-        this.table = JSON.parse(document.getElementById('single-product-table').dataset['productTable'])
-        this.table_org = JSON.parse(document.getElementById('single-product-table').dataset['productTable'])
+        const table = document.getElementById('single-product-table').dataset['productTable']
+        this.table = table ? JSON.parse(table) : []
+        this.table_org = table ? JSON.parse(table) : []
         if(this.table.length)
           this.nRows = this.table.length
         if(this.table.length && this.table[0].length)
