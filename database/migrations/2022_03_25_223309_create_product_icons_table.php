@@ -16,7 +16,7 @@ class CreateProductIconsTable extends Migration
         Schema::create('product_icons', function (Blueprint $table) {
             $table->id();
             $table->integer('product_id');
-            $table->integer('settings_icon_id');
+            $table->integer('settings_icons_id');
             $table->timestamps();
         });
     }
