@@ -15,7 +15,8 @@ class SettingsIconsController extends Controller
     public function store(Request $request)
     {
       foreach ($request->all() as $icon) {
-        if(!empty($icon['name']))
+        $iconStatus = SettingsIcon::where('name', $icon['name'])->get();
+        if(!empty($icon['name']) && !isset($iconStatus))
           SettingsIcon::create($icon);
       }
       return SettingsIcon::all();
