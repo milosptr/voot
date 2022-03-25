@@ -107,7 +107,7 @@
         </div>
       @endif
       <div class="w-full mt-12">
-        @if ($product->product_table)
+        @if ($product->product_table && $product->product_table !== "[]")
             @php
                 $productTable = json_decode($product->product_table, true);
             @endphp
