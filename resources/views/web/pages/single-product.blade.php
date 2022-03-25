@@ -47,16 +47,21 @@
           @endforeach
         </div>
         @if(count($product->tags))
-        <div class="mt-2 text-sm font-light flex items-center pt-2 border-t border-gray-200">
-          <div class="mr-1 text-gray-700">Tags: </div>
-          @foreach($product->tags as $tag)
-            <a href="/tag/{{ $tag->slug }}" class="text-primary-lighter hover:text-primary font-light mr-2"> {{ $tag->name }}@if(!$loop->last)<span class="mr-1">, </span> @endif</a>
-          @endforeach
-        </div>
+          <div class="mt-2 text-sm font-light flex items-center pt-2 border-t border-gray-200">
+            <div class="mr-1 text-gray-700">Tags: </div>
+            @foreach($product->tags as $tag)
+              <a href="/tag/{{ $tag->slug }}" class="text-primary-lighter hover:text-primary font-light mr-2"> {{ $tag->name }}@if(!$loop->last)<span class="mr-1">, </span> @endif</a>
+            @endforeach
+          </div>
         @endif
         <div class="mt-2 text-sm font-light flex items-center pt-2 pb-2 border-t border-b border-gray-200">
-          <div class="mr-1 text-gray-700">SKU: </div>
+          <div class="mr-1 text-gray-700">SKU:</div>
           <div id="single-product-sku" class="text-gray-500 font-light">{{ $product->sku }}</div>
+        </div>
+        <div class="mt-2 text-sm font-light flex items-center pt-2 pb-2">
+          @foreach($product->icons as $icon)
+            <img src="{{ $icon->file_path }}" title="{{ $icon->name }}" alt="{{ $icon->name }}" class="w-14 h-14 mr-1">
+          @endforeach
         </div>
         @if(auth()->user() != NULL)
           <div id="single-product-variations" key="{{ auth()->user()->id }}" index="{{ $product->id }}" variations="{{ json_encode($product->getfilteredVariationsAttribute()) }}"></div>
@@ -70,7 +75,7 @@
     <div class="mt-12 flex flex-wrap">
     @if(count($product->documents) && count($product->information))
       <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-light py-2 px-6">Product Information</h4>
+          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Product Information</h4>
           @foreach($product->information as $info)
                 @if($info->name)
                   <div class="flex flex-wrap py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-3 text-sm">
@@ -82,13 +87,13 @@
                     </div>
                   </div>
                 @endif
-              @endforeach
+            @endforeach
         </div>
         <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-light py-2 px-6">Standards and Approvals</h4>
+          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Standards and Approvals</h4>
         </div>
         <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-light py-2 px-6">Downloads</h4>
+          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Downloads</h4>
           @foreach($product->documents as $doc)
               <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">
                 <div class="w-full text-gray-500 capitalize font-medium">
@@ -108,8 +113,8 @@
             @endphp
             <section class="product-table">
                 <table class="w-full">
-                    <thead class="bg-primary-light text-white">
-                    <tr class="text-center bg-primary-light text-white">
+                    <thead class="bg-primary-lighter text-white">
+                    <tr class="text-center bg-primary-lighter text-white">
                         @foreach($productTable[0] as $th)
                             <th class="py-2 px-6">{{ $th }}</th>
                         @endforeach

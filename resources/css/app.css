@@ -182,6 +182,12 @@ input#sale_price {
   height: 600px;
 }
 
+.settings-page a.bg-primary-light,
+.settings-page a.bg-primary-light * {
+  color: #fff;
+  stroke: #fff;
+}
+
 @media(max-width: 768px) {
   .container {
     padding: 0 16px;

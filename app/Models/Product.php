@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\ProductIcon;
+use App\Models\SettingsIcon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,6 +50,11 @@ class Product extends Model
     public function variations()
     {
       return $this->hasMany('App\Models\ProductVariation');
+    }
+
+    public function icons()
+    {
+      return $this->belongsToMany(SettingsIcon::class, 'product_icons', 'product_id', 'settings_icons_id')->withPivot('id');
     }
 
     public function media() {

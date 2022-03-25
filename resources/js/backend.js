@@ -9,6 +9,8 @@ import ProductTags from './components/ProductTags.vue'
 import ProductDocuments from './components/ProductDocuments.vue'
 import ProductInformation from './components/ProductInformation.vue'
 import ProductTable from './components/ProductTable.vue'
+import ProductIcons from './components/ProductIcons.vue'
+import Settings from './components/Settings.vue'
 
 if(document.getElementById('variations-app')) {
   createApp({
@@ -49,4 +51,18 @@ if(document.getElementById('single-product-table')) {
     components: { ProductTable },
     template: `<ProductTable />`
   }).mount("#single-product-table")
+}
+
+if(document.getElementById('product-icons')) {
+  createApp({
+    components: { ProductIcons },
+    template: `<ProductIcons />`
+  }).mount("#product-icons");
+}
+
+if(document.getElementById('settings')) {
+  createApp({
+    components: { Settings },
+    template: `<Settings />`
+  }).mount("#settings")
 }

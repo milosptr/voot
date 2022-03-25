@@ -7,6 +7,7 @@ use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAssets;
 use App\Http\Controllers\ProductFavouriteController;
+use App\Http\Controllers\SettingsIconsController;
 use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\Products;
 use App\Http\Controllers\Users;
@@ -39,11 +40,16 @@ Route::post('product-category/{id}', [CategoriesController::class, 'update']);
 Route::post('product-category/delete/{id}', [CategoriesController::class, 'destroy']);
 Route::post('product-category-order', [CategoriesController::class, 'reorder']);
 
+// Product icons
+Route::get('settings-icons', [SettingsIconsController::class, 'index']);
+Route::post('settings-icons', [SettingsIconsController::class, 'store']);
+
 // Products
 Route::get('product-information/{id}', [ProductInformationController::class, 'index']);
 Route::get('product-variations/{id}', [Products::class, 'variations']);
 Route::get('product-tags/{id}', [Products::class, 'tags']);
 Route::get('product-media/{id}', [Products::class, 'media']);
+Route::get('product-icons/{id}', [Products::class, 'icons']);
 Route::get('cart-products', [Products::class, 'cartProducts']);
 Route::post('products', [Products::class, 'store']);
 Route::post('products/edit/{id}', [Products::class, 'update']);

@@ -129,6 +129,7 @@
             </div>
           </div>
         </div>
+        <div id="product-icons" data-key="{{ $product->id }}"></div>
         <div id="media-upload" data-key="{{ $product->id }}"></div>
       </div>
     </div>

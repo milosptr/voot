@@ -15,6 +15,7 @@ use App\Http\Resources\Products as ResourcesProducts;
 use App\Http\Resources\ProductWithCategories;
 use App\Models\Document;
 use App\Models\Inventory;
+use App\Models\ProductIcon;
 use App\Models\ProductInformation;
 use App\Models\ProductTag;
 use App\Models\Tag;
@@ -114,6 +115,13 @@ class Products extends Controller
               }
             }
           }
+          if($request->get('product-icons')) {
+            $icons = explode(',', $request->get('product-icons'));
+            ProductIcon::where('product_id', $product->id)->delete();
+            foreach($icons as $id) {
+              ProductIcon::create(['product_id' => $product->id, 'settings_icons_id' => $id]);
+            }
+          }
 
           if($request->get('documents')) {
             $documents = explode(',', $request->get('documents'));
@@ -145,14 +153,14 @@ class Products extends Controller
                 $pv->value = $variation->value;
                 $pv->save();
               } else {
-                  ProductVariation::create([
-                    'product_id' => $product->id,
-                    'value' => $variation->value,
-                    'sku' => isset($variation->sku) ? $variation->sku : '',
-                    'quantity' => isset($variation->quantity) ? $variation->quantity : 0,
-                    'file_path' => isset($variation->file_path) ? $variation->file_path : null
-                  ]);
-                }
+                ProductVariation::create([
+                  'product_id' => $product->id,
+                  'value' => $variation->value,
+                  'sku' => isset($variation->sku) ? $variation->sku : '',
+                  'quantity' => isset($variation->quantity) ? $variation->quantity : 0,
+                  'file_path' => isset($variation->file_path) ? $variation->file_path : null
+                ]);
+              }
             }
           }
 
@@ -160,8 +168,8 @@ class Products extends Controller
           foreach($product->media()->where('featured_image', 1)->orderBy('id', 'DESC')->get() as $k => $m) {
             if($k === 0) continue;
             if ($m) {
-                $m->featured_image = 0;
-                $m->save();
+              $m->featured_image = 0;
+              $m->save();
             }
           }
 
@@ -177,13 +185,13 @@ class Products extends Controller
           if ($request->get('media_ids')) {
             $assets = $request->get('media_ids') ? explode(',', $request->get('media_ids')) : [];
             foreach ($assets as $asset) {
-                ProductAssets::create([ 'product_id' => $id, 'asset_id' => $asset ]);
+              ProductAssets::create([ 'product_id' => $id, 'asset_id' => $asset ]);
             }
           }
 
-           // add product information
-           $information = $request->has('product_information') ? json_decode($request->get('product_information')) : [];
-           foreach ($information as $info) {
+          // add product information
+          $information = $request->has('product_information') ? json_decode($request->get('product_information')) : [];
+          foreach ($information as $info) {
             if (!empty($info->name)) {
                 if (isset($info->id)) {
                     $pi = ProductInformation::find($info->id);
@@ -217,6 +225,12 @@ class Products extends Controller
     {
       $product = Product::find($id);
       return $product->tags;
+    }
+
+    public function icons($id)
+    {
+      $product = Product::find($id);
+      return $product->icons->pluck('id');
     }
 
     public function media($id)
