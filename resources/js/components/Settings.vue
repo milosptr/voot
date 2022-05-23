@@ -4,16 +4,19 @@
       {{ settingsTitle }}
     </h1>
     <ProductIcons v-if="page === 1" @saved="saved" />
+    <ProductTranslation v-if="page === 2" @saved="saved" />
   </div>
 </template>
 
 <script>
   import ProductIcons from './Settings/ProductIcons.vue'
+  import ProductTranslation from './Settings/ProductTranslation.vue'
 
   export default {
-  components: { ProductIcons },
+  components: { ProductIcons, ProductTranslation },
     compontents: {
       ProductIcons,
+      ProductTranslation,
     },
     data: () => ({
       page: 0,
@@ -22,12 +25,16 @@
       settingsTitle() {
         if(this.page === 1)
           return 'Product Icons'
+        if(this.page === 2)
+          return 'Product Translation'
         return 'Select settings page from the left menu'
       }
     },
     mounted() {
       if(location.pathname.includes('product-icons'))
         this.page = 1
+      if(location.pathname.includes('product-translation'))
+        this.page = 2
     },
     methods: {
       saved() {

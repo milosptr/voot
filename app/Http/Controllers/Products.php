@@ -43,6 +43,9 @@ class Products extends Controller
       $query->orderBy('updated_at', 'DESC');
       $products = ResourcesProducts::collection($query->paginate());
 
+      if($request->has('type') && $request->get('type') === 'json')
+        return $query->get();
+
       return view('components.product.list', compact('products'));
     }
 
@@ -72,7 +75,7 @@ class Products extends Controller
 
     public function update(Request $request, $id)
     {
-      $data = $request->only(['name', 'description', 'species', 'sku', 'available', 'product_table']);
+      $data = $request->only(['name', 'description', 'species', 'sku', 'available', 'product_table', 'english_name', 'english_description']);
       $data['available'] = $request->get('available') == 'on' ? true : false;
 
       try {

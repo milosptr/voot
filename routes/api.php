@@ -53,6 +53,7 @@ Route::get('product-icons/{id}', [Products::class, 'icons']);
 Route::get('cart-products', [Products::class, 'cartProducts']);
 Route::post('products', [Products::class, 'store']);
 Route::post('products/edit/{id}', [Products::class, 'update']);
+Route::post('products/update', [Products::class, 'updateColumn']);
 Route::post('products/search', [Products::class, 'search']);
 Route::delete('product-variations/{id}', [Products::class, 'destroyVariant']);
 

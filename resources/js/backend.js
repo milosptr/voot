@@ -11,6 +11,7 @@ import ProductInformation from './components/ProductInformation.vue'
 import ProductTable from './components/ProductTable.vue'
 import ProductIcons from './components/ProductIcons.vue'
 import Settings from './components/Settings.vue'
+import { CKEditor } from "@ckeditor/ckeditor5-vue"
 
 if(document.getElementById('variations-app')) {
   createApp({
@@ -64,5 +65,6 @@ if(document.getElementById('settings')) {
   createApp({
     components: { Settings },
     template: `<Settings />`
-  }).mount("#settings")
+  })
+  .mount("#settings")
 }

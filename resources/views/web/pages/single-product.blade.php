@@ -142,7 +142,7 @@
       <h2 class="text-xl font-medium tracking-wide leading-normal">
         Related Products
       </h2>
-      <div class="mt-4">
+      <div class="mt-4 mb-12">
         @include('web.common.product-articles', ['products' => $product->getRelatedProducts(), 'ratio' => 'aspect-w-1 aspect-h-1', 'sort' => true])
       </div>
     </div>

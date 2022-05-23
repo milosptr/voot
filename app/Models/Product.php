@@ -14,7 +14,7 @@ class Product extends Model
 
     public $guarded = ['id'];
 
-    protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'available', 'product_table'];
+    protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'available', 'product_table', 'english_name', 'english_description'];
 
     protected $table = 'products';
 
@@ -68,7 +68,7 @@ class Product extends Model
 
     public function getRelatedProducts()
     {
-      return $this->relatedProducts()->get();
+      return $this->relatedProducts();
     }
 
     public function getProductUrlAttribute()
@@ -103,11 +103,15 @@ class Product extends Model
     public function scopeRelatedProducts(Builder $query, $count = 4, $inRandomOrder = true)
     {
       $query = $query->withAnyTags($this->tags()->pluck('name'))->where('id', '<>', $this->id);
-
       if($inRandomOrder)
         $query->inRandomOrder();
 
-      return $query->take($count);
+
+        if(empty($query->first())) {
+          $query = $this->categories->last()->products->where('id', '<>', $this->id);
+        }
+
+        return $query->take($count);
     }
 
     public function scopeWithAnyTags(Builder $query, $tags)
