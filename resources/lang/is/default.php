@@ -22,6 +22,8 @@ return [
     'about_voot_short' => 'Við gerum þinn rekstur einfaldari með hagkvæmum og fjölbreyttum vörum - og bú einbeitir bér ad bvi sem pú gerir best!',
     'about_p1' => 'Við hjá Voot seljum hágæða beitu fyrir allar stærðir línubáta ásamt veiðarfærum, öryggis- og vinnufatnaði og resktrarvörum fyrir skip og báta af öllum stærðum og gerðum. Við höfum frá upphafi lagt mikla áherslu á að mæta kröfum viðskiptavina okkar með traustri þjónustu og vönduðum vörum sem gerðar eru fyrir erfiðustu aðstæður. Á undanförnum árum höfum við aukið talsvert við vöruúrvalið og þjónustum nú fjölbreyttan hóp viðskiptavina, bæði íslenska og erlenda. Við bjóðum fjölbreyttar rekstrarvörur fyrir sjávarútveginn og framleiðum hágæða fatnað fyrir fiskvinnslu, bæði í landi og út á sjó, undir merki Mar Wear.',
     'about_p2' => 'Starfsfólk Voot býr yfir mikilli reynslu og þekkingu á vörum okkar og starfsemi viðskiptavina okkar. Skrifstofur okkar eru við Skarfagarð 4 í Reykjavík.',
+    'about_staff_title' => 'Starfsfólk',
+
 
     'services_title' => 'Þjónusta',
     'services_p1' => 'Við aðstoðum þig við að meta þínar þarfir, hvort sem þú ert í sjávarútvegi eða tengdum rekstri, og veitum faglega og persónulega þjónustu.',
@@ -31,4 +33,8 @@ return [
 
     'cart_title' => 'Innkaupakarfa',
     'orders_title' => 'Pantanir þínar',
+
+    'email' => 'Netfang',
+    'phone' => 'Simi',
+    'address' => 'Heimilisfang',
 ];

@@ -5,7 +5,7 @@
     </label>
     <div class="mt-1 relative">
       <button type="button" class="bg-white relative flex items-center border border-gray-300 rounded-md shadow-sm pl-3 pr-16 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" @click="show = !show">
-        <div v-if="color && selected && selected.color" class="w-6 h-3 select-custom-color rounded-md mr-2" :class="'bg-' + selected.color.name"></div>
+        <div v-if="color && selected && selected.color" class="w-6 h-3 select-custom-color rounded-md mr-2" :style="`background: ${selected.color.hex}`"></div>
         <div class="truncate">
           {{ selectedText  }}
         </div>
@@ -25,7 +25,7 @@
           :key="index"
           @click="selectOption(option)"
         >
-          <div v-if="color && option.color" class="w-6 h-3 rounded-md select-custom-color" :class="'bg-' + option.color.name"></div>
+          <div v-if="color && option.color" class="w-6 h-3 rounded-md select-custom-color"  :style="`background: ${option.color.hex}`"></div>
           <!-- Selected: "font-semibold", Not Selected: "font-normal" -->
           <div class="font-normal block truncate ml-2">
             {{ optionText(option) }}

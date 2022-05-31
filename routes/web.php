@@ -1,12 +1,14 @@
 <?php
 
+use App\Models\Order;
+use App\Mail\OrderCreated;
+use App\Http\Controllers\Web\Tags;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Products;
+use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
-use App\Http\Controllers\Web\Tags;
-use App\Http\Controllers\Web\WebPages;
-use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +72,15 @@ Route::prefix('/backend')->middleware(['admin'])->group(function () {
 
   Route::get('/test', [PagesController::class, 'test']);
 });
+
+Route::get('/send/email', function() {
+    $order = Order::all()->first();
+    Mail::to('milosptr@icloud.com')->send(new OrderCreated($order));
+
+    return 'Email sent Successfully';
+});
+
+Route::get('email-template', function() { return view('emails.order-created'); });
 
 // Frontend + Language routes
 Route::prefix(parseLocaleLan())->group(function () {

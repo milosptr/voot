@@ -60,7 +60,10 @@
         </div>
         <div class="mt-2 text-sm font-light flex items-center pt-2 pb-2">
           @foreach($product->icons as $icon)
-            <img src="{{ $icon->file_path }}" title="{{ $icon->name }}" alt="{{ $icon->name }}" class="w-14 h-14 mr-1">
+            <div class="relative single-product-icon">
+              <img src="{{ $icon->file_path }}" alt="{{ $icon->name }}" class="w-14 h-14 mr-1">
+              <div class="hidden single-product-icon-hint">{{ $icon->name }}</div>
+            </div>
           @endforeach
         </div>
         @if(auth()->user() != NULL)
@@ -138,14 +141,16 @@
         @endif
       </div>
     </div>
-    <div class="mt-12">
-      <h2 class="text-xl font-medium tracking-wide leading-normal">
-        Related Products
-      </h2>
-      <div class="mt-4 mb-12">
-        @include('web.common.product-articles', ['products' => $product->getRelatedProducts(), 'ratio' => 'aspect-w-1 aspect-h-1', 'sort' => true])
+    @if($product->getRelatedProducts()->count())
+      <div class="mt-12">
+        <h2 class="text-xl font-medium tracking-wide leading-normal">
+          Related Products
+        </h2>
+        <div class="mt-4 mb-12">
+          @include('web.common.product-articles', ['products' => $product->getRelatedProducts(), 'ratio' => 'aspect-w-1 aspect-h-1', 'sort' => true])
+        </div>
       </div>
-    </div>
+    @endif
   </div>
 </section>
 @endsection

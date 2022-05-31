@@ -5,19 +5,21 @@
     </h1>
     <ProductIcons v-if="page === 1" @saved="saved" />
     <ProductTranslation v-if="page === 2" @saved="saved" />
+    <Staff v-if="page === 3" @saved="saved" />
+    <Locations v-if="page === 4" @saved="saved" />
+    <Config v-if="page === 5" @saved="saved" />
   </div>
 </template>
 
 <script>
   import ProductIcons from './Settings/ProductIcons.vue'
   import ProductTranslation from './Settings/ProductTranslation.vue'
+  import Staff from './Settings/Staff.vue'
+  import Locations from './Settings/Locations.vue'
+  import Config from './Settings/Config.vue'
 
   export default {
-  components: { ProductIcons, ProductTranslation },
-    compontents: {
-      ProductIcons,
-      ProductTranslation,
-    },
+    components: { ProductIcons, ProductTranslation, Staff, Locations, Config },
     data: () => ({
       page: 0,
     }),
@@ -27,6 +29,12 @@
           return 'Product Icons'
         if(this.page === 2)
           return 'Product Translation'
+        if(this.page === 3)
+          return 'Staff Members'
+        if(this.page === 4)
+          return 'Locations'
+        if(this.page === 5)
+          return 'Config'
         return 'Select settings page from the left menu'
       }
     },
@@ -35,6 +43,12 @@
         this.page = 1
       if(location.pathname.includes('product-translation'))
         this.page = 2
+      if(location.pathname.includes('staff'))
+        this.page = 3
+      if(location.pathname.includes('locations'))
+        this.page = 4
+      if(location.pathname.includes('config'))
+        this.page = 5
     },
     methods: {
       saved() {

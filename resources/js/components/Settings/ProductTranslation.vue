@@ -48,6 +48,10 @@ import ProductTranslationModal from './ProductTranslationModal.vue'
       showModal: false,
     }),
     mounted() {
+      axios.get('/api/products/all')
+        .then((res) => {
+          this.products = res.data.data
+        })
     },
     methods: {
       hasName(name) {

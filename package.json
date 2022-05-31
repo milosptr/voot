@@ -28,8 +28,7 @@
         "tailwindcss": "^2.2.19",
         "v-calendar": "^3.0.0-alpha.6",
         "vue": "^3.2.27",
-        "vue3-click-away": "^1.2.1",
-        "vue3-google-map": "^0.8.3",
+        "vue3-click-away": "^1.2.4",
         "vue3-popper": "^1.4.1",
         "vuex": "^4.0.2"
     }

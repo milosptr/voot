@@ -15,8 +15,21 @@ class Order extends Model
     CONST STATUS_DELIVERY = 3;
     CONST STATUS_DONE = 4;
 
+    CONST DELIVERY = 1;
+    CONST PICKUP = 2;
+
     protected $guarded = ['id'];
-    protected $fillable = ['customer_id', 'order_id', 'order_status', 'order', 'shipping_address', 'shipping_date', 'note'];
+    protected $fillable = [
+      'user_id',
+      'order_id',
+      'order_status',
+      'order',
+      'shipping_method',
+      'shipping_address',
+      'shipping_date',
+      'pickup_location',
+      'note'
+    ];
     public $timestamps = true;
 
     protected $casts = [
@@ -27,6 +40,15 @@ class Order extends Model
     {
       return $this->belongsTo(User::class);
     }
+
+    public function orderAddress()
+    {
+      if($this->shipping_method === self::DELIVERY)
+        return $this->shipping_address;
+      return Location::find($this->pickup_location)->fullAddress();
+    }
+
+
 
     public static function statusText($status)
     {

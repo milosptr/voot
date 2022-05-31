@@ -9,7 +9,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="pb-24">
     <div class="container mx-auto">
       <div id="shopping-cart-app"></div>
     </div>

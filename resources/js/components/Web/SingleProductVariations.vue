@@ -2,7 +2,7 @@
   <div>
     <div class="flex gap-10 mt-8">
       <Select v-if="variations.length" label="Select option" :options="variations" :color="true" :firstDefault="true" @selected="selectVariant($event)" />
-      <Select label="Quantity" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
+      <Select :label="qtyLabel" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
     </div>
     <div v-if="error" class="mt-3 mb-3 text-sm border border-red-600 bg-red-400 text-white rounded-md px-4 py-2">
       {{ error }}
@@ -41,6 +41,13 @@ import Select from './common/Select.vue'
           this.error = null
         },
         deep: true,
+      }
+    },
+    computed: {
+      qtyLabel() {
+        if(location.href.includes('beita'))
+          return 'Pallets'
+        return 'Quantity'
       }
     },
     mounted() {

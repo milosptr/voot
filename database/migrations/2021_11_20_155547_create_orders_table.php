@@ -19,9 +19,12 @@ class CreateOrdersTable extends Migration
             $table->string('order_id')->nullable();
             $table->integer('order_status');
             $table->text('order');
-            $table->string('shipping_address');
+            $table->integer('shipping_method')->default(1);
+            $table->string('shipping_address')->nullable();
             $table->datetime('shipping_date')->nullable();
+            $table->integer('pickup_location')->nullable();
             $table->text('note')->nullable();
+
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

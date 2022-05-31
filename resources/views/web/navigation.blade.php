@@ -1,4 +1,4 @@
-<nav class="border-b border-gray-100">
+<nav class="relative z-10 border-b border-gray-100">
   <div class="container mx-auto">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center px-2 lg:px-0 h-full">
@@ -31,7 +31,7 @@
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
             </div>
-            <form action="/products/search" method="GET">
+            <form action="/products/search" method="GET" class="mr-16">
               <input id="search" name="q" class="block w-full pl-10 pr-3 py-2 font-light border border-transparent border-gray-200 rounded-md leading-5 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none" placeholder="{{ __('header.search') }}" type="search">
             </form>
           </div>

@@ -65,6 +65,34 @@ body a {
   line-height: 1.25rem;
 }
 
+.single-product-icon:hover .single-product-icon-hint {
+  display: block;
+}
+
+.single-product-icon-hint::before {
+  content: '';
+  position: absolute;
+  left: calc(50% - 8px);
+  bottom: 13px;
+  width: 16px;
+  height: 16px;
+  background: #1d67a7;
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+.single-product-icon-hint {
+  position: absolute;
+  left: calc(50% - 63px);
+  bottom: -28px;
+  width: 120px;
+  border-radius: 4px;
+  background: #1d67a7;
+  color: #fff;
+  text-align: center;
+  padding: 3px 0;
+}
+
 #products,
 .page-not-found-section {
   min-height: calc(100vh - 65px);

@@ -22,7 +22,7 @@ class Category extends Model
 
     public function image()
     {
-      return $this->hasOne('App\Models\Asset', 'category_id');
+      return $this->hasOne('App\Models\Asset', 'category_id')->orderBy('id', 'DESC');
     }
 
     public function products()

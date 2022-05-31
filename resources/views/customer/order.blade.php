@@ -36,12 +36,16 @@
             </div>
           </div>
           <div class="w-full mt-4">
-            <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
+            @if($order->shipping_method === App\Models\Order::DELIVERY)
+              <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
+            @else
+              <label for="shipping_address" class="block text-sm font-medium text-gray-500">Pickup address</label>
+            @endif
             @if($order->order_status <= 1)
               <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address }}" required="">
             @else
               <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-                {{ $order->shipping_address }}
+                {{ $order->orderAddress }}
               </div>
             @endif
           </div>
@@ -71,10 +75,13 @@
             </div>
           @endif
           @if($order->order_status <= 3)
-          <div class="w-full mt-8">
+          <div class="w-full mt-8 flex justify-between">
             <button type="submit" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
               Update order
             </button>
+            <a href="/api/orders/{{ $order->id }}/reorder" class="border border-primary-lighter text-primary-lighter hover:text-white group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
+              Reorder
+            </a>
           </div>
           @endif
         </form>

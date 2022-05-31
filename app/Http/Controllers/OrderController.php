@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -21,17 +24,25 @@ class OrderController extends Controller
 
       $shippingAddress = $request->get('shippingAddress');
       $shippingDate = $request->get('shippingDate');
+      $shippingNote = $request->get('note');
+      $shippingMethod = $request->get('shippingMethod');
+      $pickupLocation = $request->get('pickupLocation');
 
       if($shippingAddress === NULL)
         $shippingAddress = $customer->street . ', ' . $customer->city . ' ' . $customer->zip . ', ' . $customer->country;
 
-      Order::create([
-        'customer_id' => $customer->key,
+      $order = Order::create([
+        'user_id' => $customer->id,
         'order_status' => Order::STATUS_REQUESTED,
-        'order' => $cart->cart,
+        'order' => json_decode($cart->cart),
+        'shipping_method' => $shippingMethod,
         'shipping_address' => $shippingAddress,
-        'shipping_date' => $shippingDate
+        'shipping_date' => Carbon::parse($shippingDate),
+        'pickup_location' => $pickupLocation,
+        'note' => $shippingNote
       ]);
+
+      OrderCreated::dispatch($order);
 
       $cart->delete();
 
@@ -44,5 +55,22 @@ class OrderController extends Controller
       $order->update($request->only('order', 'shipping_address', 'shipping_date', 'note'));
 
       return back()->with('success', 'Order updated successfully!');
+    }
+
+    public function reorder($id)
+    {
+      $order = Order::findOrFail($id);
+      $cart = Cart::where('user_id', $order->user_id)->first();
+      if(isset($cart)) {
+        $cartItems = json_decode($cart->cart);
+        $items = array_merge($cartItems, $order->order);
+        $cart->update([
+          'cart' => $items
+        ]);
+      } else {
+        Cart::create($order->order);
+      }
+
+      return redirect()->intended('/cart');
     }
 }

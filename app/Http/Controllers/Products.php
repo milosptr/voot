@@ -49,6 +49,11 @@ class Products extends Controller
       return view('components.product.list', compact('products'));
     }
 
+    public function all()
+    {
+      return ResourcesProducts::collection(Product::orderBy('id', 'DESC')->get()->take(100));
+    }
+
     public function store(Request $request)
     {
       $request->validate([

@@ -73,7 +73,7 @@
       <input type="text" hidden name="product_table" id="product_table" value="{{ $product->product_table }}" />
     </div>
     <div class="w-1/3 pl-3 flex-1">
-      <div class="sticky top-0">
+      <div class="">
         <div class="bg-white overflow-hidden shadow rounded-lg">
           <div class="px-4 py-5 sm:p-6">
             <div class="text-lg font-medium text-black">Product status</div>

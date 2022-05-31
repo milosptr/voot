@@ -3,13 +3,16 @@
 use App\Http\Controllers\AssetsUpload;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAssets;
 use App\Http\Controllers\ProductFavouriteController;
 use App\Http\Controllers\SettingsIconsController;
 use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\Products;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Web\Tags;
 use App\Models\ProductCategory;
@@ -51,6 +54,7 @@ Route::get('product-tags/{id}', [Products::class, 'tags']);
 Route::get('product-media/{id}', [Products::class, 'media']);
 Route::get('product-icons/{id}', [Products::class, 'icons']);
 Route::get('cart-products', [Products::class, 'cartProducts']);
+Route::get('products/all', [Products::class, 'all']);
 Route::post('products', [Products::class, 'store']);
 Route::post('products/edit/{id}', [Products::class, 'update']);
 Route::post('products/update', [Products::class, 'updateColumn']);
@@ -77,6 +81,7 @@ Route::post('/add-to-cart', [CartController::class, 'store'])->name('addToCart')
 Route::delete('/add-to-cart/{user_id}/{sku}', [CartController::class, 'destroy'])->name('removeFromCart');
 
 // Order
+Route::get('/orders/{id}/reorder', [OrderController::class, 'reorder']);
 Route::post('request-order/{id}', [OrderController::class, 'store']);
 Route::post('request-order/update/{id}', [OrderController::class, 'update']);
 
@@ -87,5 +92,19 @@ Route::get('customer/{id}/delete', [Users::class, 'destroy']);
 Route::post('customer/{id}', [Users::class, 'update']);
 Route::post('customer/{id}/logo', [Users::class, 'logo']);
 
+// Staff
+Route::get('staff', [StaffController::class, 'index']);
+Route::post('staff', [StaffController::class, 'store']);
+Route::delete('staff/{id}', [StaffController::class, 'destroy']);
+
+// Locations
+Route::get('locations', [LocationsController::class, 'index']);
+Route::post('locations', [LocationsController::class, 'store']);
+Route::delete('locations/{id}', [LocationsController::class, 'destroy']);
+
 // Clients
 Route::post('clients/search', [Users::class, 'search']);
+
+// Config
+Route::get('/config', [ConfigController::class, 'index']);
+Route::post('/config', [ConfigController::class, 'update']);
