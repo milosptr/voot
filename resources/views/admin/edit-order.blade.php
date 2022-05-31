@@ -13,9 +13,19 @@
     <div class="w-1/2 bg-white overflow-hidden shadow rounded-lg">
       <div class="px-4 py-5 sm:p-6">
         <form action="/api/request-order/update/{{ $order->id }}" method="POST" class="flex flex-wrap">
-          <div class="w-full">
-            <label for="order_status" class="block text-sm font-medium text-gray-500">Order status</label>
-            @include('components.order.statuses', ['status' => $order->order_status])
+          <div class="w-full flex items-center justify-between">
+            <div class="w-full">
+              <label for="order_status" class="block text-sm font-medium text-gray-500">Order status</label>
+              @include('components.order.statuses', ['status' => $order->order_status])
+            </div>
+            <div class="w-full sm:pl-4">
+              <label for="status" class="block text-sm font-medium text-gray-500">Change status</label>
+              <select id="status" name="order_status" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md">
+                @foreach(App\Models\Order::statuses() as $key => $status)
+                  <option value="{{ $key }}" {{ $order->order_status === $key ? 'selected' : '' }}>{{ $status }}</option>
+                @endforeach
+              </select>
+            </div>
           </div>
           <div class="w-full sm:w-1/2 sm:pr-4 mt-4">
             <label for="created_at" class="block text-sm font-medium text-gray-500">Created at</label>
@@ -86,6 +96,23 @@
           </div>
         @endforeach
       </div>
+    </div>
+  </section>
+
+  <section id="order-history">
+    <div class="container">
+     <div class="">
+        <div class="mt-12 mb-2 text-gray-500">History</div>
+        @foreach($order->activityLog as $log)
+          <div class="text-xs text-gray-400 mb-2">
+            <span class="text-gray-500">{{ isset($log->user) ? $log->user->name : '/' }} at {{ Carbon\Carbon::parse($log->created_at)->format('m/d/Y H:m:s') }} </span>
+            <br>
+            <span class="tracking-wide"> {{ str_replace('}', '', str_replace('{', '', $log->from)) }}</span>
+            <br>
+            <span class="tracking-wide"> {{ str_replace('}', '', str_replace('{', '', $log->to)) }}</span>
+          </div>
+        @endforeach
+     </div>
     </div>
   </section>
 @endsection

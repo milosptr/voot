@@ -30,7 +30,7 @@
               </option>
             </select>
           </div>
-          <div class="ml-0 sm:ml-8 text-red-400 cursor-pointer" @click="removeProduct(product)">
+          <div class="ml-0 sm:ml-8 text-red-400 cursor-pointer" @click="removeProduct(index)">
             <img src="/images/trash.svg" alt="remove" class="w-5 h-5" />
           </div>
       </div>
@@ -213,9 +213,10 @@
         axios.post('/api/add-to-cart', { user_id: this.user_id, sku, qty: e.target.value - currentQty })
           .then((r) => location.reload() )
       },
-      removeProduct(product) {
-        const sku = this.getSKU(product)
-        axios.delete(`/api/add-to-cart/${this.user_id}/${sku}`)
+      removeProduct(index) {
+       this.cart.splice(index, 1)
+
+        axios.post(`/api/add-to-cart/${this.user_id}`, this.cart)
           .then((r) => location.reload() )
       },
       requestOrder() {
@@ -223,7 +224,7 @@
           shippingMethod: this.shippingMethod,
           shippingAddress: this.newShippingAddress,
           shippingDate: this.shippingDate,
-          pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : NULL,
+          pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : null,
           note: this.note,
         }
         axios.post(`/api/request-order/${this.customer.id}`, data)

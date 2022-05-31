@@ -216,6 +216,12 @@ input#sale_price {
   stroke: #fff;
 }
 
+
+.order-status-box.py-2.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 @media(max-width: 768px) {
   .container {
     padding: 0 16px;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\OrderCreated;
+use App\Models\ActivityLog;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
@@ -52,8 +53,15 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
       $order = Order::find($id);
-      $order->update($request->only('order', 'shipping_address', 'shipping_date', 'note'));
-
+      $originalOrder = $order->get(['order_status', 'shipping_address', 'shipping_date', 'note'])->first()->toArray();
+      $data = $request->only('order_status', 'order', 'shipping_address', 'shipping_date', 'note');
+      ActivityLog::create([
+        'user_id' => auth()->user()->id,
+        'order_id' => $order->id,
+        'from' => json_encode($originalOrder),
+        'to' => json_encode($data)
+      ]);
+      $order->update($data);
       return back()->with('success', 'Order updated successfully!');
     }
 

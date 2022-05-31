@@ -51,9 +51,7 @@
               {{ count($order->order) }} {{ count($order->order) > 1 ? 'products' : 'product' }}
             </td>
             <td class="px-6 py-3 whitespace-nowrap">
-              <div class="inline-block text-sm bg-gray-100 text-gray-500 rounded-md py-1 px-2 lowercase">
-                {{ App\Models\Order::statusText($order->status) }}
-              </div>
+                @include('components.order.statuses', ['status' => $order->order_status, 'class' => 'py-1 px-2 mb-1'])
             </td>
             <td class="px-6 py-3 whitespace-nowrap">
               {{ Carbon\Carbon::parse($order->created_at)->format('d.m.Y. H:s') }}

@@ -78,7 +78,7 @@ Route::delete('/documents/{id}', [DocumentController::class, 'destroy'])->name('
 
 // Cart
 Route::post('/add-to-cart', [CartController::class, 'store'])->name('addToCart');
-Route::delete('/add-to-cart/{user_id}/{sku}', [CartController::class, 'destroy'])->name('removeFromCart');
+Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('removeFromCart');
 
 // Order
 Route::get('/orders/{id}/reorder', [OrderController::class, 'reorder']);

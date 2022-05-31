@@ -22620,9 +22620,9 @@ var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js"
         return location.reload();
       });
     },
-    removeProduct: function removeProduct(product) {
-      var sku = this.getSKU(product);
-      axios["delete"]("/api/add-to-cart/".concat(this.user_id, "/").concat(sku)).then(function (r) {
+    removeProduct: function removeProduct(index) {
+      this.cart.splice(index, 1);
+      axios.post("/api/add-to-cart/".concat(this.user_id), this.cart).then(function (r) {
         return location.reload();
       });
     },
@@ -22631,7 +22631,7 @@ var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js"
         shippingMethod: this.shippingMethod,
         shippingAddress: this.newShippingAddress,
         shippingDate: this.shippingDate,
-        pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : NULL,
+        pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : null,
         note: this.note
       };
       axios.post("/api/request-order/".concat(this.customer.id), data).then(function () {
@@ -23255,7 +23255,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , _hoisted_12)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "ml-0 sm:ml-8 text-red-400 cursor-pointer",
       onClick: function onClick($event) {
-        return $options.removeProduct(product);
+        return $options.removeProduct(index);
       }
     }, _hoisted_16, 8
     /* PROPS */

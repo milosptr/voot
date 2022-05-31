@@ -5,6 +5,7 @@ require('./scripts/backend')
 import { createApp } from "vue"
 import Variations from './components/Variations/Variations.vue'
 import Media from './components/Media/Media.vue'
+import CustomerLogo from './components/Media/CustomerLogo.vue'
 import ProductTags from './components/ProductTags.vue'
 import ProductDocuments from './components/ProductDocuments.vue'
 import ProductInformation from './components/ProductInformation.vue'
@@ -67,4 +68,11 @@ if(document.getElementById('settings')) {
     template: `<Settings />`
   })
   .mount("#settings")
+}
+if(document.getElementById('upload-customer-logo')) {
+  createApp({
+    components: { CustomerLogo },
+    template: `<CustomerLogo />`
+  })
+  .mount("#upload-customer-logo")
 }

@@ -39,12 +39,21 @@ class CartController extends Controller
       return $cart->update(['cart' => $cartData]);
     }
 
+    public function update($user_id, Request $request)
+    {
+      $cart = Cart::where('user_id', $user_id)->first();
+      $cart->update(['cart' => $request->all()]);
+      return $cart;
+    }
+
     public function destroy($user_id, $sku)
     {
       $cart = Cart::where('user_id', $user_id)->first();
-      $cartData = array_filter(json_decode($cart->cart), function($i) use ($sku) {
-        return $i->sku !== $sku;
+      $cartData = array_filter(json_decode($cart->cart, TRUE), function($i) use ($sku) {
+        return $i['sku'] !== $sku;
       });
+      $cartData = array_map(function($i) { return $i;}, $cartData);
+      dd($cart->cart);
       $cart->cart = $cartData;
       return $cart->save();
     }

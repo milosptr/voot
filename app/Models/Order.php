@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ActivityLog;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -41,6 +42,11 @@ class Order extends Model
       return $this->belongsTo(User::class);
     }
 
+    public function activityLog()
+    {
+      return $this->hasMany(ActivityLog::class);
+    }
+
     public function orderAddress()
     {
       if($this->shipping_method === self::DELIVERY)
@@ -52,13 +58,7 @@ class Order extends Model
 
     public static function statusText($status)
     {
-      $mapper = [
-        0 => 'Requested',
-        1 => 'Accepted',
-        2 => 'In progress',
-        3 => 'On delivery',
-        4 => 'Done',
-      ];
+      $mapper = self::statuses();
       return $status ? $mapper[$status] : 'Requested';
     }
 
@@ -73,5 +73,16 @@ class Order extends Model
         4 => 'bg-emerald-200 text-emerald-600 border-1 border-emerald-200',
       ];
       return $status !== null ? ($classes . ' ' . $mapper[$status]) : $classes;
+    }
+
+    public static function statuses()
+    {
+      return [
+        0 => 'Requested',
+        1 => 'Accepted',
+        2 => 'In progress',
+        3 => 'On delivery',
+        4 => 'Done',
+      ];
     }
 }

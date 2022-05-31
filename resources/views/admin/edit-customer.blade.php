@@ -64,15 +64,7 @@
         </div>
       </div>
       <div class="w-1/3">
-        <div class="bg-white overflow-hidden shadow rounded-lg px-4 py-5 sm:p-6">
-          <label for="fileDrop" class="block text-sm font-medium text-gray-700">
-          Client logo (automatic upload - no need to save)
-          </label>
-          <div class="w-1/2 mx-auto mt-2">
-            <input id="customer-logo-image" type="file" name="logo" data-key="{{ $customer->id }}" hidden />
-            <label for="customer-logo-image" class="block aspect-w-1 aspect-h-1 bg-contain bg-center bg-no-repeat rounded-md cursor-pointer" style="background-image: url('/{{ isset($customer->logo) ? $customer->logo : 'images/file-upload.png' }}');"></label>
-          </div>
-        </div>
+        <div id="upload-customer-logo" data-key="{{ $customer->id }}"></div>
       </div>
     </form>
   </section>

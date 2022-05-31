@@ -62,6 +62,12 @@
               </div>
             @endif
           </div>
+          <div class="w-full sm:w-1/2 mt-4 sm:pr-4">
+            <label for="shipping_date" class="block text-sm font-medium text-gray-500">Shipping method</label>
+              <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
+                {{ $order->shipping_method === 1 ? 'Delivery' : 'Pickup' }}
+              </div>
+          </div>
           @if($order->note)
             <div class="w-full mt-4">
               <label for="title" class="block text-sm font-medium text-gray-500">Customer note</label>
