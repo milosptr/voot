@@ -184,7 +184,7 @@ class Products extends Controller
           // add featured image
           if ($request->get('featured_image_id')) {
             ProductAssets::create([
-              'product_id' => $id,
+              'product_id' => $product->id,
               'asset_id' => $request->get('featured_image_id'),
             ]);
           }

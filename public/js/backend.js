@@ -19279,7 +19279,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     var id = document.getElementById('media-upload').dataset.key;
     axios.get("/api/product-media/".concat(id)).then(function (res) {
-      _this.feature_image = res.data.find(function (d) {
+      _this.feature_image = res.data.reverse().find(function (d) {
         return !!d.featured_image;
       });
       _this.gallery = res.data.filter(function (d) {

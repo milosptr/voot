@@ -41,7 +41,7 @@
       const id = document.getElementById('media-upload').dataset.key
       axios.get(`/api/product-media/${id}`)
         .then((res) => {
-          this.feature_image = res.data.find((d) => !!d.featured_image)
+          this.feature_image = res.data.reverse().find((d) => !!d.featured_image)
           this.gallery = res.data.filter((d) => !d.featured_image)
         })
       // if(document.getElementById('media-upload').dataset.featured) {
