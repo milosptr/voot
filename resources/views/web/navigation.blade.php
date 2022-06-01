@@ -1,4 +1,4 @@
-<nav class="relative z-10 border-b border-gray-100">
+<nav class="relative z-10 border-b border-gray-200 bg-white">
   <div class="container mx-auto">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center px-2 lg:px-0 h-full">

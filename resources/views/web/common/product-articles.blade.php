@@ -11,7 +11,7 @@
         <div class="w-5/6 h-5/6 m-auto bg-contain bg-center bg-no-repeat rounded-md" style="background-image: url('/{{ $product->featured_image ? $product->featured_image->file_path : 'images/product-placeholder.png' }}'); {{ $extraStyles }}"></div>
         </div>
         <h4 class="font-medium text-center mt-3 text-gray-800">
-          {{ $product->name }}
+          {{ $product->translatedName }}
         </h4>
       </a>
     </article>

@@ -23736,14 +23736,17 @@ if (productGallery) {
     hoverBoundingBox: true,
     paneContainer: document.querySelector('.drift-zoom-pane')
   };
-  document.getElementById('single-product-gallery').addEventListener('click', function (e) {
-    if (e.target.dataset.image) {
-      document.querySelector('.single-product-bigimage-url').style = "background-image: url('".concat(e.target.dataset.image, "')");
-      document.querySelector('.single-product-bigimage-url').dataset.zoom = "".concat(e.target.dataset.image);
-      new Drift(document.querySelector('.single-product-bigimage-url'), options);
-    }
-  });
-  new Drift(document.querySelector('.single-product-bigimage-url'), options);
+
+  if (document.getElementById('single-product-gallery')) {
+    document.getElementById('single-product-gallery').addEventListener('click', function (e) {
+      if (e.target.dataset.image) {
+        document.querySelector('.single-product-bigimage-url').style = "background-image: url('".concat(e.target.dataset.image, "')");
+        document.querySelector('.single-product-bigimage-url').dataset.zoom = "".concat(e.target.dataset.image);
+        new Drift(document.querySelector('.single-product-bigimage-url'), options);
+      }
+    });
+    new Drift(document.querySelector('.single-product-bigimage-url'), options);
+  }
 }
 
 var searchBtn = document.getElementById('open-search-btn');

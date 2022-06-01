@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', $product->name)
+@section('title', $product->translatedName)
 
 @section('content')
 <section id="single-product">
@@ -29,7 +29,7 @@
       </div>
       <div class="w-1/2">
         <h1 class="text-gray-800 text-4xl font-bold">
-          {{ $product->name }}
+          {{ $product->translatedName }}
         </h1>
         @if($product->species)
           <div class="mt-2 font-light text-sm flex items-center">

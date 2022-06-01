@@ -3,17 +3,30 @@
 @section('title') Homepage @endsection
 
 @section('content')
-  <section id="hero-section" class="h-screen">
-    <div class="z-0 w-full h-full absolute bottom-0 left-0 bg-contain bg-no-repeat bg-bottom opacity-70" style="background-image: url('/images/pjon-bac.png');"></div>
+  <section id="hero-section" class="h-screen bg-primary-lightest">
+    <div class="z-0 w-full h-full absolute bottom-0 left-0 bg-cover bg-no-repeat bg-bottom" style="background-image: url('/images/wave-haikei.svg');"></div>
     <div class="container">
       <div class="relative text-center z-10">
         <h1 class="text-primary text-6xl tracking-wider leading-normal uppercase pt-32 font-lora">{{ __('default.homepage_title') }}</h1>
-        <div class="w-0.5 h-32 bg-primary mx-auto mt-4"></div>
+        <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10 mt-32">
+        @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
+          <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
+            <div class="w-2/3 mx-auto">
+              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
+            </div>
+            <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
+                {{ $category->name }}
+              </div>
+          </a>
+        @endforeach
+      </div>
+
+        {{-- <div class="w-0.5 h-56 bg-primary mx-auto mt-4"></div>
         <a href="/" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 cursor-pointer hover:bg-primary hover:text-white">
           Flettu Niður
         </a>
-        <div class="w-0.5 h-32 bg-primary mx-auto"></div>
-        <div class="w-3 h-3 rounded-full border-2 border-primary mx-auto"></div>
+        <div class="w-0.5 h-24 bg-primary mx-auto"></div>
+        <div class="w-3 h-3 rounded-full border-2 border-primary mx-auto"></div> --}}
 
         {{-- <div class="grid grid-cols-2 grid-rows-2 gap-12 w-1/2 ml-auto lg:pl-16">
           @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
@@ -29,6 +42,24 @@
             </article>
           @endforeach
         </div> --}}
+      </div>
+    </div>
+  </section>
+  <section class="bg-primary-lightest -mt-24">
+    <div class="container relative">
+      <div class="w-2/3 mx-auto">
+        <img src="/images/pjon-mapa.svg" width="100%" alt="pjon map" />
+      </div>
+    </div>
+  </section>
+  <section class="relative  bg-primary-lightest py-32">
+    <div class="container relative z-10">
+      <div class="text-center w-2/3 mx-auto">
+        <h2 class="text-6xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
+        <p class="mt-6 text-lg">{!! __('default.homepage_about') !!}</p>
+          <a href="/about" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+            Read more about Voot
+          </a>
       </div>
     </div>
   </section>
@@ -49,30 +80,27 @@
       </div>
     </div>
   </section> --}}
-
-  <section>
+{{-- <section class="py-12">
     <div class="container mx-auto pb-10">
       <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10 mt-20">
         @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-        <article class="single-article-product">
           <a href="/{{ $category->slug }}" class="block cursor-pointer order-{{ $category->order }}">
-            <div id="single-product-bigimage" class="w-full max-h-290 aspect-w-1 aspect-h-1 single-product-gallery--big rounded-md border border-gray-100 shadow-sm">
-              <div class="h-full bg-cover bg-center bg-no-repeat rounded-md single-product-bigimage-url" data-zoom="/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}')"></div>
+            <div class="w-2/3 mx-auto">
+              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
             </div>
             <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-              {{ $category->name }}
-            </div>
+                {{ $category->name }}
+              </div>
           </a>
-        </article>
         @endforeach
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <section class="mt-20">
     <div class="container mx-auto">
       <div class="flex justify-between items-center border-b border-gray-100 pb-4">
-        <h2 class="text-5xl font-medium font-lora tracking-wide">
+        <h2 class="text-6xl font-medium font-lora tracking-wide">
           {{ __('default.products') }}
         </h2>
         <a href="/products">{{ __('default.view_all_products') }}</a>
@@ -83,8 +111,8 @@
     </div>
   </section>
 
-  <section class="mt-20 py-12" style="background: linear-gradient(90deg,#10253a,#00151d);">
-    <div class="container mx-auto relative">
+  {{-- <section class="mt-20 py-12 relative" style="background: linear-gradient(90deg,#10253a,#00151d);">
+    <div class="container mx-auto">
       <div class="rounded-md flex flex-col sm:flex-row items-center py-12 px-20" >
         <div class="w-full sm:w-1/3 text-white">
           <h2 class="text-5xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
@@ -93,8 +121,26 @@
             Read more about Voot
           </a>
         </div>
-        <div class="w-full sm:w-2/3 flex justify-center sm:justify-end absolute sm:relative mt-12 sm:mt-0 top-0 right-0 opacity-20 sm:opacity-100">
+        <div class="w-1/3 flex justify-center sm:justify-end absolute pt-12 top-0 right-0 opacity-20 sm:opacity-100">
           <img src="/images/pjon-mapa.svg" width="85%" alt="pjon map" />
+        </div>
+      </div>
+    </div>
+  </section> --}}
+
+  <section class="mt-32 mb-32">
+    <div class="container mx-auto relative">
+      <div class="bg-gray-100 rounded-md flex flex-col justify-center items-center py-12 px-20">
+        <div class="w-full sm:w-1/2">
+          <div class="text-center text-4xl italic leading-3 text-gray-700">
+            "
+          </div>
+          <p class="text-center my-10 font-light text-gray-600">
+            Við erum gríðarlega stolt af því að vera hluti af íslenskum sjávarútvegi og munum áfram leggja okkur fram um að eiga í góðu samstarfi við fyrirtæki í sjávarútvegi og hjálpa þeim að búa til verðmæti.
+          </p>
+          <div class="flex justify-center">
+            <a href="#" class="font-medium text-primary-light">Vignir Óskarsson</a>
+          </div>
         </div>
       </div>
     </div>
@@ -125,21 +171,4 @@
     </div>
   </section>
 
-  <section class="mt-32 mb-32">
-    <div class="container mx-auto relative">
-      <div class="bg-gray-100 rounded-md flex flex-col justify-center items-center py-12 px-20">
-        <div class="w-full sm:w-1/2">
-          <div class="text-center text-4xl italic leading-3 text-gray-700">
-            "
-          </div>
-          <p class="text-center my-10 font-light text-gray-600">
-            Við erum gríðarlega stolt af því að vera hluti af íslenskum sjávarútvegi og munum áfram leggja okkur fram um að eiga í góðu samstarfi við fyrirtæki í sjávarútvegi og hjálpa þeim að búa til verðmæti.
-          </p>
-          <div class="flex justify-center">
-            <a href="#" class="font-medium text-primary-light">Vignir Óskarsson</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 @endsection

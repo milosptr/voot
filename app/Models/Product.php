@@ -61,6 +61,15 @@ class Product extends Model
       return $this->belongsToMany('App\Models\Asset', 'product_assets', 'product_id', 'asset_id')->withPivot('id');
     }
 
+
+    public function getTranslatedNameAttribute()
+    {
+      $locale = app()->getLocale();
+      if(isset($locale) && $locale === 'en')
+        return $this->english_name;
+      return $this->name;
+    }
+
     public function getFeaturedImageAttribute()
     {
       return $this->media()->where('featured_image', 1)->get()->last();
