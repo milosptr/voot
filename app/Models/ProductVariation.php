@@ -45,7 +45,7 @@ class ProductVariation extends Model
 
       $mapper = [
         'red' => '#e53000',
-        'green' => '',
+        'green' => '#009700',
         'green-dark' => '#2d3c2f',
         'black' => '#111',
         'yellow' => '#fed100',
