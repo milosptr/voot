@@ -18,7 +18,7 @@ class Category extends Model
      * @var string
      */
     protected $table = 'categories';
-    protected $fillable = ['name', 'description', 'slug', 'parent_id', 'order', 'available'];
+    protected $fillable = ['name', 'description', 'slug', 'parent_id', 'order', 'available', 'name_en'];
 
     public function image()
     {
@@ -52,5 +52,13 @@ class Category extends Model
           self::formatTree($category->children, $allCategories);
         }
       }
+    }
+
+    public function getTranslatedNameAttribute()
+    {
+      $locale = app()->getLocale();
+      if(isset($locale) && $locale === 'en')
+        return $this->name_en;
+      return $this->name;
     }
 }

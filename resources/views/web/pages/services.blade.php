@@ -19,7 +19,7 @@
               <div class="h-full bg-cover bg-center bg-no-repeat rounded-md single-product-bigimage-url" data-zoom="/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}')"></div>
             </div>
             <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-              {{ $category->name }}
+              {{ $category->translatedName }}
             </div>
           </a>
         </article>

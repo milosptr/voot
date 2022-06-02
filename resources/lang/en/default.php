@@ -23,10 +23,14 @@ return [
     'about_staff_title' => 'Staff Members',
 
     'services_title' => 'Services',
-    'services_p1' => 'Við aðstoðum þig við að meta þínar þarfir, hvort sem þú ert í sjávarútvegi eða tengdum rekstri, og veitum faglega og persónulega þjónustu.',
-    'services_p2' => 'Við leggjum mikla áherslu á að mæta kröfum viðskiptavina okkar með traustri og vandaðri þjónustu og þar er starfsfólkið okkar í lykilhlutverki. Við erum sérstaklega stolt af Mar Wear vörumerkinu, sem er hannað og framleitt af okkur og alfarið í eigu Voot. Við þekkjum íslenskar aðstæður vel af eigin reynslu og tökum mið af því við hönnun á Mar Wear fatnaði. Þá færð þú hreinsiefni, eldhúsvörur, salernisvörur ásamt ýmsum ræstiefnum einnig hjá okkur.',
-    'services_p3' => 'Við bjóðum auðvitað ennþá upp á hágæða beitu sem við fáum frá traustum alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og má þar nefna saury, síld og smokkfisk og koma þær allar í ýmsum stærðum.',
+    'services_p1' => 'We help you assess your needs, whether you are in the fishing industry or related business, and provide professional and personal service.',
+    'services_p2' => 'We place great emphasis on meeting the demands of our customers with reliable and high-quality service, and our staff plays a key role in this. We are especially proud of the Mar Wear brand, which is designed and manufactured by us and wholly owned by Voot. We know Icelandic conditions well from our own experience and take this into account when designing Mar Wear clothing. You also get cleaning products, kitchen products, toiletries and various cleaning products from us.',
+    'services_p3' => 'Of course, we still offer high quality bait that we get from reliable international suppliers, process all orders the same day and ship to any country. You get a number of bait species from us, such as saury, herring and squid, and they all come in various sizes.',
+    'explore_services' => 'Explore Services',
 
+    'contact_title' => 'Contact us',
+    'contact_p1' => 'Do you need a grant request or have a question? Please feel free to leave a message and we will get back to you as soon as possible.',
+    'contact_btn' => 'Get in Touch',
 
     'cart_title' => 'Shopping Cart',
     'orders_title' => 'Your orders',

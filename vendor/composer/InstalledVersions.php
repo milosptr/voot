@@ -27,12 +27,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '10425cc3724d9cf6397a1016e1aa9d6ce8ae8638',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -466,12 +466,12 @@ private static $installed = array (
     ),
     'laravel/laravel' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '10425cc3724d9cf6397a1016e1aa9d6ce8ae8638',
     ),
     'laravel/sail' => 
     array (
@@ -535,6 +535,15 @@ private static $installed = array (
       array (
       ),
       'reference' => 'aa70e813a6ad3d1558fc927863d47309b4c23e69',
+    ),
+    'mcamara/laravel-localization' => 
+    array (
+      'pretty_version' => 'v1.7.0',
+      'version' => '1.7.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '27565315c585e90d8d93aa06afd49d6a5992fe5a',
     ),
     'mockery/mockery' => 
     array (

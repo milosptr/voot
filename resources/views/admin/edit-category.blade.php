@@ -34,6 +34,10 @@
                 <label for="name" class="block text-sm font-medium text-gray-700">Category name</label>
                 <input type="text" name="name" id="name" value="{{ $category->name }}" class="mt-1  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
               </div>
+              <div>
+                <label for="name_en" class="block text-sm font-medium text-gray-700 mt-6">Category english name</label>
+                <input type="text" name="name_en" id="name_en" value="{{ $category->name_en }}" class="mt-1  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+              </div>
               <div class="mt-6">
                 <label for="slug" class="block text-sm font-medium text-gray-700">Category slug <span class="font-normal">(autofilled)</span></label>
                 <input type="text" name="slug" id="slug" value="{{ $category->slug }}" class="mt-1  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>

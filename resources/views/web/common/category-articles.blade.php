@@ -8,7 +8,7 @@
         <div class="w-5/6 h-5/6 m-auto bg-contain bg-center bg-no-repeat rounded-md" style="background-image: url('/{{ $cat->image ? $cat->image->file_path : 'images/product-placeholder.png' }}')"></div>
         </div>
         <h4 class="font-medium text-center mt-3 text-gray-800">
-          {{ $cat->name }}
+          {{ $cat->translatedName }}
         </h4>
       </a>
     </article>

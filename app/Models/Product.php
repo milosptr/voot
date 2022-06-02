@@ -85,7 +85,7 @@ class Product extends Model
       $category = $this->primaryCategories->first();
       if(isset($category) && isset($this->slug))
         return '/' . $category->slug . '/' . $this->slug;
-      return '/product'. '/' . $this->slug;
+      return '#';
     }
 
     public function getSubcategoryAttribute()

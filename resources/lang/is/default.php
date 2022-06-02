@@ -29,7 +29,11 @@ return [
     'services_p1' => 'Við aðstoðum þig við að meta þínar þarfir, hvort sem þú ert í sjávarútvegi eða tengdum rekstri, og veitum faglega og persónulega þjónustu.',
     'services_p2' => 'Við leggjum mikla áherslu á að mæta kröfum viðskiptavina okkar með traustri og vandaðri þjónustu og þar er starfsfólkið okkar í lykilhlutverki. Við erum sérstaklega stolt af Mar Wear vörumerkinu, sem er hannað og framleitt af okkur og alfarið í eigu Voot. Við þekkjum íslenskar aðstæður vel af eigin reynslu og tökum mið af því við hönnun á Mar Wear fatnaði. Þá færð þú hreinsiefni, eldhúsvörur, salernisvörur ásamt ýmsum ræstiefnum einnig hjá okkur.',
     'services_p3' => 'Við bjóðum auðvitað ennþá upp á hágæða beitu sem við fáum frá traustum alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og má þar nefna saury, síld og smokkfisk og koma þær allar í ýmsum stærðum.',
+    'explore_services' => 'Skoða Þjónustu',
 
+    'contact_title' => 'Hafa Samband',
+    'contact_p1' => 'Þarftu styrkbeiðni eða er með spurningu eða athugasemd? Vinsamlegast ekki hika við að skilja eftir skilaboð og við munum snúa aftur til þín eins fljótt og auðið er.',
+    'contact_btn' => 'Hafðu Samband',
 
     'cart_title' => 'Innkaupakarfa',
     'orders_title' => 'Pantanir þínar',

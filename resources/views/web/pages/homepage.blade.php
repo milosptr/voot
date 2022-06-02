@@ -7,48 +7,29 @@
     <div class="z-0 w-full h-full absolute bottom-0 left-0 bg-cover bg-no-repeat bg-bottom" style="background-image: url('/images/wave-haikei.svg');"></div>
     <div class="container">
       <div class="relative text-center z-10">
-        <h1 class="text-primary text-6xl tracking-wider leading-normal uppercase pt-32 font-lora">{{ __('default.homepage_title') }}</h1>
+        <h1 class="text-primary text-6xl tracking-wider leading-normal uppercase pt-32 pb-10 font-lora">{{ __('default.homepage_title') }}</h1>
         <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10 mt-32">
-        @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-          <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
-            <div class="w-2/3 mx-auto">
-              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
-            </div>
-            <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-                {{ $category->name }}
-              </div>
-          </a>
-        @endforeach
-      </div>
-
-        {{-- <div class="w-0.5 h-56 bg-primary mx-auto mt-4"></div>
-        <a href="/" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 cursor-pointer hover:bg-primary hover:text-white">
-          Flettu Niður
-        </a>
-        <div class="w-0.5 h-24 bg-primary mx-auto"></div>
-        <div class="w-3 h-3 rounded-full border-2 border-primary mx-auto"></div> --}}
-
-        {{-- <div class="grid grid-cols-2 grid-rows-2 gap-12 w-1/2 ml-auto lg:pl-16">
           @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-            <article class="single-article-product {{ $loop->index % 2 === 0 ? 'mt-10' : '' }}">
-              <a href="/{{ $category->slug }}" class="block cursor-pointer order-{{ $category->order }}">
-                <div id="single-product-bigimage" class="w-full max-h-290 aspect-w-1 aspect-h-1 single-product-gallery--big rounded-md border border-gray-100 shadow-sm">
-                  <div class="h-full bg-cover bg-center bg-no-repeat rounded-md single-product-bigimage-url" data-zoom="/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}')"></div>
-                </div>
-                <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-                  {{ $category->name }}
-                </div>
-              </a>
-            </article>
+            <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
+              <div class="w-2/3 mx-auto">
+                <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
+              </div>
+              <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
+                {{ $category->translatedName }}
+              </div>
+            </a>
           @endforeach
-        </div> --}}
+        </div>
       </div>
     </div>
   </section>
-  <section class="bg-primary-lightest -mt-24">
+
+  <section class="bg-primary-lightest h-80">
     <div class="container relative">
-      <div class="w-2/3 mx-auto">
-        <img src="/images/pjon-mapa.svg" width="100%" alt="pjon map" />
+      <div class="absolute left-0 top-0 w-full z-10 -mt-24">
+        <div class="w-4/5 mx-auto ">
+          <img src="/images/pjon-mapa.svg" width="100%" alt="pjon map" />
+        </div>
       </div>
     </div>
   </section>
@@ -57,53 +38,20 @@
       <div class="text-center w-2/3 mx-auto">
         <h2 class="text-6xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
         <p class="mt-6 text-lg">{!! __('default.homepage_about') !!}</p>
-          <a href="/about" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
             Read more about Voot
           </a>
       </div>
     </div>
   </section>
 
-  {{-- <section class="mt-6">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-3 gap-6">
-        @foreach($categories as $category)
-          <a href="/{{ $category->slug }}" class="relative block">
-            <div
-              class="w-full aspect-w-16 aspect-h-9 rounded-md bg-gray-50"
-            >
-              <div class="m-auto bg-cover bg-center bg-no-repeat rounded-lg" style="background-image: url('/{{ isset($category->image) ? $category->image->file_path : 'images/product-placeholder.png' }}')"></div>
-            </div>
-            <h4 class="w-full font-semibold text-xl text-gray-800 mt-3 text-center">{{ $category->name }}</h4>
-          </a>
-        @endforeach
-      </div>
-    </div>
-  </section> --}}
-{{-- <section class="py-12">
-    <div class="container mx-auto pb-10">
-      <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10 mt-20">
-        @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-          <a href="/{{ $category->slug }}" class="block cursor-pointer order-{{ $category->order }}">
-            <div class="w-2/3 mx-auto">
-              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
-            </div>
-            <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-                {{ $category->name }}
-              </div>
-          </a>
-        @endforeach
-      </div>
-    </div>
-  </section> --}}
-
-  <section class="mt-20">
+  <section class="my-20">
     <div class="container mx-auto">
       <div class="flex justify-between items-center border-b border-gray-100 pb-4">
         <h2 class="text-6xl font-medium font-lora tracking-wide">
           {{ __('default.products') }}
         </h2>
-        <a href="/products">{{ __('default.view_all_products') }}</a>
+        <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}">{{ __('default.view_all_products') }}</a>
       </div>
       <div class="mt-6">
         @include('web.common.product-articles', ['products' => $products, 'ratio' => 'aspect-w-4 aspect-h-4'])
@@ -111,42 +59,74 @@
     </div>
   </section>
 
-  {{-- <section class="mt-20 py-12 relative" style="background: linear-gradient(90deg,#10253a,#00151d);">
-    <div class="container mx-auto">
-      <div class="rounded-md flex flex-col sm:flex-row items-center py-12 px-20" >
-        <div class="w-full sm:w-1/3 text-white">
-          <h2 class="text-5xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
-          <p class="mt-6 font-light text-lg">{!! __('default.homepage_about') !!}</p>
-          <a href="/about" class="w-64 mt-8 flex items-center justify-center py-2 px-4 rounded-md text-primary bg-white border-1 border-solid border-white hover:text-white hover:bg-primary ease-in-out duration-300">
-            Read more about Voot
+   <section class="my-48">
+    <div class="container mx-auto relative">
+      <div class="flex flex-col sm:flex-row items-center justify-between">
+        <div class="sm:w-1/2">
+          <h2 class="text-6xl font-medium font-lora tracking-wide">
+            {{ __('default.services_title') }}
+          </h2>
+          <p class="mt-6 text-lg">
+            {{ __('default.services_p1') }}
+          </p>
+          <a href="/about" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+             {{ __('default.explore_services') }}
           </a>
         </div>
-        <div class="w-1/3 flex justify-center sm:justify-end absolute pt-12 top-0 right-0 opacity-20 sm:opacity-100">
-          <img src="/images/pjon-mapa.svg" width="85%" alt="pjon map" />
+        <div class="sm:w-1/2 flex justify-end">
+          <div class="grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-10 opacity-90">
+            <img src="/images/categories/oryggis-og-vinnufatnadur.svg" alt="oryggis-og-vinnufatnadur" width="120" />
+            <img src="/images/categories/rekstrarvorur.svg" alt="rekstrarvorur" width="120" />
+            <img src="/images/categories/oliu-and-smurefni.svg" alt="oliu-and-smurefni" width="120" />
+            <img src="/images/categories/beita.svg" alt="beita" width="120" />
+            <img src="/images/categories/fishing-gear.svg" alt="fishing-gear" width="120" />
+            <img src="/images/categories/vessel.svg" alt="vessel" width="120" />
+          </div>
         </div>
       </div>
     </div>
-  </section> --}}
+   </section>
 
-  <section class="mt-32 mb-32">
+   <section class="my-48">
     <div class="container mx-auto relative">
-      <div class="bg-gray-100 rounded-md flex flex-col justify-center items-center py-12 px-20">
-        <div class="w-full sm:w-1/2">
-          <div class="text-center text-4xl italic leading-3 text-gray-700">
-            "
+      <div class="flex flex-col sm:flex-row items-center justify-between">
+        <div class="sm:w-1/2 flex justify-end">
+
+        </div>
+        <div class="sm:w-1/2">
+          <h2 class="text-6xl font-medium font-lora tracking-wide">
+            {{ __('default.contact_title') }}
+          </h2>
+          <p class="mt-6 text-lg">
+            {{ __('default.contact_p1') }}
+          </p>
+          <a href="/about" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+             {{ __('default.contact_btn') }}
+          </a>
+        </div>
+      </div>
+    </div>
+   </section>
+
+  <section class="my-32">
+    <div class="container mx-auto relative">
+      <div class="bg-primary-lightest rounded-md flex flex-col justify-center items-center py-12 px-20">
+        <div class="w-full sm:w-3/4">
+          <div class="flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#52525b" viewBox="0 0 24 24"><path d="M4.908 17.137c1.504-2.31 1.779-4.45 1.681-5.688-6.132.101-5.696-6.449-1.39-6.449 1.83 0 3.801 1.338 3.801 4.275 0 2.724-1.412 5.845-4.092 7.862zm13 0c1.504-2.31 1.779-4.45 1.681-5.688-6.132.101-5.696-6.449-1.39-6.449 1.83 0 3.801 1.338 3.801 4.275 0 2.724-1.412 5.845-4.092 7.862zm-16.908 3.863c6.108-1.206 10-6.584 10-11.725 0-3.97-2.786-6.275-5.801-6.275-2.615 0-5.199 1.797-5.199 4.979 0 2.601 1.905 4.757 4.396 5.149-.217 2.004-2.165 4.911-4.38 5.746l.984 2.126zm13 0c6.108-1.206 10-6.584 10-11.725 0-3.97-2.786-6.275-5.801-6.275-2.615 0-5.199 1.797-5.199 4.979 0 2.601 1.905 4.757 4.396 5.149-.217 2.004-2.165 4.911-4.38 5.746l.984 2.126z"/></svg>
           </div>
-          <p class="text-center my-10 font-light text-gray-600">
+          <p class="text-center my-10 font-light text-3xl text-gray-600">
             Við erum gríðarlega stolt af því að vera hluti af íslenskum sjávarútvegi og munum áfram leggja okkur fram um að eiga í góðu samstarfi við fyrirtæki í sjávarútvegi og hjálpa þeim að búa til verðmæti.
           </p>
           <div class="flex justify-center">
-            <a href="#" class="font-medium text-primary-light">Vignir Óskarsson</a>
+            <div class="text-primary-light tracking-wide uppercase">- Vignir Óskarsson, Framkvæmdastjóri</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="mt-32">
+  <section class="my-32">
     <div class="container mx-auto relative">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-10">
         <div class="w-full sm:w-2/5">

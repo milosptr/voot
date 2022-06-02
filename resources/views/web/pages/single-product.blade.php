@@ -13,6 +13,7 @@
     </div>
     <div class="py-2 mt-3 flex flex-wrap justify-between">
       <div class="w-2/5 pr-8">
+
         <div class="single-product-gallery relative">
           <div id="single-product-bigimage" class="w-full aspect-w-1 aspect-h-1 single-product-gallery--big rounded-md border border-gray-100 shadow-sm">
             <div class="h-full bg-contain bg-center bg-no-repeat rounded-md single-product-bigimage-url" data-zoom="/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>

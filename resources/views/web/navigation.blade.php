@@ -1,9 +1,12 @@
+@php
+  $lang = app()->getLocale() === 'en' ? 'is' : 'en';
+@endphp
 <nav class="relative z-10 border-b border-gray-200 bg-white">
   <div class="container mx-auto">
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center px-2 lg:px-0 h-full">
         <div class="flex-shrink-0 px-4 h-full flex items-center bg-primary">
-          <a href="/">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.home') }}">
             <img class="block lg:hidden h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
             <img class="hidden lg:block h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
           </a>
@@ -14,10 +17,10 @@
               $route = \Request::route()->getName();
             @endphp
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="{{ __('header.current_language') }}/{{ __('header.about_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'about' ? 'font-medium' : '' }}">{{ __('header.about') }}</a>
-            <a href="{{ __('header.current_language') }}/{{ __('header.services_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'services' ? 'font-medium' : '' }}">{{ __('header.services') }}</a>
-            <a href="{{ __('header.current_language') }}/{{ __('header.all_products_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'all_products' ? 'font-medium' : '' }}">{{ __('header.products') }}</a>
-            <a href="{{ __('header.current_language') }}/{{ __('header.contact_url') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'contact' ? 'font-medium' : '' }}">{{ __('header.contact') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'about' ? 'font-medium' : '' }}">{{ __('header.about') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'services' ? 'font-medium' : '' }}">{{ __('header.services') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'all_products' ? 'font-medium' : '' }}">{{ __('header.products') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'contact' ? 'font-medium' : '' }}">{{ __('header.contact') }}</a>
           </div>
         </div>
       </div>
@@ -43,12 +46,7 @@
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
           </svg>
         </div>
-        @php
-          $lang = __('header.language');
-          $langUrl = $lang == 'en' ? '/en/' : '/';
-          $urlPath = Route::currentRouteName() ? __('header.'.Route::currentRouteName().'_url', [], $lang) : '';
-        @endphp
-        <a href="{{ $langUrl }}{{ $urlPath }}" class="ml-4">
+        <a href="{{ LaravelLocalization::getLocalizedURL($lang) }}" class="ml-4">
           <img src="/images/{{ __('header.language') }}.png" width="24" alt="en" />
         </a>
         <a href="/app/favourites" class="ml-4 text-gray-600 hover:text-primary-lighter relative">
