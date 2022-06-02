@@ -55,14 +55,14 @@
     </div>
   </section>
 
-  <section id="staff-members" class="py-20 bg-primary">
+  <section id="staff-members" class="py-20 bg-primary-lightest">
     <div class="container">
-      <div class="border-b border-gray-100 pb-4 mb-6">
-        <h2 class="text-white text-5xl font-medium tracking-wide font-lora">{{ __('default.about_staff_title') }}</h2>
+      <div class="pb-4 mb-6">
+        <h2 class="text-5xl font-medium tracking-wide font-lora">{{ __('default.about_staff_title') }}</h2>
       </div>
        <ul role="list" class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
        @foreach(App\Models\Staff::all() as $staff)
-          <li class="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
+          <li class="col-span-1 bg-white rounded-lg divide-y divide-gray-200">
             <div class="w-full flex items-center justify-between p-6 space-x-6">
               <div class="flex-1 truncate">
                 <div class="flex items-center space-x-3">

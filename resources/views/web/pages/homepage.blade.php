@@ -69,7 +69,7 @@
           <p class="mt-6 text-lg">
             {{ __('default.services_p1') }}
           </p>
-          <a href="/about" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.explore_services') }}
           </a>
         </div>
@@ -100,7 +100,7 @@
           <p class="mt-6 text-lg">
             {{ __('default.contact_p1') }}
           </p>
-          <a href="/about" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.contact_btn') }}
           </a>
         </div>
