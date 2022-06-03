@@ -27,20 +27,20 @@
       <div id="nav-search" class="absolute top-0 right-0 mr-20 mt-3 justify-center lg:ml-6 lg:justify-end hidden">
         <div class="max-w-lg w-full lg:max-w-xs">
           <label for="search" class="sr-only">Search</label>
-          <div class="relative">
+          <div class="relative z-0">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <!-- Heroicon name: solid/search -->
               <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
             </div>
-            <form action="/products/search" method="GET" class="mr-16">
+            <form action="{{  LaravelLocalization::localizeURL('/products/search') }}" method="GET" class="mr-16">
               <input id="search" name="q" class="block w-full pl-10 pr-3 py-2 font-light border border-transparent border-gray-200 rounded-md leading-5 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none" placeholder="{{ __('header.search') }}" type="search">
             </form>
           </div>
         </div>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center relative z-10">
         <div id="open-search-btn" class="cursor-pointer">
           <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />

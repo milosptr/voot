@@ -12,10 +12,12 @@ return [
     'products_title' => 'All Products',
     'products' => 'Products',
     'view_all_products' => 'View all products',
+    'back_to_categories' => 'Back to categories',
+    'related_products' => 'Related Products',
 
     'homepage_about' => "Voot is a company that sprung in the heart of Iceland, the company's headquarters is in Reykjavik, however; it pumps companies all over the world with its product range.<br><br>It is the place where you can purchase your fishing necessities all in one place; from high quality bait for long-liners of all sizes to various fishing gear and products needed for your daily operations.",
     'newsletter_title' => 'Join Our Mail List',
-    'newsletter_desc' => 'Skráðu þig á póstlistann og fáðu nýjustu fréttir samstundis.',
+    'newsletter_desc' => 'Subscribe to the mailing list and get the latest news instantly.',
 
     'about_voot_title' => 'About Voot',
     'about_voot_short' => 'We make simple operations simpler with economical and varied products - and the farm focuses on what you do best!',

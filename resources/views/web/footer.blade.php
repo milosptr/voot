@@ -1,5 +1,5 @@
-<footer class="bg-primary">
-  <div class="container py-12">
+<footer class="bg-primary py-12">
+  <div class="container">
     <div class="w-full flex border-b border-gray-500 pb-6 mb-6">
       <div class="w-full sm:w-1/4">
         <a href="/" class="block">
@@ -7,7 +7,7 @@
         </a>
       </div>
     </div>
-    <div class="flex">
+    <div class="flex flex-col sm:flex-row">
       <div class="w-full sm:w-1/3">
         <h6 class="text-white text-3xl font-medium tracking-wide font-lora">Voot ehf.</h6>
         <div class="mt-10">
@@ -24,10 +24,10 @@
         @endforeach
         </div>
       </div>
-      <div class="w-1/3 flex pl-20">
+      <div class="hidden sm:flex sm:w-1/3 pl-20">
         <img src="/images/map-footer.svg" width="50%" alt="iceland map" />
       </div>
-      <div class="w-full sm:w-1/3 ml-auto">
+      <div class="w-full sm:w-1/3 ml-auto mt-6 sm:mt-0">
         <h6 class="text-white text-3xl font-medium tracking-wide font-lora mb-8">Links</h6>
         <div class="flex">
           <div class="w-1/2">

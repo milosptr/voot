@@ -34,11 +34,9 @@ class Products extends Controller
         })->where('product_categories.category_id', $category);
       }
 
-      if($request->has('s'))
-        $query->where(function($q) use ($request) {
-          $q->where('name', 'LIKE', "%{$request->get('s')}%")
-            ->orWhere('sku', 'LIKE', "%{$request->get('s')}%");
-        });
+      if($request->has('s')) {
+        $query->whereLike(['name', 'sku', 'english_name'], $request->get('s'));
+      }
 
       $query->orderBy('updated_at', 'DESC');
       $products = ResourcesProducts::collection($query->paginate());

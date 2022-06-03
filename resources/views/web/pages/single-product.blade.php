@@ -8,7 +8,7 @@
     <div class="py-2 mt-12">
       <a href="/{{ $product->categories->first()->slug }}" class="text-pprimary-light group flex items-center py-2 text-sm font-normal rounded-md text-gray-700">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-        <div class="">Back to categories</div>
+        <div class="">{{ __('default.back_to_categories') }}</div>
       </a>
     </div>
     <div class="py-2 mt-3 flex flex-wrap justify-between">
@@ -145,7 +145,7 @@
     @if($product->getRelatedProducts()->count())
       <div class="mt-12">
         <h2 class="text-xl font-medium tracking-wide leading-normal">
-          Related Products
+          {{ __('default.related_products') }}
         </h2>
         <div class="mt-4 mb-12">
           @include('web.common.product-articles', ['products' => $product->getRelatedProducts(), 'ratio' => 'aspect-w-1 aspect-h-1', 'sort' => true])

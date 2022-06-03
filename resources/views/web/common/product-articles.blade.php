@@ -1,4 +1,4 @@
-<div class="grid grid-cols-3 {{ isset($cols) ? "sm:grid-cols-$cols" : 'sm:grid-cols-4'}} gap-6 gap-b-6">
+<div class="grid grid-cols-2 sm:grid-cols-3 {{ isset($cols) ? "sm:grid-cols-$cols" : 'sm:grid-cols-4'}} gap-6 gap-b-6">
   @foreach($products as $product)
     @php
       $extraStyles = isset($product->subcategory) && $product->subcategory->id == App\Models\Category::SMURSPREY ? 'background-size: 140%;' : '';

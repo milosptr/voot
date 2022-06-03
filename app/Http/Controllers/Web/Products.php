@@ -26,10 +26,7 @@ class Products extends Controller
       $q = $request->get('q');
 
       if($request->has('q'))
-        $query->where(function($q) use ($request) {
-          $q->where('name', 'LIKE', "%{$request->get('q')}%")
-            ->orWhere('sku', 'LIKE', "%{$request->get('q')}%");
-        });
+        $query->whereLike(['name', 'sku', 'english_name'], $request->get('q'));
 
       $products = ResourcesProducts::collection($query->get());
 

@@ -12,10 +12,12 @@ return [
     'products_title' => 'Allar Vörur',
     'products' => 'Vörur',
     'view_all_products' => 'Allar Vörur',
+    'back_to_categories' => 'Til baka að flokkum',
+    'related_products' => 'Skyldar Vörur',
 
     'homepage_about' => "Við gerum þinn rekstur einfaldari með hagkvæmum og fjölbreyttum vörum.<br><br>Við veitum alhliða þjónustu bæði til sjós og lands með hagkvæmum og fjölbreyttum útgerðar- og rekstrarvörum. Þú einbeitir þér að því sem þú gerir best og við sjáum um rest!",
 
-    'newsletter_title' => 'Join Our Mail List',
+    'newsletter_title' => 'Taka Þátt í Fréttabréfi',
     'newsletter_desc' => 'Skráðu þig á póstlistann og fáðu nýjustu fréttir samstundis.',
 
     'about_voot_title' => 'Um Voot',

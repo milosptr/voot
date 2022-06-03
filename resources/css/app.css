@@ -210,8 +210,9 @@ input#sale_price {
   border: 1px solid rgba(244,244,245,1);
 }
 
-#hero-section .hero-wrapper {
-  height: 600px;
+#hero-section,
+.bg-hero-wave {
+  min-height: 800px;
 }
 
 .settings-page a.bg-primary-light,
@@ -229,5 +230,11 @@ input#sale_price {
 @media(max-width: 768px) {
   .container {
     padding: 0 16px;
+  }
+  #hero-section h1 {
+    font-size: 2rem;
+  }
+  #about-section .bg-hero-wave {
+    min-height: 1100px;
   }
 }
