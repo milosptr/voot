@@ -11,7 +11,7 @@
         <div class="">{{ __('default.back_to_categories') }}</div>
       </a>
     </div>
-    <div class="py-2 mt-3 flex flex-col sm:flex-wrap justify-between">
+    <div class="py-2 mt-3 flex flex-col sm:flex-row justify-between">
       <div class="sm:w-2/5 sm:pr-8">
 
         <div class="single-product-gallery relative">

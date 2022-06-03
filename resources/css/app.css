@@ -321,4 +321,16 @@ input#sale_price {
   .drift-zoom-pane {
     display: none;
   }
+
+  /* Backend */
+  body.admin-dashboard {
+    padding-top: 0;
+  }
+  #admin-navigation {
+    transform: translateX(-1000px);
+    transition: all .3s ease-in-out;
+  }
+  #admin-navigation.active {
+    transform: translateX(0);
+  }
 }

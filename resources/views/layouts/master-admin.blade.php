@@ -19,11 +19,11 @@
     <body class="admin-dashboard @yield('bodyclass')">
 
       <div>
-        <div class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true">
+        <div id="admin-navigation" class="fixed inset-0 flex z-40 md:hidden" role="dialog" aria-modal="true">
           <div class="fixed inset-0 bg-primary-light bg-opacity-75" aria-hidden="true"></div>
           <div class="relative flex-1 flex flex-col max-w-xs w-full bg-primary">
             <div class="absolute top-0 right-0 -mr-12 pt-2">
-              <button type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <button id="close-admin-navigation" type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 <span class="sr-only">Close sidebar</span>
                 <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -39,9 +39,9 @@
               </div>
               <nav class="mt-5 px-2 space-y-1">
                  @if(auth()->user()->role === 'admin')
-                  @include('includes.nav-admin-mob')
+                  @include('includes.nav-admin')
                 @else
-                  @include('includes.nav-customer-mob')
+                  @include('includes.nav-customer')
                 @endif
               </nav>
             </div>
@@ -49,14 +49,11 @@
               <form method="POST" action="{{ route('logout') }}" class="flex-shrink-0 m-0 group block">
                 @csrf
                 <button class="flex items-center cursor-pointer">
-                  <div>
-                    <img class="inline-block h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                  </div>
                   <div class="ml-3">
-                    <p class="text-base font-medium text-white">
-                      Tom Cook
+                    <p class="text-sm font-medium text-white">
+                      {{ auth()->user()->name }}
                     </p>
-                    <p class="text-left text-sm font-medium text-gray-400 group-hover:text-gray-300">
+                    <p class="text-left text-xs font-medium text-gray-300 group-hover:text-gray-200">
                       Logout
                     </p>
                   </div>
@@ -108,14 +105,22 @@
             </div>
           </div>
         </div>
-        <div class="md:pl-64 flex flex-col flex-1">
-          <div class="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-gray-100">
-            <button type="button" class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-              <span class="sr-only">Open sidebar</span>
-              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+        <div class="md:pl-64 flex justify-between">
+          <div class="fixed w-full top-0 z-10 md:hidden bg-white border-b border-gray-200">
+            <div class="flex justify-between items-center">
+              <div class="flex-shrink-0 px-4 py-2 h-full flex items-center bg-primary">
+                <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.home') }}">
+                  <img class="block lg:hidden h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
+                  <img class="hidden lg:block h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
+                </a>
+              </div>
+              <button id="open-admin-navigation" type="button" class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <span class="sr-only">Open sidebar</span>
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
           </div>
           <main class="flex-1 bg-gray-100 min-h-screen">
             @include('common.flash-message')

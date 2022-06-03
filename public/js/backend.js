@@ -42050,6 +42050,20 @@ if (document.getElementById('upload-customer-logo')) {
     },
     template: "<CustomerLogo />"
   }).mount("#upload-customer-logo");
+} // JS
+
+
+var adminNav = document.getElementById('admin-navigation');
+var openAdminNav = document.getElementById('open-admin-navigation');
+var closeAdminNav = document.getElementById('close-admin-navigation');
+
+if (openAdminNav && closeAdminNav) {
+  openAdminNav.addEventListener('click', function () {
+    adminNav.classList.add('active');
+  });
+  closeAdminNav.addEventListener('click', function () {
+    adminNav.classList.remove('active');
+  });
 }
 })();
 

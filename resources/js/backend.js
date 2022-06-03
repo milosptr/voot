@@ -76,3 +76,18 @@ if(document.getElementById('upload-customer-logo')) {
   })
   .mount("#upload-customer-logo")
 }
+
+
+// JS
+const adminNav = document.getElementById('admin-navigation')
+const openAdminNav = document.getElementById('open-admin-navigation')
+const closeAdminNav = document.getElementById('close-admin-navigation')
+
+if(openAdminNav && closeAdminNav) {
+  openAdminNav.addEventListener('click', () => {
+    adminNav.classList.add('active')
+  })
+  closeAdminNav.addEventListener('click', () => {
+    adminNav.classList.remove('active')
+  })
+}

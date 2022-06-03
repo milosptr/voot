@@ -6,7 +6,7 @@
   <section>
     <h1 class="text-2xl font-semibold text-gray-900 mr-auo mb-12">{{ __('default.orders_title')}}</h1>
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
       @foreach(auth()->user()->orders()->orderBy('id', 'DESC')->get() as $order)
         <a href="/app/orders/{{ $order->id }}" class="block bg-white rounded-md shadow p-6 text-gray-700">
           <div class="flex items-center justify-between">
