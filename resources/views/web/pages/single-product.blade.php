@@ -44,7 +44,7 @@
         <div class="mt-3 text-sm font-light flex items-center pt-2 border-t border-gray-200">
           <div class="mr-1 text-gray-700">{{ count($product->categories) > 1 ? 'Categories: ' : 'Category: '}}</div>
           @foreach($product->categories as $cat)
-            <a href="/{{ $cat->slug }}" class="text-primary-lighter font-light mr-2"> {{ $cat->name }}@if(!$loop->last), @endif</a>
+            <a href="/{{ $cat->slug }}" class="text-primary-lighter font-light mr-2"> {{ $cat->translatedName }}@if(!$loop->last), @endif</a>
           @endforeach
         </div>
         @if(count($product->tags))

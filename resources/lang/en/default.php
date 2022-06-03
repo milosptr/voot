@@ -13,7 +13,7 @@ return [
     'products' => 'Products',
     'view_all_products' => 'View all products',
 
-    'homepage_about' => "Voot is a company that sprung in the heart of Iceland, the company's headquarters is in Reykjavik, however; it pumps companies all over the world with its product range.<br><br>It is the place where you can purchase your fishing necessities all in one place; from high quality bait for long-liners of all sizes to various fishing gear and products needed for your daily operations. Our goal is to provide outstanding service to our customers in terms of timely delivery and professional transaction. In recent years, we have expanded and improved our product selection and now we offer to you a wide range of products and services to cater for the needs of our diversified client base.",
+    'homepage_about' => "Voot is a company that sprung in the heart of Iceland, the company's headquarters is in Reykjavik, however; it pumps companies all over the world with its product range.<br><br>It is the place where you can purchase your fishing necessities all in one place; from high quality bait for long-liners of all sizes to various fishing gear and products needed for your daily operations.",
     'newsletter_title' => 'Join Our Mail List',
     'newsletter_desc' => 'Skráðu þig á póstlistann og fáðu nýjustu fréttir samstundis.',
 
@@ -31,6 +31,9 @@ return [
     'contact_title' => 'Contact us',
     'contact_p1' => 'Do you need a grant request or have a question? Please feel free to leave a message and we will get back to you as soon as possible.',
     'contact_btn' => 'Get in Touch',
+
+    'quote' => 'We are extremely proud to be part of the Icelandic fisheries sector and will continue to strive to work well with companies in the fisheries sector and help them create value.',
+    'quote_author' => '- Vignir Óskarsson, Executive Director',
 
     'cart_title' => 'Shopping Cart',
     'orders_title' => 'Your orders',

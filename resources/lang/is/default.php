@@ -35,6 +35,9 @@ return [
     'contact_p1' => 'Þarftu styrkbeiðni eða er með spurningu eða athugasemd? Vinsamlegast ekki hika við að skilja eftir skilaboð og við munum snúa aftur til þín eins fljótt og auðið er.',
     'contact_btn' => 'Hafðu Samband',
 
+    'quote' => 'Við erum gríðarlega stolt af því að vera hluti af íslenskum sjávarútvegi og munum áfram leggja okkur fram um að eiga í góðu samstarfi við fyrirtæki í sjávarútvegi og hjálpa þeim að búa til verðmæti.',
+    'quote_author' => '- Vignir Óskarsson, Framkvæmdastjóri',
+
     'cart_title' => 'Innkaupakarfa',
     'orders_title' => 'Pantanir þínar',
 
