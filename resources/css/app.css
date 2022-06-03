@@ -233,6 +233,12 @@ input#sale_price {
     padding: 0 16px;
   }
   /* Header */
+  nav {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    z-index: 2000;
+  }
   nav .container {
     padding-left: 0;
   }
@@ -267,7 +273,7 @@ input#sale_price {
     width: 100%;
     height: 100vh;
     background: #10243A;
-    z-index: 20;
+    z-index: 20000;
     transform: translateX(500px);
     transition: all .3s ease-in-out;
   }

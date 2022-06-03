@@ -74,7 +74,7 @@
         <a href="{{ auth()->user() != NULL ? '/backend' : route('login') }}" class="ml-4 text-gray-600 hover:text-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </a>
-        <div id="open-menu-btn" class="ml-4 text-gray-600 hover:text-primary-light">
+        <div id="open-menu-btn" class="sm:hidden ml-4 text-gray-600 hover:text-primary-light">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </div>
       </div>
