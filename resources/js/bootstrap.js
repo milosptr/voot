@@ -26,3 +26,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+const openMenuBtn = document.getElementById('open-menu-btn')
+const closeMenuBtn = document.getElementById('close-menu-btn')
+if(openMenuBtn)
+  openMenuBtn.addEventListener('click', () => {
+    document.getElementById('main-menu').classList.add('active')
+  })
+if(closeMenuBtn)
+  closeMenuBtn.addEventListener('click', () => {
+    document.getElementById('main-menu').classList.remove('active')
+  })

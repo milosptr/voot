@@ -22293,6 +22293,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
+var openMenuBtn = document.getElementById('open-menu-btn');
+var closeMenuBtn = document.getElementById('close-menu-btn');
+if (openMenuBtn) openMenuBtn.addEventListener('click', function () {
+  document.getElementById('main-menu').classList.add('active');
+});
+if (closeMenuBtn) closeMenuBtn.addEventListener('click', function () {
+  document.getElementById('main-menu').classList.remove('active');
+});
+
 /***/ }),
 
 /***/ "./resources/js/scripts/backend.js":

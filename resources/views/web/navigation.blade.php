@@ -11,11 +11,19 @@
             <img class="hidden lg:block h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
           </a>
         </div>
-        <div class="hidden lg:block lg:ml-6">
-          <div class="flex space-x-4 ">
+        <div id="main-menu" class="lg:block lg:ml-6">
+          <div class="flex flex-col sm:flex-row space-x-4 ">
             @php
               $route = \Request::route()->getName();
             @endphp
+            <div class="sm:hidden flex justify-between pt-4 pb-8">
+              <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.home') }}">
+                <img class="block h-10 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
+              </a>
+              <div id="close-menu-btn">
+                <svg class="w-8 h-8" fill="none" stroke="#fff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </div>
+            </div>
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'about' ? 'font-medium' : '' }}">{{ __('header.about') }}</a>
             <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'services' ? 'font-medium' : '' }}">{{ __('header.services') }}</a>
@@ -34,7 +42,7 @@
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
             </div>
-            <form action="{{  LaravelLocalization::localizeURL('/products/search') }}" method="GET" class="mr-16">
+            <form action="{{  LaravelLocalization::localizeURL('/products/search') }}" method="GET" class="sm:mr-16">
               <input id="search" name="q" class="block w-full pl-10 pr-3 py-2 font-light border border-transparent border-gray-200 rounded-md leading-5 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none" placeholder="{{ __('header.search') }}" type="search">
             </form>
           </div>
@@ -66,6 +74,9 @@
         <a href="{{ auth()->user() != NULL ? '/backend' : route('login') }}" class="ml-4 text-gray-600 hover:text-primary-light">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </a>
+        <div id="open-menu-btn" class="ml-4 text-gray-600 hover:text-primary-light">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </div>
       </div>
     </div>
   </div>
