@@ -228,18 +228,23 @@ input#sale_price {
 }
 
 @media(max-width: 768px) {
+  body {
+    padding-top: 64px;
+  }
   /* Global */
   .container {
     padding: 0 16px;
   }
   /* Header */
-  nav {
+  #navigation {
     position: fixed!important;
+    top: 0;
+    left: 0;
     width: 100%;
     background: #fff;
     z-index: 2000!important;
   }
-  nav .container {
+  #navigation .container {
     padding-left: 0;
   }
   #nav-search {
