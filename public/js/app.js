@@ -23683,6 +23683,7 @@ __webpack_require__(/*! ./scripts/Drift.min.js */ "./resources/js/scripts/Drift.
 
 
 
+var isResponsive = !!('ontouchstart' in document.documentElement);
 
 if (document.getElementById('single-product-variations')) {
   (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
@@ -23742,10 +23743,10 @@ if (productGallery) {
       if (e.target.dataset.image) {
         document.querySelector('.single-product-bigimage-url').style = "background-image: url('".concat(e.target.dataset.image, "')");
         document.querySelector('.single-product-bigimage-url').dataset.zoom = "".concat(e.target.dataset.image);
-        new Drift(document.querySelector('.single-product-bigimage-url'), options);
+        if (!isResponsive) new Drift(document.querySelector('.single-product-bigimage-url'), options);
       }
     });
-    new Drift(document.querySelector('.single-product-bigimage-url'), options);
+    if (!isResponsive) new Drift(document.querySelector('.single-product-bigimage-url'), options);
   }
 }
 

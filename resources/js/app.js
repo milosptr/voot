@@ -7,6 +7,8 @@ import SingleProductVariations from './components/Web/SingleProductVariations.vu
 import GoogleMaps from './components/Web/GoogleMaps.vue'
 import ShoppingCart from './components/Web/ShoppingCart.vue'
 
+const isResponsive =  !!('ontouchstart' in document.documentElement)
+
 if(document.getElementById('single-product-variations')) {
   createApp({
     components: { SingleProductVariations },
@@ -56,11 +58,12 @@ if(productGallery) {
         document.querySelector('.single-product-bigimage-url').style = `background-image: url('${e.target.dataset.image}')`
         document.querySelector('.single-product-bigimage-url').dataset.zoom = `${e.target.dataset.image}`
 
-
-        new Drift(document.querySelector('.single-product-bigimage-url'), options);
+        if(!isResponsive)
+          new Drift(document.querySelector('.single-product-bigimage-url'), options);
       }
     })
-    new Drift(document.querySelector('.single-product-bigimage-url'), options)
+    if(!isResponsive)
+      new Drift(document.querySelector('.single-product-bigimage-url'), options)
   }
 }
 
