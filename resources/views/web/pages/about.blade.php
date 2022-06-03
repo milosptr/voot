@@ -3,23 +3,23 @@
 @section('title', __('header.about'))
 
 @section('content')
-  <section>
-    <div class="container mx-auto py-20">
-      <h2 class="text-2xl font-medium tracking-wide w-1/2 leading-normal">{{ __('default.about_voot_short') }}</h2>
+  <section class="mt-16 sm:mt-0">
+    <div class="container mx-auto py-20 ">
+      <h2 class="text-2xl font-medium tracking-wide sm:w-1/2 leading-normal">{{ __('default.about_voot_short') }}</h2>
     </div>
   </section>
 
-  <section>
+  <section class="mt-12 sm:mt-0">
     <div class="container mx-auto">
-      <div class="overflow-hidden rounded-md w-2/3 ml-auto">
+      <div class="overflow-hidden rounded-md sm:w-2/3 ml-auto">
         <img src="/images/michael-held-YkxAoqR68vg-unsplash.jpg" width="100%" alt="{{ __('header.about') }}" />
       </div>
     </div>
   </section>
 
-  <section class="py-20">
+  <section class="py-12 sm:py-20">
     <div class="container mx-auto">
-      <div class="w-2/3">
+      <div class="sm:w-2/3">
         <p class="mb-10 leading-normal">{{ __('default.about_p1')  }}</p>
         <p class="leading-normal">{{ __('default.about_p2')  }}</p>
       </div>
@@ -28,9 +28,9 @@
 
   <section>
     <div class="container mx-auto border-t border-gray-200">
-      <div class="mb-16 mt-32 flex flex-col sm:flex-row lg:justify-between">
+      <div class="mb-16 sm:mt-32 flex flex-col sm:flex-row lg:justify-between">
         <article class="w-full lg:w-1/4 bg-white relative pt-16 sm:border-r">
-            <h5 class="font-bold text-5xl text-gray-800 mb-6">Reykjavík</h5>
+            <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Reykjavík</h5>
             <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
             <div class="con-fl justify-between">
               <div class="table-con">
@@ -58,7 +58,7 @@
   <section id="staff-members" class="py-20 bg-primary-lightest">
     <div class="container">
       <div class="pb-4 mb-6">
-        <h2 class="text-5xl font-medium tracking-wide font-lora">{{ __('default.about_staff_title') }}</h2>
+        <h2 class="text-4xl sm:text-5xl font-medium tracking-wide font-lora">{{ __('default.about_staff_title') }}</h2>
       </div>
        <ul role="list" class="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
        @foreach(App\Models\Staff::all() as $staff)
@@ -102,7 +102,7 @@
     <div class="container mx-auto relative">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-10">
         <div class="w-full sm:w-2/5">
-          <h2 class="text-5xl font-medium tracking-wide font-lora">{{ __('default.newsletter_title') }}</h2>
+          <h2 class="text-4xl sm:text-5xl font-medium tracking-wide font-lora">{{ __('default.newsletter_title') }}</h2>
           <p class="mt-3 font-light text-gray-700">
             {{ __('default.newsletter_desc') }}
           </p>

@@ -14,7 +14,7 @@
               <div class="w-2/3 mx-auto">
                 <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
               </div>
-              <div class="text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
+              <div class="text-lg sm:text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
                 {{ $category->translatedName }}
               </div>
             </a>

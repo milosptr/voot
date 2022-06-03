@@ -10,9 +10,9 @@
       $urlAddress = str_replace('url=','', $urlAddress);
     @endphp
     <section class="container">
-      <div class="mb-16 mt-32 flex flex-col sm:flex-row lg:justify-between">
+      <div class="mb-16 mt-16 sm:mt-32 flex flex-col sm:flex-row lg:justify-between">
       <article class="w-full lg:w-1/4 bg-white relative pt-16 sm:border-r">
-          <h5 class="font-bold text-5xl text-gray-800 mb-6">{{ $location['name'] }}</h5>
+          <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">{{ $location['name'] }}</h5>
           <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
           <div class="con-fl justify-between">
             <div class="table-con">

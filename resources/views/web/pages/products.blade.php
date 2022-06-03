@@ -5,11 +5,11 @@
 @section('content')
   <section id="products">
     <div class="sm:hidden w-full fixed top-0 left-0 mt-16 z-20">
-      <div class=" border-b border-gray-200 bg-white py-3 px-6 ">
-        Categories:
-        <div class="flex gap-4 overflow-x-auto py-1">
+      <div class="floating-categories relative border-b border-gray-200 bg-white py-3 px-6 ">
+       <div class="font-semibold">Categories:</div>
+        <div class="flex overflow-x-auto py-1">
           @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-            <a href="/{{ $category->slug }}" class="block whitespace-nowrap order-{{ $category->order }}">
+            <a href="/{{ $category->slug }}" class="block font-medium whitespace-nowrap mr-4 order-{{ $category->order }}">
               {{ $category->translatedName }}
             </a>
           @endforeach

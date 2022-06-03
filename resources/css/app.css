@@ -289,10 +289,10 @@ input#sale_price {
 
   #main-menu a {
     color: #fff;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
     margin: 0;
-    padding: 12px 24px;
+    padding: 6px 24px;
   }
 
   #close-menu-btn {
@@ -304,7 +304,18 @@ input#sale_price {
     font-size: 2rem;
   }
   #about-section .bg-hero-wave {
-    min-height: 1100px;
+    min-height: 1000px;
+  }
+
+  /* Products Page */
+  .floating-categories::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 50px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.3), white);
   }
   /* Single Product */
   .drift-zoom-pane {
