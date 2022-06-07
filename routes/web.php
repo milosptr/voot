@@ -33,7 +33,7 @@ Route::get('/web/ax-service', function() {
   $customer = User::find(2);
 
   $response = LisaAxService::forCustomer($customer)
-    ->setRequestURL('http://192.168.120.137:1456/LisaAxServices.asmx')
+    ->setRequestURL('https://192.168.120.137:1456/LisaAxServices.asmx')
     ->setRequestBody($body)
     ->send();
 
