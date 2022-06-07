@@ -58,6 +58,7 @@ class LisaAxService {
 
     $response = curl_exec($curl);
 
+    var_dump($curl);
     curl_close($curl);
 
     return $response;
