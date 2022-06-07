@@ -9,6 +9,8 @@ use App\Http\Controllers\Web\Products;
 use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
+use App\Models\User;
+use App\Services\LisaAxService;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -22,34 +24,38 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 Route::get('/web/ax-service', function() {
-  $curl = curl_init();
+  $body = '<?xml version="1.0" encoding="utf-8"?>
+  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+      <ConnectionVerify xmlns="http://tempuri.org/" />
+    </soap:Body>
+  </soap:Envelope>';
+  $customer = User::find(2);
 
-  curl_setopt_array($curl, array(
-    CURLOPT_URL => 'http://213.167.137.207:1456/LisaAxServices.asmx',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => '',
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => 'POST',
-    CURLOPT_POSTFIELDS =>'<?xml version="1.0" encoding="utf-8"?>
-      <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-        <soap:Body>
-          <ConnectionVerify xmlns="http://tempuri.org/" />
-        </soap:Body>
-      </soap:Envelope>',
-    CURLOPT_HTTPHEADER => array(
-      'Content-Type: text/xml'
-    ),
-  ));
+  $response = LisaAxService::forCustomer($customer)
+    ->setRequestURL('http://192.168.120.137:1456/LisaAxServices.asmx')
+    ->setRequestBody($body)
+    ->send();
 
-  $response = curl_exec($curl);
-
-  curl_close($curl);
   print_r($response);
   dd($response);
+});
 
+Route::get('/web/ax-service-live', function() {
+  $body = '<?xml version="1.0" encoding="utf-8"?>
+  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+      <ConnectionVerify xmlns="http://tempuri.org/" />
+    </soap:Body>
+  </soap:Envelope>';
+  $customer = User::find(2);
+
+  $response = LisaAxService::forCustomer($customer)
+    ->setRequestBody($body)
+    ->send();
+
+  print_r($response);
+  dd($response);
 });
 
 
@@ -113,7 +119,7 @@ Route::get('/send/email', function() {
     return 'Email sent Successfully';
 });
 
-Route::get('email-template', function() { return view('emails.order-created'); });
+Route::get('email-template', function() { $password = 'As$5!2@lls)'; return view('emails.password-changed', compact('password')); });
 
 // Frontend + Language routes
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localize' ]], function () {
