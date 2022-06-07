@@ -11,7 +11,7 @@ class LisaAxService {
 
   public function __construct()
   {
-    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
+    $this->requestURL = 'http://213.167.137.207:1456';
     $this->requestType = 'POST';
 
     return $this;
@@ -58,7 +58,7 @@ class LisaAxService {
 
     $response = curl_exec($curl);
 
-    var_dump($curl);
+    print_r($curl);
     curl_close($curl);
 
     return $response;
