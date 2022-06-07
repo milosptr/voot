@@ -12,14 +12,22 @@ class OrderCreated extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
+    public $isCustomer;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(Order $order, $isCustomer = false)
     {
         $this->order = $order;
+        $this->isCustomer = $isCustomer;
+    }
+
+    public function setCustomer($bool)
+    {
+      $this->isCustomer = $bool;
+      return $this;
     }
 
     /**
@@ -29,6 +37,6 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.order-created');
+        return $this->view('emails.order-created', compact(['isCustomer' => $this->isCustomer]));
     }
 }

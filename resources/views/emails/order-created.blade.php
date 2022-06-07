@@ -7,7 +7,11 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>New Order Created</title>
+     @if(isset($isCustomer) && $isCustomer)
+      <title>Your order #{{ $order->id }}</title>
+     @else
+      <title>New Order Created</title>
+    @endif
     <style>
       @media only screen and (max-width: 620px) {
         table.body h1 {
@@ -118,8 +122,16 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
-                        <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">New Order #{{ $order->id }}</h1>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">You have received an order from Voot website. The order is as follows:</p>
+                        @if(isset($isCustomer) && $isCustomer)
+                          <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Your order #{{ $order->id }}</h1>
+                        @else
+                          <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">New Order #{{ $order->id }}</h1>
+                        @endif
+                         @if(isset($isCustomer) && $isCustomer)
+                          <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Thank you for your order. The order is as follows:</p>
+                         @else
+                          <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">You have received an order from Voot website. The order is as follows:</p>
+                         @endif
                          @foreach($order->order as $o)
                           @php
                             $product = App\Models\Inventory::where('sku', $o['sku'])->first();
@@ -173,7 +185,11 @@
                           <tbody>
                             <tr>
                               <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #214b76;" valign="top" align="center" bgcolor="#214b76">
-                                <a href="{{ env('APP_URL') }}/backend/orders/" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">View Order</a>
+                                @if(isset($isCustomer) && $isCustomer)
+                                  <a href="{{ env('APP_URL') }}/app/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">View Order</a>
+                                @else
+                                  <a href="{{ env('APP_URL') }}/backend/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">View Order</a>
+                                @endif
                               </td>
                             </tr>
                           </tbody>

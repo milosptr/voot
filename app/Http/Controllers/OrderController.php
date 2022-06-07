@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -43,10 +44,14 @@ class OrderController extends Controller
         'note' => $shippingNote
       ]);
 
-      OrderCreated::dispatch($order);
+      try {
+        OrderCreated::dispatch($order);
+      } catch(Exception $e) {
+        $cart->delete();
+        return response('Order successfuly requested!', 200);
+      }
 
       $cart->delete();
-
       return response('Order successfuly requested!', 200);
     }
 
@@ -76,7 +81,10 @@ class OrderController extends Controller
           'cart' => $items
         ]);
       } else {
-        Cart::create($order->order);
+        Cart::create([
+          'user_id' => $order->user->id,
+          'cart' => json_encode($order->order)
+        ]);
       }
 
       return redirect()->intended('/cart');

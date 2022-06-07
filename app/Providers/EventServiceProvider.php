@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Events\OrderCreated;
+use App\Events\UserPasswordReset;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendOrderCreatedEmail;
+use App\Listeners\SendCustomerOrderCreatedEmail;
+use App\Listeners\SendCustomerPasswordResetEmail;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -22,6 +25,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         OrderCreated::class => [
           SendOrderCreatedEmail::class,
+          SendCustomerOrderCreatedEmail::class,
+        ],
+        UserPasswordReset::class => [
+          SendCustomerPasswordResetEmail::class,
         ]
     ];
 

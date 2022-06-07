@@ -99,12 +99,11 @@ class User extends Authenticatable
         return $customers;
     }
 
-    public static function resetPassword($id)
+    public static function resetPassword()
     {
       $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
       $password = substr($random, 0, 10);
-      $user = User::find($id);
 
-      return Hash::make($password);
+      return $password;
     }
 }

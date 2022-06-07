@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Http\Resources\UserResource;
 use App\Models\Asset;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\Request;
+use App\Events\UserPasswordReset;
+use App\Http\Resources\UserResource;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Contracts\Session\Session;
 
 class Users extends Controller
 {
@@ -47,8 +49,10 @@ class Users extends Controller
     public function resetPassword($id)
     {
       $user = User::find($id);
-      $user->password = User::resetPassword($id);
-      $user->save();
+      $password = User::resetPassword();
+      $user->update(['password' => Hash::make($password)]);
+
+      UserPasswordReset::dispatch($user, $password);
 
       return back();
     }

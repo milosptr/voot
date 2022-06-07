@@ -7,7 +7,7 @@ use App\Mail\OrderCreated as OrderCreatedMail;
 use App\Models\Config;
 use Illuminate\Support\Facades\Mail;
 
-class SendOrderCreatedEmail
+class SendCustomerOrderCreatedEmail
 {
     /**
      * Handle the event.
@@ -17,9 +17,8 @@ class SendOrderCreatedEmail
      */
     public function handle(OrderCreated $event)
     {
-      $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
-      $recipient = isset($config['value']) ? $config['value'] : 'milosptr@icloud.com';
+      $recipient = $event->order->user->email;
       Mail::to($recipient)
-        ->send(new OrderCreatedMail($event->order));
+        ->send(new OrderCreatedMail($event->order, true));
     }
 }
