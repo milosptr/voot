@@ -57,8 +57,9 @@ class LisaAxService {
     ));
 
     $response = curl_exec($curl);
-
-    print_r(curl_getinfo($curl, CURLINFO_HTTP_CODE));
+    print_r('<pre>');
+    print_r(curl_getinfo($curl));
+    print_r('</pre>');
     curl_close($curl);
 
     return $response;
