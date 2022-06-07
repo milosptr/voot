@@ -21,6 +21,38 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/web/ax-service', function() {
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => 'http://213.167.137.207:1456/LisaAxServices.asmx',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'POST',
+    CURLOPT_POSTFIELDS =>'<?xml version="1.0" encoding="utf-8"?>
+      <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+          <ConnectionVerify xmlns="http://tempuri.org/" />
+        </soap:Body>
+      </soap:Envelope>',
+    CURLOPT_HTTPHEADER => array(
+      'Content-Type: text/xml'
+    ),
+  ));
+
+  $response = curl_exec($curl);
+
+  curl_close($curl);
+  print_r($response);
+  dd($response);
+
+});
+
+
 Route::get('/login', function() {
   return view('auth.login');
 })->name('login');
@@ -104,7 +136,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
   Route::get('/{category}', [Categories::class, 'index'])->name('category');
   Route::get('/{category}/{product}', [Products::class, 'index'])->name('product');
 
-
 });
+
+
 
 require __DIR__.'/auth.php';

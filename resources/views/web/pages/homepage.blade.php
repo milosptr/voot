@@ -91,8 +91,15 @@
    <section class="my-48">
     <div class="container mx-auto relative">
       <div class="flex flex-col sm:flex-row items-center justify-between">
-        <div class="sm:w-1/2 flex justify-end">
-
+        <div class="sm:w-1/2 flex">
+          <div class="grid grid-cols-3 items-center justify-items-center gap-10 opacity-90">
+            <img src="/images/phone.svg" alt="phone" width="120" />
+            <img src="/images/envelope.svg" alt="envelope" width="120" />
+            <img src="/images/pencil.svg" alt="pencil" width="120" />
+            <img src="/images/chat.svg" alt="chat" width="120" />
+            <img src="/images/package.svg" alt="package" width="120" />
+            <img src="/images/store.svg" alt="store" width="120" />
+          </div>
         </div>
         <div class="sm:w-1/2">
           <h2 class="text-5xl sm:text-6xl font-medium font-lora tracking-wide">
@@ -101,7 +108,7 @@
           <p class="mt-6 text-lg">
             {{ __('default.contact_p1') }}
           </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.contact_btn') }}
           </a>
         </div>
