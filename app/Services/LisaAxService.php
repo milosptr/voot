@@ -62,6 +62,8 @@ class LisaAxService {
     print_r('<pre>');
     print_r(curl_getinfo($curl));
     print_r('</pre>');
+
+
     curl_close($curl);
 
     return $response;

@@ -55,6 +55,12 @@ Route::get('/web/ax-service-live', function() {
     ->send();
 
   print_r($response);
+
+  $response2 = LisaAxService::forCustomer($customer)
+    ->setRequestURL('https://ifconfig.me')
+    ->send();
+
+  print_r($response2);
   dd($response);
 });
 
