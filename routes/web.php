@@ -61,7 +61,7 @@ Route::get('/web/ax-service-live', function() {
     ->send();
 
   print_r($response2);
-  dd($response);
+  dd($response, $response2);
 });
 
 
