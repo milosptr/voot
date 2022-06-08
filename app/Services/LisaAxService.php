@@ -53,7 +53,8 @@ class LisaAxService {
       CURLOPT_POSTFIELDS => $this->body,
       CURLOPT_HTTPHEADER => array(
         'Content-Type: text/xml',
-        'X-Forwarded-For: 212.44.101.99'
+        'X-Forwarded-For: 212.44.101.99',
+        'Host: 212.44.101.99'
       ),
     ));
 
