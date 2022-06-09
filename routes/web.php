@@ -11,6 +11,7 @@ use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
 use App\Models\User;
 use App\Services\LisaAxService;
+use Illuminate\Support\Facades\Log;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -23,6 +24,15 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/web/loggg', function() {
+  Log::info('This is info log');
+  Log::warning('This is warning log');
+  Log::error('This is error log');
+  Log::alert('This is alert log');
+  Log::debug('This is debug log');
+});
+
 Route::get('/web/ax-service', function() {
   $body = '<?xml version="1.0" encoding="utf-8"?>
   <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -36,6 +46,8 @@ Route::get('/web/ax-service', function() {
     ->setRequestURL('http://192.168.120.137:1456/LisaAxServices.asmx')
     ->setRequestBody($body)
     ->send();
+
+
 
   print_r($response);
   dd($response);

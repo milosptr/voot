@@ -19,6 +19,7 @@ use App\Models\ProductIcon;
 use App\Models\ProductInformation;
 use App\Models\ProductTag;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Log;
 
 class Products extends Controller
 {
@@ -215,6 +216,7 @@ class Products extends Controller
            }
 
       } catch(Exception $e) {
+        Log::error('Store product error: ' . $e->getMessage());
         return back()->with('error', $e->getMessage());
       }
 

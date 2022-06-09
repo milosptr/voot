@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CategoriesController extends Controller
 {
@@ -34,7 +35,8 @@ class CategoriesController extends Controller
     try {
       Category::create($category);
     } catch(Exception $e) {
-      redirect()->back()->withErrors(['message' => 'Woops! Product cannot be added.', 'status' => 412]);
+      Log::error("Category creating error: ". $e->getMessage());
+      redirect()->back()->withErrors(['message' => 'Woops! Category cannot be added.', 'status' => 412]);
     }
 
     return redirect('/backend/categories');

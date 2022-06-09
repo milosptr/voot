@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '10425cc3724d9cf6397a1016e1aa9d6ce8ae8638',
+    'reference' => '319458172b558cf4821bb6693ad0271b8fe5931c',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -221,6 +221,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '8c3d0a3f6af734494ad8f6fbbee0ba92422859f3',
+    ),
+    'haruncpi/laravel-log-reader' => 
+    array (
+      'pretty_version' => 'v1.0.6',
+      'version' => '1.0.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '60ec565207906d448c4c8ccd36ce9dc6ad5bc4e1',
     ),
     'illuminate/auth' => 
     array (
@@ -471,7 +480,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '10425cc3724d9cf6397a1016e1aa9d6ce8ae8638',
+      'reference' => '319458172b558cf4821bb6693ad0271b8fe5931c',
     ),
     'laravel/sail' => 
     array (

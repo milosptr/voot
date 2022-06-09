@@ -10,6 +10,7 @@ use App\Models\Order;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
@@ -47,6 +48,7 @@ class OrderController extends Controller
       try {
         OrderCreated::dispatch($order);
       } catch(Exception $e) {
+        Log::error("Order notification not dispatched properly: " . $e->getMessage());
         $cart->delete();
         return response('Order successfuly requested!', 200);
       }
