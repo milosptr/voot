@@ -166,7 +166,8 @@
                                 <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Pickup Information:</p>
                               @endif
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
-                                <span style="font-weight: 600;color: #555;">Address:</span><br>{{ $order->orderAddress() }}
+                                <span style="font-weight: 600;color: #555;">Address:</span><br>
+                                {{ $order->orderAddress() }}
                               </p>
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
                                 @if($order->shipping_method === App\Models\Order::DELIVERY)

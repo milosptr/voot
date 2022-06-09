@@ -7,7 +7,7 @@ use App\Services\LisaAxService;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class SendCustomerOrderCreatedEmail
+class CreateOrderInAX
 {
     /**
      * Handle the event.
@@ -17,6 +17,10 @@ class SendCustomerOrderCreatedEmail
      */
     public function handle(OrderCreated $event)
     {
+      if(env('APP_ENV') === 'local')
+        return;
+
+      Log::info('Requesting order #'.$event->order->id.' to AX');
       try {
         LisaAxService::forCustomer($event->order->user)
           ->setBodyForOrderCreated($event->order)
