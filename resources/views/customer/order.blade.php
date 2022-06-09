@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="w-full mt-4">
-            @if($order->shipping_method === App\Models\Order::DELIVERY)
+            @if($order->shipping_method == App\Models\Order::DELIVERY)
               <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
             @else
               <label for="shipping_address" class="block text-sm font-medium text-gray-500">Pickup address</label>

@@ -49,7 +49,7 @@ class Order extends Model
 
     public function orderAddress()
     {
-      if($this->shipping_method === self::DELIVERY)
+      if($this->shipping_method == self::DELIVERY)
         return $this->shipping_address;
       return Location::find($this->pickup_location)->fullAddress();
     }
