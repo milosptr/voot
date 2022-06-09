@@ -53,6 +53,15 @@ Route::get('/web/ax-service', function() {
   dd($response);
 });
 
+Route::get('/web/ax', function() {
+  $customer = User::find(2);
+  $order = Order::find(15);
+  $response = LisaAxService::forCustomer($customer)
+          ->setBodyForOrderCreated($order)
+          ->getBody();
+  dd($response);
+});
+
 Route::get('/web/ax-service-live', function() {
   $body = '<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
   <soap:Header/>

@@ -43,8 +43,7 @@ class LisaAxService {
   public function setBodyForOrderCreated(Order $order)
   {
     $customer = $order->user;
-    $this->body = `
-      <soap:Envelope
+    $this->body = '<soap:Envelope
         xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:tem="http://tempuri.org/">
         <soap:Header/>
@@ -69,26 +68,31 @@ class LisaAxService {
                 <tem:ContactEmail>$customer->email</tem:ContactEmail>
               </tem:DeliveryInfo>
               <tem:SalesOrderLines>
-      `;
+      ';
 
       foreach ($order->order as $item) {
-        $this->body .= `
+        $this->body .= '
         <tem:SalesOrderLine>
-          <tem:LineID>O`.$order->id.`</tem:LineID>
-          <tem:ItemId>`.$item['sku'].`</tem:ItemId>
-          <tem:Quantity>`.$item['qty'].`</tem:Quantity>
+          <tem:LineID>O'.$order->id.'</tem:LineID>
+          <tem:ItemId>'.$item['sku'].'</tem:ItemId>
+          <tem:Quantity>'.$item['qty'].'</tem:Quantity>
         </tem:SalesOrderLine>
-        `;
+        ';
       }
 
-      $this->body .= `
+      $this->body .= '
               </tem:SalesOrderLines>
             </tem:order>
           </tem:CreateSalesOrder>
         </soap:Body>
       </soap:Envelope>
-    `;
+    ';
+
     return $this;
+  }
+
+  public function getBody() {
+    return $this->body;
   }
 
   public function send() {
