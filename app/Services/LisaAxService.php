@@ -45,8 +45,8 @@ class LisaAxService {
     $customer = $order->user;
     $this->body = `
       <soap:Envelope
-        xmlns:soap=http://www.w3.org/2003/05/soap-envelope
-        xmlns:tem=http://tempuri.org/>
+        xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+        xmlns:tem="http://tempuri.org/">
         <soap:Header/>
         <soap:Body>
           <tem:CreateSalesOrder>
