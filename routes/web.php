@@ -54,11 +54,39 @@ Route::get('/web/ax-service', function() {
 });
 
 Route::get('/web/ax-service-live', function() {
-  $body = '<?xml version="1.0" encoding="utf-8"?>
-  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-      <ConnectionVerify xmlns="http://tempuri.org/" />
-    </soap:Body>
+  $body = '<soap:Envelope xmlns:soap=http://www.w3.org/2003/05/soap-envelope xmlns:tem=http://tempuri.org/>
+  <soap:Header/>
+  <soap:Body>
+  <tem:CreateSalesOrder>
+  <tem:order>
+  <tem:CustomerID>1010105VOB</tem:CustomerID>
+  <tem:Comments>Comment Test Bruno</tem:Comments>
+  <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
+  <tem:ReferenceNumber>Ref001 Bruno Test</tem:ReferenceNumber>
+  <tem:PaymModeCode>ST/GR</tem:PaymModeCode> <!--Payment Mode: -->
+  <tem:SSN>5555559999</tem:SSN><!--Kennitala needed for vefsala (800100HIS):-->
+  <tem:DeliveryInfo>
+  <!--Delivery Mode: -->
+  <tem:DlvModeCode>VS</tem:DlvModeCode>
+  <tem:Name>DlvName Bruno</tem:Name>
+  <tem:Address>DlvAddress G 10</tem:Address>
+  <tem:Zipcode>101</tem:Zipcode>
+  <tem:Country>IS</tem:Country>
+  <tem:ContactName>DlvContactName Bruno</tem:ContactName>
+  <tem:ContactPhone>DlvContactPhone 5515555 </tem:ContactPhone>
+  <tem:ContactEmail>DlvContactEmail test@hamp.is</tem:ContactEmail>
+  </tem:DeliveryInfo>
+  <tem:SalesOrderLines>
+  <!--Zero or more repetitions:-->
+  <tem:SalesOrderLine>
+  <tem:LineID>9t5e6679-7425-40de-944b-e07fc1f90rt9</tem:LineID><!--your line id reference-->
+  <tem:ItemId>1000433</tem:ItemId>
+  <tem:Quantity>10</tem:Quantity>
+  </tem:SalesOrderLine>
+  </tem:SalesOrderLines>
+  </tem:order>
+  </tem:CreateSalesOrder>
+  </soap:Body>
   </soap:Envelope>';
   $customer = User::find(2);
 
