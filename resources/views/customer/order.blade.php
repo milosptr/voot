@@ -64,8 +64,12 @@
           </div>
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4">
             <label for="shipping_date" class="block text-sm font-medium text-gray-500">Shipping method</label>
-              <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-                {{ $order->shipping_method === 1 ? 'Delivery' : 'Pickup' }} {{ $order->shipping_method }} {{ $order->id }}
+              <div data-method="{{ $order->shipping_method }} {{ App\Models\Order::DELIVERY }}" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
+                @if($order->shipping_method === App\Models\Order::DELIVERY)
+                  Delivery
+                @else
+                  Pickup
+                @endif
               </div>
           </div>
           @if($order->note)
