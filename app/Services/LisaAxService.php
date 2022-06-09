@@ -24,6 +24,19 @@ class LisaAxService {
     return new Static($user);
   }
 
+  public static function storeOrderId($response, Order $order)
+  {
+    $clean_xml = str_ireplace(['SOAP-ENV:', 'SOAP:'], '', $response);
+    $xml = simplexml_load_string($clean_xml);
+    $orderId = null;
+    if(isset($xml->Body) && isset($xml->Body->CreateSalesOrderResponse) && isset($xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult) && isset($xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult->SalesOrdID)) {
+      $orderId = (string) $xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult->SalesOrdID;
+      $order->update(['order_id' => $orderId]);
+    }
+
+    return $orderId;
+  }
+
   public function setRequestURL($url)
   {
     $this->requestURL = $url;

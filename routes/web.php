@@ -54,12 +54,17 @@ Route::get('/web/ax-service', function() {
 });
 
 Route::get('/web/ax', function() {
-  $customer = User::find(2);
-  $order = Order::find(15);
-  $response = LisaAxService::forCustomer($customer)
-          ->setBodyForOrderCreated($order)
-          ->getBody();
-  dd($response);
+  $xml = '<?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><CreateSalesOrderResponse xmlns="http://tempuri.org/"><CreateSalesOrderResult><SalesOrdID>S0018533</SalesOrdID><SalesTakerEmail /><ErrorCode>0</ErrorCode><ErrorMessage /><ErrorOrderLines /></CreateSalesOrderResult></CreateSalesOrderResponse></soap:Body></soap:Envelope>';
+  $clean_xml = str_ireplace(['SOAP-ENV:', 'SOAP:'], '', $xml);
+  $xml = simplexml_load_string($clean_xml);
+
+  dd(isset($xml->Body->Cr) ? $xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult->SalesOrdID : ':)');
+  // $customer = User::find(2);
+  // $order = Order::find(15);
+  // $response = LisaAxService::forCustomer($customer)
+  //         ->setBodyForOrderCreated($order)
+  //         ->getBody();
+  // dd($response);
 });
 
 Route::get('/web/ax-service-live', function() {

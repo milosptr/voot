@@ -25,7 +25,9 @@ class CreateOrderInAX
         $response = LisaAxService::forCustomer($event->order->user)
           ->setBodyForOrderCreated($event->order)
           ->send();
-        Log::info('Order #'.$event->order->id.' created successfully in AX: '. $response);
+        $orderId = LisaAxService::storeOrderId($response, $event->order);
+
+        Log::info('Order #'.$event->order->id.' created successfully in AX: '. $orderId);
       } catch(Exception $e) {
         Log::error('Trying to create order #'.$event->order->id.' in AX: '. $e->getMessage());
         $event->order->update(['ax_status' => 0]);
