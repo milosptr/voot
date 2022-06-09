@@ -22,10 +22,10 @@ class CreateOrderInAX
 
       Log::info('Requesting order #'.$event->order->id.' to AX');
       try {
-        LisaAxService::forCustomer($event->order->user)
+        $response = LisaAxService::forCustomer($event->order->user)
           ->setBodyForOrderCreated($event->order)
           ->send();
-        Log::info('Order #'.$event->order->id.' created successfully in AX: ');
+        Log::info('Order #'.$event->order->id.' created successfully in AX: '. json_encode($response));
       } catch(Exception $e) {
         Log::error('Trying to create order #'.$event->order->id.' in AX: '. $e->getMessage());
         $event->order->update(['ax_status' => 0]);
