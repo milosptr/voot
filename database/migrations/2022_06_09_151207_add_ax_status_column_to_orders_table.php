@@ -14,7 +14,7 @@ class AddAxStatusColumnToOrdersTable extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->smallInteger('ax_status')->default(1);
+            $table->smallInteger('ax_status')->default(0);
         });
     }
 

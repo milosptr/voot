@@ -4,8 +4,8 @@ namespace App\Listeners;
 
 use App\Events\OrderCreated;
 use App\Services\LisaAxService;
-use Exception;
 use Illuminate\Support\Facades\Log;
+use Exception;
 
 class CreateOrderInAX
 {
