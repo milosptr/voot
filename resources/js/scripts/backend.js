@@ -81,6 +81,12 @@ if(document.getElementById('order-customer-filter')) {
     e.target.value ? setUrlQueryString("customer", e.target.value) : unsetUrlQueryString("customer")
   })
 }
+if(document.getElementById('order-customer-filter-status')) {
+  const orderCustomerFilter = document.getElementById('order-customer-filter-status')
+  orderCustomerFilter.addEventListener('change', (e) => {
+    e.target.value ? setUrlQueryString("status", e.target.value) : unsetUrlQueryString("status")
+  })
+}
 
 if(document.getElementById('products-category-search')){
   if(window.location.search.length) searchProducts()

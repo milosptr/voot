@@ -11,8 +11,8 @@
 
   <section class="mt-12 sm:mt-0">
     <div class="container mx-auto">
-      <div class="overflow-hidden rounded-md sm:w-2/3 ml-auto">
-        <img src="/images/michael-held-YkxAoqR68vg-unsplash.jpg" width="100%" alt="{{ __('header.about') }}" />
+      <div class="overflow-hidden rounded-md sm:w-3/4 ml-auto">
+        <img src="/images/world-map.jpg" width="100%" alt="{{ __('header.about') }}" />
       </div>
     </div>
   </section>
@@ -55,7 +55,7 @@
     </div>
   </section>
 
-  <section id="staff-members" class="py-20 bg-primary-lightest">
+  <section id="staff-members" class="py-20 bg-gray-100">
     <div class="container">
       <div class="pb-4 mb-6">
         <h2 class="text-4xl sm:text-5xl font-medium tracking-wide font-lora">{{ __('default.about_staff_title') }}</h2>

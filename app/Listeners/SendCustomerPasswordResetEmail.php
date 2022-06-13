@@ -16,7 +16,7 @@ class SendCustomerPasswordResetEmail
      */
     public function handle(UserPasswordReset $event)
     {
-      Mail::to('milosptr@icloud.com')
+      Mail::to($event->user->email)
         ->send(new MailUserPasswordReset($event->user, $event->password));
     }
 }

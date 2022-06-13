@@ -14,6 +14,17 @@
           </h2>
         </div>
 
+         @error('email')
+              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 text-xs font-semibold" role="alert">
+                <strong class="font-semibold text-sm">Email or password is invalid</strong>
+              </div>
+          @enderror
+          @error('password')
+              <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 text-xs font-semibold" role="alert">
+                <strong class="font-semibold text-sm">">Email or password is invalid</strong>
+              </div>
+          @enderror
+
         <div class="mt-8">
           <div class="mt-6">
             <form action="{{ route('login') }}" method="POST" class="space-y-6">
@@ -36,23 +47,9 @@
                 </div>
               </div>
 
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
-                  <label for="remember-me" class="ml-2 block text-sm text-gray-900">
-                    Remember me
-                  </label>
-                </div>
                 @if(isset($_GET['back']))
                   <input name="redirect_to" value="{{ $_GET['back'] }}" hidden />
                 @endif
-                <div class="text-sm">
-                  <a href="#" class="font-medium text-primary-light cursor-pointer">
-                    Forgot your password?
-                  </a>
-                </div>
-              </div>
-
               <div>
                 <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-light hover:bg-primary focus:outline-none duration-300 transition-all ease-in-out">
                   Log in

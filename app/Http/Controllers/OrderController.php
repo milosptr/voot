@@ -30,19 +30,22 @@ class OrderController extends Controller
       $shippingNote = $request->get('note');
       $shippingMethod = $request->get('shippingMethod');
       $pickupLocation = $request->get('pickupLocation');
+      $status = Order::STATUS_REQUESTED;
 
       if($shippingAddress === NULL)
         $shippingAddress = $customer->street . ', ' . $customer->city . ' ' . $customer->zip . ', ' . $customer->country;
+      if($customer->email_verified_at === NULL)
+        $status = Order::STATUS_PENDING;
 
       $order = Order::create([
         'user_id' => $customer->id,
-        'order_status' => Order::STATUS_REQUESTED,
+        'order_status' => $status,
         'order' => json_decode($cart->cart),
         'shipping_method' => $shippingMethod,
         'shipping_address' => $shippingAddress,
         'shipping_date' => Carbon::parse($shippingDate),
         'pickup_location' => $pickupLocation,
-        'note' => $shippingNote
+        'note' => $shippingNote,
       ]);
 
       try {
@@ -60,8 +63,8 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
       $order = Order::find($id);
-      $originalOrder = $order->get(['order_status', 'shipping_address', 'shipping_date', 'note'])->first()->toArray();
-      $data = $request->only('order_status', 'order', 'shipping_address', 'shipping_date', 'note');
+      $originalOrder = $order->get(['order_status', 'shipping_address', 'shipping_date', 'note', 'order_id'])->first()->toArray();
+      $data = $request->only('order_status', 'order', 'shipping_address', 'shipping_date', 'note', 'order_id');
       ActivityLog::create([
         'user_id' => auth()->user()->id,
         'order_id' => $order->id,

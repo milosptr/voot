@@ -3,7 +3,7 @@
     <div class="w-full sm:w-2/3 pr-0 sm:pr-6">
       <div v-if="!cart.length" class="">
         <h1>Shopping cart is empty. Please add some products!</h1>
-        <a href="/products" class="block w-2/5 mt-6 text-center text-gray-600 border border-gray-200  px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-200 cursor-pointer">
+        <a href="/vorur" class="block w-2/5 mt-6 text-center text-gray-600 border border-gray-200  px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-200 cursor-pointer">
           View Products
         </a>
       </div>
@@ -34,10 +34,11 @@
             <img src="/images/trash.svg" alt="remove" class="w-5 h-5" />
           </div>
       </div>
-      <div class="text-base font-medium text-gray-900 pb-3 mt-10">
+      <div  v-if="products.length" class="text-base font-medium text-gray-900 pb-3 mt-10">
         Leave a note
       </div>
       <textarea
+        v-if="products.length"
         v-model="note"
         class="w-full border border-gray-300 outline-none rounded-md"
         placeholder="Your note..."

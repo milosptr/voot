@@ -28,6 +28,7 @@ import Select from './common/Select.vue'
     data: () => ({
       variations: [],
       selected: null,
+      defaultSKU: null,
       error: null,
       user_id: null,
       product_id: null,
@@ -53,6 +54,7 @@ import Select from './common/Select.vue'
     mounted() {
       this.user_id = document.getElementById('single-product-variations').getAttribute('key')
       this.product_id = document.getElementById('single-product-variations').getAttribute('index')
+      this.defaultSKU = document.getElementById('single-product-variations').getAttribute('sku')
       this.variations = JSON.parse(document.getElementById('single-product-variations').getAttribute('variations'))
       if(this.variations.length)
         this.selectVariant(this.variations[0].sku)
@@ -85,7 +87,7 @@ import Select from './common/Select.vue'
       },
       addToCart() {
         this.error = null
-        axios.post('/api/add-to-cart', { user_id: this.user_id, sku: this.selected.sku, qty: this.qty })
+        axios.post('/api/add-to-cart', { user_id: this.user_id, sku: this.selected ? this.selected.sku : this.defaultSKU, qty: this.qty })
           .then((r) => location.reload() )
       }
     }

@@ -15,6 +15,10 @@ class Order extends Model
     CONST STATUS_IN_PROGRESS = 2;
     CONST STATUS_DELIVERY = 3;
     CONST STATUS_DONE = 4;
+    CONST STATUS_PENDING = 5;
+
+    CONST AX_STATUS_SAVED = 1;
+    CONST AX_STATUS_FAILED = 0;
 
     CONST DELIVERY = 1;
     CONST PICKUP = 2;
@@ -71,6 +75,7 @@ class Order extends Model
         2 => 'bg-orange-200 text-orange-400 border-1 border-orange-200',
         3 => 'bg-sky-200 text-sky-600 border-1 border-sky-200',
         4 => 'bg-emerald-200 text-emerald-600 border-1 border-emerald-200',
+        5 => 'bg-orange-200 text-orange-400 border-1 border-orange-200',
       ];
       return $status !== null ? ($classes . ' ' . $mapper[$status]) : $classes;
     }
@@ -83,6 +88,7 @@ class Order extends Model
         2 => 'In progress',
         3 => 'On delivery',
         4 => 'Done',
+        5 => 'Pending',
       ];
     }
 }

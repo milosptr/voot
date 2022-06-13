@@ -587,6 +587,7 @@ class ComposerStaticInit4c39abadee784db0706f422d8ad23d86
         'App\\Http\\Resources\\ProductInformation' => __DIR__ . '/../..' . '/app/Http/Resources/ProductInformation.php',
         'App\\Http\\Resources\\Products' => __DIR__ . '/../..' . '/app/Http/Resources/Products.php',
         'App\\Http\\Resources\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserResource.php',
+        'App\\Listeners\\CreateOrderInAX' => __DIR__ . '/../..' . '/app/Listeners/CreateOrderInAX.php',
         'App\\Listeners\\SendCustomerOrderCreatedEmail' => __DIR__ . '/../..' . '/app/Listeners/SendCustomerOrderCreatedEmail.php',
         'App\\Listeners\\SendCustomerPasswordResetEmail' => __DIR__ . '/../..' . '/app/Listeners/SendCustomerPasswordResetEmail.php',
         'App\\Listeners\\SendOrderCreatedEmail' => __DIR__ . '/../..' . '/app/Listeners/SendOrderCreatedEmail.php',

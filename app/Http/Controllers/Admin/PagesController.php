@@ -77,7 +77,7 @@ class PagesController extends Controller
 
     public function clients(Request $request)
     {
-      $customers = User::where('role', 'customer')->orderBy('name')->get();
+      $customers = User::where('role', 'customer')->orderBy('id', 'DESC')->get();
 
       return view('admin.clients', compact('customers'));
     }

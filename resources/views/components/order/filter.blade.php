@@ -1,5 +1,6 @@
 @php
 $selected = isset($_GET['customer']) ? $_GET['customer'] : 0;
+$selectedStatus = isset($_GET['status']) ? $_GET['status'] : -1;
 @endphp
 <div class="flex items-end mb-10">
   <div>
@@ -13,7 +14,18 @@ $selected = isset($_GET['customer']) ? $_GET['customer'] : 0;
       @endforeach
     </select>
   </div>
-  @if(isset($_GET['s']) || isset($_GET['customer']))
+  <div class="ml-6">
+    <label for="order-customer-filter-status" class="block text-sm font-medium text-gray-700">Filter by status</label>
+    <select id="order-customer-filter-status" name="status" class="mt-2 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+      <option value='' {{ !$selectedStatus ? 'selected' : '' }}>All</option>
+      @foreach(App\Models\Order::statuses() as $key => $status)
+        <option value="{{ $key }}" {{ $key == $selectedStatus ? 'selected' : '' }}>
+          {{ $status }}
+        </option>
+      @endforeach
+    </select>
+  </div>
+  @if(isset($_GET['s']) || isset($_GET['customer']) || isset($_GET['status']))
   <div class="ml-auto">
     <a
       href="/backend/orders"

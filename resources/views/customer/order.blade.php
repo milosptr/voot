@@ -32,7 +32,7 @@
           <div class="w-full mt-4 sm:w-1/2 sm:pl-4 select-none">
             <label for="title" class="block text-sm font-medium text-gray-500">Customer key</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-              {{ $order->user->key }}
+              {{ $order->user->ssn ?? 'NULL' }}
             </div>
           </div>
           <div class="w-full mt-4">
@@ -45,7 +45,7 @@
               <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address }}" required="">
             @else
               <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-                {{ $order->orderAddress }}
+                {{ $order->orderAddress() }}
               </div>
             @endif
           </div>

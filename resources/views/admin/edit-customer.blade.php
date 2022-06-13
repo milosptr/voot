@@ -56,6 +56,11 @@
               <a href="/api/customer/{{ $customer->id }}/reset-password" class="ml-auto text-center text-gray-600 border border-gray-200 px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-200 cursor-pointer">
                 Reset Password
               </a>
+              @if($customer->email_verified_at === NULL)
+              <a href="/api/customer/{{ $customer->id }}/verify" class="ml-3 text-center text-green-600 border border-green-400 px-6 py-2 text-sm font-normal rounded-md hover:bg-green-500 hover:border-green-500 hover:text-white cursor-pointer">
+                Verify
+              </a>
+              @endif
               <a href="/api/customer/{{ $customer->id }}/delete" class="ml-3 text-center text-red-500 border border-red-500 px-6 py-2 text-sm font-normal rounded-md hover:bg-red-500 hover:text-white cursor-pointer">
                 Delete
               </a>

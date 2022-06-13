@@ -88,6 +88,7 @@ Route::post('request-order/update/{id}', [OrderController::class, 'update']);
 // Customer
 Route::get('customer-info/{id}', [Users::class, 'index'])->name('customerInfo');
 Route::get('customer/{id}/reset-password', [Users::class, 'resetPassword']);
+Route::get('customer/{id}/verify', [Users::class, 'verify']);
 Route::get('customer/{id}/delete', [Users::class, 'destroy']);
 Route::post('customer/{id}', [Users::class, 'update']);
 Route::post('customer/{id}/logo', [Users::class, 'logo']);

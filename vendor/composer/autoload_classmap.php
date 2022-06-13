@@ -64,6 +64,7 @@ return array(
     'App\\Http\\Resources\\ProductInformation' => $baseDir . '/app/Http/Resources/ProductInformation.php',
     'App\\Http\\Resources\\Products' => $baseDir . '/app/Http/Resources/Products.php',
     'App\\Http\\Resources\\UserResource' => $baseDir . '/app/Http/Resources/UserResource.php',
+    'App\\Listeners\\CreateOrderInAX' => $baseDir . '/app/Listeners/CreateOrderInAX.php',
     'App\\Listeners\\SendCustomerOrderCreatedEmail' => $baseDir . '/app/Listeners/SendCustomerOrderCreatedEmail.php',
     'App\\Listeners\\SendCustomerPasswordResetEmail' => $baseDir . '/app/Listeners/SendCustomerPasswordResetEmail.php',
     'App\\Listeners\\SendOrderCreatedEmail' => $baseDir . '/app/Listeners/SendOrderCreatedEmail.php',

@@ -22667,6 +22667,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       variations: [],
       selected: null,
+      defaultSKU: null,
       error: null,
       user_id: null,
       product_id: null,
@@ -22694,6 +22695,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.user_id = document.getElementById('single-product-variations').getAttribute('key');
     this.product_id = document.getElementById('single-product-variations').getAttribute('index');
+    this.defaultSKU = document.getElementById('single-product-variations').getAttribute('sku');
     this.variations = JSON.parse(document.getElementById('single-product-variations').getAttribute('variations'));
     if (this.variations.length) this.selectVariant(this.variations[0].sku);
     axios.get('/api/favourites/' + this.product_id + '/' + this.user_id).then(function (res) {
@@ -22739,7 +22741,7 @@ __webpack_require__.r(__webpack_exports__);
       this.error = null;
       axios.post('/api/add-to-cart', {
         user_id: this.user_id,
-        sku: this.selected.sku,
+        sku: this.selected ? this.selected.sku : this.defaultSKU,
         qty: this.qty
       }).then(function (r) {
         return location.reload();
@@ -22993,7 +22995,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "/products",
+  href: "/vorur",
   "class": "block w-2/5 mt-6 text-center text-gray-600 border border-gray-200 px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-200 cursor-pointer"
 }, " View Products ", -1
 /* HOISTED */
@@ -23024,13 +23026,10 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_16 = [_hoisted_15];
-
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_17 = {
+  key: 1,
   "class": "text-base font-medium text-gray-900 pb-3 mt-10"
-}, " Leave a note ", -1
-/* HOISTED */
-);
-
+};
 var _hoisted_18 = {
   "class": "w-full sm:w-1/3 pl-0 sm:pl-6"
 };
@@ -23264,7 +23263,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     );
   }), 128
   /* KEYED_FRAGMENT */
-  )), _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  )), _ctx.products.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_17, " Leave a note ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.products.length ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("textarea", {
+    key: 2,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return _ctx.note = $event;
     }),
@@ -23272,7 +23272,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Your note..."
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.note]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_ctx.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.customer.name), 1
+  )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.note]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_ctx.customer ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.customer.name), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.customer.street) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.customer.city) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.customer.zip) + ", " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.customer.country), 1
   /* TEXT */

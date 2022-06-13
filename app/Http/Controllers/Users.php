@@ -6,7 +6,9 @@ use App\Models\User;
 use App\Models\Asset;
 use Illuminate\Http\Request;
 use App\Events\UserPasswordReset;
+use App\Events\UserVerified;
 use App\Http\Resources\UserResource;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Session\Session;
@@ -53,6 +55,16 @@ class Users extends Controller
       $user->update(['password' => Hash::make($password)]);
 
       UserPasswordReset::dispatch($user, $password);
+
+      return back();
+    }
+
+    public function verify($id)
+    {
+      $user = User::find($id);
+      $user->update(['email_verified_at' => Carbon::now()]);
+
+      UserVerified::dispatch($user);
 
       return back();
     }

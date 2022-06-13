@@ -46,9 +46,9 @@
             </div>
           </div>
           <div class="w-full mt-4 sm:w-1/2 sm:pl-4 select-none">
-            <label for="title" class="block text-sm font-medium text-gray-500">Customer key</label>
+            <label for="title" class="block text-sm font-medium text-gray-500">Customer ssn</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-              {{ $order->user->key }}
+              {{ $order->user->ssn }}
             </div>
           </div>
           <div class="w-full mt-4">
@@ -57,13 +57,12 @@
           </div>
           <div class="w-full sm:w-1/2 sm:pr-4 mt-4">
             <label for="order_id" class="block text-sm font-medium text-gray-500">Order ID</label>
-            <input type="text" name="order_id" id="order_id" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->order_id }}" required="">
+            <input type="text" name="order_id" id="order_id" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->order_id }}">
           </div>
           <div class="w-full sm:w-1/2 sm:pl-4 mt-4">
             <label for="shipping_date" class="block text-sm font-medium text-gray-500">Shipping date</label>
             <input type="date" name="shipping_date" id="shipping_date" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md"
               value="{{ Carbon\Carbon::parse($order->shipping_date)->format('Y-m-d') }}"
-              min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"
               required="">
           </div>
           @if($order->note)

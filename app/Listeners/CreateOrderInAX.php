@@ -17,7 +17,11 @@ class CreateOrderInAX
      */
     public function handle(OrderCreated $event)
     {
-      if(env('APP_ENV') === 'local')
+      if($event->order->user->email_verified_at === NULL) {
+        Log::info('user not verified!');
+        return;
+      }
+      if(env('APP_ENV') === 'local' && $event->order->user->email_verified_at === NULL)
         return;
 
       Log::info('Requesting order #'.$event->order->id.' to AX');

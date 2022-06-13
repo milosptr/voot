@@ -37,6 +37,7 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.order-created', compact(['isCustomer' => $this->isCustomer]));
+      $subject = $this->isCustomer ? 'Voot: Your Order' : 'New Order on Voot';
+      return $this->subject($subject)->view('emails.order-created', compact(['isCustomer' => $this->isCustomer]));
     }
 }

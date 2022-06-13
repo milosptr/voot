@@ -1,17 +1,18 @@
 <?php
 
+use App\Models\User;
 use App\Models\Order;
 use App\Mail\OrderCreated;
+use App\Services\LisaAxService;
 use App\Http\Controllers\Web\Tags;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Products;
 use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
-use App\Models\User;
-use App\Services\LisaAxService;
-use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -127,6 +128,12 @@ Route::get('/register', function() {
   return view('auth.register');
 })->name('register');
 
+Route::get('/registration-pending', function() {
+  return view('auth.registration-pending');
+});
+Route::get('/registration-thanks', function() {
+  return view('auth.registration-thanks');
+});
 
 // Customer routes
 Route::prefix('/app')->middleware(['auth'])->group(function () {
@@ -135,6 +142,9 @@ Route::prefix('/app')->middleware(['auth'])->group(function () {
   });
   Route::get('/dashboard', function () {
       return view('customer.dashboard');
+  });
+  Route::get('/account', function () {
+      return view('customer.account');
   });
   Route::get('/orders', function () {
     return view('customer.orders');

@@ -32,6 +32,7 @@ class User extends Authenticatable
         'country',
         'phone',
         'logo',
+        'email_verified_at'
     ];
 
     /**
@@ -91,7 +92,7 @@ class User extends Authenticatable
         ->orWhere('key', 'LIKE', '%'.$search.'%');
       })
       ->where('role', 'customer')
-      ->orderBy('name')
+      ->orderBy('id', 'DESC')
       ->get();
 
         if($html)

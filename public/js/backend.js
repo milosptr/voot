@@ -22402,6 +22402,14 @@ if (document.getElementById('order-customer-filter')) {
   });
 }
 
+if (document.getElementById('order-customer-filter-status')) {
+  var _orderCustomerFilter = document.getElementById('order-customer-filter-status');
+
+  _orderCustomerFilter.addEventListener('change', function (e) {
+    e.target.value ? setUrlQueryString("status", e.target.value) : unsetUrlQueryString("status");
+  });
+}
+
 if (document.getElementById('products-category-search')) {
   if (window.location.search.length) searchProducts();
   var productsCategorySearch = document.getElementById('products-category-search');

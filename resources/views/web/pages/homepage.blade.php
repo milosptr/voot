@@ -24,7 +24,7 @@
     </div>
   </section>
 
-  <section class="hidden sm:block bg-primary-lightest h-80">
+  {{-- <section class="hidden sm:block bg-primary-lightest h-80">
     <div class="container relative">
       <div class="absolute left-0 top-0 w-full z-10 sm:-mt-24">
         <div class="sm:w-4/5 mx-auto ">
@@ -32,14 +32,14 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <section id="about-section" class="relative py-32">
     <div class="bg-hero-wave absolute top-0 left-0 h-screen w-full z-0 bg-cover bg-top bg-no-repeat" style="background-image: url('/images/waves-haikei-2.svg');"></div>
     <div class="container relative z-10">
       <div class="text-center sm:w-2/3 mx-auto">
-        <h2 class="text-5xl sm:text-6xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
-        <p class="mt-6 text-lg">{!! __('default.homepage_about') !!}</p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="block sm:inline-block mx-auto border border-primary py-3 sm:px-24 rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+        <h2 class="text-4xl sm:text-5xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
+        <p class="mt-6">{!! __('default.homepage_about') !!}</p>
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="block sm:inline-block mx-auto border border-primary py-2 sm:px-20 text-sm rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
             Read more about Voot
           </a>
       </div>
@@ -60,7 +60,7 @@
     </div>
   </section>
 
-   <section class="my-48">
+   {{-- <section class="my-48">
     <div class="container mx-auto relative">
       <div class="flex flex-col-reverse sm:flex-row items-center justify-between">
         <div class="sm:w-1/2 mt-12 sm:mt-0">
@@ -92,13 +92,8 @@
     <div class="container mx-auto relative">
       <div class="flex flex-col sm:flex-row items-center justify-between">
         <div class="sm:w-1/2 flex">
-          <div class="grid grid-cols-3 items-center justify-items-center gap-10 opacity-90">
-            <img src="/images/phone.svg" alt="phone" width="120" />
-            <img src="/images/envelope.svg" alt="envelope" width="120" />
-            <img src="/images/pencil.svg" alt="pencil" width="120" />
-            <img src="/images/chat.svg" alt="chat" width="120" />
-            <img src="/images/package.svg" alt="package" width="120" />
-            <img src="/images/store.svg" alt="store" width="120" />
+          <div class="w-3/4 items-center justify-items-center gap-10 opacity-90">
+            <img src="/images/contact-section.svg" alt="phone" width="100%" />
           </div>
         </div>
         <div class="sm:w-1/2">
@@ -114,11 +109,40 @@
         </div>
       </div>
     </div>
+   </section> --}}
+
+   <section id="">
+    <div class="container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <div class="bg-gray-100 rounded-md p-10">
+          <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide">
+            {{ __('default.services_title') }}
+          </h2>
+          <p class="mt-6 font-light sm:h-20">
+            {{ __('default.services_p1') }}
+          </p>
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+             {{ __('default.explore_services') }}
+          </a>
+        </div>
+        <div class="bg-gray-100 rounded-md p-10">
+          <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide">
+            {{ __('default.contact_title') }}
+          </h2>
+          <p class="mt-6 font-light sm:h-20">
+            {{ __('default.contact_p1') }}
+          </p>
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+             {{ __('default.contact_btn') }}
+          </a>
+        </div>
+      </div>
+    </div>
    </section>
 
-  <section class="my-32">
+  <section class="mt-10 mb-32">
     <div class="container mx-auto relative">
-      <div class="bg-gray-200 bg-opacity-80 rounded-md flex flex-col justify-center items-center py-12 px-8 sm:px-20">
+      <div class="bg-gray-100 bg-opacity-80 rounded-md flex flex-col justify-center items-center py-12 px-8 sm:px-20">
         <div class="w-full sm:w-3/4">
           <div class="flex justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="#52525b" viewBox="0 0 24 24"><path d="M4.908 17.137c1.504-2.31 1.779-4.45 1.681-5.688-6.132.101-5.696-6.449-1.39-6.449 1.83 0 3.801 1.338 3.801 4.275 0 2.724-1.412 5.845-4.092 7.862zm13 0c1.504-2.31 1.779-4.45 1.681-5.688-6.132.101-5.696-6.449-1.39-6.449 1.83 0 3.801 1.338 3.801 4.275 0 2.724-1.412 5.845-4.092 7.862zm-16.908 3.863c6.108-1.206 10-6.584 10-11.725 0-3.97-2.786-6.275-5.801-6.275-2.615 0-5.199 1.797-5.199 4.979 0 2.601 1.905 4.757 4.396 5.149-.217 2.004-2.165 4.911-4.38 5.746l.984 2.126zm13 0c6.108-1.206 10-6.584 10-11.725 0-3.97-2.786-6.275-5.801-6.275-2.615 0-5.199 1.797-5.199 4.979 0 2.601 1.905 4.757 4.396 5.149-.217 2.004-2.165 4.911-4.38 5.746l.984 2.126z"/></svg>
