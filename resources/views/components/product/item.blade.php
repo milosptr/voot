@@ -1,4 +1,4 @@
-<tr onclick="window.open('/backend/products/edit/{{ $product->id }}')" class="cursor-pointer hover:bg-gray-50">
+<tr onclick="window.open('/backend/products/edit/{{ isset($product->product_id) ? $product->product_id : $product->id }}')" class="cursor-pointer hover:bg-gray-50">
   <td class="px-6 py-4 whitespace-nowrap">
     <div class="flex items-center">
       <div class="h-10 w-10 rounded-md bg-center bg-contain bg-no-repeat" style="background-image: url('/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
