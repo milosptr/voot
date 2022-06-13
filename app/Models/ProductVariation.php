@@ -29,7 +29,8 @@ class ProductVariation extends Model
       $color = false;
       $colors = [
         'red', 'green', 'dark green', 'black', 'yellow', 'dark blue ', 'blue', 'gray', 'dark gray', 'white', 'White', 'brown', 'orange',
-        'rautt', 'rauður', 'rauÐur', 'grænt', 'grænn', 'grÆnn', 'dökkgrænn', 'svart', 'svartur', 'gult', 'gulur', 'dökkblátt', 'blátt', 'blár', 'blÁr', 'grátt', 'grár', 'dökkgrátt', 'hvÍtur', 'hvítur', 'hvítt', 'brúnn', 'brúnt', 'appelsínugult', 'appelsínugulur', 'appelsÍnugulur'
+        'rautt', 'rauður', 'rauÐur', 'grænt', 'grænn', 'grÆnn', 'dökkgrænn', 'svart', 'svartur', 'gult', 'gulur', 'dökkblátt', 'blátt', 'blár', 'blÁr', 'grátt', 'grár', 'dökkgrátt', 'hvÍtur', 'hvítur', 'hvítt', 'brúnn', 'brúnt', 'appelsínugult', 'appelsínugulur', 'appelsÍnugulur',
+        'bleikur', 'bleikt'
       ];
       foreach($variants as $v) {
         if(in_array($v, $colors))
@@ -45,6 +46,7 @@ class ProductVariation extends Model
 
       $mapper = [
         'red' => '#e53000',
+        'pink' => '#ff8da1',
         'green' => '#009700',
         'green-dark' => '#2d3c2f',
         'black' => '#111',
@@ -54,7 +56,7 @@ class ProductVariation extends Model
         'gray-dark' => '#7b7b7b',
         'gray' => '#c3c3c3',
         'white' => '#fff',
-        'brown' => '',
+        'brown' => '#731d1d',
         'orange-dark' => '#c1571d',
         'orange' => '#ee743c',
       ];
@@ -68,6 +70,8 @@ class ProductVariation extends Model
         'rautt' => 'red',
         'rauður' => 'red',
         'rauÐur' => 'red',
+        'bleikur' => 'pink',
+        'bleikt' => 'pink',
         'grænt' => 'green',
         'grænn' => 'green',
         'dökkgrænn' => 'green-dark',
