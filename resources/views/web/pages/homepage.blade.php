@@ -8,7 +8,7 @@
     <div class="container">
       <div class="relative text-center z-10">
         <h1 class="text-primary text-5xl sm:text-6xl tracking-wider leading-normal uppercase pt-32 pb-10 font-lora">{{ __('default.homepage_title') }}</h1>
-        <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-10 mt-32">
+        <div class="w-full grid grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-10 mt-32">
           @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
             <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
               <div class="w-2/3 mx-auto">
