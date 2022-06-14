@@ -29,7 +29,7 @@
   <section>
     <div class="container mx-auto border-t border-gray-200">
       <div class="mb-16 sm:my-32 flex flex-col sm:flex-row lg:justify-between">
-        <article class="w-full lg:w-96 pr-12 bg-white relative sm:border-r">
+        <article class="w-full lg:w-96 sm:pr-12 bg-white relative sm:border-r my-12 sm:my-0">
           <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Reykjavík</h5>
           <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
           <div class="con-fl justify-between">
@@ -49,7 +49,7 @@
             </div>
           </div>
         </article>
-        <article class="w-full lg:w-96 pl-12 bg-white relative sm:border-r">
+        <article class="w-full lg:w-96 sm:pl-12 bg-white relative sm:border-r py-12 sm:py-0 border-t sm:border-t-0">
           <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Akureyri</h5>
           <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
           <div class="con-fl justify-between">
@@ -69,7 +69,7 @@
             </div>
           </div>
         </article>
-        <article class="w-full lg:w-96 pl-12 bg-white relative">
+        <article class="w-full lg:w-96 sm:pl-12 bg-white relative py-12 sm:py-0 border-t sm:border-t-0">
           <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Ólafsvík</h5>
           <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
           <div class="con-fl justify-between">
