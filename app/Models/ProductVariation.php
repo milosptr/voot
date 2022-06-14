@@ -28,7 +28,7 @@ class ProductVariation extends Model
       $variants = explode('/', strtolower($variant['value']));
       $color = false;
       $colors = [
-        'red', 'green', 'dark green', 'black', 'yellow', 'dark blue ', 'blue', 'gray', 'dark gray', 'white', 'White', 'brown', 'orange',
+        'red', 'green', 'dark green', 'black', 'yellow', 'dark blue ', 'blue', 'gray', 'dark gray', 'white', 'White', 'brown', 'orange', 'dökkblár',
         'rautt', 'rauður', 'rauÐur', 'grænt', 'grænn', 'grÆnn', 'dökkgrænn', 'svart', 'svartur', 'gult', 'gulur', 'dökkblátt', 'blátt', 'blár', 'blÁr', 'grátt', 'grár', 'dökkgrátt', 'hvÍtur', 'hvítur', 'hvítt', 'brúnn', 'brúnt', 'appelsínugult', 'appelsínugulur', 'appelsÍnugulur',
         'bleikur', 'bleikt'
       ];
@@ -81,6 +81,7 @@ class ProductVariation extends Model
         'gult' => 'yellow',
         'gulur' => 'yellow',
         'dökkblátt' => 'blue-dark',
+        'dökkblár' => 'blue-dark',
         'blátt' => 'blue',
         'blár' => 'blue',
         'blÁr' => 'blue',
