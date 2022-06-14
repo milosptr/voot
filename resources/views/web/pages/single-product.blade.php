@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="mt-12 flex flex-wrap">
-    @if(count($product->documents) && count($product->information))
+    @if(count($product->documents) || count($product->information))
       <div class="w-full sm:w-1/3">
           <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Product Information</h4>
           @foreach($product->information as $info)

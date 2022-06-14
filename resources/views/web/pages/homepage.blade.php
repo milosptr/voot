@@ -33,7 +33,7 @@
       </div>
     </div>
   </section> --}}
-  <section id="about-section" class="relative py-32">
+  <section id="about-section" class="relative pb-64">
     <div class="bg-hero-wave absolute top-0 left-0 h-screen w-full z-0 bg-cover bg-top bg-no-repeat" style="background-image: url('/images/waves-haikei-2.svg');"></div>
     <div class="container relative z-10">
       <div class="text-center sm:w-2/3 mx-auto">
