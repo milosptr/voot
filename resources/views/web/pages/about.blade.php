@@ -35,15 +35,15 @@
           <div class="con-fl justify-between">
             <div class="table-con">
                 <div class="contact-info-ispod-mape">
-                  <p class="font-bold text-base text-gray-800 mt-3">Heimilisfang</p>
+                  <p class="font-bold text-base text-gray-800 mt-3">{{ __('default.address') }}</p>
                   <p class="text-base text-gray-800">Skarfagarðar 4, 104, Reykjavík, Ísland</p>
                 </div>
                 <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">Simi</p>
+                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.phone') }}</p>
                   <p class="text-base text-gray-800">+354 581 2222</p>
                 </div>
                 <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">Netfang</p>
+                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.email') }}</p>
                   <p class="text-base text-gray-800">voot@voot.is</p>
                 </div>
             </div>
@@ -55,15 +55,15 @@
           <div class="con-fl justify-between">
             <div class="table-con">
                 <div class="contact-info-ispod-mape">
-                  <p class="font-bold text-base text-gray-800 mt-3">Heimilisfang</p>
+                  <p class="font-bold text-base text-gray-800 mt-3">{{ __('default.address') }}</p>
                   <p class="text-base text-gray-800">Norðurtangi 1, 600, Akureyri, Ísland</p>
                 </div>
                 <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">Simi</p>
+                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.phone') }}</p>
                   <p class="text-base text-gray-800">+354 841 1322</p>
                 </div>
                 <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">Netfang</p>
+                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.email') }}</p>
                   <p class="text-base text-gray-800">fannar@voot.is</p>
                 </div>
             </div>
@@ -75,15 +75,15 @@
           <div class="con-fl justify-between">
             <div class="table-con">
                 <div class="contact-info-ispod-mape">
-                  <p class="font-bold text-base text-gray-800 mt-3">Heimilisfang</p>
+                  <p class="font-bold text-base text-gray-800 mt-3">{{ __('default.address') }}</p>
                   <p class="text-base text-gray-800">Ólafsbraut 19, 355, Ólafsvík, Ísland</p>
                 </div>
                 <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">Simi</p>
+                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.phone') }}</p>
                   <p class="text-base text-gray-800">+354 841 1205</p>
                 </div>
                 <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">Netfang</p>
+                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.email') }}</p>
                   <p class="text-base text-gray-800">bjossi@voot.is</p>
                 </div>
             </div>

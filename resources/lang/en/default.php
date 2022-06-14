@@ -21,6 +21,8 @@ return [
 
     'about_voot_title' => 'About Voot',
     'about_voot_short' => 'We make simple operations simpler with economical and varied products - and the farm focuses on what you do best!',
+    'about_p1' => "At Voot, we sell high-quality bait for all sizes of line boats, as well as fishing gear, safety and work clothes and leftover products for ships and boats of all sizes and types. From the beginning, we have placed great emphasis on meeting the demands of our customers with reliable service and high-quality products made for the most difficult conditions. In recent years, we have significantly expanded our product range and now serve a diverse group of customers, both Icelandic and foreign. We offer a wide range of consumables for the fishing industry and produce high-quality clothing for fish processing, both on land and at sea, under the Mar Wear brand.",
+    'about_p2' => "Voot's staff has extensive experience and knowledge of our products and the activities of our customers. Our offices are at Skarfagarður 4 in Reykjavík, Norðurtangi 1, Akureyri and Ólafsbraut 19, Ólafsvík.",
 
     'about_staff_title' => 'Staff Members',
 
