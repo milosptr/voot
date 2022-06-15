@@ -8,6 +8,7 @@
     <Staff v-if="page === 3" @saved="saved" />
     <Locations v-if="page === 4" @saved="saved" />
     <Config v-if="page === 5" @saved="saved" />
+    <TermsPages v-if="page === 6" @saved="saved" />
   </div>
 </template>
 
@@ -17,9 +18,10 @@
   import Staff from './Settings/Staff.vue'
   import Locations from './Settings/Locations.vue'
   import Config from './Settings/Config.vue'
+  import TermsPages from './Settings/TermsPages.vue'
 
   export default {
-    components: { ProductIcons, ProductTranslation, Staff, Locations, Config },
+    components: { ProductIcons, ProductTranslation, Staff, Locations, Config, TermsPages },
     data: () => ({
       page: 0,
     }),
@@ -35,6 +37,8 @@
           return 'Locations'
         if(this.page === 5)
           return 'Config'
+        if(this.page === 6)
+          return 'Terms Pages'
         return 'Select settings page from the left menu'
       }
     },
@@ -49,6 +53,8 @@
         this.page = 4
       if(location.pathname.includes('config'))
         this.page = 5
+      if(location.pathname.includes('pages'))
+        this.page = 6
     },
     methods: {
       saved() {

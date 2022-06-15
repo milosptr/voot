@@ -25,6 +25,7 @@
         "@tailwindcss/aspect-ratio": "^0.4.0",
         "autoprefixer": "^10.4.0",
         "dayjs": "^1.10.7",
+        "slugify": "^1.6.5",
         "tailwindcss": "^2.2.19",
         "v-calendar": "^3.0.0-alpha.6",
         "vue": "^3.2.27",

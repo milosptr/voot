@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Models\Page;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -135,16 +136,17 @@ Route::get('/registration-thanks', function() {
   return view('auth.registration-thanks');
 });
 
+
 // Customer routes
 Route::prefix('/app')->middleware(['auth'])->group(function () {
   Route::get('/', function () {
     return view('customer.dashboard');
   });
   Route::get('/dashboard', function () {
-      return view('customer.dashboard');
+    return view('customer.dashboard');
   });
   Route::get('/account', function () {
-      return view('customer.account');
+    return view('customer.account');
   });
   Route::get('/orders', function () {
     return view('customer.orders');
@@ -183,15 +185,21 @@ Route::prefix('/backend')->middleware(['admin'])->group(function () {
 });
 
 Route::get('/send/email', function() {
-    $order = Order::all()->first();
-    Mail::to('milosptr@icloud.com')->send(new OrderCreated($order));
+  $order = Order::all()->first();
+  Mail::to('milosptr@icloud.com')->send(new OrderCreated($order));
 
-    return 'Email sent Successfully';
+  return 'Email sent Successfully';
 });
 
 Route::get('email-template', function() { $password = 'As$5!2@lls)'; return view('emails.password-changed', compact('password')); });
 
 // Frontend + Language routes
+Route::get('/page/{slug}', function($slug) {
+  $page = Page::where('slug', $slug)->get()->first();
+  if(!isset($page))
+    return view('web.pages.404');
+  return view('web.pages.single-page', compact('page'));
+});
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localize' ]], function () {
 
   Route::get('/', [WebPages::class, 'index']);
@@ -213,7 +221,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
   Route::get('/{category}/{product}', [Products::class, 'index'])->name('product');
 
 });
-
 
 
 require __DIR__.'/auth.php';

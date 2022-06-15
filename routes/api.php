@@ -13,8 +13,10 @@ use App\Http\Controllers\SettingsIconsController;
 use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\Products;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TermsPagesController;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Web\Tags;
+use App\Models\Page;
 use App\Models\ProductCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -102,6 +104,11 @@ Route::delete('staff/{id}', [StaffController::class, 'destroy']);
 Route::get('locations', [LocationsController::class, 'index']);
 Route::post('locations', [LocationsController::class, 'store']);
 Route::delete('locations/{id}', [LocationsController::class, 'destroy']);
+
+// Pages
+Route::get('pages', [TermsPagesController::class, 'index']);
+Route::post('pages', [TermsPagesController::class, 'store']);
+Route::post('pages/{id}', [TermsPagesController::class, 'destroy']);
 
 // Clients
 Route::post('clients/search', [Users::class, 'search']);
