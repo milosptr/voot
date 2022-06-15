@@ -15,40 +15,46 @@
             </div>
             <div class="flex flex-col sm:flex-row gap-5 mt-6">
               <div class="w-full">
-                <label for="title" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="text" name="email" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->email }}" required="">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="text" name="email" id="email" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->email }}" required="">
               </div>
               <div class="w-full">
-                <label for="title" class="block text-sm font-medium text-gray-700">Phone</label>
-                <input type="text" name="phone" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->phone }}">
+                <label for="invoice_email" class="block text-sm font-medium text-gray-700">Invoice Email</label>
+                <input type="text" name="invoice_email" id="invoice_email" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->invoice_email }}">
               </div>
             </div>
             <div class="flex flex-col sm:flex-row gap-5 mt-6">
               <div class="w-full ">
-                <label for="title" class="block text-sm font-medium text-gray-700">Customer key</label>
-                <input type="text" name="key" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->key }}" required="">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <input type="text" name="phone" id="phone" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->phone }}" required="">
               </div>
               <div class="w-full ">
-                <label for="title" class="block text-sm font-medium text-gray-700">Customer SSN</label>
-                <input type="text" name="ssn" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->ssn }}" required="">
+                <label for="key" class="block text-sm font-medium text-gray-700">Customer key</label>
+                <input type="text" name="key" id="key" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->key }}" required="">
               </div>
             </div>
-            <div class="mt-6">
-              <label for="title" class="block text-sm font-medium text-gray-700">Street</label>
-              <input type="text" name="street" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->street }}">
+            <div class="flex flex-col sm:flex-row gap-5 mt-6">
+            <div class="w-full ">
+                <label for="ssn" class="block text-sm font-medium text-gray-700">Customer SSN</label>
+                <input type="text" name="ssn" id="ssn" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->ssn }}" required="">
+              </div>
+              <div class="w-full">
+                <label for="street" class="block text-sm font-medium text-gray-700">Street</label>
+                <input type="text" name="street" id="street" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->street }}">
+              </div>
             </div>
             <div class="flex flex-col sm:flex-row gap-5 mt-6">
               <div class="w-full ">
-                <label for="title" class="block text-sm font-medium text-gray-700">City</label>
-                <input type="text" name="city" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->city }}">
+                <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+                <input type="text" name="city" id="city" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->city }}">
               </div>
               <div class="w-full">
-                <label for="title" class="block text-sm font-medium text-gray-700">ZIP</label>
-                <input type="text" name="zip" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->zip }}">
+                <label for="zip" class="block text-sm font-medium text-gray-700">ZIP</label>
+                <input type="text" name="zip" id="zip" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->zip }}">
               </div>
               <div class="w-full ">
-                <label for="title" class="block text-sm font-medium text-gray-700">Country</label>
-                <input type="text" name="country" id="title" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->country }}">
+                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                <input type="text" name="country" id="country" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->country }}">
               </div>
             </div>
             <div class="flex flex-wrap mt-10">

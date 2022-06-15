@@ -38,6 +38,14 @@ class Users extends Controller
       return back();
     }
 
+    public function invoiceEmail(Request $request, $id)
+    {
+      $user = User::find($id);
+      $user->update($request->only('invoice_email'));
+
+      return back();
+    }
+
     public function logo(Request $request, $id)
     {
       $user = User::find($id);
