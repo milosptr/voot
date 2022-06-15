@@ -57,7 +57,7 @@
       },
       save() {
         const pages = this.pages.filter((p) => p.title)
-        axios.post('/api/pages/', this.pages)
+        axios.post('/api/pages', this.pages)
         .then((res) => {
           this.$emit('saved')
         })

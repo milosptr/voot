@@ -20182,7 +20182,7 @@ var slugify = __webpack_require__(/*! slugify */ "./node_modules/slugify/slugify
       var pages = this.pages.filter(function (p) {
         return p.title;
       });
-      axios.post('/api/pages/', this.pages).then(function (res) {
+      axios.post('/api/pages', this.pages).then(function (res) {
         _this2.$emit('saved');
       });
     }
