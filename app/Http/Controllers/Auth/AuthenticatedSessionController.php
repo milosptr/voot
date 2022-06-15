@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         if(auth()->user()->role === "customer")
           return redirect()->intended($request->get('redirect_to') ?: RouteServiceProvider::CUSTOMER_DASHBOARD);
-        return redirect()->intended(RouteServiceProvider::ADMIN_DASHBOARD);
+        return redirect()->intended($request->get('redirect_to') ?: RouteServiceProvider::ADMIN_DASHBOARD);
     }
 
     /**

@@ -12,6 +12,7 @@ use App\Http\Controllers\ProductFavouriteController;
 use App\Http\Controllers\SettingsIconsController;
 use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\Products;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TermsPagesController;
 use App\Http\Controllers\Users;
@@ -116,3 +117,6 @@ Route::post('clients/search', [Users::class, 'search']);
 // Config
 Route::get('/config', [ConfigController::class, 'index']);
 Route::post('/config', [ConfigController::class, 'update']);
+
+// Reports
+Route::get('/reports/orders', [ReportsController::class, 'orders']);

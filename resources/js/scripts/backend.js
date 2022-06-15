@@ -1,9 +1,15 @@
 const { default: axios } = require("axios")
-
+const dayjs = require("dayjs")
 // Admin Dashboard
 if(document.querySelector('.admin-dashboard')) {
   document.querySelectorAll('[href="'+window.location.pathname+'"]')[0]?.classList.add('bg-primary-light')
   document.querySelectorAll('[href="'+window.location.pathname+'"]')[1]?.classList.add('bg-primary-light')
+
+  if(document.querySelector('.format-the-date')) {
+    document.querySelectorAll('.format-the-date').forEach((e) => {
+      e.innerText = dayjs(e.innerText).format('DD MMM YY') + ' at ' + dayjs(e.innerText).format('HH:mm')
+    })
+  }
 
   if(document.querySelector('.delete-product-btn')) {
     const deleteBtns = document.querySelectorAll('.delete-product-btn')
