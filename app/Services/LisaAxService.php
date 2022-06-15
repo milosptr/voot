@@ -64,21 +64,21 @@ class LisaAxService {
           <tem:CreateSalesOrder>
             <tem:order>
               <tem:CustomerID>1010105VOB</tem:CustomerID>
-              <tem:Comments>Customer desired delivery address: $order->shipping_address</tem:Comments>
+              <tem:Comments>Customer desired delivery address: '.$order->shipping_address.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
-              <tem:ReferenceNumber>Ref001 Milos Test</tem:ReferenceNumber>
+              <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
               <tem:PaymModeCode>ST/GR</tem:PaymModeCode>
-              <tem:SSN>5555559999</tem:SSN>
+              <tem:SSN>'.$customer->ssn.'</tem:SSN>
               <!--Kennitala needed for vefsala (800100HIS):-->
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
-                <tem:Name>$customer->name</tem:Name>
-                <tem:Address>$customer->address</tem:Address>
-                <tem:Zipcode>$customer->zip</tem:Zipcode>
-                <tem:Country>$customer->country</tem:Country>
-                <tem:ContactName>$customer->name</tem:ContactName>
-                <tem:ContactPhone>$customer->phone</tem:ContactPhone>
-                <tem:ContactEmail>$customer->email</tem:ContactEmail>
+                <tem:Name>'.$customer->name.'</tem:Name>
+                <tem:Address>'.$customer->address.'</tem:Address>
+                <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>
+                <tem:Country>'.$customer->country.'</tem:Country>
+                <tem:ContactName>'.$customer->name.'</tem:ContactName>
+                <tem:ContactPhone>'.$customer->phone.'</tem:ContactPhone>
+                <tem:ContactEmail>'.$customer->email.'</tem:ContactEmail>
               </tem:DeliveryInfo>
               <tem:SalesOrderLines>
       ';
