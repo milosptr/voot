@@ -59,7 +59,7 @@
                 @include('components.order.statuses', ['status' => $order->order_status, 'class' => 'py-1 px-2 mb-1'])
             </td>
             <td class="px-6 py-3 whitespace-nowrap text-center">
-                @include('components.order.ax-statuses', ['status' => $order->order_status, 'class' => 'py-1 px-2 mb-1'])
+                @include('components.order.ax-statuses', ['status' => $order->ax_status, 'class' => 'py-1 px-2 mb-1'])
             </td>
             <td class="px-6 py-3 whitespace-nowrap">
               {{ Carbon\Carbon::parse($order->created_at)->format('d.m.Y. H:s') }}
