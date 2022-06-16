@@ -21,10 +21,11 @@ class Categories extends JsonResource
           'description' => $this->description,
           'slug' => $this->slug,
           'parent_id' => $this->parent_id,
-          'parent' => $this->parent(),
-          'children' => $this->tree,
           'order' => $this->order,
           'available' => $this->available,
+          'children' => isset($this->children) ? $this->children : $this->tree(),
+          'total_products' => count($this->products),
+          'featured_image' => $this->image,
       ];
   }
 }

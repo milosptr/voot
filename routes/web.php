@@ -191,7 +191,7 @@ Route::get('/send/email', function() {
   return 'Email sent Successfully';
 });
 
-Route::get('email-template', function() { $password = 'As$5!2@lls)'; return view('emails.password-changed', compact('password')); });
+Route::get('email-template', function() {  return view('emails.order-created'); });
 
 // Frontend + Language routes
 Route::get('/page/{slug}', function($slug) {

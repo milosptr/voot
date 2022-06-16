@@ -13,6 +13,7 @@ import ProductTable from './components/ProductTable.vue'
 import ProductIcons from './components/ProductIcons.vue'
 import Settings from './components/Settings.vue'
 import OrdersChart from './components/OrdersChart.vue'
+import Categories from './components/Categories.vue'
 import { CKEditor } from "@ckeditor/ckeditor5-vue"
 
 if(document.getElementById('variations-app')) {
@@ -26,6 +27,12 @@ if(document.getElementById('media-upload')) {
     components: { Media },
     template: `<Media />`
   }).mount("#media-upload");
+}
+if(document.getElementById('adminCategories')) {
+  createApp({
+    components: { Categories },
+    template: `<Categories />`
+  }).mount("#adminCategories");
 }
 
 if(document.getElementById('product-tags')) {

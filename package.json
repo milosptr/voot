@@ -27,6 +27,7 @@
         "autoprefixer": "^10.4.0",
         "chart.js": "^3.8.0",
         "dayjs": "^1.10.7",
+        "he-tree-vue": "^3.0.3",
         "slugify": "^1.6.5",
         "tailwindcss": "^2.2.19",
         "v-calendar": "^3.0.0-alpha.6",

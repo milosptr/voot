@@ -45,6 +45,7 @@ Route::post('product-category', [CategoriesController::class, 'store']);
 Route::post('product-category/{id}', [CategoriesController::class, 'update']);
 Route::post('product-category/delete/{id}', [CategoriesController::class, 'destroy']);
 Route::post('product-category-order', [CategoriesController::class, 'reorder']);
+Route::post('sorted-categories', [CategoriesController::class, 'sortCategories']);
 
 // Product icons
 Route::get('settings-icons', [SettingsIconsController::class, 'index']);

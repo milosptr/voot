@@ -35,6 +35,26 @@ class Category extends Model
       return Category::where('parent_id', $this->id)->get();
     }
 
+    public static function formatWithSubcategories()
+    {
+      $category = Category::where('parent_id', 0)->get();
+      foreach($category as $cat) {
+        $cat->children = $cat->subcategory();
+        $cat->total_products = count($cat->products);
+        $cat->featured_image = $cat->image;
+        foreach($cat->children as $subcat) {
+          $subcat->children = $subcat->subcategory();
+          $subcat->total_products = count($subcat->products);
+          $subcat->featured_image = $subcat->image;
+          foreach($subcat->children as $subsubcat) {
+            $subsubcat->total_products = count($subsubcat->products);
+            $subsubcat->featured_image = $subsubcat->image;
+          }
+        }
+      }
+      return $category;
+    }
+
     public static function tree()
     {
       $allCategories = Category::get();

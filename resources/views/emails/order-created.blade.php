@@ -1,3 +1,6 @@
+@php
+  $order = App\Models\Order::orderBy('id', 'DESC')->get()[1];
+@endphp
 <!doctype html>
 <html>
   <head>
@@ -106,7 +109,7 @@
       <tr>
         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;" valign="top">&nbsp;</td>
         <td class="container" style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; max-width: 580px; padding: 10px; width: 580px; margin: 0 auto;" width="580" valign="top">
-          <div class="content" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 580px; padding: 10px;">
+          <div class="content" style="box-sizing: border-box; display: block; margin: 0 auto; max-width: 680px; padding: 10px;">
 
             <!-- START CENTERED WHITE CONTAINER -->
             <table role="presentation" class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff; border-radius: 3px; width: 100%;" width="100%">
@@ -127,15 +130,32 @@
                          @else
                           <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">You have received an order from Voot website. The order is as follows:</p>
                          @endif
-                         @foreach($order->order as $o)
-                          @php
-                            $product = App\Models\Inventory::where('sku', $o['sku'])->first();
-                            $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
-                          @endphp
-                          <a href="/product/{{ $pv->product->slug }}" target="_blank" style="text-decoration: none; display:block; font-family: sans-serif; font-size: 14px; font-weight: 500; margin: 0; padding: 5px; border-top: 1px solid #eee; color: #1d68a7;">
-                            {{ $product->name }} <span class="font-medium">( x{{ $o['qty'] }} )</span>
-                          </a>
-                        @endforeach
+                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
+                          <tr>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">SKU</td>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Name</td>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;text-align:center;" valign="center">Qty</td>
+                          </tr>
+                          @foreach($order->order as $o)
+                            @php
+                              $product = App\Models\Inventory::where('sku', $o['sku'])->first();
+                              $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
+                            @endphp
+                            <tr>
+                              <td style="font-family: sans-serif; font-size: 13px; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
+                                {{ $o['sku'] }}
+                              </td>
+                              <td style="font-family: sans-serif; font-size: 13px; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
+                                <a href="{{ env('APP_URL') }}/product/{{ $pv->product->slug }}" target="_blank" style="text-decoration: none; display:block; font-family: sans-serif; font-weight: 500; margin: 0;padding: 6px 0;color: #1d68a7;">
+                                  {{ $product->name }}
+                                </a>
+                              </td>
+                              <td style="font-family: sans-serif; font-size: 13px; vertical-align: center; border-bottom: 1px solid #eee;text-align:center;" valign="center">
+                                {{ $o['qty'] }}
+                              </td>
+                            </tr>
+                          @endforeach
+                        </table>
                         <p style="margin:0;border-top: 1px solid #eee;"></p>
                         @if($order->note)
                         <p style="padding-top:15px; margin-top:0;"><span style="font-weight: 600;color:#555">Note:</span> {{ $order->note }}<p>
