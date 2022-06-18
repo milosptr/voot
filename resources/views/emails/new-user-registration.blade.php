@@ -112,6 +112,7 @@
               <tr>
                 <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px; border-top: 8px solid #214b76;border-bottom: 8px solid #214b76;" valign="top">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
+                     @include('common.email.header')
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
                         <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">New User Registraton</h1>
@@ -130,16 +131,8 @@
             </table>
             <!-- END CENTERED WHITE CONTAINER -->
 
-            <!-- START FOOTER -->
-            <div class="footer" style="clear: both; margin-top: 10px; text-align: center; width: 100%;">
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
-                <tr>
-                  <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" valign="top" align="center">
-                    <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Sent from Voot website</span>
-                  </td>
-                </tr>
-              </table>
-            </div>
+             <!-- START FOOTER -->
+            @include('common.email.footer')
             <!-- END FOOTER -->
 
           </div>
