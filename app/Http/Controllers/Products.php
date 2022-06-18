@@ -39,11 +39,16 @@ class Products extends Controller
         $query->whereLike(['name', 'sku', 'english_name'], $request->get('s'));
       }
 
+      if($request->get('rawsearch') === true) {
+        return ResourcesProducts::collection($query->get());
+      }
+
       $query->orderBy('updated_at', 'DESC');
       $products = ResourcesProducts::collection($query->paginate());
 
       if($request->has('type') && $request->get('type') === 'json')
         return $query->get();
+
 
       return view('components.product.list', compact('products'));
     }

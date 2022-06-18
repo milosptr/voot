@@ -78,7 +78,7 @@ class LisaAxService {
                 <tem:Country>'.$customer->country.'</tem:Country>
                 <tem:ContactName>'.$customer->name.'</tem:ContactName>
                 <tem:ContactPhone>'.$customer->phone.'</tem:ContactPhone>
-                <tem:ContactEmail>'.$customer->email.'</tem:ContactEmail>
+                <tem:ContactEmail>'.( isset($customer->invoice_email) ? $customer->invoice_email : $customer->email ).'</tem:ContactEmail>
               </tem:DeliveryInfo>
               <tem:SalesOrderLines>
       ';

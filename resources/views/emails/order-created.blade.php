@@ -102,6 +102,22 @@
             border-color: #34495e !important;
           }
         }
+        table.body .fs-13 {
+          font-size: 13px;
+        }
+
+        @media(max-width: 450px) {
+          table.body .fs-13 {
+            font-size: 13px!important;
+          }
+          table.body p,
+          table.body span,
+          .footer table *,
+          .footer table span  {
+            font-size: 14px!important;
+          }
+
+        }
     </style>
   </head>
   <body style="background-color: #f6f6f6; font-family: sans-serif; -webkit-font-smoothing: antialiased; font-size: 14px; line-height: 1.4; margin: 0; padding: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;">
@@ -116,8 +132,9 @@
 
               <!-- START MAIN CONTENT AREA -->
               <tr>
-                <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px; border-top: 8px solid #214b76;border-bottom: 8px solid #214b76;" valign="top">
+                <td class="wrapper" style="background: #fff; font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px; border-top: 8px solid #214b76;border-bottom: 8px solid #214b76;" valign="top">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
+                    @include('common.email.header')
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
                         @if(isset($isCustomer) && $isCustomer)
@@ -142,15 +159,15 @@
                               $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
                             @endphp
                             <tr>
-                              <td style="font-family: sans-serif; font-size: 13px; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
+                              <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
                                 {{ $o['sku'] }}
                               </td>
-                              <td style="font-family: sans-serif; font-size: 13px; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
-                                <a href="{{ env('APP_URL') }}/product/{{ $pv->product->slug }}" target="_blank" style="text-decoration: none; display:block; font-family: sans-serif; font-weight: 500; margin: 0;padding: 6px 0;color: #1d68a7;">
+                              <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
+                                <a href="{{ env('APP_URL') }}/product/{{ $pv->product->slug }}" target="_blank" class="fs-13" style="text-decoration: none; display:block; font-family: sans-serif; font-weight: 500; margin: 0;padding: 6px 0;color: #1d68a7;">
                                   {{ $product->name }}
                                 </a>
                               </td>
-                              <td style="font-family: sans-serif; font-size: 13px; vertical-align: center; border-bottom: 1px solid #eee;text-align:center;" valign="center">
+                              <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee;text-align:center;" valign="center">
                                 {{ $o['qty'] }}
                               </td>
                             </tr>
@@ -212,6 +229,7 @@
                         </table>
                       </td>
                     </tr>
+                    @include('common.email.newsletter')
                   </table>
                 </td>
               </tr>
@@ -221,15 +239,7 @@
             <!-- END CENTERED WHITE CONTAINER -->
 
             <!-- START FOOTER -->
-            <div class="footer" style="clear: both; margin-top: 10px; text-align: center; width: 100%;">
-              <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
-                <tr>
-                  <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" valign="top" align="center">
-                    <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Sent from Voot website</span>
-                  </td>
-                </tr>
-              </table>
-            </div>
+            @include('common.email.footer')
             <!-- END FOOTER -->
 
           </div>

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\Page;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Mail\OrderCreated as OrderCreatedMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -192,6 +193,11 @@ Route::get('/send/email', function() {
 });
 
 Route::get('email-template', function() {  return view('emails.order-created'); });
+Route::get('send-email-order', function() {
+  $order = App\Models\Order::all()->last();
+  Mail::to('milosptr@icloud.com')
+        ->send(new OrderCreatedMail($order));
+});
 
 // Frontend + Language routes
 Route::get('/page/{slug}', function($slug) {

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\LocationsController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAssets;
 use App\Http\Controllers\ProductFavouriteController;
@@ -119,6 +120,11 @@ Route::post('clients/search', [Users::class, 'search']);
 // Config
 Route::get('/config', [ConfigController::class, 'index']);
 Route::post('/config', [ConfigController::class, 'update']);
+
+// Newsletter
+Route::get('newsletter', [NewsletterController::class, 'index']);
+Route::post('newsletter', [NewsletterController::class, 'store']);
+Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy']);
 
 // Reports
 Route::get('/reports/orders', [ReportsController::class, 'orders']);
