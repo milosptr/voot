@@ -126,8 +126,10 @@ Route::post('pages/{id}', [TermsPagesController::class, 'destroy']);
 Route::post('clients/search', [Users::class, 'search']);
 
 // Config
-Route::get('/config', [ConfigController::class, 'index']);
-Route::post('/config', [ConfigController::class, 'update']);
+Route::get('/config', [ConfigController::class, 'indexAll']);
+Route::get('/config/{key}', [ConfigController::class, 'index']);
+Route::post('/config', [ConfigController::class, 'updateOrStore']);
+Route::post('/configs', [ConfigController::class, 'update']);
 
 // Newsletter
 Route::get('newsletter', [NewsletterController::class, 'index']);

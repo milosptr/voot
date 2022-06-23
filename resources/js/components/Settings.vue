@@ -10,6 +10,7 @@
     <Config v-if="page === 5" @saved="saved" />
     <TermsPages v-if="page === 6" @saved="saved" />
     <Newsletter v-if="page === 7" @saved="saved" />
+    <HomepageProducts v-if="page === 8" @saved="saved" />
   </div>
 </template>
 
@@ -21,9 +22,10 @@
   import Config from './Settings/Config.vue'
   import TermsPages from './Settings/TermsPages.vue'
   import Newsletter from './Settings/Newsletter.vue'
+  import HomepageProducts from './Settings/HomepageProducts.vue'
 
   export default {
-    components: { ProductIcons, ProductTranslation, Staff, Locations, Config, TermsPages, Newsletter },
+    components: { ProductIcons, ProductTranslation, Staff, Locations, Config, TermsPages, Newsletter, HomepageProducts },
     data: () => ({
       page: 0,
     }),
@@ -43,6 +45,8 @@
           return 'Terms Pages'
         if(this.page === 7)
           return 'Newsletter Offer'
+        if(this.page === 8)
+          return 'Homepage Products'
         return 'Select settings page from the left menu'
       }
     },
@@ -61,6 +65,8 @@
         this.page = 6
       if(location.pathname.includes('newsletter'))
         this.page = 7
+      if(location.pathname.includes('homepage-products'))
+        this.page = 8
     },
     methods: {
       saved() {

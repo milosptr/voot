@@ -7,9 +7,23 @@ use Illuminate\Http\Request;
 
 class ConfigController extends Controller
 {
-    public function index()
+    public function indexAll()
     {
       return Config::all();
+    }
+
+    public function index($key)
+    {
+      return Config::where('key', $key)->get();
+    }
+
+    public function updateOrStore(Request $request)
+    {
+      if(!$request->get('id')) {
+        return Config::create($request->all());
+      }
+      $config = Config::find($request->get('id'));
+      return $config->update($request->all());
     }
 
     public function update(Request $request)

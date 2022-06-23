@@ -39,6 +39,10 @@ class Products extends Controller
         $query->whereLike(['name', 'sku', 'english_name'], $request->get('s'));
       }
 
+      if($request->has('ids')) {
+        $query->whereIn('id', json_decode($request->get('ids')));
+      }
+
       if($request->get('rawsearch') === true) {
         return ResourcesProducts::collection($query->get());
       }

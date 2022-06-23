@@ -33,7 +33,7 @@
         return key.replaceAll('_', ' ');
       },
       save() {
-        axios.post('/api/config', this.config)
+        axios.post('/api/configs', this.config)
           .then((res) => {
             this.$emit('saved')
           })
