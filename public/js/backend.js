@@ -24465,6 +24465,13 @@ if (document.querySelectorAll('[data-link]').length) {
   });
 }
 
+if (document.querySelector('.show-history-btn')) {
+  document.querySelector('.show-history-btn').addEventListener('click', function (e) {
+    document.querySelector('.history-box').style.height = 'auto';
+    document.querySelector('.show-history-btn').remove();
+  });
+}
+
 if (document.getElementById('products-category-filter')) {
   var productsCategoryFilter = document.getElementById('products-category-filter');
   productsCategoryFilter.addEventListener('change', function (e) {

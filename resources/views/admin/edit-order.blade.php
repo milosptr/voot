@@ -48,7 +48,7 @@
           <div class="w-full mt-4 sm:w-1/2 sm:pl-4 select-none">
             <label for="title" class="block text-sm font-medium text-gray-500">Customer ssn</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-              {{ $order->user->ssn }}
+              {{ $order->user->ssn ?? 'None' }}
             </div>
           </div>
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4 select-none">
@@ -65,11 +65,11 @@
           </div>
           <div class="w-full mt-4">
             <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
-            <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address }}" required="">
+            <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address === ',  ,' ? 'None' : $order->shipping_address }}" required="">
           </div>
           <div class="w-full sm:w-1/2 sm:pr-4 mt-4">
             <label for="order_id" class="block text-sm font-medium text-gray-500">Order ID</label>
-            <input type="text" name="order_id" id="order_id" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->order_id }}">
+            <input type="text" name="order_id" id="order_id" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" placeholder="{{ $order->id }}" value="{{ $order->order_id }}">
           </div>
           <div class="w-full sm:w-1/2 sm:pl-4 mt-4">
             <label for="shipping_date" class="block text-sm font-medium text-gray-500">Shipping date</label>
@@ -107,16 +107,21 @@
   <section id="order-history">
     <div class="container">
      <div class="">
-        <div class="mt-12 mb-2 text-gray-500">History</div>
-        @foreach($order->activityLog as $log)
-          <div class="text-xs text-gray-400 mb-2">
-            <span class="text-gray-500">{{ isset($log->user) ? $log->user->name : '/' }} at {{ Carbon\Carbon::parse($log->created_at)->format('m/d/Y H:m:s') }} </span>
-            <br>
-            <span class="tracking-wide"> {{ str_replace('}', '', str_replace('{', '', $log->from)) }}</span>
-            <br>
-            <span class="tracking-wide"> {{ str_replace('}', '', str_replace('{', '', $log->to)) }}</span>
-          </div>
-        @endforeach
+        <div class="text-gray-500 mt-12 mb-2">History</div>
+        <div class="history-box overflow-hidden" style="height:0;">
+          @foreach($order->activityLog as $log)
+            <div class="text-xs text-gray-400 mb-2">
+              <span class="text-gray-500">{{ isset($log->user) ? $log->user->name : '/' }} at {{ Carbon\Carbon::parse($log->created_at)->format('m/d/Y H:m:s') }} </span>
+              <br>
+              <span class="tracking-wide"> {{ str_replace('}', '', str_replace('{', '', $log->from)) }}</span>
+              <br>
+              <span class="tracking-wide"> {{ str_replace('}', '', str_replace('{', '', $log->to)) }}</span>
+            </div>
+          @endforeach
+        </div>
+        <div class="show-history-btn inline-block px-4 py-1 text-xs bg-gray-200 border border-gray-300 rounded-md cursor-pointer text-gray-500 uppercase tracking-wide">
+          Show History
+        </div>
      </div>
     </div>
   </section>
