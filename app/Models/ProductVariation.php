@@ -29,7 +29,7 @@ class ProductVariation extends Model
       $color = false;
       $colors = [
         'red', 'green', 'dark green', 'black', 'yellow', 'dark blue ', 'blue', 'gray', 'dark gray', 'white', 'White', 'brown', 'orange', 'dökkblár',
-        'rautt', 'rauður', 'rauÐur', 'grænt', 'grænn', 'grÆnn', 'dökkgrænn', 'svart', 'svartur', 'gult', 'gulur', 'dökkblátt', 'blátt', 'blár', 'blÁr', 'grátt', 'grár', 'dökkgrátt', 'hvÍtur', 'hvítur', 'hvítt', 'brúnn', 'brúnt', 'appelsínugult', 'appelsínugulur', 'appelsÍnugulur',
+        'rautt', 'rauður', 'rauÐur', 'grænt', 'grænn', 'grÆnn', 'dökkgrænn', 'svart', 'svartur', 'gult', 'gulur', 'dökkblátt', 'blátt', 'blár','bláir', 'blÁr', 'grátt', 'grár', 'dökkgrátt', 'hvÍtur', 'hvítur', 'hvítt', 'brúnn', 'brúnt', 'appelsínugult', 'appelsínugulur', 'appelsÍnugulur',
         'bleikur', 'bleikt'
       ];
       foreach($variants as $v) {
@@ -84,6 +84,7 @@ class ProductVariation extends Model
         'dökkblár' => 'blue-dark',
         'blátt' => 'blue',
         'blár' => 'blue',
+        'bláir' => 'blue',
         'blÁr' => 'blue',
         'grátt' => 'gray',
         'grár' => 'gray',
