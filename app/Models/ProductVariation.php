@@ -86,6 +86,7 @@ class ProductVariation extends Model
         'blár' => 'blue',
         'bláir' => 'blue',
         'blÁr' => 'blue',
+        'blár' => 'blue',
         'grátt' => 'gray',
         'grár' => 'gray',
         'dökkgrátt' => 'gray-dark',
