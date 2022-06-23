@@ -108,13 +108,11 @@ if(document.getElementById('products-category-search')){
 
 if (document.getElementById('clients-search')) {
   if (window.location.search.length) searchClients();
-  var clientSearch = document.getElementById('clients-search');
-  var onSearch = debounce(function () {
-    var search = document.getElementById('clients-search').value;
-    setUrlQueryString('s', search, 0);
+  const clientSearch = document.getElementById('clients-search');
+  clientSearch.addEventListener('change', (e) => {
+    setUrlQueryString('s', e.target.value, 0);
     searchClients()
-  }, 450);
-  clientSearch.addEventListener('keydown', onSearch);
+  })
 }
 
 if(document.getElementById('fileDrop')) {

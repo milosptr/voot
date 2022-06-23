@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OrderController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TermsPagesController;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Web\Tags;
+use App\Models\Inventory;
 use App\Models\Page;
 use App\Models\ProductCategory;
 use App\Models\User;
@@ -66,6 +68,9 @@ Route::post('products/update', [Products::class, 'updateColumn']);
 Route::post('products/search', [Products::class, 'search']);
 Route::delete('product-variations/{id}', [Products::class, 'destroyVariant']);
 
+// Inventory
+Route::get('check-sku/{sku}', [InventoryController::class, 'checkSku']);
+
 // Favourites
 Route::get('favourites/{product}/{user}', [ProductFavouriteController::class, 'index']);
 Route::post('favourites', [ProductFavouriteController::class, 'store']);
@@ -86,9 +91,12 @@ Route::post('/add-to-cart', [CartController::class, 'store'])->name('addToCart')
 Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('removeFromCart');
 
 // Order
-Route::get('/orders/{id}/reorder', [OrderController::class, 'reorder']);
+Route::get('orders/{id}/reorder', [OrderController::class, 'reorder']);
+Route::get('orders/{id}/products', [OrderController::class, 'products']);
+Route::get('orders/{id}/notify', [OrderController::class, 'notify']);
 Route::post('request-order/{id}', [OrderController::class, 'store']);
 Route::post('request-order/update/{id}', [OrderController::class, 'update']);
+Route::post('request-order/change/{id}', [OrderController::class, 'change']);
 
 // Customer
 Route::get('customer-info/{id}', [Users::class, 'index'])->name('customerInfo');

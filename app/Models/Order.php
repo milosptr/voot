@@ -58,7 +58,22 @@ class Order extends Model
       return Location::find($this->pickup_location)->fullAddress();
     }
 
-
+    public function getProducts()
+    {
+      $skus = array_column($this->order, 'sku');
+      $product_ids = ProductVariation::whereIn('product_variations.sku', $skus)->pluck('product_id');
+      return Product::whereIn('products.id', $product_ids)
+                ->select('products.*', 'inventory.name as full_name', 'product_variations.sku as sku')
+                ->join('product_variations', function($q) use($skus) {
+                  $q->on('product_variations.product_id', '=', 'products.id')
+                    ->whereIn('product_variations.sku', $skus);
+                  })
+                  ->leftJoin('inventory', function($q) {
+                    $q->on('product_variations.sku', '=', 'inventory.sku');
+                })
+                ->with('media')
+                ->get();
+    }
 
     public static function statusText($status)
     {
@@ -78,6 +93,19 @@ class Order extends Model
         5 => 'bg-orange-200 text-orange-400 border-1 border-orange-200',
       ];
       return $status !== null ? ($classes . ' ' . $mapper[$status]) : $classes;
+    }
+
+    public static function slugifyStatus($status)
+    {
+      $statuses = [
+        0 => 'requested',
+        1 => 'accepted',
+        2 => 'in-progress',
+        3 => 'on-delivery',
+        4 => 'done',
+        5 => 'pending',
+      ];
+      return $statuses[$status];
     }
 
     public static function statuses()

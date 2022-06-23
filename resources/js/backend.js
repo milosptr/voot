@@ -3,6 +3,7 @@ require('./bootstrap')
 require('./scripts/backend')
 
 import { createApp } from "vue"
+
 import Variations from './components/Variations/Variations.vue'
 import Media from './components/Media/Media.vue'
 import CustomerLogo from './components/Media/CustomerLogo.vue'
@@ -14,6 +15,7 @@ import ProductIcons from './components/ProductIcons.vue'
 import Settings from './components/Settings.vue'
 import OrdersChart from './components/OrdersChart.vue'
 import Categories from './components/Categories.vue'
+import EditOrder from './components/EditOrder.vue'
 import { CKEditor } from "@ckeditor/ckeditor5-vue"
 
 if(document.getElementById('variations-app')) {
@@ -90,6 +92,13 @@ if(document.getElementById('ordersChart')) {
     template: `<OrdersChart />`
   })
   .mount("#ordersChart")
+}
+if(document.getElementById('edit-order')) {
+  createApp({
+    components: { EditOrder },
+    template: `<EditOrder />`
+  })
+  .mount("#edit-order")
 }
 
 

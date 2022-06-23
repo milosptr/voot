@@ -51,6 +51,18 @@
               {{ $order->user->ssn }}
             </div>
           </div>
+          <div class="w-full sm:w-1/2 mt-4 sm:pr-4 select-none">
+            <label for="email" class="block text-sm font-medium text-gray-500">Customer email</label>
+            <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
+              {{ $order->user->email }}
+            </div>
+          </div>
+          <div class="w-full mt-4 sm:w-1/2 sm:pl-4 select-none">
+            <label for="invoice_email" class="block text-sm font-medium text-gray-500">Customer invoice email</label>
+            <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
+              {{ $order->user->invoice_email ?? 'None' }}
+            </div>
+          </div>
           <div class="w-full mt-4">
             <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
             <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address }}" required="">
@@ -73,27 +85,21 @@
               </div>
             </div>
           @endif
-          <div class="w-full mt-8">
+          <div class="w-full flex items-center gap-5 mt-8">
             <button type="submit" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
               Update order
             </button>
+            <a href="/api/orders/{{ $order->id }}/notify" class="cursor-pointer text-gray-700 border border-gray-400 flex justify-center items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white">
+              Notify Customer
+            </a>
           </div>
         </form>
       </div>
     </div>
-    <div class="w-1/2 bg-white overflow-hidden shadow rounded-lg">
+    <div class="w-1/2 bg-white overflow-hidden shadow rounded-lg relative">
       <div class="px-4 py-5 sm:p-6">
         <h2 class="text-sm font-medium text-gray-500 border-b border-gray-200 pb-6">Order</h2>
-        @foreach($order->order as $o)
-          @php
-            $product = App\Models\Inventory::where('sku', $o['sku'])->first();
-            $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
-          @endphp
-          <div class="flex items-center gap-4 border-b border-gray-200 text-gray-700 py-1 px-3">
-            <img src="/{{ isset($pv->product->featured_image) ? $pv->product->featured_image->file_path : 'images/product-placeholder.png' }}" width="24" alt="{{ $o['sku'] }}" />
-            <a href="/product/{{ $pv->product->slug }}" target="_blank" >{{ $product->name }} <span class="font-medium">x {{ $o['qty'] }}</span></a>
-          </div>
-        @endforeach
+        <div id="edit-order" data-order="{{ $order->id }}"></div>
       </div>
     </div>
   </section>

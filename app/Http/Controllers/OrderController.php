@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\OrderCreated;
-use App\Models\ActivityLog;
+use Exception;
+use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
-use Carbon\Carbon;
-use Exception;
+use App\Models\Inventory;
+use App\Models\ActivityLog;
+use App\Events\OrderCreated;
+use App\Events\OrderUpdated;
+use App\Http\Resources\OrderWithProductsResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -75,6 +78,19 @@ class OrderController extends Controller
       return back()->with('success', 'Order updated successfully!');
     }
 
+    public function change(Request $request, $id)
+    {
+      $order = Order::find($id);
+      ActivityLog::create([
+        'user_id' => auth()->user()->id,
+        'order_id' => $order->id,
+        'from' => json_encode($order->order),
+        'to' => json_encode($request->all())
+      ]);
+      $order->update(['order' => $request->all()]);
+      return back()->with('success', 'Order updated successfully!');
+    }
+
     public function reorder($id)
     {
       $order = Order::findOrFail($id);
@@ -91,7 +107,19 @@ class OrderController extends Controller
           'cart' => json_encode($order->order)
         ]);
       }
-
       return redirect()->intended('/cart');
+    }
+
+    public function products($id)
+    {
+      $order = Order::find($id);
+      return new OrderWithProductsResource($order);
+    }
+
+    public function notify($id)
+    {
+      $order = Order::find($id);
+      OrderUpdated::dispatch($order);
+      return back();
     }
 }

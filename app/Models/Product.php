@@ -72,7 +72,7 @@ class Product extends Model
 
     public function getFeaturedImageAttribute()
     {
-      return $this->media()->where('featured_image', 1)->get()->last();
+      return $this->media()->where('featured_image', 1)->orderBy('id', 'DESC')->get()->last();
     }
 
     public function getRelatedProducts()

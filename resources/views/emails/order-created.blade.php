@@ -1,5 +1,6 @@
+
 @php
-  $order = App\Models\Order::orderBy('id', 'DESC')->get()[1];
+  $order = App\Models\Order::all()[1];
 @endphp
 <!doctype html>
 <html>

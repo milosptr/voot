@@ -3,12 +3,13 @@
 namespace App\Providers;
 
 use App\Events\OrderCreated;
+use App\Events\OrderUpdated;
 use App\Events\UserVerified;
 use App\Events\UserPasswordReset;
 use App\Listeners\CreateOrderInAX;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendOrderCreatedEmail;
+use App\Listeners\SendOrderUpdatedEmail;
 use App\Listeners\SendNewUserRegistrationEmail;
 use App\Listeners\SendCustomerOrderCreatedEmail;
 use App\Listeners\SendCustomerVerificationEmail;
@@ -32,6 +33,9 @@ class EventServiceProvider extends ServiceProvider
           SendOrderCreatedEmail::class,
           SendCustomerOrderCreatedEmail::class,
           CreateOrderInAX::class,
+        ],
+        OrderUpdated::class => [
+          SendOrderUpdatedEmail::class,
         ],
         UserPasswordReset::class => [
           SendCustomerPasswordResetEmail::class,
