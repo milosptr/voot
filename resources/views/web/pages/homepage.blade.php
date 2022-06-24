@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title') Homepage @endsection
+@section('title', 'Homepage')
 
 @section('content')
   <section id="hero-section" class="h-screen bg-primary-lightest">

@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', 'Uuups! Registration still pending')
+@section('title', 'Registration still pending')
 
 @section('content')
 <section class="flex items-center justify-center page-not-found-section">
