@@ -7,7 +7,7 @@
     <div class="bg-hero-wave z-0 w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-top border-b border-primary-lightest" style="background-image: url('/images/wave-haikei.svg');"></div>
     <div class="container">
       <div class="relative text-center z-10">
-        <h1 class="text-primary text-5xl sm:text-6xl tracking-wider leading-normal uppercase pt-32 pb-10 font-lora">{{ __('default.homepage_title') }}</h1>
+        <h1 class="text-primary text-4xl sm:text-5xl tracking-wider leading-normal uppercase pt-32 pb-10 font-lora">{{ __('default.homepage_title') }}</h1>
         <div class="w-full grid grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-10 mt-32">
           @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
             <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
@@ -24,15 +24,6 @@
     </div>
   </section>
 
-  {{-- <section class="hidden sm:block bg-primary-lightest h-80">
-    <div class="container relative">
-      <div class="absolute left-0 top-0 w-full z-10 sm:-mt-24">
-        <div class="sm:w-4/5 mx-auto ">
-          <img src="/images/pjon-mapa.svg" width="100%" alt="pjon map" />
-        </div>
-      </div>
-    </div>
-  </section> --}}
   <section id="about-section" class="relative pb-64">
     <div class="bg-hero-wave absolute top-0 left-0 h-screen w-full z-0 bg-cover bg-top bg-no-repeat" style="background-image: url('/images/waves-haikei-2.svg');"></div>
     <div class="container relative z-10">
@@ -49,7 +40,7 @@
   <section class="my-20 relative z-10">
     <div class="container mx-auto">
       <div class="flex flex-col sm:flex-row justify-between items-center border-b border-gray-100 pb-4">
-        <h2 class="text-5xl sm:text-6xl font-medium font-lora tracking-wide">
+        <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide">
           {{ __('default.products') }}
         </h2>
         <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}">{{ __('default.view_all_products') }}</a>
@@ -59,57 +50,6 @@
       </div>
     </div>
   </section>
-
-   {{-- <section class="my-48">
-    <div class="container mx-auto relative">
-      <div class="flex flex-col-reverse sm:flex-row items-center justify-between">
-        <div class="sm:w-1/2 mt-12 sm:mt-0">
-          <h2 class="text-5xl sm:text-6xl font-medium font-lora tracking-wide">
-            {{ __('default.services_title') }}
-          </h2>
-          <p class="mt-6 text-lg">
-            {{ __('default.services_p1') }}
-          </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
-             {{ __('default.explore_services') }}
-          </a>
-        </div>
-        <div class="sm:w-1/2 flex justify-end">
-          <div class="grid grid-cols-3 grid-rows-2 items-center justify-items-center gap-10 opacity-90">
-            <img src="/images/categories/oryggis-og-vinnufatnadur.svg" alt="oryggis-og-vinnufatnadur" width="120" />
-            <img src="/images/categories/rekstrarvorur.svg" alt="rekstrarvorur" width="120" />
-            <img src="/images/categories/oliu-and-smurefni.svg" alt="oliu-and-smurefni" width="120" />
-            <img src="/images/categories/beita.svg" alt="beita" width="120" />
-            <img src="/images/categories/fishing-gear.svg" alt="fishing-gear" width="120" />
-            <img src="/images/categories/vessel.svg" alt="vessel" width="120" />
-          </div>
-        </div>
-      </div>
-    </div>
-   </section>
-
-   <section class="my-48">
-    <div class="container mx-auto relative">
-      <div class="flex flex-col sm:flex-row items-center justify-between">
-        <div class="sm:w-1/2 flex">
-          <div class="w-3/4 items-center justify-items-center gap-10 opacity-90">
-            <img src="/images/contact-section.svg" alt="phone" width="100%" />
-          </div>
-        </div>
-        <div class="sm:w-1/2">
-          <h2 class="text-5xl sm:text-6xl font-medium font-lora tracking-wide">
-            {{ __('default.contact_title') }}
-          </h2>
-          <p class="mt-6 text-lg">
-            {{ __('default.contact_p1') }}
-          </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="inline-block mx-auto border border-primary py-3 px-24 rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
-             {{ __('default.contact_btn') }}
-          </a>
-        </div>
-      </div>
-    </div>
-   </section> --}}
 
    <section id="">
     <div class="container">
