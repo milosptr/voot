@@ -33,7 +33,8 @@ class ProductVariation extends Model
         if(count($c))
           $color = $c->first();
       }
-
-      return [ 'original' => $color->name, 'name' => $color->name_en, 'hex' => $color->hex];
+      if($color)
+        return [ 'original' => $color->name, 'name' => $color->name_en, 'hex' => $color->hex];
+      return [];
     }
 }
