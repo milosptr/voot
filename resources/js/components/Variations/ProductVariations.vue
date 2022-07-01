@@ -1,9 +1,17 @@
 <template>
   <div v-if="variations.length" class="bg-white overflow-hidden shadow rounded-lg mt-6">
     <div class="px-4 py-5 sm:p-6">
-      <div class="text-lg text-black font-medium">Product Variations</div>
-      <div class="">
-        <div v-for="(variation, index) in variations" :key="index" class="single-variant px-4 py-5 sm:p-6 border-t border-gray-200 flex items-end justify-between">
+      <div class="flex flex-col sm:flex-row items-start justify-between">
+        <div class="text-lg text-black font-medium">Product Variations</div>
+        <div
+          class="inline-flex items-center border border-gray-200 rounded px-2 text-sm font-sans font-medium text-gray-400 cursor-pointer hover:bg-gray-200 hover:text-gary-900"
+          @click="toggleAvailableColors"
+        >
+          Available Colors
+        </div>
+      </div>
+      <div class="border-t border-gray-200">
+        <div v-for="(variation, index) in variations" :key="index" class="single-variant px-4 py-5 sm:p-6 border-b border-gray-200 flex items-end justify-between">
           <div class="w-14 h-14">
             <label :for="'variation-img-'+index" class="dropzone-placeholder h-full flex items-center justify-center text-center cursor-pointer">
               <img v-if="variation.file_path" :src="variation.file_path" alt="variation-image" class="w-14 h-14 rounded-md" />
@@ -29,6 +37,25 @@
         Add another variation
       </div>
     </div>
+    <div v-if="showAvailableColors" class="fixed left-0 top-0 w-full h-screen z-40 flex items-center justify-center">
+      <div class="absolute left-0 top-0 w-full h-screen bg-black bg-opacity-50" @click="toggleAvailableColors"></div>
+      <div class="relative w-full sm:w-1/2 xl:w-1/3 z-50 my-32 h-full" style="height: 90vh;">
+        <div class="bg-white p-12 overflow-y-scroll h-full rounded-md">
+          <div class="py-1 border-b border-gray-100 grid grid-cols-3 gap-3 text-sm font-bold">
+            <div class="font-bold text-sm text-gray-600">Name</div>
+            <div class="font-bold text-sm text-gray-600">Name english</div>
+            <div class="font-bold text-sm text-gray-600 text-center">Color</div>
+          </div>
+          <div v-for="color in availableColors" :key="color.id" class="py-1 border-t border-b border-gray-100 grid grid-cols-3 gap-3 text-sm">
+              <div>{{ color.name }}</div>
+              <div>{{ color.name_en }}</div>
+              <div class="flex items-center justify-center">
+                <div class="w-12 h-4 rounded-sm border border-gray-100" :style="'background:' + color.hex"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -36,7 +63,15 @@
     props: {
       variations: Array,
     },
+    data: () => ({
+      showAvailableColors: false,
+      availableColors: []
+    }),
     mounted() {
+      axios.get('/api/colors')
+        .then((res) => {
+          this.availableColors = res.data
+        })
     },
     methods: {
       removeVariant(variation,index) {
@@ -50,6 +85,9 @@
           .then((response) => {
             this.variations[index].file_path = '/' + response.data.file_path
           })
+      },
+      toggleAvailableColors() {
+        this.showAvailableColors = !this.showAvailableColors
       }
     }
   }

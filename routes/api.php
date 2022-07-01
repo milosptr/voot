@@ -3,6 +3,7 @@
 use App\Http\Controllers\AssetsUpload;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\InventoryController;
@@ -55,6 +56,7 @@ Route::get('settings-icons', [SettingsIconsController::class, 'index']);
 Route::post('settings-icons', [SettingsIconsController::class, 'store']);
 
 // Products
+Route::get('product-variations/available-colors', [Products::class, 'availableColors']);
 Route::get('product-information/{id}', [ProductInformationController::class, 'index']);
 Route::get('product-variations/{id}', [Products::class, 'variations']);
 Route::get('product-tags/{id}', [Products::class, 'tags']);
@@ -124,6 +126,11 @@ Route::post('pages/{id}', [TermsPagesController::class, 'destroy']);
 
 // Clients
 Route::post('clients/search', [Users::class, 'search']);
+
+// Color
+Route::get('colors', [ColorsController::class, 'all']);
+Route::post('colors', [ColorsController::class, 'store']);
+Route::delete('colors/{id}', [ColorsController::class, 'destroy']);
 
 // Config
 Route::get('/config', [ConfigController::class, 'indexAll']);

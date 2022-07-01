@@ -13,6 +13,7 @@ use App\Models\ProductVariation;
 use App\Models\ProductCategories;
 use App\Http\Resources\Products as ResourcesProducts;
 use App\Http\Resources\ProductWithCategories;
+use App\Models\Color;
 use App\Models\Document;
 use App\Models\Inventory;
 use App\Models\ProductIcon;
@@ -255,19 +256,27 @@ class Products extends Controller
       return Product::find($id)->media()->get();
     }
 
-    public function variations($id) {
+    public function variations($id)
+    {
       $product = Product::find($id);
       return $product->variations;
     }
 
-    public function destroyVariant($id) {
+    public function destroyVariant($id)
+    {
       $variation = ProductVariation::find($id);
       if($variation)
         return $variation->delete();
       return response('success', 200);
     }
 
-    public function cartProducts(Request $request) {
+    public function availableColors()
+    {
+      return Color::all();
+    }
+
+    public function cartProducts(Request $request)
+    {
       $skus = explode(',',$request->get('p'));
       $products = array();
       foreach($skus as $sku) {
