@@ -37,7 +37,7 @@ class Category extends Model
 
     public static function formatWithSubcategories()
     {
-      $category = Category::where('parent_id', 0)->get();
+      $category = Category::where('parent_id', 0)->orderBy('order', 'ASC')->get();
       foreach($category as $cat) {
         $cat->children = $cat->subcategory();
         $cat->total_products = count($cat->products);

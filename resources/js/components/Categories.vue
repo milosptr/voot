@@ -4,6 +4,10 @@
       <div :data-key="node.id" class="flex justify-between items-center cursor-pointer bg-white border-b border-gray-100 hover:bg-gray-50">
         <div class="py-2 pl-4 whitespace-nowrap" :style="indentWidth(path)">
             <svg v-if="node.parent_id" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#454545" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="60" cy="60" r="8"></circle><circle cx="128" cy="60" r="8"></circle><circle cx="196" cy="60" r="8"></circle><circle cx="60" cy="128" r="8"></circle><circle cx="128" cy="128" r="8"></circle><circle cx="196" cy="128" r="8"></circle><circle cx="60" cy="196" r="8"></circle><circle cx="128" cy="196" r="8"></circle><circle cx="196" cy="196" r="8"></circle></svg>
+            <div v-else class="grid grid-cols-1 grid-rows-2">
+              <svg v-if="index > 0" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#454545" class="opacity-40 hover:opacity-100" viewBox="0 0 256 256" @click="moveNodeUp(node)"><rect width="256" height="256" fill="none"></rect><line x1="128" y1="216" x2="128" y2="40" fill="none" stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><polyline points="56 112 128 40 200 112" fill="none" stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></polyline></svg>
+              <svg v-if="index + 1 < categories.length" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#454545" class="opacity-40 hover:opacity-100" viewBox="0 0 256 256" @click="moveNodeDown(node)"><rect width="256" height="256" fill="none"></rect><line x1="128" y1="40" x2="128" y2="216" fill="none" stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><polyline points="56 144 128 216 200 144" fill="none" stroke="#454545" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></polyline></svg>
+            </div>
         </div>
         <div class="w-20 py-2 whitespace-nowrap flex justify-center items-center">
           <div v-if="node.featured_image" class="w-10 h-10 rounded-full bg-center bg-cover bg-no-repeat" :style="`background-image: url('/${node.featured_image.file_path}');`"></div>
@@ -76,6 +80,20 @@
       indentWidth(path) {
         const indent = 128 - (path.length - 1) * 20
         return `width: ${indent}px`
+      },
+      moveNodeUp(node) {
+        const index = this.categories.indexOf(node)
+        this.moveNode(this.categories, index, index - 1)
+      },
+      moveNodeDown(node) {
+        const index = this.categories.indexOf(node)
+        this.moveNode(this.categories, index, index + 1)
+      },
+      moveNode(arr, fromIndex, toIndex){
+        let itemRemoved = arr.splice(fromIndex, 1) // assign the removed item as an array
+        arr.splice(toIndex, 0, itemRemoved[0]) // insert itemRemoved into the target index
+        this.categories = arr
+        this.saveNewCategoryTree()
       },
       saveNewCategoryTree() {
         axios.post('/api/sorted-categories', this.categories)
