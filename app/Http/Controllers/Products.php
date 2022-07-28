@@ -98,6 +98,7 @@ class Products extends Controller
 
           // add categories to the product
           $categories = $request->has('categories') ? explode(',', $request->get('categories')) : [];
+          ProductCategories::where(['product_id' => $product->id])->delete();
           foreach($categories as $category) {
             if(ProductCategories::where(['product_id' => $product->id, 'category_id' => (int) $category])->first())
               continue;
