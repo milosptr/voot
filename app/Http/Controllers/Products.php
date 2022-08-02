@@ -58,6 +58,11 @@ class Products extends Controller
       return view('components.product.list', compact('products'));
     }
 
+    public function index($id)
+    {
+      return new ResourcesProducts(Product::find($id));
+    }
+
     public function all()
     {
       return ResourcesProducts::collection(Product::orderBy('id', 'DESC')->get()->take(100));
@@ -89,142 +94,61 @@ class Products extends Controller
 
     public function update(Request $request, $id)
     {
-      $data = $request->only(['name', 'description', 'species', 'sku', 'available', 'product_table', 'english_name', 'english_description']);
-      $data['available'] = $request->get('available') == 'on' ? true : false;
-
+      $productData = $request->only(['name', 'description', 'species', 'sku', 'available', 'product_table', 'barcode', 'quantity', 'english_name', 'english_description']);
       try {
           $product = Product::find($id);
-          $product->update($data);
+          $product->update($productData);
 
-          // add categories to the product
-          $categories = $request->has('categories') ? explode(',', $request->get('categories')) : [];
-          ProductCategories::where(['product_id' => $product->id])->delete();
-          foreach($categories as $category) {
-            if(ProductCategories::where(['product_id' => $product->id, 'category_id' => (int) $category])->first())
-              continue;
-            ProductCategories::create(['product_id' => $product->id, 'category_id' => (int) $category ]);
-          }
-
+          // sync categories
+          $product->categories()->sync(array_column($request->get('categories'), 'id'));
 
           // add tags to the product
-          if($request->get('tags')) {
-            $tags = explode(',', $request->get('tags'));
-            $slugify = new Slugify();
+          $product->tags()->sync(array_column($request->get('tags'), 'id'));
 
-            foreach ($tags as $tag) {
-              $slug = $slugify->slugify($tag);
-              $t = Tag::where('slug', $slug)->first();
-              if($t) {
-                ProductTag::create([ 'product_id' => $product->id, 'tag_id' => $t->id ]);
-              } else {
-                $newTag = Tag::create([ 'name' => $tag, 'slug' => $slug ]);
-                ProductTag::create([ 'product_id' => $product->id, 'tag_id' => $newTag->id ]);
-              }
-            }
-          }
-
-          // remove tags from product
-          if($request->get('remove-tags')) {
-            $tags = explode(',', $request->get('remove-tags'));
-            foreach ($tags as $tag_id) {
-              $tag = ProductTag::where('tag_id', $tag_id)->where('product_id', $id)->first();
-              if($tag) {
-                $tag->delete();
-              }
-            }
-          }
-          if($request->get('product-icons')) {
-            $icons = explode(',', $request->get('product-icons'));
-            ProductIcon::where('product_id', $product->id)->delete();
-            foreach($icons as $id) {
-              ProductIcon::create(['product_id' => $product->id, 'settings_icons_id' => $id]);
-            }
-          }
-
-          if($request->get('documents')) {
-            $documents = explode(',', $request->get('documents'));
-            foreach($documents as $id) {
-              $document = Document::find($id);
-              $document->product_id = $product->id;
-              $document->save();
-            }
-          }
+          // sync product icons
+          $product->icons()->sync(array_column($request->get('icons'), 'id'));
 
           // add variations to the product
-          $variations = $request->get('all_variations') ? json_decode($request->get('all_variations')) : [];
+          $variations = $request->get('variations') ? $request->get('variations') : [];
+          if(count($product->variations))
+           $product->variations()->delete();
           foreach ($variations as $variation) {
-            if(!isset($variation->sku)) continue;
-            $inventory = Inventory::where('sku', $variation->sku)->first();
+            if(!isset($variation['sku'])) continue;
+            $inventory = Inventory::where('sku', $variation['sku'])->first();
             if(!$inventory) {
               $inventory = Inventory::create([
                 'product_id' => $product->id,
-                'sku' => $variation->sku,
-                'name' => $product->name . ' - ' . $variation->value
+                'sku' => $variation['sku'],
+                'name' => $product->name . ' - ' . $variation['value']
               ]);
             }
+
             if ($inventory) {
-              $inventory->variant = $variation->value;
+              $inventory->variant = $variation['value'];
               $inventory->save();
-              $pv = ProductVariation::where('sku', $variation->sku)->first();
-              if($pv) {
-                $pv->file_path = isset($variation->file_path) ? $variation->file_path : null;
-                $pv->value = $variation->value;
-                $pv->save();
-              } else {
-                ProductVariation::create([
-                  'product_id' => $product->id,
-                  'value' => $variation->value,
-                  'sku' => isset($variation->sku) ? $variation->sku : '',
-                  'quantity' => isset($variation->quantity) ? $variation->quantity : 0,
-                  'file_path' => isset($variation->file_path) ? $variation->file_path : null
-                ]);
-              }
-            }
-          }
-
-          // remove older featured images
-          foreach($product->media()->where('featured_image', 1)->orderBy('id', 'DESC')->get() as $k => $m) {
-            if($k === 0) continue;
-            if ($m) {
-              $m->featured_image = 0;
-              $m->save();
-            }
-          }
-
-          // add featured image
-          if ($request->get('featured_image_id')) {
-            ProductAssets::create([
-              'product_id' => $product->id,
-              'asset_id' => $request->get('featured_image_id'),
-            ]);
-          }
-
-          // add gallery images
-          if ($request->get('media_ids')) {
-            $assets = $request->get('media_ids') ? explode(',', $request->get('media_ids')) : [];
-            foreach ($assets as $asset) {
-              ProductAssets::create([ 'product_id' => $id, 'asset_id' => $asset ]);
+              ProductVariation::create([
+                'product_id' => $product->id,
+                'value' => $variation['value'],
+                'sku' => isset($variation['sku']) ? $variation['sku'] : '',
+                'quantity' => isset($variation['quantity']) ? $variation['quantity'] : 0,
+                'file_path' => isset($variation['file_path']) ? $variation['file_path'] : null
+              ]);
             }
           }
 
           // add product information
-          $information = $request->has('product_information') ? json_decode($request->get('product_information')) : [];
-          foreach ($information as $info) {
-            if (!empty($info->name)) {
-                if (isset($info->id)) {
-                    $pi = ProductInformation::find($info->id);
-                    $pi->name = $info->name;
-                    $pi->value = $info->value;
-                    $pi->save();
-                } else {
-                    ProductInformation::create([
-                    'product_id' => $product->id,
-                    'name' => $info->name,
-                    'value' => $info->value
-                  ]);
-                }
-            }
-           }
+          $information = $request->has('informations') ? $request->get('informations') : [];
+          if(count($product->information))
+           $product->information()->delete();
+           foreach ($information as $info) {
+            ProductInformation::create([
+              'product_id' => $product->id,
+              'name' => $info['name'],
+              'value' => $info['value']
+            ]);
+          }
+
+          return new ResourcesProducts($product);
 
       } catch(Exception $e) {
         Log::error('Store product error: ' . $e->getMessage());

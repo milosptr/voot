@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
+  <div class="bg-white overflow-hidden shadow rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <div class="text-lg text-black font-medium">Product Documents</div>
-      <div class="text-gray-500 text-sm">(documents will be saved only if product is updated)</div>
+      <div class="text-gray-500 text-sm">(documents are saved automatically)</div>
       <div class="flex gap-4 mt-4">
         <input v-model="documentName" name="doc_name" type="text" placeholder="Document name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" />
         <label for="product-documents-upload" class="w-full relative flex items-center shadow-sm sm:text-sm border-gray-300 border rounded-md cursor-pointer hover:border-primary-lighter" style="height: 38px">
@@ -26,7 +26,6 @@
             <div class="pr-2 tracking-widest text-3xl font-thin leading-none text-gray-400 cursor-pointer hover:text-rose-500" @click.stop="remove(document.id)">×</div>
           </div>
         </div>
-        <input id="documents-id" type="text" name="documents" hidden />
       </div>
     </div>
   </div>
@@ -37,26 +36,19 @@
     data: () => ({
       documentName: '',
       inputFiles: 0,
-      documents: [],
-      documentIds: [],
-      product_id: null,
     }),
     computed: {
       inputFilesText() {
         if(this.inputFiles > 1)
           return this.inputFiles + ' files'
         return this.inputFiles + ' file'
+      },
+      documents() {
+        return this.$store.getters.product.documents
       }
     },
     mounted() {
-      this.product_id = document.getElementById('product-documents').dataset.key
-      if(this.product_id)
-        axios.get(`/api/documents/${this.product_id}`)
-          .then((response) => {
-            const ids = response.data.map((i) => i.id)
-            this.documents.push(...response.data)
-            this.documentIds.push(...ids)
-          })
+
     },
     methods: {
       calculateFiles() {
@@ -69,14 +61,12 @@
             formData.append("documents[]", documentFiles[i]);
         }
         formData.append('name', this.documentName)
+        formData.append('product_id', this.$store.getters.product.id)
 
         axios.post('/api/documents', formData)
-          .then((response) => {
-            const ids = response.data.map((i) => i.id)
-            this.documents.push(...response.data)
-            this.documentIds.push(...ids)
+          .then((res) => {
+            this.$store.commit('appendDocument', res.data)
             this.reset()
-            document.getElementById('documents-id').setAttribute('value', this.documentIds.join(','))
           })
       },
       openDocument(doc) {
@@ -90,9 +80,7 @@
       },
       remove(id) {
         axios.delete(`/api/documents/${id}`).then((r) => {
-          this.documentIds = this.documentIds.filter((i) => id !== i)
-          this.documents = this.documents.filter((item) => item.id !== id)
-          document.getElementById('documents-id').setAttribute('value', this.documentIds.join(','))
+          this.$store.commit('removeDocument', id)
         })
       }
     }

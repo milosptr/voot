@@ -15,7 +15,6 @@ class Product extends Model
     public $guarded = ['id'];
 
     protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'available', 'product_table', 'english_name', 'english_description'];
-
     protected $table = 'products';
 
     public $cast = [

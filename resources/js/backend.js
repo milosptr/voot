@@ -16,7 +16,9 @@ import Settings from './components/Settings.vue'
 import OrdersChart from './components/OrdersChart.vue'
 import Categories from './components/Categories.vue'
 import EditOrder from './components/EditOrder.vue'
+import EditSingleProduct from './components/EditSingleProduct.vue'
 import { CKEditor } from "@ckeditor/ckeditor5-vue"
+import store from "./store"
 
 if(document.getElementById('variations-app')) {
   createApp({
@@ -99,6 +101,14 @@ if(document.getElementById('edit-order')) {
     template: `<EditOrder />`
   })
   .mount("#edit-order")
+}
+if(document.getElementById('editSingleProduct')) {
+  createApp({
+    components: { EditSingleProduct },
+    template: `<EditSingleProduct />`
+  })
+  .use(store)
+  .mount("#editSingleProduct")
 }
 
 

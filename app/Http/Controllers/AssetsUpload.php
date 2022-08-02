@@ -15,16 +15,20 @@ class AssetsUpload extends Controller
     'file' => 'required'
     ]);
 
-    $fileModel = new Asset();
-
     if($req->file()) {
         $fileName = time().'_'.$req->file->getClientOriginalName();
         $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
 
-        $fileModel->name = time().'_'.$req->file->getClientOriginalName();
-        $fileModel->file_path = $filePath;
-        if($req->has('product_id'))
+        $fileModel = Asset::create([
+          'name' => $fileName,
+          'file_path' => $filePath,
+        ]);
+
+        if($req->has('product_id')) {
           $fileModel->product_id = $req->get('product_id');
+          $product = Product::find($req->get('product_id'));
+          $product->media()->attach($fileModel->id);
+        }
         if($req->has('category_id'))
           $fileModel->category_id = $req->get('category_id');
 
@@ -44,26 +48,30 @@ class AssetsUpload extends Controller
 
     if(count($files)) {
       foreach ($files as $file) {
-          $fileModel = new Asset();
 
-          $fileName = time().'_'.$file->getClientOriginalName();
-          $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $fileName = time().'_'.$file->getClientOriginalName();
+        $filePath = $file->storeAs('uploads', $fileName, 'public');
 
-          $fileModel->name = time().'_'.$file->getClientOriginalName();
-          $fileModel->file_path = $filePath;
+        $fileModel = Asset::create([
+          'name' => $fileName,
+          'file_path' => $filePath,
+        ]);
 
-          if ($req->has('product_id')) {
-              $fileModel->product_id = $req->get('product_id');
-          }
-          if ($req->has('category_id')) {
-              $fileModel->category_id = $req->get('category_id');
-          }
-          if ($req->has('featured_image')) {
-              $fileModel->featured_image = true;
-          }
+        if($req->has('product_id')) {
+          $fileModel->product_id = $req->get('product_id');
+          $product = Product::find($req->get('product_id'));
+          $product->media()->attach($fileModel->id);
+        }
+        if ($req->has('category_id')) {
+            $fileModel->category_id = $req->get('category_id');
+        }
+        if ($req->has('featured_image')) {
+            $fileModel->featured_image = true;
 
-          $fileModel->save();
-          array_push($uploaded, $fileModel);
+        }
+
+        $fileModel->save();
+        array_push($uploaded, $fileModel);
       }
       return response($uploaded, 200);
     }

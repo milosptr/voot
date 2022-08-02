@@ -1,12 +1,14 @@
 <template>
-  <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
+  <div class="bg-white overflow-hidden shadow rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <div class="text-lg text-black font-medium">Product Table</div>
       <div class="mt-6">
         <div class="flex items-end gap-4">
-          <label>Columns <input type="number" v-model.number="nColumns" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-48 sm:text-sm border-gray-300 rounded-md" /></label>
-          <label>Rows <input type="number" v-model.number="nRows" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-48 sm:text-sm border-gray-300 rounded-md" /></label>
-           <div class="ml-auto text-center text-red-600 border border-red-400 bg-transparent px-6 py-2 mt-5 text-sm font-normal rounded-md hover:bg-red-400 hover:text-white cursor-pointer" @click="resetTable">Reset</div>
+          <label>Columns <input type="number" v-model.number="nColumns" min="1" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-48 sm:text-sm border-gray-300 rounded-md" /></label>
+          <label>Rows <input type="number" v-model.number="nRows" min="1" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-48 sm:text-sm border-gray-300 rounded-md" /></label>
+          <div class="ml-auto text-center text-red-600 border border-red-500 px-6 py-2 text-sm font-normal rounded-md hover:bg-red-500 hover:text-white cursor-pointer" @click="resetTable">
+            Reset
+          </div>
         </div>
         <table class="block overflow-scroll w-full h-64 mt-4">
           <tr v-for="row in nRows" :key="row" class="block" :class="{ 'mb-3': row === 1 }">
@@ -32,6 +34,7 @@
       nColumns: 4,
       nRows: 3,
       table: [],
+      table_org: [],
     }),
     watch: {
       nRows(v) {
@@ -50,28 +53,40 @@
               r.splice(-1)
               this.updateTable()
           })
+      },
+    },
+    computed: {
+      product() {
+        return this.$store.getters.product
       }
     },
     mounted() {
-      this.resetTable()
+      this.setTable()
     },
     methods: {
       updateColumn(row,column,e) {
         this.table[row-1].splice(column-1, 1, e.target.value)
         this.updateTable()
       },
-      resetTable() {
-        const table = document.getElementById('single-product-table').dataset['productTable']
+      setTable() {
+        const table = this.product?.product_table
         this.table = table ? JSON.parse(table) : []
-        this.table_org = table ? JSON.parse(table) : []
+        this.table_org = _.cloneDeep(this.table)
         if(this.table.length)
           this.nRows = this.table.length
         if(this.table.length && this.table[0].length)
           this.nColumns = this.table[0].length
-        document.getElementById('product_table').value = JSON.stringify(this.table_org)
+      },
+      resetTable() {
+        this.table = _.cloneDeep(this.table_org)
+        if(this.table.length)
+          this.nRows = this.table.length
+        if(this.table.length && this.table[0].length)
+          this.nColumns = this.table[0].length
+        this.updateTable()
       },
       updateTable() {
-        document.getElementById('product_table').value = JSON.stringify(this.table)
+        this.$store.commit('updateProductField', {key: 'product_table', value: JSON.stringify(this.table)})
       }
     }
   }

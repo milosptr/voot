@@ -17,12 +17,14 @@ use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\Products;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsPagesController;
 use App\Http\Controllers\Users;
 use App\Http\Controllers\Web\Tags;
 use App\Models\Inventory;
 use App\Models\Page;
 use App\Models\ProductCategory;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -64,11 +66,15 @@ Route::get('product-media/{id}', [Products::class, 'media']);
 Route::get('product-icons/{id}', [Products::class, 'icons']);
 Route::get('cart-products', [Products::class, 'cartProducts']);
 Route::get('products/all', [Products::class, 'all']);
+Route::get('products/{id}', [Products::class, 'index']);
 Route::post('products', [Products::class, 'store']);
 Route::post('products/edit/{id}', [Products::class, 'update']);
 Route::post('products/update', [Products::class, 'updateColumn']);
 Route::post('products/search', [Products::class, 'search']);
 Route::delete('product-variations/{id}', [Products::class, 'destroyVariant']);
+
+// Tags
+Route::post('tags', [TagController::class, 'store']);
 
 // Inventory
 Route::get('check-sku/{sku}', [InventoryController::class, 'checkSku']);

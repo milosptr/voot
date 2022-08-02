@@ -19,6 +19,7 @@ class Products extends JsonResource
         'id' => $this->id,
         'name' => $this->name,
         'description' => $this->description,
+        'species' => $this->species,
         'sku' => $this->sku,
         'quantity' => $this->quantity,
         'price' => $this->price,
@@ -26,6 +27,13 @@ class Products extends JsonResource
         'categories' => $this->categories,
         'media' => $this->media,
         'featured_image' => $this->featured_image,
+        'documents' => $this->documents,
+        'tags' => $this->tags,
+        'informations' => $this->information,
+        'icons' => $this->icons,
+        'variations' => $this->variations,
+        'product_table' => $this->product_table,
+        'url' => $this->productUrl,
       ];
     }
 }

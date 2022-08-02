@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductAssets as ModelsProductAssets;
+use App\Models\Asset;
 use Illuminate\Http\Request;
+use App\Models\ProductAssets as ProductAssetsModel;
 
 class ProductAssets extends Controller
 {
     public function destroy($id)
     {
-      $pa = ModelsProductAssets::find($id);
-      return $pa->delete();
+      $asset = Asset::find($id);
+      ProductAssetsModel::where('asset_id', $id)->delete();
+      return $asset->delete();
     }
 }

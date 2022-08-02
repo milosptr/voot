@@ -1,5 +1,5 @@
 <template>
-  <div v-if="variations.length" class="bg-white overflow-hidden shadow rounded-lg mt-6">
+  <div class="bg-white overflow-hidden shadow rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <div class="flex flex-col sm:flex-row items-start justify-between">
         <div class="text-lg text-black font-medium">Product Variations</div>
@@ -21,11 +21,11 @@
           </div>
           <div class="w-1/3 px-3">
               <label :for="'name-'+ index" class="block text-sm font-medium text-gray-700">Name</label>
-              <input v-model="variation.value" type="text" :id="'name-'+ index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
+              <input :value="variation.value" @input="updateVariantField(index, 'value', $event)" type="text" :id="'name-'+ index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
           </div>
           <div class="w-1/3 px-3">
             <label :for="'sku-'+index" class="block text-sm font-medium text-gray-700">SKU</label>
-            <input v-model="variation.sku" type="text" :id="'sku-'+index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
+            <input :value="variation.sku" @input="updateVariantField(index, 'sku', $event)" type="text" :id="'sku-'+index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
           </div>
           <div class="pl-3 mb-2 cursor-pointer" @click="removeVariant(variation,index)">
             <img src="/images/trash.svg" width="24" height="24" alt="delete" />
@@ -33,7 +33,7 @@
           <!-- <div v-else style="width: 24px"></div> -->
         </div>
       </div>
-      <div tabindex="0" class="w-1/3 text-center text-gray-600 border border-gray-400 bg-transparent px-6 py-2 mt-5 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white cursor-pointer" @keydown.enter="$emit('add')" @click="$emit('add')">
+      <div tabindex="0" class="w-1/3 text-center text-gray-600 border border-gray-400 bg-transparent px-6 py-2 mt-5 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white cursor-pointer" @keydown.enter="addVariation" @click="addVariation">
         Add another variation
       </div>
     </div>
@@ -60,13 +60,15 @@
 </template>
 <script>
   export default {
-    props: {
-      variations: Array,
-    },
     data: () => ({
       showAvailableColors: false,
-      availableColors: []
+      availableColors: [],
     }),
+    computed: {
+      variations() {
+        return this.$store.getters.product.variations
+      }
+    },
     mounted() {
       axios.get('/api/colors')
         .then((res) => {
@@ -74,16 +76,22 @@
         })
     },
     methods: {
-      removeVariant(variation,index) {
-        this.variations.splice(index,1)
-        axios.delete('/api/product-variations/'+ variation.id)
+      addVariation() {
+        this.$store.commit('addVariant')
+      },
+      removeVariant(variant, index) {
+        this.$store.commit('removeVariant', index)
+        if(variant.id) axios.delete('/api/product-variations/'+ variant.id)
+      },
+      updateVariantField(index, key, evt) {
+        this.$store.commit('updateVariantField', { index, key, value: evt.target.value})
       },
       uploadImage(e, variation, index) {
         const formData = new FormData()
         formData.append('file', e.target.files[0])
         axios.post('/api/assets', formData)
           .then((response) => {
-            this.variations[index].file_path = '/' + response.data.file_path
+            this.$store.commit('updateVariantField', { index, key: 'file_path', value: '/' + response.data.file_path})
           })
       },
       toggleAvailableColors() {

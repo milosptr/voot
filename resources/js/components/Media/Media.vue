@@ -1,7 +1,8 @@
 <template>
-  <div class="bg-white overflow-hidden shadow rounded-lg mt-6">
+  <div class="bg-white overflow-hidden shadow rounded-lg">
     <div class="px-4 py-5 sm:p-6">
       <div class="text-lg text-black font-medium">Media</div>
+      <div class="text-gray-500 text-sm">(Media are saved automatically)</div>
       <div class="mt-6">
         <div class="block text-sm font-medium text-gray-700">Featured image</div>
         <label for="upload_featured_image" class="dropzone-placeholder flex items-center justify-center py-3 mt-2 cursor-pointer">
@@ -37,19 +38,17 @@
       media_ids: [],
       gallery: [],
     }),
+    computed: {
+      product() {
+        return this.$store.getters.product
+      },
+    },
     mounted() {
-      const id = document.getElementById('media-upload').dataset.key
-      axios.get(`/api/product-media/${id}`)
+      axios.get(`/api/product-media/${document.getElementById('editSingleProduct').dataset.key}`)
         .then((res) => {
           this.feature_image = res.data.reverse().find((d) => !!d.featured_image)
           this.gallery = res.data.filter((d) => !d.featured_image)
         })
-      // if(document.getElementById('media-upload').dataset.featured) {
-      //   const featured = JSON.parse(document.getElementById('media-upload').dataset.featured)
-      //   const media = JSON.parse(document.getElementById('media-upload').dataset.gallery)
-      //   this.feature_image = featured
-      //   this.gallery = media
-      // }
     },
     methods: {
       uploadAssets(e, featured) {
@@ -58,7 +57,12 @@
             formData.append("file[]", e.target.files[i]);
         }
 
-        if(featured) formData.append('featured_image', 'true')
+        if(featured) {
+          if(this.feature_image && this.feature_image.id)
+            this.removeImage(this.feature_image)
+          formData.append('featured_image', 'true')
+        }
+        formData.append('product_id', this.product.id)
 
         axios.post('/api/assets/new-product', formData)
           .then((response) => {
@@ -75,9 +79,8 @@
       },
       removeImage(img) {
         this.media_ids = this.media_ids.filter((i) => img.id !== i)
-
         this.gallery = this.gallery.filter((item) => item.id !== img.id)
-        axios.delete(`/api/assets/${img.pivot.id}`)
+        axios.delete(`/api/assets/${img.id}`)
       }
     }
   }
