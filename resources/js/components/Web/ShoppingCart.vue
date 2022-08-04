@@ -116,6 +116,13 @@
         </div>
         <div class="mt-6">
           <div
+            v-if="requestingOrder"
+            class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+          >
+            Requesting...
+          </div>
+          <div
+            v-else
             class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
             @click="requestOrder"
           >
@@ -145,6 +152,7 @@
       newShippingAddress: null,
       shippingDate: null,
       showCalendar: false,
+      requestingOrder: false,
     }),
     components: {
       Calendar,
@@ -221,6 +229,7 @@
           .then((r) => location.reload() )
       },
       requestOrder() {
+        this.requestingOrder = true
         const data = {
           shippingMethod: this.shippingMethod,
           shippingAddress: this.newShippingAddress,

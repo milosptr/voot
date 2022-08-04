@@ -212,7 +212,7 @@ class Products extends Controller
         if(!$product)
           $product = Product::find($pv->product_id);
         $product->product_variations = $pv;
-        $product->name = $inventory->name;
+        $product->name = isset($inventory->name) ? $inventory->name : $product->name;
 
         array_push($products, $this->transformProductForCart($product));
       }

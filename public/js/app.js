@@ -22538,7 +22538,8 @@ var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js"
       changeShipping: false,
       newShippingAddress: null,
       shippingDate: null,
-      showCalendar: false
+      showCalendar: false,
+      requestingOrder: false
     };
   },
   components: {
@@ -22627,6 +22628,7 @@ var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js"
       });
     },
     requestOrder: function requestOrder() {
+      this.requestingOrder = true;
       var data = {
         shippingMethod: this.shippingMethod,
         shippingAddress: this.newShippingAddress,
@@ -23197,6 +23199,10 @@ var _hoisted_62 = {
 var _hoisted_63 = {
   "class": "mt-6"
 };
+var _hoisted_64 = {
+  key: 0,
+  "class": "flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_DatePicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DatePicker");
 
@@ -23359,12 +23365,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onDayclick: $options.calendarClick
   }, null, 8
   /* PROPS */
-  , ["modelValue", "min-date", "onDayclick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  , ["modelValue", "min-date", "onDayclick"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [_ctx.requestingOrder ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_64, " Requesting... ")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    key: 1,
     "class": "flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer",
     onClick: _cache[7] || (_cache[7] = function () {
       return $options.requestOrder && $options.requestOrder.apply($options, arguments);
     })
-  }, " Request Order ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
+  }, " Request Order "))])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
 }
 
 /***/ }),
