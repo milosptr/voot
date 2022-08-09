@@ -26,6 +26,7 @@ use App\Models\Page;
 use App\Models\ProductCategory;
 use App\Models\Tag;
 use App\Models\User;
+use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -49,9 +50,9 @@ Route::get('product-categories', [CategoriesController::class, 'all']);
 Route::get('product-categories/{id}', [CategoriesController::class, 'index']);
 Route::post('product-category', [CategoriesController::class, 'store']);
 Route::post('product-category/{id}', [CategoriesController::class, 'update']);
-Route::post('product-category/delete/{id}', [CategoriesController::class, 'destroy']);
 Route::post('product-category-order', [CategoriesController::class, 'reorder']);
 Route::post('sorted-categories', [CategoriesController::class, 'sortCategories']);
+Route::delete('product-category/{id}', [CategoriesController::class, 'destroy']);
 
 // Product icons
 Route::get('settings-icons', [SettingsIconsController::class, 'index']);
@@ -151,3 +152,8 @@ Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy']);
 
 // Reports
 Route::get('/reports/orders', [ReportsController::class, 'orders']);
+//
+Route::post('/slugify', function(Request $request) {
+  $slugify = new Slugify();
+  return response(['slug' => $slugify->slugify($request->get('name'), '-')], 200);
+});

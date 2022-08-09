@@ -78,4 +78,15 @@
     </div>
   </div>
 </div>
+<script>
+  const categoryNameInput = document.getElementById('name')
+  if(categoryNameInput) {
+    categoryNameInput.addEventListener('input', (e) => {
+      axios.post('/api/slugify', { name: e.target.value})
+        .then((res) => {
+          document.getElementById('slug').value = res.data.slug
+        })
+    })
+  }
+</script>
 @endsection

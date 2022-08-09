@@ -69,13 +69,17 @@ class CategoriesController extends Controller
     foreach($request->all() as $key => $cat) {
       if(isset($cat['id'])) {
         $category = Category::find($cat['id']);
-        $category->update(['order' => $key, 'parent_id' => 0]);
-        foreach($cat['children'] as $subkey => $sub) {
-          $subcategory = Category::find($sub['id']);
-          $subcategory->update(['order' => $subkey, 'parent_id' => $cat['id']]);
-          foreach($sub['children'] as $subsubkey => $subsub) {
-            $subsubcategory = Category::find($subsub['id']);
-            $subsubcategory->update(['order' => $subsubkey, 'parent_id' => $subsub['id']]);
+        $category->update(['order' => $cat['order'], 'parent_id' => 0]);
+        if(isset($cat['children'])) {
+          foreach($cat['children'] as $subkey => $sub) {
+            $subcategory = Category::find($sub['id']);
+            $subcategory->update(['order' => $sub['order'], 'parent_id' => $sub['parent_id']]);
+            if(isset($sub['children'])) {
+              foreach($sub['children'] as $subsubkey => $subsub) {
+                $subsubcategory = Category::find($subsub['id']);
+                $subsubcategory->update(['order' => $subsub['order'], 'parent_id' => $subsub['parent_id']]);
+              }
+            }
           }
         }
       }
