@@ -72,6 +72,7 @@ Route::post('products', [Products::class, 'store']);
 Route::post('products/edit/{id}', [Products::class, 'update']);
 Route::post('products/update', [Products::class, 'updateColumn']);
 Route::post('products/search', [Products::class, 'search']);
+Route::delete('products/{id}', [Products::class, 'destroy']);
 Route::delete('product-variations/{id}', [Products::class, 'destroyVariant']);
 
 // Tags

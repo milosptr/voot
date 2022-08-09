@@ -2,25 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CartProducts;
-use App\Http\Resources\ProductAsset;
 use Exception;
-use App\Models\Product;
-use Cocur\Slugify\Slugify;
-use Illuminate\Http\Request;
-use App\Models\ProductAssets;
-use App\Models\ProductVariation;
-use App\Models\ProductCategories;
-use App\Http\Resources\Products as ResourcesProducts;
-use App\Http\Resources\ProductWithCategories;
+use App\Models\Tag;
 use App\Models\Color;
+use App\Models\Product;
 use App\Models\Document;
 use App\Models\Inventory;
-use App\Models\ProductIcon;
-use App\Models\ProductInformation;
 use App\Models\ProductTag;
-use App\Models\Tag;
+use Cocur\Slugify\Slugify;
+use App\Models\ProductIcon;
+use Illuminate\Http\Request;
+use App\Models\ProductAssets;
+use App\Models\ProductFavourite;
+use App\Models\ProductVariation;
+use App\Models\ProductCategories;
+use App\Models\ProductInformation;
 use Illuminate\Support\Facades\Log;
+use App\Http\Resources\CartProducts;
+use App\Http\Resources\ProductAsset;
+use App\Http\Resources\ProductWithCategories;
+use App\Http\Resources\Products as ResourcesProducts;
 
 class Products extends Controller
 {
@@ -233,5 +234,18 @@ class Products extends Controller
         'featured_image' => $product->featured_image,
         'product_variations' => $product->product_variations,
       ];
+    }
+
+    public function destroy($id)
+    {
+      $product = Product::find($id);
+      ProductCategories::where('product_id', $product->id)->delete();
+      ProductVariation::where('product_id', $product->id)->delete();
+      ProductFavourite::where('product_id', $product->id)->delete();
+      ProductIcon::where('product_id', $product->id)->delete();
+      ProductTag::where('product_id', $product->id)->delete();
+      ProductAssets::where('product_id', $product->id)->delete();
+      ProductInformation::where('product_id', $product->id)->delete();
+      return $product->delete();
     }
 }
