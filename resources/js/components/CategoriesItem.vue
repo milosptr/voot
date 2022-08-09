@@ -68,9 +68,9 @@ export default {
   },
   methods: {
     deleteCategory(id) {
-      axios.delete('/api/product-category/' + id)
+      axios.delete('/api/product-categories/' + id)
         .then((res) => {
-          this.$emit('changed')
+          location.reload()
         })
     },
     topLevelContainerFilter(toSortable, fromSortable, draggedElement) {

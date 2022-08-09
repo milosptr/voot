@@ -19864,10 +19864,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     deleteCategory: function deleteCategory(id) {
-      var _this = this;
-
-      axios["delete"]('/api/product-category/' + id).then(function (res) {
-        _this.$emit('changed');
+      axios["delete"]('/api/product-categories/' + id).then(function (res) {
+        location.reload();
       });
     },
     topLevelContainerFilter: function topLevelContainerFilter(toSortable, fromSortable, draggedElement) {

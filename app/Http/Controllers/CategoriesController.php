@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Categories;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductCategories;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -89,6 +90,7 @@ class CategoriesController extends Controller
 
   public function destroy($id) {
     $category = Category::find($id);
+    ProductCategories::where('category_id', $category->id)->delete();
     $category->delete();
     return redirect()->back();
   }
