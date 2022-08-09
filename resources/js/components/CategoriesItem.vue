@@ -72,6 +72,9 @@ export default {
         .then((res) => {
           location.reload()
         })
+        .catch(() => {
+          location.reload()
+        })
     },
     topLevelContainerFilter(toSortable, fromSortable, draggedElement) {
       let isElement = (fromSortable.options.group.name === 'g1');
