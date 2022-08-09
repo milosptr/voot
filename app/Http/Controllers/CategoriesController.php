@@ -89,9 +89,11 @@ class CategoriesController extends Controller
   }
 
   public function destroy($id) {
-    $category = Category::find($id);
-    ProductCategories::where('category_id', $category->id)->delete();
-    $category->delete();
-    return redirect()->back();
+    if(isset($id)) {
+      $category = Category::find($id);
+      ProductCategories::where('category_id', $category->id)->delete();
+      return $category->delete();
+    }
+    return response('Cannot delete without id!', 200);
   }
 }
