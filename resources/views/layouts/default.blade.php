@@ -12,7 +12,7 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&=Lora:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
-      <link href="/css/app.css" rel="stylesheet">
+      @vite('resources/js/app.js')
   </head>
   <body>
     @if(!Route::is('login') && !Route::is('register'))
@@ -22,6 +22,5 @@
     @if(!Route::is('login') && !Route::is('register'))
       @include('web.footer')
     @endif
-    <script src="/js/app.js"></script>
   </body>
 </html>

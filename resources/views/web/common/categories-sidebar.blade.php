@@ -1,6 +1,6 @@
 @foreach($categories as $category)
   @php $catSlug = Request::segment(1); @endphp
-  <div class="py-5 font-medium border-b border-gray-200 text-gray-600 tracking-wide {{ $category->order ? 'order-'.$category->order : 'order-last' }}">
+  <div class="py-5 font-medium border-b border-gray-200 text-gray-600 tracking-wide {{ isset($category->order) ? 'order-'.$category->order : 'order-last' }}">
     <div class="flex justify-between items-center w-full">
       <a href="{{ LaravelLocalization::localizeUrl($category->slug) }}" class="ml-3 w-full font-medium text-gray-800 hover:text-primary-lighter block {{ $catSlug === $category->slug ? 'text-primary-lighter font-medium' : '' }}">
       {{ $category->translatedName }}

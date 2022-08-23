@@ -36,6 +36,7 @@ trait InstallsApiStack
 
         // Providers...
         $files->copyDirectory(__DIR__.'/../../stubs/api/App/Providers', app_path('Providers'));
+        $this->replaceInFile("HOME = '/home'", "HOME = '/dashboard'", app_path('Providers/RouteServiceProvider.php'));
 
         // Routes...
         copy(__DIR__.'/../../stubs/api/routes/api.php', base_path('routes/api.php'));
@@ -56,10 +57,9 @@ trait InstallsApiStack
             copy(base_path('.env.example'), base_path('.env'));
         }
 
-        $this->replaceInFile(
-            'APP_URL=http://localhost',
-            'APP_URL=http://localhost'.PHP_EOL.'FRONTEND_URL=http://localhost:3000',
-            base_path('.env')
+        file_put_contents(
+            base_path('.env'),
+            preg_replace('/APP_URL=(.*)/', 'APP_URL=http://localhost:8000'.PHP_EOL.'FRONTEND_URL=http://localhost:3000', file_get_contents(base_path('.env')))
         );
 
         // Tests...
@@ -70,7 +70,7 @@ trait InstallsApiStack
         // Cleaning...
         $this->removeScaffoldingUnnecessaryForApis();
 
-        $this->info('Breeze scaffolding installed successfully.');
+        $this->components->info('Breeze scaffolding installed successfully.');
     }
 
     /**
@@ -84,7 +84,7 @@ trait InstallsApiStack
 
         // Remove frontend related files...
         $files->delete(base_path('package.json'));
-        $files->delete(base_path('webpack.mix.js'));
+        $files->delete(base_path('vite.config.js'));
 
         // Remove Laravel "welcome" view...
         $files->delete(resource_path('views/welcome.blade.php'));

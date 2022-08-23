@@ -5,6 +5,8 @@ namespace Laravel\Breeze\Console;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use RuntimeException;
+use Symfony\Component\Process\PhpExecutableFinder;
 use Symfony\Component\Process\Process;
 
 class InstallCommand extends Command
@@ -18,7 +20,8 @@ class InstallCommand extends Command
      */
     protected $signature = 'breeze:install {stack=blade : The development stack that should be installed (blade,react,vue,api)}
                             {--inertia : Indicate that the Vue Inertia stack should be installed (Deprecated)}
-                            {--pest : Indicate that Pest should be installed }
+                            {--pest : Indicate that Pest should be installed}
+                            {--ssr : Indicates if Inertia SSR support should be installed}
                             {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
@@ -31,7 +34,7 @@ class InstallCommand extends Command
     /**
      * Execute the console command.
      *
-     * @return void
+     * @return int|null
      */
     public function handle()
     {
@@ -41,9 +44,13 @@ class InstallCommand extends Command
             return $this->installInertiaReactStack();
         } elseif ($this->argument('stack') === 'api') {
             return $this->installApiStack();
-        } else {
+        } elseif ($this->argument('stack') === 'blade') {
             return $this->installBladeStack();
         }
+
+        $this->components->error('Invalid stack. Supported stacks are [blade], [react], [vue], and [api].');
+
+        return 1;
     }
 
     /**
@@ -180,5 +187,38 @@ class InstallCommand extends Command
     protected function replaceInFile($search, $replace, $path)
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+    }
+
+    /**
+     * Get the path to the appropriate PHP binary.
+     *
+     * @return string
+     */
+    protected function phpBinary()
+    {
+        return (new PhpExecutableFinder())->find(false) ?: 'php';
+    }
+
+    /**
+     * Run the given commands.
+     *
+     * @param  array  $commands
+     * @return void
+     */
+    protected function runCommands($commands)
+    {
+        $process = Process::fromShellCommandline(implode(' && ', $commands), null, null, null, null);
+
+        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+            try {
+                $process->setTty(true);
+            } catch (RuntimeException $e) {
+                $this->output->writeln('  <bg=yellow;fg=black> WARN </> '.$e->getMessage().PHP_EOL);
+            }
+        }
+
+        $process->run(function ($type, $line) {
+            $this->output->write('    '.$line);
+        });
     }
 }

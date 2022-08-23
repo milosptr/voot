@@ -11,9 +11,11 @@ return [
     'go_back_products' => 'Farðu aftur í allar vörur',
     'products_title' => 'Allar Vörur',
     'products' => 'Vörur',
+    'categories' => 'Flokkum',
     'view_all_products' => 'Allar Vörur',
     'back_to_categories' => 'Til baka að flokkum',
     'related_products' => 'Skyldar Vörur',
+    'shop_now_button' => 'Verslaðu Núna',
 
     'homepage_about' => "Við gerum þinn rekstur einfaldari með hagkvæmum og fjölbreyttum vörum.<br><br>Við veitum alhliða þjónustu bæði til sjós og lands með hagkvæmum og fjölbreyttum útgerðar- og rekstrarvörum. Þú einbeitir þér að því sem þú gerir best og við sjáum um rest!",
 

@@ -28,7 +28,7 @@
 <script>
   import CKEditor from '@ckeditor/ckeditor5-vue'
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
-  const slugify = require('slugify')
+  import slugify from 'slugify'
 
   export default {
     components: {

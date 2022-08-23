@@ -3,7 +3,85 @@
 @section('title', 'Homepage')
 
 @section('content')
-  <section id="hero-section" class="h-screen bg-primary-lightest">
+  <div class="relative overflow-hidden border-b border-gray-200 bg-gray-50">
+    <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
+        <div class="sm:max-w-lg">
+          <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
+          <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.services_p1')  }}</p>
+        </div>
+        <div>
+          <div class="mt-10">
+            <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full">
+              <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                <div class="flex items-center space-x-6 lg:space-x-8">
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
+                      <img src="/images/homepage/homepage-5.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-44 h-64 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-1.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="w-44 h-64 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-2.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-44 h-64 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-3.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-44 h-64 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-4.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="w-44 h-64 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-6.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-44 h-64 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-7.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}"
+              class="inline-block text-center bg-primary-light border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-primary"
+            >
+              {{ __('default.shop_now_button') }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="categories" class="my-20">
+    <div class="container">
+      <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide mb-10">
+        {{ __('default.categories') }}
+      </h2>
+      @php
+        $categories = App\Models\Category::where('parent_id', 0)->get();
+      @endphp
+      <div class="grid grid-cols-3 sm:grid-cols-{{ count($categories) }} gap-6 sm:gap-10">
+        @foreach($categories as $category)
+          @php $image = isset($category->image) ? $category->image->file_path : ''; @endphp
+          <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
+            <div class="w-full mx-auto">
+              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
+            </div>
+            <div class="text-sm sm:text-lg font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
+              {{ $category->translatedName }}
+            </div>
+          </a>
+        @endforeach
+      </div>
+    </div>
+  </section>
+  {{-- <section id="hero-section" class="h-screen bg-primary-lightest">
     <div class="bg-hero-wave z-0 w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-top border-b border-primary-lightest" style="background-image: url('/images/wave-haikei.svg');"></div>
     <div class="container">
       <div class="relative text-center z-10">
@@ -35,7 +113,7 @@
           </a>
       </div>
     </div>
-  </section>
+  </section> --}}
 
   <section class="my-20 relative z-10">
     <div class="container mx-auto">

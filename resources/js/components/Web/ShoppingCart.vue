@@ -135,7 +135,7 @@
 </template>
 
 <script>
-  var dayjs = require('dayjs')
+  import dayjs from 'dayjs'
   import { Calendar, DatePicker } from 'v-calendar'
 
   export default {
