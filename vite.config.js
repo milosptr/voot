@@ -20,9 +20,10 @@ export default defineConfig({
     resolve: {
       alias: {
         '@': resolve(__dirname, 'resources'),
+        vue: 'vue/dist/vue.esm-bundler.js',
       },
     },
-    server: {
-      open: true,
+    build: {
+      chunkSizeWarningLimit: 1600,
     },
 });

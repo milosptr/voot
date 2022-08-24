@@ -1,41 +1,41 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.aefaaf6a.js",
+    "file": "assets/app.565ff159.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_plugin-vue_export-helper.78ab9005.js"
+      "_plugin-vue_export-helper.14e3a710.js"
     ],
     "css": [
       "assets/app.0ad5fe88.css",
-      "assets/app.a346cdd6.css"
+      "assets/app.de5fd908.css"
     ]
   },
   "resources/js/backend.js": {
-    "file": "assets/backend.f749617d.js",
+    "file": "assets/backend.43348a31.js",
     "src": "resources/js/backend.js",
     "isEntry": true,
     "imports": [
-      "_plugin-vue_export-helper.78ab9005.js"
+      "_plugin-vue_export-helper.14e3a710.js"
     ],
     "css": [
       "assets/backend.efdedd7d.css",
-      "assets/app.a346cdd6.css"
+      "assets/app.de5fd908.css"
     ]
   },
-  "_plugin-vue_export-helper.78ab9005.js": {
-    "file": "assets/plugin-vue_export-helper.78ab9005.js"
-  },
-  "resources/js/app.css": {
-    "file": "assets/app.0ad5fe88.css",
-    "src": "resources/js/app.css"
+  "_plugin-vue_export-helper.14e3a710.js": {
+    "file": "assets/plugin-vue_export-helper.14e3a710.js"
   },
   "resources/js/backend.css": {
     "file": "assets/backend.efdedd7d.css",
     "src": "resources/js/backend.css"
   },
+  "resources/js/app.css": {
+    "file": "assets/app.0ad5fe88.css",
+    "src": "resources/js/app.css"
+  },
   "resources/css/app.css": {
-    "file": "assets/app.a346cdd6.css",
+    "file": "assets/app.de5fd908.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
