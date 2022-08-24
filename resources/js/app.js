@@ -1,6 +1,5 @@
 import './bootstrap'
 import '../css/app.css'
-import './scripts/Drift.min.js'
 
 import { createApp } from 'vue'
 import SingleProductVariations from './components/Web/SingleProductVariations.vue'

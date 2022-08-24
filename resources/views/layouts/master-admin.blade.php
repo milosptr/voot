@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
         <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
         <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css" rel="stylesheet" />
-        @vite('resources/js/app.js')
+        @vite('resources/js/backend.js')
     </head>
     <body class="admin-dashboard @yield('bodyclass')">
 

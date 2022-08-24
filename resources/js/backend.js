@@ -1,7 +1,6 @@
-const { default: axios } = require('axios')
+import './bootstrap'
 import '../css/app.css'
-require('./bootstrap')
-require('./scripts/backend')
+import './scripts/backend'
 
 import { createApp } from "vue"
 

@@ -1,5 +1,3 @@
-const { default: axios } = require("axios")
-const dayjs = require("dayjs")
 // Admin Dashboard
 if(document.querySelector('.admin-dashboard')) {
   document.querySelectorAll('[href="'+window.location.pathname+'"]')[0]?.classList.add('bg-primary-light')
