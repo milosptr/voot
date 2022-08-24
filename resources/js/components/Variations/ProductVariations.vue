@@ -28,7 +28,7 @@
             <input :value="variation.sku" @input="updateVariantField(index, 'sku', $event)" type="text" :id="'sku-'+index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
           </div>
           <div class="pl-3 mb-2 cursor-pointer" @click="removeVariant(variation,index)">
-            <img src="/images/trash.svg" width="24" height="24" alt="delete" />
+            <img :src="'/images/trash.svg'" width="24" height="24" alt="delete" />
           </div>
           <!-- <div v-else style="width: 24px"></div> -->
         </div>

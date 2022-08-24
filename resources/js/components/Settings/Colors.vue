@@ -14,7 +14,7 @@
         <input v-model="color.hex" type="color" class="mt-1 rounded-full overflow-hidden">
       </div>
       <div v-if="color.id" class="px-3 ml-3 mb-2 cursor-pointer" @click="deleteColor(color.id)">
-        <img src="/images/trash.svg" width="24" height="24" alt="delete">
+        <img :src="'/images/trash.svg'" width="24" height="24" alt="delete">
       </div>
   </div>
     <div class="flex justify-between">

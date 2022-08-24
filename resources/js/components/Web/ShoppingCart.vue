@@ -31,7 +31,7 @@
             </select>
           </div>
           <div class="ml-0 sm:ml-8 text-red-400 cursor-pointer" @click="removeProduct(index)">
-            <img src="/images/trash.svg" alt="remove" class="w-5 h-5" />
+            <img :src="'/images/trash.svg'" alt="remove" class="w-5 h-5" />
           </div>
       </div>
       <div  v-if="products.length" class="text-base font-medium text-gray-900 pb-3 mt-10">

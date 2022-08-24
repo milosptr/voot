@@ -12,14 +12,14 @@
         <label for="option_name" class="block text-sm font-medium text-gray-700">Option name</label>
         <div class="flex">
           <input v-model="option.name" type="text" name="option_name" id="option_name" placeholder="Size, Color, Material, Length, Weight..." class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          <img v-if="index > 0" src="/images/trash.svg" width="24" height="24" alt="remove" class="ml-6 cursor-pointer" @click="removeOption(index)" />
+          <img v-if="index > 0" :src="'/images/trash.svg'" width="24" height="24" alt="remove" class="ml-6 cursor-pointer" @click="removeOption(index)" />
         </div>
         <div class="pl-4 mt-3">
           <div class="block text-sm font-medium text-gray-700">Option values</div>
           <div v-for="(value, i) in optionValues[index]" :key="i" class="single-variant flex items-center">
             <input v-model="optionValues[index][i].value" @input="addValue(index, i, option.name)" type="text" name="option_1_values" placeholder="Add option value" class="mt-1 mr-6 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             <div style="width: 24px;">
-            <img v-if="i > 0" src="/images/trash.svg" width="24" height="24" alt="remove" class="cursor-pointer" @click="removeOptionValue(index, i)" />
+            <img v-if="i > 0" :src="'/images/trash.svg'" width="24" height="24" alt="remove" class="cursor-pointer" @click="removeOptionValue(index, i)" />
             </div>
           </div>
         </div>

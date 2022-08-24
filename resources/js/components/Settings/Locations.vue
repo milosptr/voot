@@ -36,7 +36,7 @@
         </div>
         <div class="">
           <div class="px-3 mt-8 ml-3 cursor-pointer" @click="deleteLocation(index, l.id)">
-            <img src="/images/trash.svg" width="24" height="24" alt="delete">
+            <img :src="'/images/trash.svg'" width="24" height="24" alt="delete">
           </div>
         </div>
       </div>
