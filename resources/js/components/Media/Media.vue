@@ -47,7 +47,7 @@
       axios.get(`/api/product-media/${document.getElementById('editSingleProduct').dataset.key}`)
         .then((res) => {
           this.feature_image = res.data.reverse().find((d) => !!d.featured_image)
-          this.gallery = res.data.filter((d) => !d.featured_image)
+          this.gallery = res.data.filter((d) => !d.featured_image || d.featured_image === "0")
         })
     },
     methods: {
