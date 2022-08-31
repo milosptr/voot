@@ -66,7 +66,8 @@ class AssetsUpload extends Controller
             $fileModel->category_id = $req->get('category_id');
         }
         if ($req->has('featured_image')) {
-            $fileModel->featured_image = true;
+          $product->media()->update(['featured_image' => 0]);
+          $fileModel->featured_image = true;
 
         }
 
