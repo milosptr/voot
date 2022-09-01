@@ -190,6 +190,16 @@ class Products extends Controller
       return $product->variations;
     }
 
+    public function reorderVariations(Request $request)
+    {
+      $variants = $request->get('variants');
+      foreach($variants as $variant) {
+        $v = ProductVariation::find($variant['id']);
+        $v->update(['order' => $variant['order']]);
+      }
+      return response('success', 200);
+    }
+
     public function destroyVariant($id)
     {
       $variation = ProductVariation::find($id);

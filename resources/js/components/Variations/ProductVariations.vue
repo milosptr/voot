@@ -11,27 +11,40 @@
         </div>
       </div>
       <div class="border-t border-gray-200">
-        <div v-for="(variation, index) in variations" :key="index" class="single-variant px-4 py-5 sm:p-6 border-b border-gray-200 flex items-end justify-between">
-          <div class="w-14 h-14">
-            <label :for="'variation-img-'+index" class="dropzone-placeholder h-full flex items-center justify-center text-center cursor-pointer">
-              <img v-if="variation.file_path" :src="variation.file_path" alt="variation-image" class="w-14 h-14 rounded-md" />
-              <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#d4d4d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              <input type="file" :id="'variation-img-'+index" @change="uploadImage($event,variation, index)" hidden />
-            </label>
-          </div>
-          <div class="w-1/3 px-3">
-              <label :for="'name-'+ index" class="block text-sm font-medium text-gray-700">Name</label>
-              <input :value="variation.value" @input="updateVariantField(index, 'value', $event)" type="text" :id="'name-'+ index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
-          </div>
-          <div class="w-1/3 px-3">
-            <label :for="'sku-'+index" class="block text-sm font-medium text-gray-700">SKU</label>
-            <input :value="variation.sku" @input="updateVariantField(index, 'sku', $event)" type="text" :id="'sku-'+index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
-          </div>
-          <div class="pl-3 mb-2 cursor-pointer" @click="removeVariant(variation,index)">
-            <img :src="'/images/trash.svg'" width="24" height="24" alt="delete" />
-          </div>
-          <!-- <div v-else style="width: 24px"></div> -->
-        </div>
+        <draggable
+          v-model="variations"
+          :group="variations"
+          @start="drag=true"
+          @end="onDragEnd"
+          item-key="id"
+          handle=".handle"
+        >
+          <template #item="{element, index}">
+            <div class="single-variant px-4 py-5 sm:p-6 border-b border-gray-200 flex items-end justify-between">
+              <div v-if="element.id" class="handle w-8 h-14 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#111" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="92" cy="60" r="10"></circle><circle cx="164" cy="60" r="10"></circle><circle cx="92" cy="128" r="10"></circle><circle cx="164" cy="128" r="10"></circle><circle cx="92" cy="196" r="10"></circle><circle cx="164" cy="196" r="10"></circle></svg>
+              </div>
+              <div class="w-14 h-14">
+                <label :for="'variation-img-'+index" class="dropzone-placeholder h-full flex items-center justify-center text-center cursor-pointer">
+                  <img v-if="element.file_path" :src="element.file_path" alt="variation-image" class="w-14 h-14 rounded-md" />
+                  <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="#d4d4d8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <input type="file" :id="'variation-img-'+index" @change="uploadImage($event,element, index)" hidden />
+                </label>
+              </div>
+              <div class="w-1/3 px-3">
+                  <label :for="'name-'+ index" class="block text-sm font-medium text-gray-700">Name</label>
+                  <input :value="element.value" @input="updateVariantField(index, 'value', $event)" type="text" :id="'name-'+ index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
+              </div>
+              <div class="w-1/3 px-3">
+                <label :for="'sku-'+index" class="block text-sm font-medium text-gray-700">SKU</label>
+                <input :value="element.sku" @input="updateVariantField(index, 'sku', $event)" type="text" :id="'sku-'+index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
+              </div>
+              <div class="pl-3 mb-2 cursor-pointer" @click="removeVariant(element,index)">
+                <img :src="'/images/trash.svg'" width="24" height="24" alt="delete" />
+              </div>
+            </div>
+          </template>
+        </draggable>
       </div>
       <div tabindex="0" class="w-1/3 text-center text-gray-600 border border-gray-400 bg-transparent px-6 py-2 mt-5 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white cursor-pointer" @keydown.enter="addVariation" @click="addVariation">
         Add another variation
@@ -59,25 +72,27 @@
   </div>
 </template>
 <script>
+  import draggable from 'vuedraggable'
   export default {
+    components: {
+      draggable,
+    },
     data: () => ({
       showAvailableColors: false,
       availableColors: [],
+      drag: false,
+      variations: [],
     }),
-    computed: {
-      variations() {
-        return this.$store.getters.product.variations
-      }
-    },
     mounted() {
       axios.get('/api/colors')
         .then((res) => {
           this.availableColors = res.data
+          this.variations = this.$store.getters.product.variations
         })
     },
     methods: {
       addVariation() {
-        this.$store.commit('addVariant')
+        this.variations.push({})
       },
       removeVariant(variant, index) {
         this.$store.commit('removeVariant', index)
@@ -96,6 +111,13 @@
       },
       toggleAvailableColors() {
         this.showAvailableColors = !this.showAvailableColors
+      },
+      onDragEnd() {
+        const variants = this.variations.map((v, i) => {
+          v.order = i
+          return v
+        })
+        axios.post('/api/product-variations/reorder', {variants})
       }
     }
   }

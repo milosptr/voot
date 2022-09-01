@@ -48,7 +48,7 @@ class Product extends Model
 
     public function variations()
     {
-      return $this->hasMany('App\Models\ProductVariation');
+      return $this->hasMany('App\Models\ProductVariation')->orderBy('order', 'ASC');
     }
 
     public function icons()
