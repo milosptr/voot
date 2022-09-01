@@ -12,7 +12,7 @@
           <label :for="'name-'+ index" class="block text-sm font-medium text-gray-700">Name</label>
           <input v-model="icon.name" type="text" :id="'name-'+ index" class="mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"  />
       </div>
-      <div v-if="icon.id" class="px-3 ml-3 mb-2 cursor-pointer">
+      <div v-if="icon.id" class="px-3 ml-3 mb-2 cursor-pointer" @click="removeIcon(icon.id)">
         <img :src="'/images/trash.svg'" width="24" height="24" alt="delete">
       </div>
     </div>
@@ -46,6 +46,12 @@
     methods: {
       addNewIcon() {
         this.icons.push({ id: 0, name: '', file_path: '' })
+      },
+      removeIcon(id) {
+        axios.delete('/api/settings-icons/' + id)
+          .then(() => {
+            this.icons = this.icons.filter((i) => i.id !== id)
+          })
       },
       save() {
         this.icons = this.icons.filter((i) => {

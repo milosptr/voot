@@ -57,6 +57,7 @@ Route::delete('product-categories/{id}', [CategoriesController::class, 'destroy'
 // Product icons
 Route::get('settings-icons', [SettingsIconsController::class, 'index']);
 Route::post('settings-icons', [SettingsIconsController::class, 'store']);
+Route::delete('settings-icons/{id}', [SettingsIconsController::class, 'destroy']);
 
 // Products
 Route::get('product-variations/available-colors', [Products::class, 'availableColors']);
