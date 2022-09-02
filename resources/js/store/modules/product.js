@@ -95,6 +95,9 @@ const product = {
     updateVariantField(state, data) {
       state.product.variations[data.index][data.key] = data.value
     },
+    removeProductInformation(state, info) {
+      state.product.informations = state.product.informations.filter((i) => JSON.stringify(i) !== JSON.stringify(info))
+    },
   },
 
   getters: {
