@@ -57,7 +57,7 @@ class Category extends Model
 
     public static function tree()
     {
-      $allCategories = Category::get();
+      $allCategories = Category::orderBy('order', 'ASC')->get();
       $rootCategories = $allCategories->where('parent_id', 0);
       self::formatTree($rootCategories, $allCategories);
 

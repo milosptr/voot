@@ -9,20 +9,24 @@
     </div>
   </section>
 
-  <section>
-    <div class="container mx-auto pb-10">
-      <div class="w-full grid grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-10 mt-12 sm:mt-32">
-          @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-            <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
-              <div class="w-2/3 mx-auto">
-                <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
-              </div>
-              <div class="text-lg sm:text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-                {{ $category->translatedName }}
-              </div>
-            </a>
-          @endforeach
-        </div>
+  <section id="categories" class="my-20">
+    <div class="container">
+      @php
+        $categories = App\Models\Category::where('parent_id', 0)->orderBy('order')->get();
+      @endphp
+      <div class="grid grid-cols-3 sm:grid-cols-{{ count($categories) }} gap-6 sm:gap-10">
+        @foreach($categories as $category)
+          @php $image = isset($category->image) ? $category->image->file_path : ''; @endphp
+          <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
+            <div class="w-full mx-auto">
+              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
+            </div>
+            <div class="text-sm sm:text-lg font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
+              {{ $category->translatedName }}
+            </div>
+          </a>
+        @endforeach
+      </div>
     </div>
   </section>
 

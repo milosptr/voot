@@ -64,7 +64,7 @@
         {{ __('default.categories') }}
       </h2>
       @php
-        $categories = App\Models\Category::where('parent_id', 0)->get();
+        $categories = App\Models\Category::where('parent_id', 0)->orderBy('order')->get();
       @endphp
       <div class="grid grid-cols-3 sm:grid-cols-{{ count($categories) }} gap-6 sm:gap-10">
         @foreach($categories as $category)
