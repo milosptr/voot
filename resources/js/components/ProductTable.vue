@@ -70,7 +70,7 @@
       },
       setTable() {
         const table = this.product?.product_table
-        this.table = table ? JSON.parse(table) : [[],[],[]]
+        this.table = table ? JSON.parse(table) : [["","","",""],["","","",""],["","","",""]]
         this.table_org = _.cloneDeep(this.table)
         if(this.table.length)
           this.nRows = this.table.length
