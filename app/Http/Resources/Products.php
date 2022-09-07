@@ -22,6 +22,8 @@ class Products extends JsonResource
         'species' => $this->species,
         'sku' => $this->sku,
         'quantity' => $this->quantity,
+        'quantity_name' => $this->quantity_name,
+        'quantity_translated' => (int) $this->quantityNameTranslated,
         'price' => $this->price,
         'available' => $this->available,
         'categories' => $this->categories,

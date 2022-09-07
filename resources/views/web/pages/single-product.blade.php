@@ -68,7 +68,7 @@
           @endforeach
         </div>
         @if(auth()->user() != NULL)
-          <div id="single-product-variations" key="{{ auth()->user()->id }}" index="{{ $product->id }}" sku="{{ $product->sku }}" variations="{{ json_encode($product->getfilteredVariationsAttribute()) }}"></div>
+          <div id="single-product-variations" key="{{ auth()->user()->id }}" index="{{ $product->id }}" sku="{{ $product->sku }}" qty="{{ $product->quantityNameTranslated }}" variations="{{ json_encode($product->getfilteredVariationsAttribute()) }}"></div>
         @else
           <a href="/login?back={{ request()->path() }}" class="block mt-8 sm:w-2/5 text-center text-white border border-primary-lighter bg-primary-lighter px-6 py-2 font-medium rounded-md hover:bg-primary-light cursor-pointer shadow-sm">
             Login to Order

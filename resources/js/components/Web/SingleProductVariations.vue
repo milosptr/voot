@@ -2,7 +2,7 @@
   <div>
     <div class="flex gap-10 mt-8">
       <Select v-if="variations.length" label="Select option" :options="variations" :color="true" :firstDefault="true" @selected="selectVariant($event)" />
-      <Select :label="qtyLabel" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
+      <Select :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
     </div>
     <div v-if="error" class="mt-3 mb-3 text-sm border border-red-600 bg-red-400 text-white rounded-md px-4 py-2">
       {{ error }}
@@ -33,6 +33,7 @@ import Select from './common/Select.vue'
       user_id: null,
       product_id: null,
       favourite: false,
+      quantityTranslated: 'Quantity',
       qty: 1,
       qtyOptions: []
     }),
@@ -44,17 +45,11 @@ import Select from './common/Select.vue'
         deep: true,
       }
     },
-    computed: {
-      qtyLabel() {
-        if(location.href.includes('beita'))
-          return 'Pallets'
-        return 'Quantity'
-      }
-    },
     mounted() {
       this.user_id = document.getElementById('single-product-variations').getAttribute('key')
       this.product_id = document.getElementById('single-product-variations').getAttribute('index')
       this.defaultSKU = document.getElementById('single-product-variations').getAttribute('sku')
+      this.quantityTranslated = document.getElementById('single-product-variations').getAttribute('qty')
       this.variations = JSON.parse(document.getElementById('single-product-variations').getAttribute('variations'))
       if(this.variations.length)
         this.selectVariant(this.variations[0].sku)

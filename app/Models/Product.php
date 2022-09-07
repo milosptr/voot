@@ -10,11 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
+    CONST QUANTITY = 0;
+    CONST PALLETS = 1;
+    CONST METERS = 2;
+
     use HasFactory;
 
     public $guarded = ['id'];
 
-    protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'available', 'product_table', 'english_name', 'english_description'];
+    protected $fillable = ['name', 'slug', 'description', 'sku', 'barcode', 'price', 'quantity', 'quantity_name', 'available', 'product_table', 'english_name', 'english_description'];
     protected $table = 'products';
 
     public $cast = [
@@ -67,6 +71,16 @@ class Product extends Model
       if(isset($locale) && $locale === 'en')
         return $this->english_name;
       return $this->name;
+    }
+
+    public function getQuantityNameTranslatedAttribute()
+    {
+      $isIcelandic = app()->getLocale() === "is";
+      if($this->quantity_name === self::PALLETS)
+        return $isIcelandic ? 'Bretti' : 'Pallets';
+      if($this->quantity_name === self::METERS)
+        return $isIcelandic ? 'Metrar' : 'Meters';
+      return $isIcelandic ? 'Magn' : 'Quantity';
     }
 
     public function getFeaturedImageAttribute()

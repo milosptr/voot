@@ -23,8 +23,17 @@
             <input :value="product.sku" @input="updateField('sku', $event)" type="text" name="sku" id="sku" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required="">
           </div>
           <div class="">
-            <label for="barcode" class="block text-sm font-medium text-gray-700">Barcode (ISBN, UPC, GTIN, etc.)</label>
-            <input type="text" id="barcode" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            <label for="quantity_name" class="block text-sm font-medium text-gray-700">Quantity name</label>
+            <select
+              id="quantity_name"
+              class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+              :value="product.quantity_name"
+              @change="updateField('quantity_name', $event)"
+            >
+              <option value="0">Quantity / Magn</option>
+              <option value="1">Pallets / Bretti</option>
+              <option value="2">Meters / Metrar</option>
+            </select>
           </div>
         </div>
       </div>
@@ -85,6 +94,8 @@
     },
     methods: {
       updateField(key, evt) {
+        if(key === 'quantity_name')
+          this.$store.commit('updateProductField', {key, value: parseInt(evt.target.value)})
         this.$store.commit('updateProductField', {key, value: evt.target.value})
       },
       updateEditorField(key, value) {
