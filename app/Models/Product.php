@@ -10,10 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
-    CONST QUANTITY = 0;
-    CONST PALLETS = 1;
-    CONST METERS = 2;
-
     use HasFactory;
 
     public $guarded = ['id'];
@@ -75,12 +71,22 @@ class Product extends Model
 
     public function getQuantityNameTranslatedAttribute()
     {
-      $isIcelandic = app()->getLocale() === "is";
-      if($this->quantity_name === self::PALLETS)
-        return $isIcelandic ? 'Bretti' : 'Pallets';
-      if($this->quantity_name === self::METERS)
-        return $isIcelandic ? 'Metrar' : 'Meters';
-      return $isIcelandic ? 'Magn' : 'Quantity';
+      $locale = app()->getLocale();
+      $quantityMapper = [
+        0 => ['is' => 'Magn', 'en' => 'Quantity'],
+        1 => ['is' => 'Bretti', 'en' => 'Pallets'],
+        2 => ['is' => 'Metrar', 'en' => 'Meters'],
+        3 => ['is' => 'Par', 'en' => 'Pairs'],
+        4 => ['is' => 'Stk', 'en' => 'Peaces'],
+        5 => ['is' => 'Rúlla', 'en' => 'Rolls'],
+        6 => ['is' => 'Pakki', 'en' => 'Packages'],
+        7 => ['is' => 'Poki', 'en' => 'Bags'],
+        8 => ['is' => 'Tunna', 'en' => 'Barrels'],
+        9 => ['is' => 'Kassi', 'en' => 'Boxes'],
+      ];
+      if(isset($quantityMapper[$this->quantity_name]))
+        return $quantityMapper[$this->quantity_name][$locale];
+      return 'Quantity';
     }
 
     public function getFeaturedImageAttribute()

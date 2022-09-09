@@ -33,6 +33,13 @@
               <option value="0">Quantity / Magn</option>
               <option value="1">Pallets / Bretti</option>
               <option value="2">Meters / Metrar</option>
+              <option value="3">Par / Pairs</option>
+              <option value="4">Stk / Peaces</option>
+              <option value="5">Rúlla / Rolls</option>
+              <option value="6">Pakki / Packages</option>
+              <option value="7">Poki / Bags</option>
+              <option value="8">Tunna / Barrels</option>
+              <option value="9">Kassi / Boxes</option>
             </select>
           </div>
         </div>
