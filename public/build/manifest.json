@@ -12,7 +12,7 @@
     ]
   },
   "resources/js/backend.js": {
-    "file": "assets/backend.1499a5f9.js",
+    "file": "assets/backend.13a5e5ab.js",
     "src": "resources/js/backend.js",
     "isEntry": true,
     "imports": [
@@ -26,13 +26,13 @@
   "_plugin-vue_export-helper.b5fa66d4.js": {
     "file": "assets/plugin-vue_export-helper.b5fa66d4.js"
   },
-  "resources/js/app.css": {
-    "file": "assets/app.0ad5fe88.css",
-    "src": "resources/js/app.css"
-  },
   "resources/js/backend.css": {
     "file": "assets/backend.efdedd7d.css",
     "src": "resources/js/backend.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app.0ad5fe88.css",
+    "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
     "file": "assets/app.a5fc2374.css",
