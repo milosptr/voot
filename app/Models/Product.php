@@ -83,6 +83,8 @@ class Product extends Model
         7 => ['is' => 'Poki', 'en' => 'Bags'],
         8 => ['is' => 'Tunna', 'en' => 'Barrels'],
         9 => ['is' => 'Kassi', 'en' => 'Boxes'],
+        10 => ['is' => 'Balli', 'en' => 'Packs'],
+        11 => ['is' => 'Brúsi', 'en' => 'Cans'],
       ];
       if(isset($quantityMapper[$this->quantity_name]))
         return $quantityMapper[$this->quantity_name][$locale];

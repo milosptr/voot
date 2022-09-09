@@ -40,6 +40,8 @@
               <option value="7">Poki / Bags</option>
               <option value="8">Tunna / Barrels</option>
               <option value="9">Kassi / Boxes</option>
+              <option value="10">Balli / Packs</option>
+              <option value="11">Brúsi / Cans</option>
             </select>
           </div>
         </div>
