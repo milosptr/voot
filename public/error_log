@@ -1,0 +1,9 @@
+[08-Sep-2022 14:28:56 Europe/Ljubljana] PHP Warning:  require(/home/voot/dev.voot.is/vendor/composer/../nunomaduro/termwind/src/Functions.php): Failed to open stream: No such file or directory in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 71
+[08-Sep-2022 14:28:56 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Failed opening required '/home/voot/dev.voot.is/vendor/composer/../nunomaduro/termwind/src/Functions.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:71
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/composer/autoload_real.php(61): composerRequire4c39abadee784db0706f422d8ad23d86('35a6ad97d21e794...', '/home/voot/dev....')
+#1 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit4c39abadee784db0706f422d8ad23d86::getLoader()
+#2 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#3 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 71
+[08-Sep-2022 12:29:15 UTC] PHP Fatal error:  Trait "Illuminate\Support\Traits\Conditionable" not found in /home/voot/dev.voot.is/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php on line 17
