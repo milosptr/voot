@@ -132,7 +132,11 @@ class Product extends Model
 
     public function getDuplicatedSKUSAttribute()
     {
-      return Product::where('sku', $this->sku)->count() - 1;
+      $duplicates = Product::where('sku', $this->sku)->get();
+      return [
+        'products' => $duplicates,
+        'count' => count($duplicates) - 1
+      ];
     }
 
     public function scopeRelatedProducts(Builder $query, $count = 4, $inRandomOrder = true)

@@ -10,7 +10,7 @@
           <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
           <ckeditor :editor="editor" :model-value="product.description" @input="updateEditorField('description', $event)" :config="editorConfig"></ckeditor>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-6">
           <div class="">
             <label for="latin" class="block text-sm font-medium text-gray-700">Latin (species)</label>
             <input :value="product.species" @input="updateField('species', $event)" type="text" name="species" id="latin" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
@@ -23,11 +23,11 @@
       </div>
       <div class="bg-white overflow-hidden shadow rounded-lg px-4 py-5 sm:p-6">
         <div class="text-lg text-black font-medium">Inventory</div>
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div class="">
             <label for="sku" class="block text-sm font-medium text-gray-700">SKU (Stock Keeping Unit)</label>
             <input :value="product.sku" @input="updateField('sku', $event)" type="text" name="sku" id="sku" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required="">
-            <div v-if="product.duplicates" class="text-red-500 text-sm mt-1 ml-1">{{ product.duplicates }} duplicated SKUs</div>
+            <div v-if="product.duplicates.count" class="text-red-500 text-sm mt-1 ml-1" @click="toggleDuplicatesModal">{{ product.duplicates.count }} duplicated SKUs</div>
           </div>
           <div class="">
             <label for="quantity_name" class="block text-sm font-medium text-gray-700">Quantity name</label>
@@ -64,6 +64,7 @@
       <ProductIcons />
       <Media />
     </div>
+    <DuplicatesModal :show="showDuplicatesModal" :products="product.duplicates.products" @close="showDuplicatesModal = false" />
   </div>
 </template>
 
@@ -78,6 +79,7 @@
   import ProductTable from './ProductTable.vue'
   import ProductVariations from './Variations/ProductVariations.vue'
   import Media from './Media/Media.vue'
+  import DuplicatesModal from './Modals/DuplicatesModal.vue'
 
   export default {
     components: {
@@ -90,12 +92,14 @@
       ProductVariations,
       ProductTable,
       Media,
+      DuplicatesModal,
     },
     data: () => ({
       editor: ClassicEditor,
       editorConfig: {
         height: 200,
       },
+      showDuplicatesModal: false,
     }),
     computed: {
       product() {
@@ -109,6 +113,9 @@
       this.$store.dispatch('getIcons')
     },
     methods: {
+      toggleDuplicatesModal() {
+        this.showDuplicatesModal = !this.showDuplicatesModal
+      },
       updateField(key, evt) {
         if(key === 'quantity_name')
           this.$store.commit('updateProductField', {key, value: parseInt(evt.target.value)})
