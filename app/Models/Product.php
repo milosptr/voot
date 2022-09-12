@@ -130,6 +130,11 @@ class Product extends Model
       return $variations;
     }
 
+    public function getDuplicatedSKUSAttribute()
+    {
+      return Product::where('sku', $this->sku)->count() - 1;
+    }
+
     public function scopeRelatedProducts(Builder $query, $count = 4, $inRandomOrder = true)
     {
       $query = $query->withAnyTags($this->tags()->pluck('name'))->where('id', '<>', $this->id);

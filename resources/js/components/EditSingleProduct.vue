@@ -27,6 +27,7 @@
           <div class="">
             <label for="sku" class="block text-sm font-medium text-gray-700">SKU (Stock Keeping Unit)</label>
             <input :value="product.sku" @input="updateField('sku', $event)" type="text" name="sku" id="sku" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required="">
+            <div v-if="product.duplicates" class="text-red-500 text-sm mt-1 ml-1">{{ product.duplicates }} duplicated SKUs</div>
           </div>
           <div class="">
             <label for="quantity_name" class="block text-sm font-medium text-gray-700">Quantity name</label>

@@ -6,7 +6,11 @@
   <section id="products">
     <div class="container mx-auto">
       <div class="py-2 mt-12 flex items-center mb-6 border-b border-gray-200">
+        @if($category->parentCategory())
+        <a href="/{{ $category->parentCategory()->slug }}" class="text-gray-900">
+        @else
         <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}" class="text-gray-900">
+        @endif
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-3"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
         </a>
         <h1 class="text-2xl sm:text-3xl font-bold">{{ $category->translatedName }}</h1>

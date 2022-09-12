@@ -30,6 +30,11 @@ class Category extends Model
       return $this->belongsToMany('App\Models\Product', 'product_categories', 'category_id', 'product_id');
     }
 
+    public function parentCategory()
+    {
+      return Category::where('id', $this->parent_id)->first();
+    }
+
     public function subcategory()
     {
       return Category::where('parent_id', $this->id)->get();

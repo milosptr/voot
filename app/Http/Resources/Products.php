@@ -37,6 +37,7 @@ class Products extends JsonResource
         'variations' => $this->variations,
         'product_table' => $this->product_table,
         'url' => $this->productUrl,
+        'duplicates' => $this->duplicatedSKUS
       ];
     }
 }
