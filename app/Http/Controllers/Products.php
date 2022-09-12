@@ -96,7 +96,7 @@ class Products extends Controller
     public function update(Request $request, $id)
     {
       $slugify = new Slugify();
-      $productData = $request->only(['name', 'description', 'species', 'sku', 'available', 'product_table', 'barcode', 'quantity', 'quantity_name', 'english_name', 'english_description']);
+      $productData = $request->only(['name', 'description', 'species', 'label', 'sku', 'available', 'product_table', 'barcode', 'quantity', 'quantity_name', 'english_name', 'english_description']);
       $productData['slug'] = $slugify->slugify($request->get('name'));
       try {
           $product = Product::find($id);

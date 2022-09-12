@@ -18,6 +18,11 @@
           <div id="single-product-bigimage" class="w-full aspect-w-1 aspect-h-1 single-product-gallery--big rounded-md border border-gray-100 shadow-sm">
             <div class="h-full bg-contain bg-center bg-no-repeat rounded-md single-product-bigimage-url" data-zoom="/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
           </div>
+          @if(isset($product->label))
+            <div class="absolute left-2 top-2 inline-flex items-center rounded-md bg-red-500 px-2.5 py-0.5 font-medium text-white z-10 mr-2 break-all">
+            {{ $product->label }}
+            </div>
+          @endif
           <div class="drift-zoom-pane"></div>
           <div id="single-product-gallery" class="flex flex-wrap sm:flex-nowrap items-center gap-4 overflow-hidden mt-4">
             @foreach ($product->media as $media)

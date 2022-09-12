@@ -10,9 +10,15 @@
           <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
           <ckeditor :editor="editor" :model-value="product.description" @input="updateEditorField('description', $event)" :config="editorConfig"></ckeditor>
         </div>
-        <div class="mt-6">
-          <label for="latin" class="block text-sm font-medium text-gray-700">Latin (species)</label>
-          <input :value="product.species" @input="updateField('species', $event)" type="text" name="species" id="latin" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          <div class="">
+            <label for="latin" class="block text-sm font-medium text-gray-700">Latin (species)</label>
+            <input :value="product.species" @input="updateField('species', $event)" type="text" name="species" id="latin" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
+          <div class="">
+            <label for="label" class="block text-sm font-medium text-gray-700">Label</label>
+            <input :value="product.label" @input="updateField('label', $event)" type="text" name="label" id="label" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
         </div>
       </div>
       <div class="bg-white overflow-hidden shadow rounded-lg px-4 py-5 sm:p-6">
