@@ -94,6 +94,7 @@ Route::get('/page/{slug}', function($slug) {
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localize' ]], function () {
 
   Route::get('/', [WebPages::class, 'index']);
+  Route::get('/homepage', [WebPages::class, 'homepage']);
 
   Route::get(LaravelLocalization::transRoute('routes.about'), [WebPages::class, 'about'])->name('about');
   Route::get(LaravelLocalization::transRoute('routes.services'), [WebPages::class, 'services'])->name('services');

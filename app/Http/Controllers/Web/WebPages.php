@@ -18,6 +18,14 @@ class WebPages extends Controller
       return view('web.pages.homepage', compact('categories', 'products'));
     }
 
+    public function homepage()
+    {
+      $categories = Category::where('parent_id', 0)->get();
+      $products = count(Config::getHomepageProducts()) ? Config::getHomepageProducts() : Product::where('available', 1)->orderBy('id', 'DESC')->get()->take(8);
+
+      return view('web.pages.homepage-2', compact('categories', 'products'));
+    }
+
     public function about()
     {
       return view('web.pages.about');
