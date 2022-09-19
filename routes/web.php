@@ -21,7 +21,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('email-template', function() {  return view('emails.order-created'); });
+Route::get('email-template', function() {  return view('emails.new-customer-registration'); });
 
 Route::get('/login', function() {
   return view('auth.login');
