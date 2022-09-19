@@ -3,27 +3,46 @@
 @section('title', 'Homepage')
 
 @section('content')
-  <section class="">
-    <div class="contianer">
-      <div class="grid grid-cols-3 gap-3">
-        <div class="aspect-w-10 aspect-h-16 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/homepage/grindavik.jpeg');">
-          <div class="flex items-center justify-center">
-            <div class="flex justify-center items-center w-full lg:w-2/3 bg-primary h-24 lg:h-32 p-6 text-center text-sm lg:text-3xl font-semibold text-white">SKIP & BÁTAR</div>
-          </div>
+  <div class="relative overflow-hidden border-b border-gray-200 bg-gray-50">
+    <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
+        <div class="sm:max-w-lg">
+          <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
+          <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.services_p1')  }}</p>
         </div>
-        <div class="aspect-w-10 aspect-h-16 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/homepage/work.jpg');">
-          <div class="flex items-center justify-center">
-            <div class="flex justify-center items-center w-full lg:w-2/3 bg-primary h-24 lg:h-32 p-6 text-center text-sm lg:text-3xl font-semibold text-white">VINNSLUR & VERKSMIĐJUR</div>
-          </div>
-        </div>
-        <div class="aspect-w-10 aspect-h-16 bg-cover bg-center bg-no-repeat" style="background-image: url('/images/homepage/farm.jpg');">
-          <div class="flex items-center justify-center">
-            <div class="flex justify-center items-center w-full lg:w-2/3 bg-primary h-24 lg:h-32 p-6 text-center text-sm lg:text-3xl font-semibold text-white">LANDBÚNAĐUR</div>
+        <div>
+          <div class="mt-10">
+            <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full">
+              <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                <div class="flex items-center space-x-6 lg:space-x-8">
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="w-72 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/work-v.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-72 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/grindavik-v.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <div class="w-72 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/farm-v.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}"
+              class="inline-block text-center bg-primary-light border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-primary"
+            >
+              {{ __('default.shop_now_button') }}
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <section id="categories" class="my-20">
     <div class="container">

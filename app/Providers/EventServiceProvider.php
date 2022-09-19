@@ -14,6 +14,7 @@ use App\Listeners\SendNewUserRegistrationEmail;
 use App\Listeners\SendCustomerOrderCreatedEmail;
 use App\Listeners\SendCustomerVerificationEmail;
 use App\Listeners\SendCustomerPasswordResetEmail;
+use App\Listeners\SendCustomerRegistrationEmail;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -27,6 +28,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            SendCustomerRegistrationEmail::class,
             SendNewUserRegistrationEmail::class,
         ],
         OrderCreated::class => [

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
           $table->string('key')->nullable();
           $table->string('ssn')->nullable();
           $table->string('street')->nullable();
-          $table->integer('zip')->nullable();
+          $table->string('zip')->nullable();
           $table->string('city')->nullable();
           $table->string('country')->nullable();
           $table->string('phone')->nullable();
