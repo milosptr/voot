@@ -47,7 +47,7 @@
           {!! $product->description !!}
         </div>
         <div class="mt-3 text-sm font-light flex flex-wrap sm:flex-nowrap items-center pt-2 border-t border-gray-200">
-          <div class="mr-1 text-gray-700">{{ count($product->categories) > 1 ? 'Categories: ' : 'Category: '}}</div>
+          <div class="mr-1 text-gray-700">{{ __('default.categories') }}</div>
           @foreach($product->categories as $cat)
             <a href="/{{ $cat->slug }}" class="text-primary-lighter font-light mr-2"> {{ $cat->translatedName }}@if(!$loop->last), @endif</a>
           @endforeach
@@ -61,7 +61,7 @@
           </div>
         @endif
         <div class="mt-2 text-sm font-light flex items-center pt-2 pb-2 border-t border-b border-gray-200">
-          <div class="mr-1 text-gray-700">SKU:</div>
+          <div class="mr-1 text-gray-700">{{ __('default.sku') }}:</div>
           <div id="single-product-sku" class="text-gray-500 font-light">{{ $product->sku }}</div>
         </div>
         <div class="mt-2 text-sm font-light flex items-center pt-2 pb-2">
@@ -73,10 +73,10 @@
           @endforeach
         </div>
         @if(auth()->user() != NULL)
-          <div id="single-product-variations" key="{{ auth()->user()->id }}" index="{{ $product->id }}" sku="{{ $product->sku }}" qty="{{ $product->quantityNameTranslated }}" variations="{{ json_encode($product->getfilteredVariationsAttribute()) }}"></div>
+          <div id="single-product-variations" key="{{ auth()->user()->id }}" index="{{ $product->id }}" sku="{{ $product->sku }}" qty="{{ $product->quantityNameTranslated }}" variations="{{ json_encode($product->getfilteredVariationsAttribute()) }}" addtocart="{{ __('default.add_to_cart') }}"></div>
         @else
           <a href="/login?back={{ request()->path() }}" class="block mt-8 sm:w-2/5 text-center text-white border border-primary-lighter bg-primary-lighter px-6 py-2 font-medium rounded-md hover:bg-primary-light cursor-pointer shadow-sm">
-            Login to Order
+            {{ __('default.login_to_order') }}
           </a>
         @endif
       </div>
@@ -84,7 +84,7 @@
     <div class="mt-12 flex flex-wrap">
     @if(count($product->documents) || count($product->information))
       <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Product Information</h4>
+          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.product_information') }}</h4>
           @foreach($product->information as $info)
                 @if($info->name)
                   <div class="flex flex-wrap py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-3 text-sm">
@@ -99,10 +99,10 @@
             @endforeach
         </div>
         <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Standards and Approvals</h4>
+          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.standards_and_approvals') }}</h4>
         </div>
         <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">Downloads</h4>
+          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.downloads') }}</h4>
           @foreach($product->documents as $doc)
               <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">
                 <div class="w-full text-gray-500 capitalize font-medium">

@@ -54,7 +54,7 @@
                       {{ auth()->user()->name }}
                     </p>
                     <p class="text-left text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                      Logout
+                      {{ __('backoffice.nav_logout') }}
                     </p>
                   </div>
                 </button>
@@ -97,7 +97,7 @@
                       {{ auth()->user()->name }}
                     </p>
                     <p class="text-left text-xs font-medium text-gray-300 group-hover:text-gray-200">
-                      Logout
+                      {{ __('backoffice.nav_logout') }}
                     </p>
                   </div>
                 </button>

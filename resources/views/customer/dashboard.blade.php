@@ -4,7 +4,7 @@
 
 @section('content')
   <section>
-    <h1 class="text-xl font-semibold text-gray-900 mr-auo mb-6">Last 4 orders</h1>
+    <h1 class="text-xl font-semibold text-gray-900 mr-auo mb-6">{{ __('backoffice.last_4_orders' )}}</h1>
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
       @foreach(auth()->user()->orders()->orderBy('id', 'DESC')->limit(4)->get() as $order)
         <a href="/app/orders/{{ $order['id'] }}" class="bg-white rounded-md shadow border border-gray-100 px-6 py-3">
@@ -17,16 +17,16 @@
             </div>
           </div>
           <div class="text-sm text-gray-600 mt-3">
-            <span class="font-medium">Products:</span> {{ count($order['order']) }}
+            <span class="font-medium">{{ __('backoffice.products') }}:</span> {{ count($order['order']) }}
           </div>
           <div class="text-sm text-gray-600 mt-1">
-            <span class="font-medium">Order created:</span> <span class="format-the-date">{{ $order['created_at'] }}</span>
+            <span class="font-medium">{{ __('backoffice.order_created') }}:</span> <span class="format-the-date">{{ $order['created_at'] }}</span>
           </div>
         </a>
       @endforeach
     </div>
      <div class="flex gap-4 items-center mt-12 mb-6">
-      <h1 class="text-xl font-semibold text-gray-900">Last 4 favourites</h1>
+      <h1 class="text-xl font-semibold text-gray-900">{{ __('backoffice.last_4_favourties' )}}</h1>
      </div>
      <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
       @foreach(auth()->user()->favourites()->limit(4)->get() as $product)
