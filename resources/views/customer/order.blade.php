@@ -8,38 +8,38 @@
       <div class="px-4 py-5 sm:p-6">
         <form action="/api/request-order/update/{{ $order->id }}" method="POST" class="flex flex-wrap">
           <div class="w-full">
-            <label for="order_status" class="block text-sm font-medium text-gray-500">Order status</label>
+            <label for="order_status" class="block text-sm font-medium text-gray-500">{{ __('backoffice.order_status') }}</label>
             @include('components.order.statuses', ['status' => $order->order_status])
           </div>
           <div class="w-full sm:w-1/2 sm:pr-4 mt-4">
-            <label for="created_at" class="block text-sm font-medium text-gray-500">Created at</label>
+            <label for="created_at" class="block text-sm font-medium text-gray-500">{{ __('backoffice.created_at') }}</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
               {{ Carbon\Carbon::parse($order->created_at)->format('d.m.Y. H:s') }}
             </div>
           </div>
           <div class="w-full sm:w-1/2 sm:pl-4 mt-4">
-            <label for="updated_at" class="block text-sm font-medium text-gray-500">Last updated at</label>
+            <label for="updated_at" class="block text-sm font-medium text-gray-500">{{ __('backoffice.order_status') }}</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
               {{ Carbon\Carbon::parse($order->updated_at)->format('d.m.Y. H:s:i') }}
             </div>
           </div>
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4 select-none">
-            <label for="customer" class="block text-sm font-medium text-gray-500">Customer name</label>
+            <label for="customer" class="block text-sm font-medium text-gray-500">{{ __('backoffice.customer_name') }}</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
               {{ $order->user->name }}
             </div>
           </div>
           <div class="w-full mt-4 sm:w-1/2 sm:pl-4 select-none">
-            <label for="title" class="block text-sm font-medium text-gray-500">Customer key</label>
+            <label for="title" class="block text-sm font-medium text-gray-500">{{ __('backoffice.ssn') }}</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
               {{ $order->user->ssn ?? 'NULL' }}
             </div>
           </div>
           <div class="w-full mt-4">
             @if($order->shipping_method == App\Models\Order::DELIVERY)
-              <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
+              <label for="shipping_address" class="block text-sm font-medium text-gray-500">{{ __('backoffice.shipping_address') }}</label>
             @else
-              <label for="shipping_address" class="block text-sm font-medium text-gray-500">Pickup address</label>
+              <label for="shipping_address" class="block text-sm font-medium text-gray-500">{{ __('backoffice.pickup_address') }}</label>
             @endif
             @if($order->order_status <= 1)
               <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address }}" required="">
@@ -50,7 +50,7 @@
             @endif
           </div>
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4">
-            <label for="shipping_date" class="block text-sm font-medium text-gray-500">Shipping date</label>
+            <label for="shipping_date" class="block text-sm font-medium text-gray-500">{{ __('backoffice.shipping_date') }}</label>
             @if($order->order_status <= 1)
               <input type="date" name="shipping_date" id="shipping_date" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md"
                 value="{{ Carbon\Carbon::parse($order->shipping_date)->format('Y-m-d') }}"
@@ -63,18 +63,18 @@
             @endif
           </div>
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4">
-            <label for="shipping_date" class="block text-sm font-medium text-gray-500">Shipping method</label>
+            <label for="shipping_date" class="block text-sm font-medium text-gray-500">{{ __('backoffice.shipping_method') }}</label>
               <div data-method="{{ $order->shipping_method }} {{ App\Models\Order::DELIVERY }}" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
                 @if($order->shipping_method == App\Models\Order::DELIVERY)
-                  Delivery
+                  {{ __('backoffice.delivery') }}
                 @else
-                  Pickup
+                  {{ __('backoffice.pickup') }}
                 @endif
               </div>
           </div>
           @if($order->note)
             <div class="w-full mt-4">
-              <label for="title" class="block text-sm font-medium text-gray-500">Customer note</label>
+              <label for="title" class="block text-sm font-medium text-gray-500">{{ __('backoffice.customer_note') }}</label>
               @if($order->order_status > 3)
                 <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
                   {{ $order->note }}
@@ -87,10 +87,10 @@
           @if($order->order_status <= 3)
           <div class="w-full mt-8 flex justify-between">
             <button type="submit" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
-              Update order
+              {{ __('backoffice.update_order') }}
             </button>
             <a href="/api/orders/{{ $order->id }}/reorder" class="border border-primary-lighter text-primary-lighter hover:text-white group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
-              Reorder
+              {{ __('backoffice.reorder') }}
             </a>
           </div>
           @endif
@@ -99,7 +99,7 @@
     </div>
     <div class="w-1/2 bg-white overflow-hidden shadow rounded-lg">
       <div class="px-4 py-5 sm:p-6">
-        <h2 class="text-sm font-medium text-gray-500 border-b border-gray-200 pb-6">Order</h2>
+        <h2 class="text-sm font-medium text-gray-500 border-b border-gray-200 pb-6">{{ __('backoffice.order') }}</h2>
         @foreach($order->order as $o)
           @php
             $product = App\Models\Inventory::where('sku', $o['sku'])->first();

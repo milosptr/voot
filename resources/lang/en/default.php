@@ -12,6 +12,7 @@ return [
     'products_title' => 'All Products',
     'products' => 'Products',
     'categories' => 'Categories',
+    'sku' => 'SKU',
     'view_all_products' => 'View all products',
     'back_to_categories' => 'Back to categories',
     'related_products' => 'Related Products',
@@ -43,6 +44,14 @@ return [
 
     'cart_title' => 'Shopping Cart',
     'orders_title' => 'Your orders',
+    'add_to_cart' => 'Add to Cart',
+    'login_to_order' => 'Login to order',
+
+    'product_information' => 'Product Information',
+    'standards_and_approvals' => 'Standards and Approvals',
+    'downloads' => 'Downloads',
+    'skyldarvörur' => 'Skyldarvörur',
+    'star' => 'STAR',
 
     'email' => 'Email',
     'phone' => 'Phone',

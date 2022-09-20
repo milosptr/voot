@@ -63,5 +63,8 @@
     @if(!Route::is('login') && !Route::is('register'))
       @include('web.footer')
     @endif
+    <script>
+      window.current_locale = "{{ app()->getLocale() }}"
+    </script>
   </body>
 </html>

@@ -35,67 +35,69 @@
           </div>
       </div>
       <div  v-if="products.length" class="text-base font-medium text-gray-900 pb-3 mt-10">
-        Leave a note
+        {{ translateItem('leave_a_note') }}
       </div>
       <textarea
         v-if="products.length"
         v-model="note"
         class="w-full border border-gray-300 outline-none rounded-md"
-        placeholder="Your note..."
+        :placeholder="translateItem('your_note') + '...'"
       ></textarea>
     </div>
     <div class="w-full sm:w-1/3 pl-0 sm:pl-6">
       <div v-if="customer" class="bg-gray-100 rounded-md p-6">
-        <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 mb-6">Customer info</h3>
+        <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 mb-6">{{ translateItem('customer_info') }}</h3>
         <div class="flex justify-between">
-          <p class="text-sm text-gray-500 font-medium">Name:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('name') }}:</p>
           <p class="text-sm text-gray-500">{{ customer.name }}</p>
         </div>
         <div class="flex justify-between mt-3">
-          <p class="text-sm text-gray-500 font-medium">Address:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('address') }}:</p>
           <p class="text-sm text-gray-500">{{ customer.street }}, {{ customer.city }} {{ customer.zip }}, {{ customer.country }}</p>
         </div>
         <div class="flex justify-between mt-3">
-          <p class="text-sm text-gray-500 font-medium">Email:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('email') }}:</p>
           <p class="text-sm text-gray-500">{{ customer.email }}</p>
         </div>
         <div class="flex justify-between mt-3">
-          <p class="text-sm text-gray-500 font-medium">Phone:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('phone') }}:</p>
           <p class="text-sm text-gray-500">{{ customer.phone }}</p>
         </div>
         <div class="flex justify-between mt-3">
-          <p class="text-sm text-gray-500 font-medium">SSN:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('ssn') }}:</p>
           <p class="text-sm text-gray-500">{{ customer.ssn }}</p>
         </div>
-        <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 my-6">Order info</h3>
+        <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 my-6">{{ translateItem('order_info') }}</h3>
         <div class="mt-3">
-          <p class="text-sm text-gray-500 font-medium">Shipping method:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('shipping_method') }}:</p>
           <div class="flex gap-6 text-sm mt-3">
             <div class="w-1/2 border-2 border-gray-200 justify-center py-2 rounded-md flex gap-2 cursor-pointer text-gray-400" :class="{ 'bg-gray-200 text-gray-900': shippingMethod === 1 }" @click="changeShippingMethod(1)">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M176,80h42.6a7.9,7.9,0,0,1,7.4,5l14,35" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path><line x1="16" y1="144" x2="176" y2="144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><circle cx="188" cy="192" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></circle><circle cx="68" cy="192" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></circle><line x1="164" y1="192" x2="92" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><path d="M44,192H24a8,8,0,0,1-8-8V72a8,8,0,0,1,8-8H176V171.2" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path><path d="M176,120h64v64a8,8,0,0,1-8,8H212" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path></svg>
-              <span>Delivery</span>
+              <span>{{ translateItem('delivery') }}</span>
             </div>
             <div class="w-1/2 border-2 border-gray-200 justify-center py-2 rounded-md flex gap-2 cursor-pointer text-gray-400" :class="{ 'bg-gray-200 text-gray-900': shippingMethod === 2 }" @click="changeShippingMethod(2)">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M48,139.6V208a8,8,0,0,0,8,8H200a8,8,0,0,0,8-8V139.6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path><path d="M54,40H202a8.1,8.1,0,0,1,7.7,5.8L224,96H32L46.3,45.8A8.1,8.1,0,0,1,54,40Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path><path d="M96,96v16a32,32,0,0,1-64,0V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path><path d="M160,96v16a32,32,0,0,1-64,0V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path><path d="M224,96v16a32,32,0,0,1-64,0V96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path></svg>
-              <span>Pickup</span>
+              <span>{{ translateItem('pickup') }}</span>
             </div>
           </div>
         </div>
         <div v-if="shippingMethod === 1">
           <div class="flex flex-col mt-3">
-            <p class="text-sm text-gray-500 font-medium">Shipping to:</p>
+            <p class="text-sm text-gray-500 font-medium">{{ translateItem('shipping_to') }}:</p>
             <p class="text-sm text-gray-500 w-2/3">{{ shippingAddress }}</p>
           </div>
           <div class="flex justify-between mt-3">
-            <p v-if="!changeShipping" class="text-sm text-primary-lighter font-medium underline cursor-pointer" @click="changeShipping = true">Change Shipping Address</p>
-            <p v-if="changeShipping" class="text-sm text-gray-500 font-medium">New address:</p>
-            <p v-if="changeShipping" class="text-sm text-gray-500 w-2/3">
-              <input v-model="newShippingAddress" type="text" name="address" placeholder="Shipping to..." class="w-full border-t-0 border-l-0 border-r-0 outline-none bg-transparent text-sm p-0 m-0 mb-0 px-1 border-gray-200 placeholder-gray-300" />
+            <p v-if="!changeShipping" class="text-sm text-primary-lighter font-medium underline cursor-pointer" @click="changeShipping = true">
+              {{ translateItem('change_shipping_address') }}
             </p>
+            <p v-if="changeShipping" class="text-sm text-gray-500 font-medium">{{ translateItem('new_address') }}:</p>
           </div>
+          <p v-if="changeShipping" class="text-sm text-gray-500 mt-1">
+            <input v-model="newShippingAddress" type="text" name="address" :placeholder="translateItem('shipping_to') + '...'" class="w-full border-t-0 border-l-0 border-r-0 bg-transparent text-sm p-0 m-0 mb-0 px-1 border-gray-200 placeholder-gray-300 outline-none focus:ring-0 focus:outline-none" />
+          </p>
         </div>
         <div v-if="shippingMethod === 2" class="mt-3">
-          <p class="text-sm text-gray-500 font-medium">Pickup in:</p>
+          <p class="text-sm text-gray-500 font-medium">{{ translateItem('pickup_in') }}:</p>
           <div class="flex flex-col gap-2 mt-3">
             <div v-for="l in pickupLocations" :key="l.id" class="text-sm text-gray-500 flex gap-2 items-center cursor-pointer" @click="selectPickupLocation(l.id)">
               <input type="radio" name="pickup" :id="'pickup-' + l.id" class="focus:ring-0 h-4 w-4 text-primary-lighter border-gray-300" />
@@ -103,9 +105,9 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-between mt-3 relative">
-          <p class="text-sm text-gray-500 font-medium">{{ shippingMethod === 1 ? 'Shipping' : 'Pickup' }} date:</p>
-          <p class="text-sm text-gray-500 w-2/3">{{ shippingDateText }} <span class="underline text-primary-lighter cursor-pointer font-medium" @click="showCalendar = true">(change)</span></p>
+        <div class="flex flex-col justify-between mt-3 relative">
+          <p class="text-sm text-gray-500 font-medium">{{ shippingMethod === 1 ? translateItem('delivery_date') : translateItem('pickup_date') }}:</p>
+          <p class="text-sm text-gray-500 w-2/3">{{ shippingDateText }} <span class="underline text-primary-lighter cursor-pointer font-medium" @click="showCalendar = true">({{ translateItem('change') }})</span></p>
           <div v-if="showCalendar" class="absolute bottom-0 right-0">
             <DatePicker
               v-model="shippingDate"
@@ -126,7 +128,7 @@
             class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
             @click="requestOrder"
           >
-            Request Order
+            {{ translateItem('request_order') }}
           </div>
         </div>
       </div>
@@ -165,7 +167,7 @@
       shippingDateText() {
         if(this.shippingDate)
           return dayjs(this.shippingDate).format('DD MMMM YYYY')
-        return 'To Be Determined'
+        return this.translateItem('tbd')
       }
     },
     mounted() {
@@ -241,8 +243,63 @@
           .then(() => {
             location.href = '/thank-you'
           })
-      }
-    }
+      },
+      translateItem(item) {
+        const translation = {
+          'is': {
+            'leave_a_note': 'Skilaboð',
+            'your_note': 'Skrifa hér',
+            'customer_info': 'Upplýsingar um viðskiptavin',
+            'name': 'Nafn',
+            'email': 'Tölvupóstur',
+            'address': 'Heimilisfang',
+            'phone': 'Sími',
+            'ssn': 'Kennitala',
+            'order_info': 'Upplýsingar um pöntun',
+            'shipping_to': 'Afhendingarstaður',
+            'shipping_method': 'Afgreiðslumáti',
+            'shipping_date': 'Afhendingardagsetning',
+            'pickup_in': 'Sækja inn',
+            'delivery': 'Senda',
+            'pickup': 'Sækja',
+            'new_address': 'Annar afgreiðslustaður',
+            'request_order': 'Panta',
+            'requesting': 'Vinsamlegast bíðið...',
+            'tbd': 'Að vera ákveðinn',
+            'change_shipping_address': 'Breyta Sendingarstað',
+            'change': 'Breyta',
+            'pickup_date': 'Afhendingardagur',
+            'delivery_date': 'Dagsetning sendingar',
+          },
+          'en': {
+            'leave_a_note': 'Leave a note',
+            'your_note': 'Your Note',
+            'customer_info': 'Customer info',
+            'name': 'Name',
+            'email': 'Email',
+            'address': 'Address',
+            'phone': 'Phone',
+            'ssn': 'SSN',
+            'order_info': 'Order Info',
+            'shipping_method': 'Shipping Method',
+            'shipping_date': 'Shipping date',
+            'shipping_to': 'Shipping to',
+            'pickup_in': 'Pickup in',
+            'delivery': 'Delivery',
+            'pickup': 'Pickup',
+            'new_address': 'New Address',
+            'request_order': 'Request order',
+            'requesting': 'Requesting...',
+            'tbd': 'To Be Determined',
+            'change_shipping_address': 'Change Shipping Address',
+            'change': 'Change',
+            'pickup_date': 'Pickup date',
+            'delivery_date': 'Delivery date',
+          }
+        }
 
+        return translation[current_locale][item]
+      },
+    },
   }
 </script>

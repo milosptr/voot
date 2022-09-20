@@ -11,9 +11,10 @@ return [
     'go_back_products' => 'Farðu aftur í allar vörur',
     'products_title' => 'Allar Vörur',
     'products' => 'Vörur',
-    'categories' => 'Flokkum',
+    'categories' => 'Vöruflokkar',
+    'sku' => 'Vörunúmer',
     'view_all_products' => 'Allar Vörur',
-    'back_to_categories' => 'Til baka að flokkum',
+    'back_to_categories' => 'Til baka',
     'related_products' => 'Skyldar Vörur',
     'shop_now_button' => 'Verslaðu Núna',
 
@@ -44,6 +45,14 @@ return [
 
     'cart_title' => 'Innkaupakarfa',
     'orders_title' => 'Pantanir þínar',
+    'add_to_cart' => 'Bæta í körfu',
+    'login_to_order' => 'Skráðu þig inn til að panta',
+
+    'product_information' => 'Upplýsingar um vöru',
+    'standards_and_approvals' => 'Öryggisstaðlar og fleira',
+    'downloads' => 'Tækniblöð',
+    'skyldarvörur' => 'Tengdar vörur',
+    'star' => 'Uppáhalds',
 
     'email' => 'Netfang',
     'phone' => 'Simi',
