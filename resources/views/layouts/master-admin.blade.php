@@ -77,7 +77,7 @@
                 </a>
                 @if(auth()->user()->logo)
                   <div class="h-9 w-1 border-l border-gray-500 mx-4"></div>
-                  <div class="w-16 h-9 bg-center bg-no-repeat bg-contain" style="background-image: url('/{{ auth()->user()->logo }}')"></div>
+                  <div class="w-16 h-14 bg-center bg-no-repeat bg-contain" style="background-image: url('/{{ auth()->user()->logo }}')"></div>
                 @endif
               </div>
               <nav class="mt-5 flex-1 px-2 space-y-1">
