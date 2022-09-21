@@ -6,7 +6,7 @@
   <section>
     <h1 class="text-xl font-semibold text-gray-900 mr-auo mb-6">{{ __('backoffice.last_4_orders' )}}</h1>
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
-      @foreach(auth()->user()->orders()->orderBy('id', 'DESC')->limit(4)->get() as $order)
+      @foreach(auth()->user()->orders()->orderBy('id', 'DESC')->limit(8)->get() as $order)
         <a href="/app/orders/{{ $order['id'] }}" class="bg-white rounded-md shadow border border-gray-100 px-6 py-3">
           <div class="flex justify-between items-center">
             <div class="font-semibold text-primary-light tracking-wider text-sm">

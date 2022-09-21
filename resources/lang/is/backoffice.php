@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'last_4_orders' => 'Síðustu 4 pantanir',
+  'last_4_orders' => 'Síðustu 8 pantanir',
   'last_4_favourties' => 'Fjórar uppáhaldsvörur',
 
   'nav_dashboard' => 'Forsíða',
