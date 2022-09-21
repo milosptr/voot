@@ -137,6 +137,7 @@
 </template>
 
 <script>
+  import 'v-calendar/dist/style.css'
   import dayjs from 'dayjs'
   import { Calendar, DatePicker } from 'v-calendar'
 
