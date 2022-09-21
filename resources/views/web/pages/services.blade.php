@@ -12,7 +12,7 @@
   <section id="categories" class="my-20">
     <div class="container">
       @php
-        $categories = App\Models\Category::where('parent_id', 0)->orderBy('order')->get();
+        $categories = App\Models\Category::where('parent_id', 0)->where('available', 1)->orderBy('order')->get();
       @endphp
       <div class="grid grid-cols-3 sm:grid-cols-{{ count($categories) }} gap-6 sm:gap-10">
         @foreach($categories as $category)
