@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\PaginationService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Products as ResourcesProducts;
+use App\Models\ProductFavourite;
 
 class Products extends Controller
 {
@@ -35,15 +36,12 @@ class Products extends Controller
 
   public function all(Request $request) {
     $categories = Category::tree();
-    $products = Product::where('available', 1);
-
-    // if($request->has('category'))
-
-    $products->orderBy('products.updated_at', 'DESC');
-    $products = $products->paginate(20);
+    $products = Product::where('available', 1)->orderBy('products.updated_at', 'DESC')->paginate(20);
     $products = ResourcesProducts::collection($products);
     $pagination = PaginationService::extract($products);
-    return view('web.pages.products', compact('categories', 'products', 'pagination'));
+    $isFirstPage = $request->get('page') === NULL || $request->get('page') === '1';
+    $favourites = auth()->user() && $isFirstPage ? ResourcesProducts::collection(auth()->user()->favourites) : [];
+    return view('web.pages.products', compact('categories', 'products', 'pagination', 'favourites'));
   }
 
   public function index(Request $request, $category, $product) {

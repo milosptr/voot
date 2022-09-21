@@ -61,6 +61,14 @@ class Product extends Model
     }
 
 
+    public function getIsFavouriteAttribute()
+    {
+      if(auth()->user()) {
+        return ProductFavourite::where('user_id', auth()->user()->id)->where('product_id', $this->id)->exists();
+      }
+      return false;
+    }
+
     public function getTranslatedNameAttribute()
     {
       $locale = app()->getLocale();
