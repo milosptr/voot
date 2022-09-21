@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'homepage' => 'Forsíða',
     'about' => 'Um Okkur',
     'about_url' => 'um-okkur',
     'services' => 'Þjónusta',

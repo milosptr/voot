@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'last_4_orders' => 'Last 4 orders',
+  'last_4_orders' => 'Last 8 orders',
   'last_4_favourties' => 'Last 4 favourties',
 
   'nav_dashboard' => 'Dashboard',

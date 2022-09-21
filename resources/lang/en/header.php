@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'homepage' => 'Homepage 2',
     'about' => 'About Us',
     'about_url' => 'about',
     'services' => 'Services',
