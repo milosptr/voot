@@ -105,10 +105,17 @@
             $product = App\Models\Inventory::where('sku', $o['sku'])->first();
             $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
           @endphp
-          <div class="flex items-center gap-4 border-b border-gray-200 text-gray-700 py-1 px-3">
-            <img src="/{{ isset($pv->product->featured_image) ? $pv->product->featured_image->file_path : 'images/product-placeholder.png' }}" width="24" alt="{{ $o['sku'] }}" />
-            <a href="/product/{{ $pv->product->slug }}" target="_blank" >{{ $product->name }} <span class="font-medium"> ( x {{ $o['qty'] }} )</span></a>
-          </div>
+          @if($pv)
+            <div class="flex items-center gap-4 border-b border-gray-200 text-gray-700 py-1 px-3">
+              <img src="/{{ isset($pv->product->featured_image) ? $pv->product->featured_image->file_path : 'images/product-placeholder.png' }}" width="24" alt="{{ $o['sku'] }}" />
+              <a href="/product/{{ $pv->product->slug }}" target="_blank" >{{ $product->name }} <span class="font-medium"> ( x {{ $o['qty'] }} )</span></a>
+            </div>
+          @else
+            <div class="flex items-center gap-4 border-b border-gray-200 text-gray-700 py-1 px-3">
+              <img src="/{{ isset($product->featured_image) ? $product->featured_image->file_path : 'images/product-placeholder.png' }}" width="24" alt="{{ $o['sku'] }}" />
+              <a href="/product/{{ $product->slug }}" target="_blank" >{{ $product->name }} <span class="font-medium"> ( x {{ $o['qty'] }} )</span></a>
+            </div>
+          @endif
         @endforeach
       </div>
     </div>
