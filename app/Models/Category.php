@@ -42,7 +42,7 @@ class Category extends Model
 
     public static function formatWithSubcategories()
     {
-      $category = Category::where('parent_id', 0)->orderBy('order', 'ASC')->get();
+      $category = Category::where('parent_id', 0)->where('available', 1)->orderBy('order', 'ASC')->get();
       foreach($category as $cat) {
         $cat->children = $cat->subcategory();
         $cat->total_products = count($cat->products);
@@ -62,7 +62,7 @@ class Category extends Model
 
     public static function tree()
     {
-      $allCategories = Category::orderBy('order', 'ASC')->get();
+      $allCategories = Category::orderBy('order', 'ASC')->where('available', 1)->get();
       $rootCategories = $allCategories->where('parent_id', 0);
       self::formatTree($rootCategories, $allCategories);
 
