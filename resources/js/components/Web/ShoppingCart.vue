@@ -44,7 +44,7 @@
         :placeholder="translateItem('your_note') + '...'"
       ></textarea>
     </div>
-    <div class="w-full sm:w-1/3 pl-0 sm:pl-6">
+    <div v-if="products.length" class="w-full sm:w-1/3 pl-0 sm:pl-6">
       <div v-if="customer" class="bg-gray-100 rounded-md p-6">
         <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 mb-6">{{ translateItem('customer_info') }}</h3>
         <div class="flex justify-between">
