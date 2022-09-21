@@ -38,7 +38,7 @@ class PagesController extends Controller
       return view('admin.edit-category', compact('category', 'categories'));
     }
 
-    public function products()
+    public function products(Request $request)
     {
       $categories = Categories::collection(Category::tree());
       $products = Product::orderBy('updated_at', 'DESC')->paginate(15);
