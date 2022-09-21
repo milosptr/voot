@@ -4,6 +4,7 @@ return [
     'homepage_title' => 'comprehensive service for the fisheries',
     'welcome_title' => 'Welcome to Voot!',
     'page_not_found_title' => 'Ooops. Page not Found!',
+    'thank_you_title' => 'Thank you for your order!',
     'page_not_found' => 'Page not found.',
     'page_not_found_subtitle' => "Sorry, we couldn't find the page you're looking for.",
     'products_not_found' => "Didn't find what you're looking for? 🧐",
@@ -56,4 +57,9 @@ return [
     'email' => 'Email',
     'phone' => 'Phone',
     'address' => 'Address',
+
+    'thanks_title' => 'Thank you for your order!',
+    'thanks_subtitle' => 'Go back to the products or check the status of your order',
+    'thanks_check_btn' => 'Check Order',
+    'thanks_goback_btn' => 'Explore Products',
 ];

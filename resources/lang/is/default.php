@@ -4,6 +4,7 @@ return [
     'homepage_title' => 'alhliđa þjónusta fyrir sjávarútveginn',
     'welcome_title' => 'Velkomin til Voot!',
     'page_not_found_title' => 'Úúúps. Síða ekki fundin!',
+    'thank_you_title' => 'Takk fyrir pöntunina',
     'page_not_found' => 'Síðan fannst ekki.',
     'page_not_found_subtitle' => "Því miður, við fundum ekki síðuna sem þú ert að leita að.",
     'products_not_found' => "Fannstu ekki það sem þú leitaðir að? 🧐",
@@ -57,4 +58,9 @@ return [
     'email' => 'Netfang',
     'phone' => 'Simi',
     'address' => 'Heimilisfang',
+
+    'thanks_title' => 'Takk fyrir pöntunina',
+    'thanks_subtitle' => 'Farðu aftur í vörurnar eða athugaðu stöðu pöntunarinnar',
+    'thanks_check_btn' => 'Skoða pöntun',
+    'thanks_goback_btn' => 'Skoða fleiri vörur',
 ];
