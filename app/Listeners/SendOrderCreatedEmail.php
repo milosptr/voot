@@ -2,10 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\OrderCreated;
-use App\Mail\OrderCreated as OrderCreatedMail;
+use Exception;
 use App\Models\Config;
+use App\Events\OrderCreated;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderCreated as OrderCreatedMail;
 
 class SendOrderCreatedEmail
 {
@@ -17,9 +19,13 @@ class SendOrderCreatedEmail
      */
     public function handle(OrderCreated $event)
     {
-      $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
-      $recipient = isset($config['value']) ? $config['value'] : 'milosptr@icloud.com';
-      Mail::to($recipient)
+      try {
+        $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
+        $recipient = isset($config['value']) ? $config['value'] : 'milosptr@icloud.com';
+        Mail::to($recipient)
         ->send(new OrderCreatedMail($event->order));
+      } catch(Exception $e) {
+        Log::error('Mail not sent to client for order #'.$event->order->id);
+      }
     }
 }

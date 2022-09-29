@@ -33,7 +33,9 @@ class Order extends Model
       'shipping_address',
       'shipping_date',
       'pickup_location',
-      'note'
+      'note',
+      'ax_status',
+      'customer_key',
     ];
     public $timestamps = true;
 
