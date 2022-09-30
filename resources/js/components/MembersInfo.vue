@@ -6,20 +6,19 @@
           <table class="min-w-full divide-y divide-gray-300">
             <thead class="bg-gray-50">
               <tr>
-                <th scope="col" class="w-48 whitespace-nowrap py-3.5 px-4 text-left text-sm font-semibold text-gray-900">Name</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Shoe size</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Glove size</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Headset size</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Jacket size </th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Vest size</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Pants Size</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Shirt Size</th>
-                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">Head Size</th>
+                <th scope="col" class="w-48 whitespace-nowrap py-3.5 px-4 text-left text-sm font-semibold text-gray-900">{{ translateItem('name') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('shoe_size') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('glove_size') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('suit_size') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('jacket_size') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('vest_size') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('pants_size') }}</th>
+                <th scope="col" class="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900">{{ translateItem('head_size') }}</th>
                 <th scope="col" class="relative whitespace-nowrap py-3.5 px-2">
-                  <span class="sr-only">Edit</span>
+                  <span class="sr-only">{{ translateItem('edit') }}</span>
                 </th>
                 <th scope="col" class="relative whitespace-nowrap py-3.5 px-2 sm:pr-4">
-                  <span class="sr-only">Delete</span>
+                  <span class="sr-only">{{ translateItem('delete') }}</span>
                 </th>
               </tr>
             </thead>
@@ -36,7 +35,7 @@
         :class="{'cursor-not-allowed border-primary-lightest bg-primary-lightest hover:bg-primary-lightest': addingNewMember}"
         @click="addMember"
       >
-        Add New Member
+        {{ translateItem('add_new_member') }}
       </div>
     </div>
   </div>
@@ -45,7 +44,7 @@
 <script>
   import MembersInfoItem from './MembersInfoItem.vue'
   export default {
-  components: { MembersInfoItem },
+    components: { MembersInfoItem },
     data: () => ({
       user_id: null,
       members: [],
@@ -77,6 +76,39 @@
           .then((res) => {
             this.members = res.data
           })
+      },
+      translateItem(item) {
+        const translation = {
+          'is': {
+            'name': 'Nafn',
+            'shoe_size': 'Skóstærð',
+            'glove_size': 'Hanskastærð',
+            'jacket_size': 'Jakkastærð',
+            'vest_size': 'Buxnastærð',
+            'pants_size': 'Vestisstærð',
+            'head_size': 'Húfustærð',
+            'add_new_member': 'Bæta við Nýjum Meðlim',
+            'save': 'Vista',
+            'edit': 'Breyta',
+            'delete': 'Eyða',
+          },
+          'en': {
+            'name': 'Name',
+            'shoe_size': 'Shoe size',
+            'glove_size': 'Glove size',
+            'jacket_size': 'Jacket size',
+            'vest_size': 'Vest size',
+            'pants_size': 'Pants size',
+            'shirt_size': 'Shirt size',
+            'head_size': 'Head size',
+            'add_new_member': 'Add New Member',
+            'save': 'Save',
+            'edit': 'Edit',
+            'delete': 'Delete',
+          }
+        }
+
+        return translation[current_locale][item]
       },
     }
   }
