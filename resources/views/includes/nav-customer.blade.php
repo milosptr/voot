@@ -20,6 +20,13 @@
    {{ __('backoffice.nav_orders') }}
 </a>
 
+<a href="/app/members" class="text-gray-300 hover:bg-primary-lighter hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+  <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" fill="currentColor" viewBox="0 0 256 256">
+    <rect width="256" height="256" fill="none"></rect><circle cx="80" cy="104" r="40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></circle><line x1="152" y1="80" x2="248" y2="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><line x1="152" y1="128" x2="248" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><line x1="176" y1="176" x2="248" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></line><path d="M18,192a64,64,0,0,1,124,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+  </svg>
+  {{ __('backoffice.nav_members') }}
+</a>
+
 <a href="/app/account" class="text-gray-300 hover:bg-primary-lighter hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
   <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" fill="currentColor" viewBox="0 0 256 256">
     <rect width="256" height="256" fill="none"></rect>

@@ -62,6 +62,9 @@ Route::prefix('/app')->middleware(['auth'])->group(function () {
   Route::get('/favourites', function () {
     return view('customer.favourites');
   });
+  Route::get('/members', function () {
+    return view('customer.members');
+  });
 });
 
 // Backend routes

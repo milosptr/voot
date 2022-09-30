@@ -8,6 +8,7 @@ return [
   'nav_favourites' => 'Favourites',
   'nav_orders' => 'Orders',
   'nav_my_account' => 'My Account',
+  'nav_members' => 'Members Info',
   'nav_logout' => 'Logout',
 
   'products' => 'Products',

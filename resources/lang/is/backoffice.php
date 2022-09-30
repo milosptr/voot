@@ -8,6 +8,7 @@ return [
   'nav_favourites' => 'Uppáhaldsvörur',
   'nav_orders' => 'Pantanir',
   'nav_my_account' => 'Minn Aðgangur',
+  'nav_members' => 'Vegna',
   'nav_logout' => 'Skrá sig út',
 
   'products' => 'Vörur',
