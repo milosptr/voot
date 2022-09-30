@@ -83,7 +83,7 @@
     </div>
     <div class="mt-12 flex flex-wrap">
     @if(count($product->documents) || count($product->information))
-      <div class="w-full sm:w-1/3">
+      <div class="w-full sm:w-1/2">
           <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.product_information') }}</h4>
           @foreach($product->information as $info)
                 @if($info->name)
@@ -98,10 +98,7 @@
                 @endif
             @endforeach
         </div>
-        <div class="w-full sm:w-1/3">
-          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.standards_and_approvals') }}</h4>
-        </div>
-        <div class="w-full sm:w-1/3">
+        <div class="w-full sm:w-1/2">
           <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.downloads') }}</h4>
           @foreach($product->documents as $doc)
               <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">

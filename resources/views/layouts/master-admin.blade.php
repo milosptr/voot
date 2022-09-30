@@ -157,6 +157,9 @@
         </div>
       </div>
 
+      <script>
+        window.current_locale = "{{ app()->getLocale() }}"
+      </script>
       <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
       <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -8,6 +8,7 @@ use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LocationsController;
+use App\Http\Controllers\MembersInfoController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductAssets;
@@ -119,6 +120,12 @@ Route::get('customer/{id}/delete', [Users::class, 'destroy']);
 Route::post('customer/{id}', [Users::class, 'update']);
 Route::post('customer/{id}/logo', [Users::class, 'logo']);
 Route::post('invoice-email/{id}', [Users::class, 'invoiceEmail']);
+
+// Members info
+Route::get('members-info/{id}', [MembersInfoController::class, 'index']);
+Route::post('members-info', [MembersInfoController::class, 'store']);
+Route::post('members-info/{id}/edit', [MembersInfoController::class, 'edit']);
+Route::delete('members-info/{id}', [MembersInfoController::class, 'destroy']);
 
 // Staff
 Route::get('staff', [StaffController::class, 'index']);

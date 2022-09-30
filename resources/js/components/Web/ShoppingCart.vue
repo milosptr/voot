@@ -222,6 +222,8 @@
         this.showCalendar = false
       },
       featuredImage(product) {
+        if(typeof product.product_variations === 'object' && product.product_variations.file_path)
+          return product.product_variations.file_path.replace(/^\/|\/$/g, '')
         if(product.featured_image)
           return product.featured_image.file_path
         if(product.media.length)

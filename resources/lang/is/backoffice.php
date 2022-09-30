@@ -8,6 +8,7 @@ return [
   'nav_favourites' => 'Uppáhaldsvörur',
   'nav_orders' => 'Pantanir',
   'nav_my_account' => 'Minn Aðgangur',
+  'nav_members' => 'Meðlimir',
   'nav_logout' => 'Skrá sig út',
 
   'products' => 'Vörur',
@@ -36,4 +37,16 @@ return [
   'reorder' => 'Endurraða',
   'delivery' => 'Senda',
   'pickup' => 'Sækja',
+
+  'name' => 'Nafn',
+  'shoe_size' => 'Skóstærð',
+  'glove_size' => 'Hanskastærð',
+  'jacket_size' => 'Jakkastærð',
+  'vest_size' => 'Buxnastærð',
+  'pants_size' => 'Vestisstærð',
+  'head_size' => 'Húfustærð',
+  'add_new_member' => 'Bæta við Nýjum Meðlim',
+  'save' => 'Vista',
+  'edit' => 'Breyta',
+  'delete' => 'Eyða',
 ];

@@ -17,6 +17,7 @@ import OrdersChart from './components/OrdersChart.vue'
 import Categories from './components/Categories.vue'
 import EditOrder from './components/EditOrder.vue'
 import EditSingleProduct from './components/EditSingleProduct.vue'
+import MembersInfo from './components/MembersInfo.vue'
 import { CKEditor } from "@ckeditor/ckeditor5-vue"
 import store from "./store"
 
@@ -109,6 +110,14 @@ if(document.getElementById('editSingleProduct')) {
   })
   .use(store)
   .mount("#editSingleProduct")
+}
+if(document.getElementById('members-info')) {
+  createApp({
+    components: { MembersInfo },
+    template: `<MembersInfo />`
+  })
+  .use(store)
+  .mount("#members-info")
 }
 
 

@@ -8,6 +8,7 @@ return [
   'nav_favourites' => 'Favourites',
   'nav_orders' => 'Orders',
   'nav_my_account' => 'My Account',
+  'nav_members' => 'Members Info',
   'nav_logout' => 'Logout',
 
   'products' => 'Products',
@@ -36,4 +37,17 @@ return [
   'reorder' => 'Reorder',
   'delivery' => 'Delivery',
   'pickup' => 'Pickup',
+
+  'name' => 'Name',
+  'shoe_size' => 'Shoe size',
+  'glove_size' => 'Glove size',
+  'jacket_size' => 'Jacket size',
+  'vest_size' => 'Vest size',
+  'pants_size' => 'Pants size',
+  'shirt_size' => 'Shirt size',
+  'head_size' => 'Head size',
+  'add_new_member' => 'Add New Member',
+  'save' => 'Save',
+  'edit' => 'Edit',
+  'delete' => 'Delete',
 ];
