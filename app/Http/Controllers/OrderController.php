@@ -33,6 +33,7 @@ class OrderController extends Controller
       $shippingNote = $request->get('note');
       $shippingMethod = $request->get('shippingMethod');
       $pickupLocation = $request->get('pickupLocation');
+      $customerKey = $request->get('customer_key');
       $status = Order::STATUS_REQUESTED;
 
       if($shippingAddress === NULL)
@@ -42,6 +43,7 @@ class OrderController extends Controller
 
       $order = Order::create([
         'user_id' => $customer->id,
+        'customer_key' => $customerKey,
         'order_status' => $status,
         'order' => json_decode($cart->cart),
         'shipping_method' => $shippingMethod,
@@ -55,8 +57,7 @@ class OrderController extends Controller
         OrderCreated::dispatch($order);
       } catch(Exception $e) {
         Log::error("Order notification not dispatched properly: " . $e->getMessage());
-        $cart->delete();
-        return response('Order successfuly requested!', 200);
+        return back();
       }
 
       $cart->delete();

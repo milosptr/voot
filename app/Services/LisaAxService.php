@@ -56,6 +56,7 @@ class LisaAxService {
   public function setBodyForOrderCreated(Order $order)
   {
     $customer = $order->user;
+    $company = User::where('key', $order->customer_key)->where('ssn', $order->user->ssn)->first();
     $this->body = '<soap:Envelope
         xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:tem="http://tempuri.org/">
@@ -72,7 +73,7 @@ class LisaAxService {
               <!--Kennitala needed for vefsala (800100HIS):-->
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
-                <tem:Name>'.$customer->name.'</tem:Name>
+                <tem:Name>'.$company->name.'</tem:Name>
                 <tem:Address>'.$customer->address.'</tem:Address>
                 <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>
                 <tem:Country>'.$customer->country.'</tem:Country>

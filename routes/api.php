@@ -112,6 +112,7 @@ Route::post('request-order/change/{id}', [OrderController::class, 'change']);
 
 // Customer
 Route::get('customer-info/{id}', [Users::class, 'index'])->name('customerInfo');
+Route::get('customer/{id}/companies', [Users::class, 'companies']);
 Route::get('customer/{id}/reset-password', [Users::class, 'resetPassword']);
 Route::get('customer/{id}/verify', [Users::class, 'verify']);
 Route::get('customer/{id}/delete', [Users::class, 'destroy']);

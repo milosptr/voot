@@ -47,9 +47,14 @@
     <div v-if="products.length" class="w-full sm:w-1/3 pl-0 sm:pl-6">
       <div v-if="customer" class="bg-gray-100 rounded-md p-6">
         <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 mb-6">{{ translateItem('customer_info') }}</h3>
-        <div class="flex justify-between">
+        <div class="flex items-center justify-between">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('name') }}:</p>
-          <p class="text-sm text-gray-500">{{ customer.name }}</p>
+          <p v-if="companies.length > 1" class="text-sm text-gray-500" @change="selectDifferentCompany">
+            <select class="block w-full pl-3 pr-8 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+              <option v-for="c in companies" :key="c.id" :value="c.key">{{ c.name }}</option>
+            </select>
+          </p>
+          <p v-else class="text-sm text-gray-500">{{ customer.name }}</p>
         </div>
         <div class="flex justify-between mt-3">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('address') }}:</p>
@@ -146,7 +151,9 @@
       cart: [],
       user_id: null,
       customer: null,
+      selectedCustomer: null,
       products: [],
+      companies: [],
       note: '',
       pickupLocation: 1,
       pickupLocations: [],
@@ -189,14 +196,22 @@
         axios.get(`/api/customer-info/${cart.user_id}`)
           .then((res) => {
             this.customer = res.data.data
+            this.selectedCustomer = this.customer.key
           })
         axios.get('/api/locations')
           .then((res) => {
             this.pickupLocations = res.data
           })
+        axios.get('/api/customer/'+ this.user_id +'/companies')
+          .then((res) => {
+            this.companies = res.data.data
+          })
       }
     },
     methods: {
+      selectDifferentCompany(e) {
+        this.selectedCustomer = e.target.value
+      },
       selectPickupLocation(id) {
         this.pickupLocation = id
       },
@@ -239,11 +254,16 @@
           shippingDate: this.shippingDate,
           pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : null,
           note: this.note,
+          customer_key: this.selectedCustomer
         }
+
         axios.post(`/api/request-order/${this.customer.id}`, data)
           .then(() => {
             location.href = '/thank-you'
           })
+          // .catch((e) => {
+          //   location.reload()
+          // })
       },
       translateItem(item) {
         const translation = {

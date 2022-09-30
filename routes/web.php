@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Page;
+use App\Models\User;
 use App\Models\Order;
 use App\Http\Controllers\Web\Tags;
 use Illuminate\Support\Facades\Route;
@@ -7,7 +9,6 @@ use App\Http\Controllers\Web\Products;
 use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
-use App\Models\Page;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -55,7 +56,8 @@ Route::prefix('/app')->middleware(['auth'])->group(function () {
   });
   Route::get('/orders/{id}', function ($id) {
     $order = Order::find($id);
-    return view('customer.order', compact('order'));
+    $customer = $order->customer_key ? User::where('key', $order->customer_key)->where('ssn', $order->user->ssn)->first() : User::find($order->user_id);
+    return view('customer.order', compact('order', 'customer'));
   });
   Route::get('/favourites', function () {
     return view('customer.favourites');

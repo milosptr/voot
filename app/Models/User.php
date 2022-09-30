@@ -101,6 +101,11 @@ class User extends Authenticatable
         return $customers;
     }
 
+    public function getCompaniesAttribute()
+    {
+      return User::where('ssn', $this->ssn)->get();
+    }
+
     public static function resetPassword()
     {
       $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');

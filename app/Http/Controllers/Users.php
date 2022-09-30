@@ -46,6 +46,12 @@ class Users extends Controller
       return back();
     }
 
+    public function companies($id)
+    {
+      $user = User::find($id);
+      return UserResource::collection($user->companies);
+    }
+
     public function logo(Request $request, $id)
     {
       $user = User::find($id);
