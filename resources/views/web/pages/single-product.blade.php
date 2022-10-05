@@ -13,10 +13,13 @@
     </div>
     <div class="py-2 mt-3 flex flex-col sm:flex-row justify-between">
       <div class="sm:w-2/5 sm:pr-8">
-
+        @php
+          $primaryCategory = $product->primaryCategories->first();
+          $extraClass = isset($primaryCategory) && $primaryCategory->id == App\Models\Category::OIL ? 'bg-150-p' : '';
+        @endphp
         <div class="single-product-gallery relative">
           <div id="single-product-bigimage" class="w-full aspect-w-1 aspect-h-1 single-product-gallery--big rounded-md border border-gray-100 shadow-sm">
-            <div class="h-full bg-contain bg-center bg-no-repeat rounded-md single-product-bigimage-url" data-zoom="/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
+            <div class="h-full bg-contain bg-center bg-no-repeat rounded-md single-product-bigimage-url {{ $extraClass }}" data-zoom="/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}" style="background-image: url('/{{ isset($product->featuredImage) ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}');"></div>
           </div>
           @if(isset($product->label))
             <div class="absolute left-2 top-2 inline-flex items-center rounded-md bg-red-500 px-2.5 py-0.5 font-medium text-white z-10 mr-2 break-all">
@@ -46,10 +49,10 @@
         <div class="single-product-description mt-3 pt-3 text-base text-gray-600 font-light border-t border-gray-200">
           {!! $product->description !!}
         </div>
-        <div class="mt-3 text-sm font-light flex flex-wrap sm:flex-nowrap items-center pt-2 border-t border-gray-200">
-          <div class="mr-1 text-gray-700">{{ __('default.categories') }}</div>
+        <div class="mt-3 text-sm font-light flex flex-wrap gap-1 items-center pt-2 border-t border-gray-200">
+          <div class="mr-1 text-gray-700">{{ __('default.categories') }}:</div>
           @foreach($product->categories as $cat)
-            <a href="/{{ $cat->slug }}" class="text-primary-lighter font-light mr-2"> {{ $cat->translatedName }}@if(!$loop->last), @endif</a>
+            <a href="/{{ $cat->slug }}" class="text-primary-lighter font-light"> {{ $cat->translatedName }}@if(!$loop->last), @endif</a>
           @endforeach
         </div>
         @if(count($product->tags))

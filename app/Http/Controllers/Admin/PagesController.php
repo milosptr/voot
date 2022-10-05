@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Users;
 use App\Http\Resources\Categories;
 use App\Http\Resources\Products;
+use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -73,6 +74,12 @@ class PagesController extends Controller
     public function settings()
     {
       return view('admin.settings');
+    }
+
+    public function inventory()
+    {
+      $inventory = Inventory::all();
+      return view('admin.inventory', compact('inventory'));
     }
 
     public function clients(Request $request)

@@ -2,7 +2,7 @@
   @if(isset($favourites))
     @foreach($favourites as $product)
       @php
-        $extraStyles = isset($product->subcategory) && $product->subcategory->id == App\Models\Category::SMURSPREY ? 'background-size: 140%;' : '';
+        $extraStyles = isset($product->subcategory) && $product->subcategory->id == App\Models\Category::OIL ? 'background-size: 150%;' : '';
       @endphp
       <article class="single-article-product relative">
         <a href="{{ $product->productUrl }}" class="block">
@@ -30,7 +30,8 @@
   @endif
   @foreach($products as $product)
     @php
-      $extraStyles = isset($product->subcategory) && $product->subcategory->id == App\Models\Category::SMURSPREY ? 'background-size: 140%;' : '';
+      $primaryCategory = $product->primaryCategories->first();
+      $extraStyles = isset($primaryCategory) && $primaryCategory->id == App\Models\Category::OIL ? 'background-size: 150%;' : '';
     @endphp
     <article class="single-article-product relative">
       <a href="{{ $product->productUrl }}" class="block">
