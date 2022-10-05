@@ -50,7 +50,7 @@
         <div class="flex items-center justify-between">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('name') }}:</p>
           <p v-if="companies.length > 1" class="text-sm text-gray-500" @change="selectDifferentCompany">
-            <select class="block w-full pl-3 pr-8 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+            <select class="block w-full pl-3 pr-8 py-1.5 ml-4 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
               <option v-for="c in companies" :key="c.id" :value="c.key">{{ c.name }}</option>
             </select>
           </p>

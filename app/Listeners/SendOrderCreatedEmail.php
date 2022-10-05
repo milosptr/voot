@@ -21,9 +21,11 @@ class SendOrderCreatedEmail
     {
       try {
         $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
-        $recipient = isset($config['value']) ? $config['value'] : 'milosptr@icloud.com';
-        Mail::to($recipient)
-        ->send(new OrderCreatedMail($event->order));
+        $recipients = isset($config['value']) ? explode(';', $config['value']) : ['milosptr@icloud.com'];
+        foreach ($recipients as $recipient) {
+          Mail::to($recipient)
+          ->send(new OrderCreatedMail($event->order));
+        }
       } catch(Exception $e) {
         Log::error('Mail not sent to client for order #'.$event->order->id);
       }

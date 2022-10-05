@@ -80,10 +80,13 @@ export default {
     selectedText() {
       if(!this.selected)
         return 'Select option'
-      if(!this.selected.value)
+      if(!this.selected.value && typeof this.selected !== "object")
         return this.selected
-      if(this.selected.value)
+      if(this.selected.value !== "")
         return this.selected.value
+      if(this.selected?.color)
+        return this.selected.color.original
+      return ""
     }
   },
   mounted() {
@@ -99,10 +102,13 @@ export default {
       this.show = false
     },
     optionText(option) {
-      if(!option.value)
-        return this.option
-      if(option.value)
+      if(!option.value && typeof option !== "object")
+        return option
+      if(option.value !== "")
         return option.value
+      if(option.color)
+        return option.color.original
+      return ""
     },
     selectOption(option) {
       this.selected = option

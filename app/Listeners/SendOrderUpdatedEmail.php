@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
+use Exception;
 use App\Events\OrderUpdated;
-use App\Mail\OrderUpdated as OrderUpdatedEmail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderUpdated as OrderUpdatedEmail;
 
 class SendOrderUpdatedEmail
 {
@@ -16,8 +18,14 @@ class SendOrderUpdatedEmail
      */
     public function handle(OrderUpdated $event)
     {
-      $recipient =  $event->order->user->invoice_email ?:  $event->order->user->email;
-      Mail::to($recipient)
-        ->send(new OrderUpdatedEmail($event->order));
+      $email =  $event->order->user->invoice_email ?:  $event->order->user->email;
+      $recepients = explode(';', $email);
+      foreach ($recepients as $recipient) {
+        try {
+          Mail::to($recipient)->send(new OrderUpdatedEmail($event->order));
+        } catch(Exception $e) {
+          Log::error('Mail not sent to client for updated order #' . $event->order->id . ' to email address '. $recipient);
+        }
+      }
     }
 }
