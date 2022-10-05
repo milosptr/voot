@@ -10,6 +10,7 @@ class Category extends Model
 {
     use HasFactory;
 
+    CONST OIL = 75;
     CONST SMURSPREY = 77;
 
     /**
