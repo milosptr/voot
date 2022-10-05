@@ -34,7 +34,7 @@
         </div>
         <div class="w-full sm:w-3/4">
           @if(count($products))
-            @include('web.common.product-articles', ['products' => $products, 'favourites' => $favourites])
+            @include('web.common.product-articles', ['products' => $products, 'favourites' => $favourites ?? []])
           @else
             <div class="">
               <img src="/images/undraw_lost.svg" class="w-1/3 mx-auto my-5" />

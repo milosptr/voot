@@ -87,22 +87,22 @@
     <div class="mt-12 flex flex-wrap">
     @if(count($product->documents) || count($product->information))
       <div class="w-full sm:w-1/2">
-          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.product_information') }}</h4>
+          <h4 class="font-medium lg:text-white bg-gray-200 lg:bg-primary-lighter py-2 px-6">{{ __('default.product_information') }}</h4>
           @foreach($product->information as $info)
                 @if($info->name)
                   <div class="flex flex-wrap py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-3 text-sm">
                     <div class="w-full sm:w-1/2 text-gray-500 capitalize font-medium">
                       {{ $info->name }}
                     </div>
-                    <div class="w-full sm:w-1/2 text-right text-gray-500 font-light">
+                    <div class="w-full sm:w-1/2 lg:text-right text-gray-500 font-light">
                       {{ $info->value }}
                     </div>
                   </div>
                 @endif
             @endforeach
         </div>
-        <div class="w-full sm:w-1/2">
-          <h4 class="font-medium text-white bg-primary-lighter py-2 px-6">{{ __('default.downloads') }}</h4>
+        <div class="w-full sm:w-1/2 mt-6 lg:mt-0">
+          <h4 class="font-medium lg:text-white bg-gray-200 lg:bg-primary-lighter py-2 px-6">{{ __('default.downloads') }}</h4>
           @foreach($product->documents as $doc)
               <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">
                 <div class="w-full text-gray-500 capitalize font-medium">
