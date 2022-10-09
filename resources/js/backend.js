@@ -18,6 +18,7 @@ import Categories from './components/Categories.vue'
 import EditOrder from './components/EditOrder.vue'
 import EditSingleProduct from './components/EditSingleProduct.vue'
 import MembersInfo from './components/MembersInfo.vue'
+import MyClients from './components/MyClients.vue'
 import { CKEditor } from "@ckeditor/ckeditor5-vue"
 import store from "./store"
 
@@ -118,6 +119,15 @@ if(document.getElementById('members-info')) {
   })
   .use(store)
   .mount("#members-info")
+}
+
+if(document.getElementById('my-clients-section')) {
+  createApp({
+    components: { MyClients },
+    template: `<MyClients />`
+  })
+  .use(store)
+  .mount("#my-clients-section")
 }
 
 

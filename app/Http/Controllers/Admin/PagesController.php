@@ -89,6 +89,11 @@ class PagesController extends Controller
       return view('admin.clients', compact('customers'));
     }
 
+    public function myClients()
+    {
+      return view('admin.my-clients');
+    }
+
     public function editCustomer($id)
     {
       $customer = User::find($id);

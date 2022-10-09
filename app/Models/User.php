@@ -80,6 +80,11 @@ class User extends Authenticatable
       return $this->belongsToMany(Product::class, 'product_favourites')->orderByPivot('id', 'DESC');
     }
 
+    public function clients()
+    {
+      return $this->hasMany(SalesmanClient::class, 'salesman_id');
+    }
+
     public static function search($search = null, $html = false)
     {
       if (!$search) {
