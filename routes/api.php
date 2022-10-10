@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\MembersInfoController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\SettingsIconsController;
 use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\Products;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\SalesmanClientController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TermsPagesController;
@@ -106,7 +108,7 @@ Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('
 // Order
 Route::get('orders/{id}/reorder', [OrderController::class, 'reorder']);
 Route::get('orders/{id}/products', [OrderController::class, 'products']);
-Route::get('orders/{id}/notify', [OrderController::class, 'notify']);
+Route::get('orders/{id}/notify', [EmailController::class, 'notifyCustomer']);
 Route::post('request-order/{id}', [OrderController::class, 'store']);
 Route::post('request-order/update/{id}', [OrderController::class, 'update']);
 Route::post('request-order/change/{id}', [OrderController::class, 'change']);
@@ -163,6 +165,11 @@ Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy']);
 
 // Reports
 Route::get('/reports/orders', [ReportsController::class, 'orders']);
+
+// Salesman Clients
+Route::get('my-clients', [SalesmanClientController::class, 'forSalesman']);
+Route::post('my-clients', [SalesmanClientController::class, 'store']);
+
 //
 Route::post('/slugify', function(Request $request) {
   $slugify = new Slugify();

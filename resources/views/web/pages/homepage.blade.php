@@ -1,13 +1,13 @@
 @extends('layouts.default')
 
-@section('title', 'Homepage')
+@section('title', __('meta.homepage_title'))
 
 @section('content')
   <div class="relative overflow-hidden border-b border-gray-200 bg-gray-50">
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
         <div class="sm:max-w-lg">
-          <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
+          <h1 class="text-4xl sm:text-5xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
           <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.services_p1')  }}</p>
         </div>
         <div>

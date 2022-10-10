@@ -5,7 +5,7 @@
 @section('content')
   <section class="mt-16 sm:mt-0">
     <div class="container mx-auto py-20 ">
-      <h2 class="text-2xl font-medium tracking-wide sm:w-1/2 leading-normal">{{ __('default.about_voot_short') }}</h2>
+      <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">{{ __('default.about_voot_short') }}</h2>
     </div>
   </section>
 
@@ -22,6 +22,10 @@
       <div class="sm:w-2/3">
         <p class="mb-10 leading-normal">{{ __('default.about_p1')  }}</p>
         <p class="leading-normal">{{ __('default.about_p2')  }}</p>
+        <p class="leading-normal mt-3">{{ __('default.about_p3')  }}</p>
+        <p class="leading-normal mt-3">{{ __('default.about_p4')  }}</p>
+        <p class="leading-normal mb-10">{{ __('default.about_p5')  }}</p>
+        <p class="leading-normal mt-3">{{ __('default.about_p6')  }}</p>
       </div>
     </div>
   </section>
