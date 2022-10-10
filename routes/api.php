@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\MembersInfoController;
@@ -107,7 +108,7 @@ Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('
 // Order
 Route::get('orders/{id}/reorder', [OrderController::class, 'reorder']);
 Route::get('orders/{id}/products', [OrderController::class, 'products']);
-Route::get('orders/{id}/notify', [OrderController::class, 'notify']);
+Route::get('orders/{id}/notify', [EmailController::class, 'notifyCustomer']);
 Route::post('request-order/{id}', [OrderController::class, 'store']);
 Route::post('request-order/update/{id}', [OrderController::class, 'update']);
 Route::post('request-order/change/{id}', [OrderController::class, 'change']);

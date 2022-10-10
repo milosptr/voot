@@ -193,6 +193,15 @@ if(document.getElementById('sortable-category-products')){
   })
 }
 
+if(document.getElementById('openNotifyCustomerModal')) {
+  document.getElementById('openNotifyCustomerModal').addEventListener('click', () => {
+    document.getElementById('notifyCustomerModal').classList.remove('hidden')
+  })
+  document.getElementById('closeNotifyCustomerModal').addEventListener('click', () => {
+    document.getElementById('notifyCustomerModal').classList.add('hidden')
+  })
+}
+
 function searchProducts() {
   axios.post('/api/products/search', Object.fromEntries(new URLSearchParams(window.location.search)))
     .then((res) => {

@@ -342,3 +342,7 @@ input#sale_price {
 .bg-150-p {
   background-size: 150%!important;
 }
+
+.main-sub-categories.max-h-96 {
+  padding-top: 1.25rem!important;
+}

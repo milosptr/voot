@@ -89,9 +89,9 @@
             <button type="submit" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
               Update order
             </button>
-            <a href="/api/orders/{{ $order->id }}/notify" class="cursor-pointer text-gray-700 border border-gray-400 flex justify-center items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white">
+            <div id="openNotifyCustomerModal" class="cursor-pointer text-gray-700 border border-gray-400 flex justify-center items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white">
               Notify Customer
-            </a>
+            </div>
           </div>
         </form>
       </div>
@@ -125,4 +125,23 @@
      </div>
     </div>
   </section>
+
+  <div id="notifyCustomerModal" class="fixed left-0 top-0 w-full h-screen flex items-center justify-center hidden">
+    <div class="bg-gray-900 opacity-50 absolute left-0 top-0 z-20 w-full h-screen"></div>
+    <form action="/api/orders/{{ $order->id }}/notify" method="POST" class="w-full sm:w-1/2 bg-white rounded-md p-5 z-30">
+      <div class="text-lg font-medium text-black">Notify the customer (optional)</div>
+      <div class="text-sm text-gray-500">Write the text that will be included in the email</div>
+      <div class="mt-3">
+        <textarea rows="4" name="comment" id="comment" class="block w-full rounded-md resize-none border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-between mt-3">
+        <div id="closeNotifyCustomerModal" class="cursor-pointer text-gray-700 border border-gray-400 flex justify-center items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-500 hover:text-white">
+          Cancel
+        </div>
+        <button type="submit" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
+          Send Email
+        </button>
+      </div>
+    </form>
+  </div>
 @endsection
