@@ -13,7 +13,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "mcamara/laravel-localization": "^1.7"
+        "mcamara/laravel-localization": "^1.7",
+        "rap2hpoutre/laravel-log-viewer": "^2.2"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

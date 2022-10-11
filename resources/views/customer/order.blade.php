@@ -64,13 +64,13 @@
           </div>
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4">
             <label for="shipping_date" class="block text-sm font-medium text-gray-500">{{ __('backoffice.shipping_method') }}</label>
-              <div data-method="{{ $order->shipping_method }} {{ App\Models\Order::DELIVERY }}" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-                @if($order->shipping_method == App\Models\Order::DELIVERY)
-                  {{ __('backoffice.delivery') }}
-                @else
-                  {{ __('backoffice.pickup') }}
-                @endif
-              </div>
+            <div data-method="{{ $order->shipping_method }} {{ App\Models\Order::DELIVERY }}" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
+              @if($order->shipping_method == App\Models\Order::DELIVERY)
+                {{ __('backoffice.delivery') }}
+              @else
+                {{ __('backoffice.pickup') }}
+              @endif
+            </div>
           </div>
           @if($order->note)
             <div class="w-full mt-4">
@@ -89,6 +89,12 @@
             <button type="submit" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
               {{ __('backoffice.update_order') }}
             </button>
+            <a href="/api/orders/{{ $order->id }}/reorder" class="border border-primary-lighter text-primary-lighter hover:text-white group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
+              {{ __('backoffice.reorder') }}
+            </a>
+          </div>
+          @else
+          <div class="w-full mt-8 flex justify-end">
             <a href="/api/orders/{{ $order->id }}/reorder" class="border border-primary-lighter text-primary-lighter hover:text-white group flex items-center px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">
               {{ __('backoffice.reorder') }}
             </a>

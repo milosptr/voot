@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Voot: Account Verified</title>
+    <title>Voot: Aðgangur samþykktur</title>
     <style>
       @media only screen and (max-width: 620px) {
         table.body h1 {
@@ -115,9 +115,9 @@
                      @include('common.email.header')
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
-                        <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Account Approved</h1>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Your account is approved by our staff. You can now create orders without pending status. Thank you for your patience!</p>
-                        <a href="{{ env('APP_URL') }}/vorur" target="_blank" style="text-align: center;border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff; margin: 25px 0 16px 0;">Explore our Products</a>
+                        <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Aðgangur samþykktur</h1>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Aðgangur þinn hefur verið samþykktur af starfsfólki Voot. Þú getur núna búið til og gengið frá pöntun. Takk fyrir þolinmæðina!</p>
+                        <a href="{{ env('APP_URL') }}/vorur" target="_blank" style="text-align: center;border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff; margin: 25px 0 16px 0;">Skoða Vörur</a>
                       </td>
                     </tr>
                   </table>

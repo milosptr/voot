@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>Your order #{{ $order->id }} is changed</title>
+      <title>Pöntun þín #{{ $order->id }} er breytt</title>
     <style>
       @media only screen and (max-width: 620px) {
         table.body h1 {
@@ -130,13 +130,13 @@
                     @include('common.email.header')
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
-                          <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Order #{{ $order->id }} is changed</h1>
-                          <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Your order just received an update. The order is as follows:</p>
+                          <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Pöntun þín #{{ $order->id }} er breytt</h1>
+                          <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Pöntunin þín fékk nýlega uppfærslu. Röðin er sem hér segir:</p>
                          <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
                           <tr>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">SKU</td>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Name</td>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;text-align:center;" valign="center">Qty</td>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Vörunúmer</td>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Nafn</td>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;text-align:center;" valign="center">QTY</td>
                           </tr>
                           @foreach($order->order as $o)
                             @php
@@ -160,37 +160,37 @@
                         </table>
                         <p style="margin:0;border-top: 1px solid #eee;"></p>
                         @if($order->note)
-                        <p style="padding-top:15px; margin-top:0;"><span style="font-weight: 600;color:#555">Note:</span> {{ $order->note }}<p>
+                        <p style="padding-top:15px; margin-top:0;"><span style="font-weight: 600;color:#555">Athugið:</span> {{ $order->note }}<p>
                         @endif
                         <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;margin-top: 25px;">
                           <tr valign="top">
                             <td>
-                              <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Customer Information:</p>
+                              <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Upplýsingar viðskiptavinar:</p>
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
-                                <span style="font-weight: 600;color:#555;">Name:</span><br>{{ $order->user->name }}
+                                <span style="font-weight: 600;color:#555;">Nafn:</span><br>{{ $order->user->name }}
                               </p>
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
-                                <span style="font-weight: 600;color:#555;">Email:</span><br>{{ $order->user->email }}
+                                <span style="font-weight: 600;color:#555;">Netfang:</span><br>{{ $order->user->email }}
                               </p>
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
-                                <span style="font-weight: 600;color:#555;">SSN:</span><br>{{ $order->user->ssn }}
+                                <span style="font-weight: 600;color:#555;">Kennitala:</span><br>{{ $order->user->ssn }}
                               </p>
                             </td>
                             <td style="width: 50%;">
                               @if($order->shipping_method === App\Models\Order::DELIVERY)
-                                <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Shipping Information:</p>
+                                <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Sendingarupplýsingar:</p>
                               @else
-                                <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Pickup Information:</p>
+                                <p style="font-family: sans-serif; font-size: 16px; font-weight: bold; margin: 0; margin-bottom: 10px;">Upplýsingar um afhendingu:</p>
                               @endif
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
-                                <span style="font-weight: 600;color: #555;">Address:</span><br>
+                                <span style="font-weight: 600;color: #555;">Heimilsfang:</span><br>
                                 {{ $order->orderAddress() }}
                               </p>
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
                                 @if($order->shipping_method === App\Models\Order::DELIVERY)
-                                <span style="font-weight: 600;color: #555;">Shipping date:</span><br>
+                                <span style="font-weight: 600;color: #555;">Dagsetning sendingar:</span><br>
                                 @else
-                                <span style="font-weight: 600;color: #555;">Pickup date:</span><br>
+                                <span style="font-weight: 600;color: #555;">Dagsetning afhendingu:</span><br>
                                 @endif
                                 <span style="letter-spacing: 1px;">{{ Carbon\Carbon::parse($order->shipping_date)->format('d/m/Y') }}</span>
                               </p>
@@ -204,9 +204,9 @@
                             <tr>
                               <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #214b76;" valign="top" align="center" bgcolor="#214b76">
                                 @if(isset($isCustomer) && $isCustomer)
-                                  <a href="{{ env('APP_URL') }}/app/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">View Order</a>
+                                  <a href="{{ env('APP_URL') }}/app/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Skoða Pöntun</a>
                                 @else
-                                  <a href="{{ env('APP_URL') }}/backend/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">View Order</a>
+                                  <a href="{{ env('APP_URL') }}/backend/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Skoða Pöntun</a>
                                 @endif
                               </td>
                             </tr>

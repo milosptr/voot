@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3bf2ec75507a40f21193c89b7cf7632853ec5228',
+    'reference' => 'b37df20778de2660f4f7897fb110cda916df9d2d',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -487,7 +487,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3bf2ec75507a40f21193c89b7cf7632853ec5228',
+      'reference' => 'b37df20778de2660f4f7897fb110cda916df9d2d',
     ),
     'laravel/sail' => 
     array (
@@ -832,8 +832,8 @@ private static $installed = array (
     array (
       'provided' => 
       array (
-        0 => '1.0|2.0|3.0',
-        1 => '1.0.0 || 2.0.0 || 3.0.0',
+        0 => '1.0.0 || 2.0.0 || 3.0.0',
+        1 => '1.0|2.0|3.0',
       ),
     ),
     'psr/simple-cache' => 
@@ -887,6 +887,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '373f7bacfcf3de038778ff27dcce5672ddbf4c8a',
+    ),
+    'rap2hpoutre/laravel-log-viewer' => 
+    array (
+      'pretty_version' => 'v2.2.0',
+      'version' => '2.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '52e7c703a1e83cdae450f406c7d8472332dfb34e',
     ),
     'rhumsaa/uuid' => 
     array (

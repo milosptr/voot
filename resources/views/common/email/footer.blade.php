@@ -3,10 +3,10 @@
     <tr>
       <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; color: #999999; font-size: 12px; text-align: center;" valign="top" align="center">
         <div class="text-center">
-          <span style="font-weight: medium; color: #333">Address: </span> Skarfagarðar 4, 104, Reykjavík, Ísland |
-          <span style="font-weight: medium; color: #333">Phone: </span> +354 581 2222
+          <span style="font-weight: medium; color: #333">Heimilisfang: </span> Skarfagarðar 4, 104, Reykjavík, Ísland |
+          <span style="font-weight: medium; color: #333">Sími: </span> +354 581 2222
         </div>
-        <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Sent from Voot website</span>
+        <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">Sent frá Pöntunarsíðu Voot</span>
       </td>
     </tr>
   </table>

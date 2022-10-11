@@ -65,7 +65,7 @@
           </div>
           <div class="w-full mt-4">
             <label for="shipping_address" class="block text-sm font-medium text-gray-500">Shipping address</label>
-            <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->shipping_address === ',  ,' ? 'None' : $order->shipping_address }}" required="">
+            <input type="text" name="shipping_address" id="shipping_address" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md" value="{{ $order->orderAddress() }}" required="">
           </div>
           <div class="w-full sm:w-1/2 sm:pr-4 mt-4">
             <label for="order_id" class="block text-sm font-medium text-gray-500">Order ID</label>
