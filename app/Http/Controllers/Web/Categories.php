@@ -20,7 +20,7 @@ class Categories extends Controller
     $category = Category::where('slug', $category)->get()->first();
 
     if($category) {
-      $products = $category->products()->orderBy('category_order', 'ASC')->get();
+      $products = $category->products()->where('available', 1)->orderBy('category_order', 'ASC')->get();
       return view('web.pages.category', compact('categories', 'category', 'products'));
     }
 

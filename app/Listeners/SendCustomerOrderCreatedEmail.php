@@ -20,12 +20,13 @@ class SendCustomerOrderCreatedEmail
     public function handle(OrderCreated $event)
     {
       try {
-        $recipients = explode(';', $event->order->user->email);
+        $recipients = $event->order->user->invoice_email ? [$event->order->user->invoice_email]: explode(';', $event->order->user->email);
         foreach ($recipients as $recipient) {
           Mail::to($recipient)->send(new OrderCreatedMail($event->order, true));
         }
+        Log::info('Email sent to addresses (SendCustomerOrderCreatedEmail)' . join(", ", $recipients));
       } catch(Exception $e) {
-        Log::error('Mail not sent to client for order #'.$event->order->id);
+        Log::error('Mail not sent (SendCustomerOrderCreatedEmail) to client for order #'.$event->order->id);
       }
     }
 }

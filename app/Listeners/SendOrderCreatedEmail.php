@@ -26,8 +26,9 @@ class SendOrderCreatedEmail
           Mail::to($recipient)
           ->send(new OrderCreatedMail($event->order));
         }
+        Log::info('Email sent to addresses (SendOrderCreatedEmail) ' . join(", ", $recipients));
       } catch(Exception $e) {
-        Log::error('Mail not sent to client for order #'.$event->order->id);
+        Log::error('Mail not sent (SendOrderCreatedEmail) to client for order #'.$event->order->id);
       }
     }
 }

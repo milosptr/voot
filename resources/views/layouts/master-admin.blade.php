@@ -143,7 +143,7 @@
                         </div>
                         <div class="ml-3">
                           <p class="text-sm text-yellow-700">
-                            Your account is still pending approval from the administrator! Please  <a href="mailto:steini@voot.is" class="font-medium underline text-yellow-700 hover:text-yellow-600">contact us</a> directly to speed up the process.
+                            Aðgangur þinn bíður ennþá samþykkis starfsfólks Voot. Vinsamlegast <a href="mailto:steini@voot.is" class="font-medium underline text-yellow-700 hover:text-yellow-600">hafðu samband</a> beint til að flýta fyrir ferlinu!
                           </p>
                         </div>
                       </div>

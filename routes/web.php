@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\Products;
 use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
+use Illuminate\Support\Facades\Log;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -21,6 +22,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 Route::get('email-template', function() {  return view('emails.new-customer-registration'); });
 

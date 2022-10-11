@@ -80,7 +80,7 @@ class Order extends Model
     public static function statusText($status)
     {
       $mapper = self::statuses();
-      return $status ? $mapper[$status] : 'Requested';
+      return $status ? $mapper[$status] : 'Sótt um';
     }
 
     public static function statusClasses($status)
@@ -113,12 +113,12 @@ class Order extends Model
     public static function statuses()
     {
       return [
-        0 => 'Requested',
-        1 => 'Accepted',
-        2 => 'In progress',
-        3 => 'On delivery',
-        4 => 'Done',
-        5 => 'Pending',
+        0 => 'Sótt um',
+        1 => 'Samþykkt',
+        2 => 'Bíður samþykkis',
+        3 => 'Á leiðinni',
+        4 => 'Lokið',
+        5 => 'Í bið',
       ];
     }
 }
