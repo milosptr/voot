@@ -29,6 +29,7 @@ class Products extends Controller
       if($request->has('q'))
         $query->whereLike(['name', 'sku', 'english_name'], $request->get('q'));
 
+      $query->where('available', 1);
       $products = ResourcesProducts::collection($query->get());
 
       return view('web.pages.products', compact('categories', 'products', 'q'));
@@ -50,7 +51,7 @@ class Products extends Controller
     if(!isset($category))
       return view('web.pages.404');
 
-    $product = $category->products()->where('slug', $product)->get()->first();
+    $product = $category->products()->where('slug', $product)->where('available', 1)->get()->first();
 
     if(!isset($product))
       return view('web.pages.404');
@@ -59,7 +60,7 @@ class Products extends Controller
 
   public function uncategorised($product)
   {
-    $product = Product::where('slug', $product)->get()->first();
+    $product = Product::where('slug', $product)->where('available', 1)->get()->first();
     $categories = Category::tree();
     if(!isset($product))
       return view('web.pages.404');
