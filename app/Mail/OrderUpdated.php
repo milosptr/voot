@@ -11,15 +11,17 @@ class OrderUpdated extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
+    public $remarks;
     public $isCustomer;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(Order $order, $remarks = '')
     {
         $this->order = $order;
+        $this->remarks = $remarks;
     }
 
     /**
@@ -30,6 +32,7 @@ class OrderUpdated extends Mailable
     public function build()
     {
       $subject = 'Your order is updated';
-      return $this->subject($subject)->view('emails.order-updated');
+      $remarks = $this->remarks;
+      return $this->subject($subject)->view('emails.order-updated', compact('remarks'));
     }
 }

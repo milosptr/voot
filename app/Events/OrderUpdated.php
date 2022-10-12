@@ -17,8 +17,9 @@ class OrderUpdated
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct(Order $order, $remarks)
     {
-        $this->order = $order;
+      $this->order = $order;
+      $this->remarks = $remarks;
     }
 }

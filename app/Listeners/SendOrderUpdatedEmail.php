@@ -22,7 +22,8 @@ class SendOrderUpdatedEmail
       $recepients = explode(';', $email);
       foreach ($recepients as $recipient) {
         try {
-          Mail::to($recipient)->send(new OrderUpdatedEmail($event->order));
+          Mail::to($recipient)->send(new OrderUpdatedEmail($event->order, $event->remarks));
+          Log::info('Mail sent (OrderUpdated) to client for updated order #' . $event->order->id . ' to email address '. $recipient);
         } catch(Exception $e) {
           Log::error('Mail not sent to client for updated order #' . $event->order->id . ' to email address '. $recipient);
         }
