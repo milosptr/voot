@@ -28,11 +28,63 @@
         <p class="leading-normal mt-3">{{ __('default.about_p6')  }}</p>
       </div>
     </div>
+    <div class="container mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-20">
+        <div class="bg-gray-100 rounded-md p-4">
+          <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">
+            Matvælavinnslur
+          </h2>
+          <p class="leading-normal mt-3">
+            Við bjóðum upp á allar rekstrarvörur fyrir matvælavinnslu svo sem fiskeldi, fiskvinnslu og kjötvinnslu. Má nefna vinnslufatnað, þrifafatnað,einnotafatnað, hreinlætisvörur, hnífa, brýni og olíu-og smurefni sem hlotið hafa vottun til notkunar í matvælaiðnaði. Neytendur gera miklar kröfur um hreinlæti við vinnslu matvæla og á því sviði bjóðum við einnig upp á góðar lausnir, svo sem, þrifaplön og merkingar.
+          </p>
+        </div>
+        <div class="bg-gray-100 rounded-md p-4">
+          <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">
+            Strandveiðar
+          </h2>
+          <p class="leading-normal mt-3">
+            Við bjóðum upp á heildstæða þjónustu fyrir strandveiðar, til dæmis góð veiðarfæri á borð við Mustad handfærakróka, tilbúna handfæraslóða, sökkur,  sigurnagla og sjóklæðnað.
+          </p>
+        </div>
+        <div class="bg-gray-100 rounded-md p-4">
+          <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">
+            Útgerðir
+          </h2>
+          <p class="leading-normal mt-3">
+            Við seljum allt sem skip þurfa til að halda til veiða svo sem veiðarfæri, fatnað, hreinlætisvörur. Hjá okkur færðu allt á einum stað og þú og þú einbeitir þér að því sem þú gerir best!
+          </p>
+        </div>
+        <div class="bg-gray-100 rounded-md p-4">
+          <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">
+            Bændur
+          </h2>
+          <p class="leading-normal mt-3">
+            Við erum með gott vöruúrval af rekstrarvörum fyrir bændur á hagstæðu verði eins og vinnufatnað, stígvél, slitsterka vinnuhanska, járnavöru,  hreinlætisefni, olí-og smurefni og hreinlætisáhöld.
+          </p>
+        </div>
+        <div class="bg-gray-100 rounded-md p-4">
+          <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">
+            Verktakar
+          </h2>
+          <p class="leading-normal mt-3">
+            Við erum með úrval af öryggis- og vinnufatnaði fyrir verktaka og iðnaðarmenn. Auk þess seljum við til dæmis vottaðan hífibúnað, keðjur, olíu- og smurefni, stroffur og strekkjara.
+          </p>
+        </div>
+        <div class="bg-gray-100 rounded-md p-4">
+          <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">
+            Hótel og veitingarekstur
+          </h2>
+          <p class="leading-normal mt-3">
+            Við bjóðum hótelum og veitingastöðum upp á fjölbreytt úrval af rekstrarvörum. Meðal annars er boðið upp á mikið úrval af hreinsiefnum og sápum, eldhúsvörum og salernisvörum.
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section>
     <div class="container mx-auto border-t border-gray-200">
-      <div class="mb-16 sm:my-32 flex flex-col sm:flex-row lg:justify-between">
+      <div class="pb-6 mb-6 sm:mt-32 sm:mb-16 sm:pb-16 flex flex-col sm:flex-row lg:justify-between border-b border-gray-200">
         <article class="w-full lg:w-96 sm:pr-12 bg-white relative sm:border-r my-12 sm:my-0">
           <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Reykjavík</h5>
           <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
@@ -93,6 +145,14 @@
             </div>
           </div>
         </article>
+      </div>
+      <div class="mb-16">
+        <h3 class="text-xl font-bold tracking-wide leading-normal">Reykjavík</h3>
+        <p class="leading-normal mt-3 mb-5">Voot rekur verslun í samstarfi við Hampiðjuna við Skarfagarð 4, 104 Reykjavík. Lögð er áhersla á gott úrval af rekstrarvörum fyrir sjávarútveg, landbúnað, matvælavinnslur og aðra starfsemi.</p>
+        <h3 class="text-xl font-bold tracking-wide leading-normal">Akureyri</h3>
+        <p class="leading-normal mt-3 mb-5">Voot rekur verslun við Norðurtanga 1 á Akureyri sem veitir öllu Norðurlandi þjónustu. Lögð er áhersla á gott úrval af rekstrarvörum fyrir sjávarútveg, landbúnað, matvælaiðnað og aðra starfsemi.</p>
+        <h3 class="text-xl font-bold tracking-wide leading-normal">Ólafsvík</h3>
+        <p class="leading-normal mt-3">Voot rekur umfangsmikla verslun við Ólafsbraut 19 í Ólafsvík. Lögð er áhersla á gott úrval af rekstrarvörum fyrir sjávarútveg, landbúnað, matvælavinnslur og aðra starfsemi en einnig sérvöru fyrir bæjarbúa. Auk þess selur verslunin efnavörur og olíur frá Olís.</p>
       </div>
     </div>
   </section>

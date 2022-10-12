@@ -24,7 +24,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-
 Route::get('email-template', function() {  return view('emails.new-customer-registration'); });
 
 Route::get('/login', function() {
@@ -38,9 +37,14 @@ Route::get('/register', function() {
 Route::get('/registration-pending', function() {
   return view('auth.registration-pending');
 });
+
 Route::get('/registration-thanks', function() {
   return view('auth.registration-thanks');
 });
+
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+    ->middleware('guest')
+    ->name('password.request');
 
 
 // Customer routes
@@ -109,6 +113,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
   Route::get(LaravelLocalization::transRoute('routes.about'), [WebPages::class, 'about'])->name('about');
   Route::get(LaravelLocalization::transRoute('routes.services'), [WebPages::class, 'services'])->name('services');
+  Route::get(LaravelLocalization::transRoute('routes.brands'), [WebPages::class, 'brands'])->name('brands');
   Route::get(LaravelLocalization::transRoute('routes.contact'), [WebPages::class, 'contact'])->name('contact');
 
   Route::get(LaravelLocalization::transRoute('routes.cart'), [WebPages::class, 'cart']);

@@ -34,6 +34,7 @@ return [
   'about_p6' => 'Við bjóðum auðvitað ennþá upp á hágæða beitu sem við fáum frá traustum alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og þá þar nefna makríl, síld, smokkfisk, loðnu og karfahausa.',
   'about_staff_title' => 'Starfsfólk',
 
+  'our_brand_title' => 'Vörumerkin okkar',
 
   'services_title' => 'Þjónusta',
   'services_p1' => 'Starfsfólk Voot er þrautþjálfað í að meta þarfir viðskiptavina þegar kemur að rekstrarvörum. Við leggjum okkur fram við að veita viðskiptavinum framúrskarandi þjónustu og afhenda vörur eins fljótt og auðið er. Endilega hafðu samband og við aðstoðum þig um hæl.',

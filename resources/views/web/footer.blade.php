@@ -28,20 +28,8 @@
         <img src="/images/map-footer.svg" width="50%" alt="iceland map" />
       </div>
       <div class="w-full sm:w-1/3 ml-auto mt-6 sm:mt-0">
-        <h6 class="text-white text-3xl font-medium tracking-wide font-lora mb-8">Links</h6>
-        <div class="flex">
-          <div class="w-1/2">
-            <a href="" class="block text-white tracking-wide font-light hover:text-gray-400">{{ __('header.about') }}</a>
-            <a href="" class="block text-white tracking-wide font-light mt-2 hover:text-gray-400">{{ __('header.services') }}</a>
-            <a href="" class="block text-white tracking-wide font-light mt-2 hover:text-gray-400">{{ __('header.products') }}</a>
-            <a href="" class="block text-white tracking-wide font-light mt-2 hover:text-gray-400">{{ __('header.contact') }}</a>
-          </div>
-          <div class="w-1/2">
-            <a href="/page/faq" class="block text-white tracking-wide font-light hover:text-gray-400">FAQ</a>
-            <a href="/page/terms-and-conditions" class="block text-white tracking-wide font-light mt-2 hover:text-gray-400">Terms & Conditions</a>
-            <a href="/page/privacy-policy" class="block text-white tracking-wide font-light mt-2 hover:text-gray-400">Privacy Policy</a>
-            <a href="/page/cookies" class="block text-white tracking-wide font-light mt-2 hover:text-gray-400">Cookie Policy</a>
-          </div>
+        <div class="flex items-center justify-center">
+            <img src="/images/awards/awards.png" width="100%" alt="fyrirmyndar voot" />
         </div>
       </div>
     </div>

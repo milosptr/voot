@@ -6,6 +6,7 @@ return [
     'about_url' => 'um-okkur',
     'services' => 'Þjónusta',
     'services_url' => 'thjonusta',
+    'our_brands' => 'Vörumerkin okkar',
     'about_our_products' => 'Um Vörurnar Okkar',
     'products' => 'Allar Vörur',
     'all_products_url' => 'vorur',

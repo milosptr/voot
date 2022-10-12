@@ -36,6 +36,11 @@ class WebPages extends Controller
       return view('web.pages.services');
     }
 
+    public function brands()
+    {
+      return view('web.pages.our-brands');
+    }
+
     public function contact()
     {
       return view('web.pages.contact');

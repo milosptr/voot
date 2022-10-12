@@ -3,6 +3,7 @@
     "home" => "",
     "about"    =>  "um-okkur",
     "services"  =>  "thjonusta",
+    "brands"  =>  "vorumerkin-okkar",
     "contact"  =>  "hafa-samband",
     "cart"  =>  "cart",
     "thanks"  =>  "thank-you",
