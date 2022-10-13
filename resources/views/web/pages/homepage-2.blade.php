@@ -16,16 +16,27 @@
               <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                 <div class="flex items-center space-x-6 lg:space-x-8">
                   <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="w-72 aspect-h-4 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/work-v.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    <div class="w-56 aspect-h-4 rounded-lg overflow-hidden mt-24">
+                      <img src="/images/homepage/homepage-1.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
-                    <div class="w-72 aspect-h-4 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/grindavik-v.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    <div class="w-56 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
                   </div>
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="w-72 aspect-h-4 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/farm-v.jpeg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 -mt-20">
+                    <div class="w-56 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-3.jpg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-56 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-4.jpg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-5">
+                    <div class="w-56 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-56 aspect-h-4 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-6.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
                   </div>
                 </div>
