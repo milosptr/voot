@@ -346,3 +346,7 @@ input#sale_price {
 .main-sub-categories.max-h-96 {
   padding-top: 1.25rem!important;
 }
+
+.w-56 {
+  width: 14rem;
+}

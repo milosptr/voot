@@ -7,39 +7,36 @@
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
         <div class="sm:max-w-lg">
-          <h1 class="text-4xl sm:text-5xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
-          <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.services_p1')  }}</p>
+          <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
+          <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.homepage_about')  }}</p>
         </div>
-        <div>
+        <div class="">
           <div class="mt-10">
-            <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full">
-              <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+            <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full z-10">
+              <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8">
                 <div class="flex items-center space-x-6 lg:space-x-8">
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
-                      <img src="/images/homepage/homepage-5.jpeg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-10">
+                    <div class="w-32 sm:w-52 h-32 sm:h-80 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
+                      <img src="/images/homepage/homepage-1.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
-                    <div class="w-44 h-64 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-1.jpeg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
-                  </div>
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="w-44 h-64 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-2.jpeg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
-                    <div class="w-44 h-64 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-3.jpeg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
-                    <div class="w-44 h-64 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-4.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
                   </div>
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="w-44 h-64 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-6.jpeg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:-mt-20">
+                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-3.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
-                    <div class="w-44 h-64 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-7.jpeg" alt="" class="w-full h-full object-center object-cover">
+                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-4.jpg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                  </div>
+                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-32">
+                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
+                    </div>
+                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
+                      <img src="/images/homepage/homepage-6.jpg" alt="" class="w-full h-full object-center object-cover">
                     </div>
                   </div>
                 </div>
@@ -58,7 +55,7 @@
     </div>
   </div>
 
-  <section id="categories" class="my-20">
+  {{-- <section id="categories" class="my-20">
     <div class="container">
       <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide mb-10">
         {{ __('default.categories') }}
@@ -78,39 +75,6 @@
             </div>
           </a>
         @endforeach
-      </div>
-    </div>
-  </section>
-  {{-- <section id="hero-section" class="h-screen bg-primary-lightest">
-    <div class="bg-hero-wave z-0 w-full h-full absolute top-0 left-0 bg-cover bg-no-repeat bg-top border-b border-primary-lightest" style="background-image: url('/images/wave-haikei.svg');"></div>
-    <div class="container">
-      <div class="relative text-center z-10">
-        <h1 class="text-primary text-4xl sm:text-5xl tracking-wider leading-normal uppercase pt-32 pb-10 font-lora">{{ __('default.homepage_title') }}</h1>
-        <div class="w-full grid grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-10 mt-32">
-          @foreach(App\Models\Category::where('parent_id', 0)->get() as $category)
-            <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
-              <div class="w-2/3 mx-auto">
-                <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
-              </div>
-              <div class="text-lg sm:text-xl font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-                {{ $category->translatedName }}
-              </div>
-            </a>
-          @endforeach
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about-section" class="relative pb-64">
-    <div class="bg-hero-wave absolute top-0 left-0 h-screen w-full z-0 bg-cover bg-top bg-no-repeat" style="background-image: url('/images/waves-haikei-2.svg');"></div>
-    <div class="container relative z-10">
-      <div class="text-center sm:w-2/3 mx-auto">
-        <h2 class="text-4xl sm:text-5xl font-medium tracking-wide font-lora">{{ __('default.about_voot_title') }}</h2>
-        <p class="mt-6">{!! __('default.homepage_about') !!}</p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="block sm:inline-block mx-auto border border-primary py-2 sm:px-20 text-sm rounded-md text-primary font-medium my-6 mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
-            Read more about Voot
-          </a>
       </div>
     </div>
   </section> --}}
