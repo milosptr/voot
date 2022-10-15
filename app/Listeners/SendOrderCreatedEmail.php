@@ -21,7 +21,10 @@ class SendOrderCreatedEmail
     {
       try {
         $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
-        $recipients = isset($config['value']) ? explode(';', $config['value']) : ['milosptr@icloud.com'];
+        $salesmans = $event->order->user->salesman->pluck('email');
+        $defaultRecipients = isset($config['value']) ? explode(';', $config['value']) : ['milosptr@icloud.com'];
+        $recipients = count($salesmans) ? $salesmans : $defaultRecipients;
+
         foreach ($recipients as $recipient) {
           Mail::to($recipient)
           ->send(new OrderCreatedMail($event->order));

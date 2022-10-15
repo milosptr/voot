@@ -85,6 +85,12 @@ class User extends Authenticatable
       return $this->hasMany(SalesmanClient::class, 'salesman_id');
     }
 
+    public function salesman()
+    {
+      return $this->hasMany(SalesmanClient::class, 'client_id')
+        ->leftJoin('users', 'users.id', '=', 'salesman_clients.salesman_id');
+    }
+
     public static function search($search = null, $html = false)
     {
       if (!$search) {
