@@ -13,7 +13,7 @@ class LisaAxService {
 
   public function __construct()
   {
-    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
+    $this->requestURL = 'http://213.167.137.207:1458/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
