@@ -3,11 +3,10 @@
 namespace App\Listeners;
 
 use Exception;
+use App\Models\Email;
 use App\Models\Config;
 use App\Events\OrderCreated;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\OrderCreated as OrderCreatedMail;
 
 class SendOrderCreatedEmail
 {
@@ -21,15 +20,21 @@ class SendOrderCreatedEmail
     {
       try {
         $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
-        $salesmans = $event->order->user->salesman->pluck('email');
         $defaultRecipients = isset($config['value']) ? explode(';', $config['value']) : ['milosptr@icloud.com'];
-        $recipients = count($salesmans) ? $salesmans : $defaultRecipients;
+        $salesmans = $event->order->user->salesman->pluck('email')->all();
+        $salesmans = is_array($salesmans) ? $salesmans : [];
+        $recipients = array_merge($salesmans, $defaultRecipients);
 
         foreach ($recipients as $recipient) {
-          Mail::to($recipient)
-          ->send(new OrderCreatedMail($event->order));
+          if(!empty($recipient)) {
+            Email::create([
+              'to' => $recipient,
+              'class' => 'App\Mail\OrderCreated',
+              'order_id' => $event->order->id,
+              'type' => 2,
+            ]);
+          }
         }
-        Log::info('Email sent to addresses (SendOrderCreatedEmail) ' . join(", ", $recipients));
       } catch(Exception $e) {
         Log::error('Mail not sent (SendOrderCreatedEmail) to client for order #'.$event->order->id);
       }
