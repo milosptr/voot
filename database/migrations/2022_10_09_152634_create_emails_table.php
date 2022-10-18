@@ -15,9 +15,11 @@ return new class extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->id();
-            $table->text('remark')->nullable();
             $table->string('to');
-            $table->string('template')->nullable();
+            $table->text('remark')->nullable();
+            $table->string('class')->nullable();
+            $table->string('order_id')->nullable()->references('id')->on('orders');
+            $table->integer('type')->default(1);
             $table->datetime('sent_at')->nullable();
             $table->timestamps();
         });

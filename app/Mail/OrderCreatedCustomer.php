@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderCreated extends Mailable
+class OrderCreatedCustomer extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
@@ -28,6 +28,6 @@ class OrderCreated extends Mailable
      */
     public function build()
     {
-      return $this->subject('New Order from Voot')->view('emails.order-created', compact(['isCustomer' => false]));
+      return $this->subject('Voot: Your Order')->view('emails.order-created', compact(['isCustomer' => true]));
     }
 }
