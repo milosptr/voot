@@ -13,7 +13,7 @@ class LisaAxService {
 
   public function __construct()
   {
-    $this->requestURL = 'http://213.167.137.207:1458/LisaAxServices.asmx';
+    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
@@ -64,13 +64,12 @@ class LisaAxService {
         <soap:Body>
           <tem:CreateSalesOrder>
             <tem:order>
-              <tem:CustomerID>1010105VOB</tem:CustomerID>
+              <tem:CustomerID>'.$customer->key.'VOB</tem:CustomerID>
               <tem:Comments>Customer desired delivery address: '.$order->shipping_address.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
               <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
               <tem:PaymModeCode>ST/GR</tem:PaymModeCode>
               <tem:SSN>'.$customer->ssn.'</tem:SSN>
-              <!--Kennitala needed for vefsala (800100HIS):-->
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
                 <tem:Name>'.$company->name.'</tem:Name>
@@ -131,7 +130,7 @@ class LisaAxService {
 
     $response = curl_exec($curl);
     Log::notice(json_encode(curl_getinfo($curl)));
-    Log::notice('Response: '.json_encode($response));
+    Log::notice('Response from AX: '.json_encode($response));
     curl_close($curl);
 
     return $response;
