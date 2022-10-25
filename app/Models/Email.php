@@ -12,7 +12,7 @@ class Email extends Model
     CONST TYPE_SALESMAN = 2;
 
     public $timestamps = true;
-    protected $fillable = ['remark', 'to', 'class', 'order_id', 'sent_at', 'type'];
+    protected $fillable = ['remark', 'to', 'class', 'order_id', 'sent_at', 'type', 'tries'];
 
     public function order()
     {

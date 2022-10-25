@@ -32,7 +32,7 @@ class SendEmailsCommand extends Command
      */
     public function handle()
     {
-        $emails = Email::whereNull('sent_at')->take(10)->get();
+        $emails = Email::whereNull('sent_at')->where('tries', '<', 3)->take(10)->get();
         foreach ($emails as $email) {
           if($email->class && $email->to) {
             try {
@@ -40,6 +40,8 @@ class SendEmailsCommand extends Command
               $email->sent_at = Carbon::now();
               $email->save();
             } catch(Exception $e) {
+              $emails->tries = $emails->tries + 1;
+              $emails->save();
               Log::error('Email not sent to '. $email->to .' - class '. $email->class . ' - email id ' . $email->id . '!');
             }
           }

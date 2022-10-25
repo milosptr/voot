@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('order_id')->nullable()->references('id')->on('orders');
             $table->integer('type')->default(1);
             $table->datetime('sent_at')->nullable();
+            $table->integer('tries')->default(0);
             $table->timestamps();
         });
     }
