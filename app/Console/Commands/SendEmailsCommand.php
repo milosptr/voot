@@ -40,8 +40,9 @@ class SendEmailsCommand extends Command
               $email->sent_at = Carbon::now();
               $email->save();
             } catch(Exception $e) {
-              $emails->tries = $emails->tries + 1;
-              $emails->save();
+              $email->tries = $email->tries + 1;
+              $email->save();
+              Log::error('Definitivno puca!');
               Log::error('Email not sent to '. $email->to .' - class '. $email->class . ' - email id ' . $email->id . '!');
             }
           }
