@@ -89,3 +89,16 @@ if(paginationPrev || paginationNext) {
     window.open(`?page=${page}`, '_self')
   })
 }
+
+const navigation = document.getElementById('main-menu')
+const openMenuBtn = document.getElementById('open-menu-btn')
+const closeMenuBtn = document.getElementById('close-menu-btn')
+
+if(openMenuBtn && closeMenuBtn) {
+  openMenuBtn.addEventListener('click', () => {
+    navigation.classList.add('active')
+  })
+  closeMenuBtn.addEventListener('click', () => {
+    navigation.classList.remove('active')
+  })
+}
