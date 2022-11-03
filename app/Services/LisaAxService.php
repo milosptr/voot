@@ -131,6 +131,7 @@ class LisaAxService {
 
     $response = curl_exec($curl);
     Log::notice(json_encode(curl_getinfo($curl)));
+    Log::notice($this->body);
     Log::notice('Response from AX: '.json_encode($response));
     curl_close($curl);
 
