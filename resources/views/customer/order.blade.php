@@ -26,7 +26,7 @@
           <div class="w-full sm:w-1/2 mt-4 sm:pr-4 select-none">
             <label for="customer" class="block text-sm font-medium text-gray-500">{{ __('backoffice.customer_name') }}</label>
             <div class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-1 border-gray-200 text-gray-400 rounded-md">
-              {{ $customer->name }}
+              {{ $customer->name ?? 'Name not defined' }}
             </div>
           </div>
           <div class="w-full mt-4 sm:w-1/2 sm:pl-4 select-none">
