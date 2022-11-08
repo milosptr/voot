@@ -68,9 +68,9 @@ class LisaAxService {
               <tem:CustomerID>'.$customer->key.'VOB</tem:CustomerID>
               <tem:Comments></tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
-              <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
+              <tem:ReferenceNumber></tem:ReferenceNumber>
               <tem:PaymModeCode>STGR</tem:PaymModeCode>
-              <tem:SSN>'.$customer->ssn.'</tem:SSN>
+              <tem:SSN></tem:SSN>
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
                 <tem:Name>'.$company->name.'</tem:Name>
