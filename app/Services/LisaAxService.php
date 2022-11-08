@@ -69,7 +69,7 @@ class LisaAxService {
               <tem:Comments>Customer desired delivery address: '.$order->shipping_address.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
               <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
-              <tem:PaymModeCode>ST/GR</tem:PaymModeCode>
+              <tem:PaymModeCode>STGR</tem:PaymModeCode>
               <tem:SSN>'.$customer->ssn.'</tem:SSN>
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
