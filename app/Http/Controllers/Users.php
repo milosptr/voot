@@ -73,6 +73,15 @@ class Users extends Controller
       return back();
     }
 
+    public function changePassword(Request $request, $id)
+    {
+      $user = User::find($id);
+      if($request->has('password')) {
+        $user->update(['password' => Hash::make($request->get('password'))]);
+      }
+      return Redirect::to('/app/account?status=Password changed');
+    }
+
     public function verify($id)
     {
       $user = User::find($id);

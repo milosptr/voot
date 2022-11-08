@@ -70,6 +70,21 @@ class Category extends Model
       return $rootCategories;
     }
 
+    public function isActiveCategory($category, $catSlug)
+    {
+      if($category->slug === $catSlug)
+        return true;
+      foreach($category->children as $subcat) {
+        if($subcat->slug === $catSlug)
+          return true;
+        foreach($subcat->children as $subsubcat) {
+          if($subsubcat->slug === $catSlug)
+            return true;
+        }
+      }
+      return false;
+    }
+
     public static function formatTree($categories, $allCategories)
     {
       foreach($categories as $category) {

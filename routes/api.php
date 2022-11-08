@@ -122,6 +122,7 @@ Route::get('customer/{id}/delete', [Users::class, 'destroy']);
 Route::post('customer/{id}', [Users::class, 'update']);
 Route::post('customer/{id}/logo', [Users::class, 'logo']);
 Route::post('invoice-email/{id}', [Users::class, 'invoiceEmail']);
+Route::post('change-password/{id}', [Users::class, 'changePassword']);
 
 // Members info
 Route::get('members-info/{id}', [MembersInfoController::class, 'index']);

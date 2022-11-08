@@ -21,6 +21,7 @@ return [
   'phone' => 'Phone',
   'ssn' => 'SSN',
   'full_address' => 'Full address',
+  'change_password' => 'Change password',
 
   'order' => 'Order',
   'order_status' => 'Order status',
