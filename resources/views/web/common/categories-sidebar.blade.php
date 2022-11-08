@@ -10,7 +10,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" data-open-subcategory="{{ $category->slug }}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-half cursor-pointer"><polyline points="6 9 12 15 18 9"/></svg>
       @endif
       @php
-        $isOpen = $category->slug === $catSlug;
+        $isOpen = $category->isActiveCategory($category, $catSlug);
       @endphp
     </div>
     @if($category->children->isNotEmpty())
@@ -18,7 +18,7 @@
         @foreach($category->children as $subcat)
           @php
            $subcatClass = $catSlug === $subcat->slug ? 'text-primary-lighter font-medium' : '';
-          $isOpen = $subcat->children->where('slug', $catSlug)->count();
+           $isOpen = $category->isActiveCategory($subcat, $catSlug);
           @endphp
           <div class="flex items-center justify-between text-gray-500">
             <a href="{{ LaravelLocalization::localizeUrl($subcat->slug) }}" class="w-full block py-2 text-gray-500 hover:text-primary-lighter {{ $subcatClass }}" data-cat-slug="">{{ $subcat->translatedName }}</a>

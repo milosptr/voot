@@ -21,6 +21,7 @@ return [
   'phone' => 'Sími',
   'ssn' => 'Kennitala',
   'full_address' => 'Heimilisfang',
+  'change_password' => 'Breyta lykilorði',
 
   'order' => 'Pöntunar',
   'order_status' => 'Staða pöntunar',

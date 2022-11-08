@@ -6,7 +6,7 @@
 <section id="single-product">
   <div class="container mx-auto">
     <div class="py-2 mt-12">
-      <a href="/{{ $product->categories->first()->slug }}" class="text-pprimary-light group flex items-center py-2 text-sm font-normal rounded-md text-gray-700">
+      <a href="/{{ $product->categories->last()->slug }}" class="text-pprimary-light group flex items-center py-2 text-sm font-normal rounded-md text-gray-700">
         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
         <div class="">{{ __('default.back_to_categories') }}</div>
       </a>
@@ -78,7 +78,7 @@
         @if(auth()->user() != NULL)
           <div id="single-product-variations" key="{{ auth()->user()->id }}" index="{{ $product->id }}" sku="{{ $product->sku }}" qty="{{ $product->quantityNameTranslated }}" variations="{{ json_encode($product->getfilteredVariationsAttribute()) }}" addtocart="{{ __('default.add_to_cart') }}"></div>
         @else
-          <a href="/login?back={{ request()->path() }}" class="block mt-8 sm:w-2/5 text-center text-white border border-primary-lighter bg-primary-lighter px-6 py-2 font-medium rounded-md hover:bg-primary-light cursor-pointer shadow-sm">
+          <a href="/login?back={{ request()->path() }}" class="block mt-8 sm:w-1/2 lg:w-2/5 text-center text-white border border-primary-lighter bg-primary-lighter px-6 py-2 font-medium rounded-md hover:bg-primary-light cursor-pointer shadow-sm">
             {{ __('default.login_to_order') }}
           </a>
         @endif
@@ -102,7 +102,11 @@
             @endforeach
         </div>
         <div class="w-full sm:w-1/2 mt-6 lg:mt-0">
-          <h4 class="font-medium lg:text-white bg-gray-200 lg:bg-primary-lighter py-2 px-6">{{ __('default.downloads') }}</h4>
+          <h4
+            class="font-medium bg-gray-200 lg:bg-primary-lighter py-2 px-6 {{ $product->documents->count() ? ' lg:text-white' : ' hidden lg:block text-primary-lighter' }}"
+          >
+            {{  __('default.downloads') }}
+          </h4>
           @foreach($product->documents as $doc)
               <div class="py-1 {{ $loop->index === 0 ? 'mt-3' : 'border-t'}} border-b border-gray-100 px-6 text-sm">
                 <div class="w-full text-gray-500 capitalize font-medium">
