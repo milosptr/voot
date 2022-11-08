@@ -38,8 +38,8 @@ return [
 
   'services_title' => 'Þjónusta',
   'services_p1' => 'Starfsfólk Voot er þrautþjálfað í að meta þarfir viðskiptavina þegar kemur að rekstrarvörum. Við leggjum okkur fram við að veita viðskiptavinum framúrskarandi þjónustu og afhenda vörur eins fljótt og auðið er. Endilega hafðu samband og við aðstoðum þig um hæl.',
-  'services_p2' => 'Voot rekur þrjár verslanir og öfluga vefverslun með fjölbreyttu úrvali rekstrarvara. Allar pantanir eru afgreiddar samdægurs og sent er hvert á land sem er. Það er um að gera að skoða úrvalið hjá okkur á vefnum og það er afar auðvelt að versla á síðunni.',
-  'services_p3' => 'Voot á í nánu samstarfi við Hampiðjuna og býður upp á vörur frá fyrirtækinu. Voot er dótturfélag Hampiðjunnar.',
+  'services_p2' => 'Voot rekur þrjár verslanir og öfluga pöntunarsíðu með fjölbreyttu úrvali rekstrarvara. Allar pantanir eru afgreiddar samdægurs og sent er hvert á land sem er. Það er um að gera að skoða úrvalið hjá okkur á vefnum og það er afar auðvelt að versla á síðunni.',
+  'services_p3' => '',
   'explore_services' => 'Skoða Þjónustu',
 
   'contact_title' => 'Hafa Samband',
