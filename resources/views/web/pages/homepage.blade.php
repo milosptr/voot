@@ -6,7 +6,7 @@
   <div class="relative overflow-hidden border-b border-gray-200 bg-gray-50">
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static flex">
-        <div class="sm:w-1/2">
+        <div class="sm:w-1/2 relative z-10">
           <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
           <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.homepage_about')  }}</p>
           <a
@@ -17,11 +17,11 @@
             </a>
         </div>
         <div class="sm:w-1/2">
-          <div class="absolute transform sm:left-1/2 top-[300px] lg:top-[-50px] left-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8">
+          <div class="absolute transform sm:left-1/2 top-[300px] lg:top-[-50px] left-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8 z-0">
             <div class="flex items-center space-x-6 lg:space-x-8">
               <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-10">
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Útgerðir
                   </div>
@@ -35,7 +35,7 @@
               </div>
               <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:-mt-20">
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Strandveiðar
                   </div>

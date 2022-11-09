@@ -358,7 +358,9 @@ input#sale_price {
   transition: opacity .3s ease-in-out;
 }
 
-.homepage-hero-image:hover > div {
-  visibility: visible;
-  opacity: 1;
+@media (min-width: 500px) {
+  .homepage-hero-image:hover > div {
+    visibility: visible;
+    opacity: 1;
+  }
 }
