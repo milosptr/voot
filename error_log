@@ -1,0 +1,8 @@
+[10-Oct-2022 22:34:37 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/artisan(18): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[27-Oct-2022 01:11:01 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'i360.so' (tried: /opt/alt/php80/usr/lib64/php/modules/i360.so (libhs_runtime.so.5: cannot open shared object file: No such file or directory), /opt/alt/php80/usr/lib64/php/modules/i360.so.so (/opt/alt/php80/usr/lib64/php/modules/i360.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0
+[27-Oct-2022 01:12:02 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'i360.so' (tried: /opt/alt/php80/usr/lib64/php/modules/i360.so (libhs_runtime.so.5: cannot open shared object file: No such file or directory), /opt/alt/php80/usr/lib64/php/modules/i360.so.so (/opt/alt/php80/usr/lib64/php/modules/i360.so.so: cannot open shared object file: No such file or directory)) in Unknown on line 0

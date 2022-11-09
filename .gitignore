@@ -1,5 +1,6 @@
 /storage/*.key
 /vendor
+/vendor/*
 .env
 .env.backup
 .phpunit.result.cache
@@ -11,3 +12,4 @@ yarn-error.log
 /.idea
 /.vscode
 **/.DS_Store
+composer.lock

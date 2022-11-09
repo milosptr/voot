@@ -7,3 +7,75 @@ Stack trace:
 #3 {main}
   thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 71
 [08-Sep-2022 12:29:15 UTC] PHP Fatal error:  Trait "Illuminate\Support\Traits\Conditionable" not found in /home/voot/dev.voot.is/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php on line 17
+[30-Sep-2022 17:37:09 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:09 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:11 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:14 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:14 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:16 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:25 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:25 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:39 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[30-Sep-2022 17:37:41 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[10-Oct-2022 22:34:48 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
+[10-Oct-2022 22:34:49 Europe/Ljubljana] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit50925250c24afb5f829e7b30a7dc0145" not found in /home/voot/dev.voot.is/vendor/composer/autoload_real.php:35
+Stack trace:
+#0 /home/voot/dev.voot.is/vendor/autoload.php(7): ComposerAutoloaderInit50925250c24afb5f829e7b30a7dc0145::getLoader()
+#1 /home/voot/dev.voot.is/public/index.php(34): require('/home/voot/dev....')
+#2 {main}
+  thrown in /home/voot/dev.voot.is/vendor/composer/autoload_real.php on line 35
