@@ -3,6 +3,8 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="author" content="Milos Petrovic | milosptr.dev" />
+      <meta name="description" content="Voot býður upp á þrautreyndar rekstrarvörur fyrir sjó og land á hagstæðu verði, allt á einum stað" />
       <link rel="icon" href="/favicon.png" sizes="any">
       <link rel="shortcut icon" href="/favicon.png" sizes="any">
       <link rel="apple-touch-icon" href="/apple-touch-icon.png">
