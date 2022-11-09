@@ -374,3 +374,9 @@ input#sale_price {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
+@media (max-width: 500px) {
+  .homepage-images-section {
+    transform: scale(.88) translateX(-25px);
+  }
+}

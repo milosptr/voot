@@ -17,7 +17,7 @@
             </a>
         </div>
         <div class="sm:w-1/2">
-          <div class="absolute transform sm:left-1/2 top-[300px] lg:top-[-50px] left-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8 z-0">
+          <div class="homepage-images-section absolute transform sm:left-1/2 top-[300px] lg:top-[-50px] left-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8 z-0">
             <div class="flex items-center space-x-6 lg:space-x-8">
               <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-10">
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
