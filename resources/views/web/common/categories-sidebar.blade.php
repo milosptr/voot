@@ -14,7 +14,7 @@
       @endphp
     </div>
     @if($category->children->isNotEmpty())
-      <div class="max-h-0 sub-categories main-sub-categories overflow-hidden transition-half {{ $isOpen ? 'max-h-96' : '' }}" data-subcategory="{{ $category->slug }}">
+      <div class="max-h-0 sub-categories main-sub-categories overflow-hidden {{ $isOpen ? 'categories-sidebar-opened' : '' }}" data-subcategory="{{ $category->slug }}">
         @foreach($category->children as $subcat)
           @php
            $subcatClass = $catSlug === $subcat->slug ? 'text-primary-lighter font-medium' : '';
@@ -26,8 +26,8 @@
             <svg xmlns="http://www.w3.org/2000/svg" data-open-subcategory="{{ $subcat->slug }}" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-half cursor-pointer"><polyline points="6 9 12 15 18 9"/></svg>
             @endif
           </div>
-          <div class="max-h-0 sub-categories overflow-hidden transition-half {{ $isOpen ? 'max-h-96' : '' }}" data-subcategory="{{ $subcat->slug }}">
-            <div class="pl-4 my-5">
+          <div class="max-h-0 sub-categories overflow-hidden transition-half {{ $isOpen ? 'categories-sidebar-opened' : '' }}" data-subcategory="{{ $subcat->slug }}">
+            <div class="pl-4 my-3">
               @foreach($subcat->children as $subsubcat)
                 <a href="{{ LaravelLocalization::localizeUrl($subsubcat->slug) }}" class="w-full block py-2 text-gray-500 hover:text-primary-lighter {{ $catSlug === $subsubcat->slug ? 'text-primary-lighter font-medium' : '' }}">{{ $subsubcat->translatedName }}</a>
               @endforeach

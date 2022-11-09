@@ -35,7 +35,7 @@ if(subcategories && subcategories) {
       const subcategoryEl = e.target.closest('div').querySelector('[data-open-subcategory]')
       const subcategory = subcategoryEl ? subcategoryEl.dataset['openSubcategory'] : null
       if(subcategory) {
-        document.querySelector(`[data-subcategory="${subcategory}"]`).classList.toggle('max-h-96')
+        document.querySelector(`[data-subcategory="${subcategory}"]`).classList.toggle('categories-sidebar-opened')
         e.target.closest('svg').classList.toggle('accordion-open')
       }
     })

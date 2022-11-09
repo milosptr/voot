@@ -364,3 +364,13 @@ input#sale_price {
     opacity: 1;
   }
 }
+
+.categories-sidebar-opened {
+  max-height: unset;
+}
+
+.main-sub-categories.categories-sidebar-opened {
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
