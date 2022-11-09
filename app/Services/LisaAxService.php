@@ -14,7 +14,8 @@ class LisaAxService {
   public function __construct()
   {
     // test port 1456
-    $this->requestURL = 'http://213.167.137.207:1458/LisaAxServices.asmx';
+    // live port 1458
+    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
@@ -66,11 +67,11 @@ class LisaAxService {
           <tem:CreateSalesOrder>
             <tem:order>
               <tem:CustomerID>'.$customer->key.'VOB</tem:CustomerID>
-              <tem:Comments></tem:Comments>
+              <tem:Comments>Customer desired delivery address: '.$order->shipping_address.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
-              <tem:ReferenceNumber></tem:ReferenceNumber>
+              <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
               <tem:PaymModeCode>STGR</tem:PaymModeCode>
-              <tem:SSN></tem:SSN>
+              <tem:SSN>'.$customer->ssn.'</tem:SSN>
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
                 <tem:Name>'.$company->name.'</tem:Name>
@@ -78,7 +79,7 @@ class LisaAxService {
                 <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>
                 <tem:Country>'.$customer->country.'</tem:Country>
                 <tem:ContactName>'.$customer->name.'</tem:ContactName>
-                <tem:ContactPhone></tem:ContactPhone>
+                <tem:ContactPhone>'.$customer->phone.'</tem:ContactPhone>
                 <tem:ContactEmail>'.( isset($customer->invoice_email) ? $customer->invoice_email : $customer->email ).'</tem:ContactEmail>
               </tem:DeliveryInfo>
               <tem:SalesOrderLines>
