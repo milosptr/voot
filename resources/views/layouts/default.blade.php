@@ -9,6 +9,16 @@
       <link rel="shortcut icon" href="/favicon.png" sizes="any">
       <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+      <!--FACEBOOK-->
+      <meta property="og:image" content="https://www.voot.is/voot-ehf.jpg">
+      <meta property="og:image:type" content="image/png">
+      <meta property="og:image:width" content="1024">
+      <meta property="og:image:height" content="1024">
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.voot.is/"/>
+      <meta property="og:title" content="Voot ehf." />
+      <meta property="og:description" content="Þrautreyndar rekstrarvörur fyrir sjó og land, allt á einum stað" />
+
       <title>Voot | @yield('title')</title>
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
