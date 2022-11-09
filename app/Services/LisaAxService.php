@@ -14,7 +14,8 @@ class LisaAxService {
   public function __construct()
   {
     // test port 1456
-    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
+    // live port 1458
+    $this->requestURL = 'http://213.167.137.207:1458/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
