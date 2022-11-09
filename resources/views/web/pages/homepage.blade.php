@@ -5,50 +5,63 @@
 @section('content')
   <div class="relative overflow-hidden border-b border-gray-200 bg-gray-50">
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
-      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static">
-        <div class="sm:max-w-lg">
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static flex">
+        <div class="sm:w-1/2">
           <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
           <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.homepage_about')  }}</p>
+          <a
+            href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}"
+            class="inline-block text-center bg-primary-light border border-transparent rounded-md py-3 px-8 mt-10 font-medium text-white hover:bg-primary"
+            >
+              {{ __('default.shop_now_button') }}
+            </a>
         </div>
-        <div class="">
-          <div class="mt-10">
-            <div aria-hidden="true" class="pointer-events-none lg:absolute lg:inset-y-0 lg:max-w-7xl lg:mx-auto lg:w-full z-10">
-              <div class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8">
-                <div class="flex items-center space-x-6 lg:space-x-8">
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-10">
-                    <div class="w-32 sm:w-52 h-32 sm:h-80 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100">
-                      <img src="/images/homepage/homepage-1.jpg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
-                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
+        <div class="sm:w-1/2">
+          <div class="absolute transform sm:left-1/2 top-[250px] lg:top-[-50px] left-0 sm:translate-x-8 lg:left-1/2 lg:translate-x-8">
+            <div class="flex items-center space-x-6 lg:space-x-8">
+              <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-10">
+                <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
+                  <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
+                    Útgerðir
                   </div>
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:-mt-20">
-                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-3.jpg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
-                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-4.jpg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
+                </div>
+                <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
+                  <img src="/images/homepage/homepage-3.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
+                    Hótel og veitingarekstur
                   </div>
-                  <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-32">
-                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
-                    <div class="w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden">
-                      <img src="/images/homepage/homepage-6.jpg" alt="" class="w-full h-full object-center object-cover">
-                    </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:-mt-20">
+                <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
+                  <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
+                    Strandveiðar
+                  </div>
+                </div>
+                <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
+                  <img src="/images/homepage/homepage-4.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
+                    Bændur
+                  </div>
+                </div>
+              </div>
+              <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-32">
+                <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
+                  <img src="/images/homepage/homepage-6.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
+                    Matvælavinnslur
+                  </div>
+                </div>
+                <div class="homepage-hero-image w-32 sm:w-52 h-32 sm:h-80 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100 relative">
+                  <img src="/images/homepage/homepage-1.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
+                    Verktakar
                   </div>
                 </div>
               </div>
             </div>
-
-            <a
-              href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}"
-              class="inline-block text-center bg-primary-light border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-primary"
-            >
-              {{ __('default.shop_now_button') }}
-            </a>
           </div>
         </div>
       </div>

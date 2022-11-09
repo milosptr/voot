@@ -350,3 +350,15 @@ input#sale_price {
 .w-56 {
   width: 14rem;
 }
+
+.homepage-hero-image > div {
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(33, 75, 118, .65)!important;
+  transition: opacity .3s ease-in-out;
+}
+
+.homepage-hero-image:hover > div {
+  visibility: visible;
+  opacity: 1;
+}
