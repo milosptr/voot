@@ -96,6 +96,10 @@ Route::prefix('/backend')->middleware(['admin'])->group(function () {
   Route::get('/settings/clients/{id}', [PagesController::class, 'editCustomer'])->name('customer-edit');
   Route::get('/settings/{page}', [PagesController::class, 'settings'])->name('settings');
 
+  Route::get('/account', function () {
+    return view('customer.account');
+  });
+
   Route::get('/inventory', [PagesController::class, 'inventory'])->name('inventory');
 });
 

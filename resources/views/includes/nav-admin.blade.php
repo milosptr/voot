@@ -53,3 +53,12 @@
   </svg>
   Settings
 </a>
+
+<a href="/backend/account" class="text-gray-300 hover:bg-primary-lighter hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+  <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" fill="currentColor" viewBox="0 0 256 256">
+    <rect width="256" height="256" fill="none"></rect>
+    <circle cx="128" cy="96" r="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></circle>
+    <path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="12"></path>
+  </svg>
+   My Account
+</a>
