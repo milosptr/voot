@@ -154,6 +154,11 @@
                             @php
                               $product = App\Models\Inventory::where('sku', $o['sku'])->first();
                               $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
+                              if(!$product) {
+                                $product = App\Models\Product::where('sku', $o['sku'])->first();
+                                $pv = new stdClass;
+                                $pv->product = $product;
+                              }
                             @endphp
                             <tr>
                               <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">

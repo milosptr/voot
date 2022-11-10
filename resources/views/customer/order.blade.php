@@ -110,6 +110,11 @@
           @php
             $product = App\Models\Inventory::where('sku', $o['sku'])->first();
             $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
+            if(!$product) {
+              $product = App\Models\Product::where('sku', $o['sku'])->first();
+              $pv = new stdClass;
+              $pv->product = $product;
+            }
           @endphp
           @if($pv)
             <div class="flex items-center gap-4 border-b border-gray-200 text-gray-700 py-1 px-3">
