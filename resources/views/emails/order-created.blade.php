@@ -154,7 +154,7 @@
                             @php
                               $product = App\Models\Inventory::where('sku', $o['sku'])->first();
                               $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
-                              if(!$product) {
+                              if(!$product || !$pv) {
                                 $product = App\Models\Product::where('sku', $o['sku'])->first();
                                 $pv = new stdClass;
                                 $pv->product = $product;
