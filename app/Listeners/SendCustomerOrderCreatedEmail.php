@@ -30,7 +30,7 @@ class SendCustomerOrderCreatedEmail
           }
         }
       } catch(Exception $e) {
-        Log::error('Mail not sent (SendCustomerOrderCreatedEmail) to client for order #'.$event->order->id);
+        Log::error('Mail not sent (SendCustomerOrderCreatedEmail) to client for order #'.$event->order->id. ' '. $e->getMessage());
       }
     }
 }
