@@ -63,18 +63,25 @@ class Order extends Model
     public function getProducts()
     {
       $skus = array_column($this->order, 'sku');
-      $product_ids = ProductVariation::whereIn('product_variations.sku', $skus)->pluck('product_id');
-      return Product::whereIn('products.id', $product_ids)
-                ->select('products.*', 'inventory.name as full_name', 'product_variations.sku as sku')
-                ->join('product_variations', function($q) use($skus) {
-                  $q->on('product_variations.product_id', '=', 'products.id')
-                    ->whereIn('product_variations.sku', $skus);
-                  })
-                  ->leftJoin('inventory', function($q) {
-                    $q->on('product_variations.sku', '=', 'inventory.sku');
-                })
-                ->with('media')
-                ->get();
+      $products = [];
+      foreach($skus as $sku) {
+        $pv = ProductVariation::where('product_variations.sku', $sku)->get()->first();
+        $inventory = Inventory::where('sku', $sku)->get()->first();
+        $product = $pv ? $pv->product : Product::where('sku', $sku)->get()->first();
+        if($inventory) {
+          $product->name = $inventory->name;
+        }
+        $order_key = array_search($sku, array_column($this->order, 'sku'));
+        $order = $this->order[$order_key];
+        if($order) {
+          $product->quantity = $order['qty'];
+          $product->qty = $order['qty'];
+        }
+        $product->media = $product->media;
+
+        array_push($products, $product);
+      }
+      return $products;
     }
 
     public static function statusText($status)

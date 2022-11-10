@@ -18,7 +18,7 @@ class OrderWithProductsResource extends JsonResource
           'id' => $this->id,
           'order' => $this->order,
           'products' => $this->getProducts(),
-        'created_at' => $this->created_at,
+          'created_at' => $this->created_at,
         ];
     }
 }

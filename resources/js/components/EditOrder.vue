@@ -77,10 +77,7 @@
       getOrder() {
         axios.get(`/api/orders/${this.orderId}/products`)
         .then((res) => {
-          this.products = res.data.data.products.map((p) => {
-            p.qty = res.data.data.order.find((o) => o.sku === p.sku).qty
-            return p
-          })
+          this.products = res.data.data.products
           this.order = res.data.data.order
         })
       },
