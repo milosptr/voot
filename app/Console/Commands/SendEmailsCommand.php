@@ -42,7 +42,7 @@ class SendEmailsCommand extends Command
             } catch(Exception $e) {
               $email->tries = $email->tries + 1;
               $email->save();
-              Log::error('Email not sent to '. $email->to .' - class '. $email->class . ' - email id ' . $email->id . '!');
+              Log::error('Email not sent to '. $email->to .' - class '. $email->class . ' - email id ' . $email->id . '!' . ' '. $e->getMessage());
             }
           }
         }
