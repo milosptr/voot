@@ -31,7 +31,7 @@ class OrderUpdated extends Mailable
      */
     public function build()
     {
-      $subject = 'Your order is updated';
+      $subject = 'Pöntunin þín er uppfærð';
       $remarks = $this->remarks;
       return $this->subject($subject)->view('emails.order-updated', compact('remarks'));
     }

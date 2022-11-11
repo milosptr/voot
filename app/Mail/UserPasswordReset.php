@@ -31,6 +31,6 @@ class UserPasswordReset extends Mailable
     public function build()
     {
       $password = $this->password;
-      return $this->subject('Account Password Changed')->view('emails.password-changed', compact('password'));
+      return $this->subject('Lykilorði reiknings breytt')->view('emails.password-changed', compact('password'));
     }
 }

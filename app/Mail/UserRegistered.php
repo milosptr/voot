@@ -30,6 +30,6 @@ class UserRegistered extends Mailable
     public function build()
     {
       $customer = $this->user;
-      return $this->subject('New Customer Registration')->view('emails.new-user-registration', compact('customer'));
+      return $this->subject('Nýskráning viðskiptavina')->view('emails.new-user-registration', compact('customer'));
     }
 }

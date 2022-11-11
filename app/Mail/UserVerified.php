@@ -29,6 +29,6 @@ class UserVerified extends Mailable
      */
     public function build()
     {
-      return $this->subject('Account Verified')->view('emails.account-verified');
+      return $this->subject('Reikningur staðfestur')->view('emails.account-verified');
     }
 }

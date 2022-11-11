@@ -127,7 +127,6 @@
               <tr>
                 <td class="wrapper" style="background: #fff; font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px; border-top: 8px solid #214b76;border-bottom: 8px solid #214b76;" valign="top">
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
-                    @include('common.email.header')
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
                           <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Pöntun þín #{{ $order->id }} er breytt</h1>
@@ -139,7 +138,7 @@
                           <tr>
                             <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Vörunúmer</td>
                             <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Nafn</td>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;text-align:center;" valign="center">QTY</td>
+                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;text-align:center;" valign="center">Magn</td>
                           </tr>
                           @foreach($order->order as $o)
                             @php
@@ -183,6 +182,9 @@
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
                                 <span style="font-weight: 600;color:#555;">Kennitala:</span><br>{{ $order->user->ssn }}
                               </p>
+                              <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 15px;">
+                                <span style="font-weight: 600;color:#555;">Simanúmer:</span><br>{{ $order->user->phone }}
+                              </p>
                             </td>
                             <td style="width: 50%;">
                               @if($order->shipping_method === App\Models\Order::DELIVERY)
@@ -195,11 +197,7 @@
                                 {{ $order->orderAddress() }}
                               </p>
                               <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-bottom: 5px;">
-                                @if($order->shipping_method === App\Models\Order::DELIVERY)
-                                <span style="font-weight: 600;color: #555;">Dagsetning sendingar:</span><br>
-                                @else
-                                <span style="font-weight: 600;color: #555;">Dagsetning afhendingu:</span><br>
-                                @endif
+                                <span style="font-weight: 600;color: #555;">Afhendingar dagur:</span><br>
                                 <span style="letter-spacing: 1px;">{{ Carbon\Carbon::parse($order->shipping_date)->format('d/m/Y') }}</span>
                               </p>
                             </td>
@@ -212,9 +210,9 @@
                             <tr>
                               <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; border-radius: 5px; text-align: center; background-color: #214b76;" valign="top" align="center" bgcolor="#214b76">
                                 @if(isset($isCustomer) && $isCustomer)
-                                  <a href="{{ env('APP_URL') }}/app/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Skoða Pöntun</a>
+                                  <a href="{{ env('APP_URL') }}/app/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Skoða pöntun</a>
                                 @else
-                                  <a href="{{ env('APP_URL') }}/backend/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Skoða Pöntun</a>
+                                  <a href="{{ env('APP_URL') }}/backend/orders/{{ $order->id }}" target="_blank" style="border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Skoða pöntun</a>
                                 @endif
                               </td>
                             </tr>
