@@ -6,6 +6,7 @@ use App\Mail\UserRegistered;
 use App\Models\Config;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Log;
 
 class SendNewUserRegistrationEmail
 {
@@ -18,8 +19,16 @@ class SendNewUserRegistrationEmail
     public function handle(Registered $event)
     {
       $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
-      $recipient = isset($config['value']) ? $config['value'] : 'milosptr@icloud.com';
-      Mail::to($recipient)
-        ->send(new UserRegistered($event->user));
+      $defaultRecipients = isset($config['value']) ? explode(';', $config['value']) : ['milosptr@icloud.com'];
+      try {
+        foreach ($defaultRecipients as $recipient) {
+          if(!empty($recipient)) {
+            Mail::to($recipient)
+              ->send(new UserRegistered($event->user));
+          }
+        }
+      } catch (\Throwable $th) {
+        Log::error('SendNewUserRegistrationEmail error: '. $th->getMessage());
+      }
     }
 }

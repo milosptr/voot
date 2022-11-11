@@ -3,8 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UserVerified;
-use App\Mail\UserVerified as MailUserVerified;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\UserVerified as MailUserVerified;
 
 class SendCustomerVerificationEmail
 {
@@ -16,7 +17,11 @@ class SendCustomerVerificationEmail
      */
     public function handle(UserVerified $event)
     {
-      Mail::to($event->user->email)
-        ->send(new MailUserVerified($event->user));
+      try {
+        Mail::to($event->user->email)
+          ->send(new MailUserVerified($event->user));
+      } catch (\Throwable $th) {
+        Log::error('SendNewUserRegistrationEmail error: '. $th->getMessage());
+      }
     }
 }
