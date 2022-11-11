@@ -117,7 +117,11 @@
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
                         <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Endurstilla lykilorð</h1>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Lykilorðið þitt hefur verið endurstillt. Nýtt lykilorð er: </p>
-                        <p style="font-family: monospace; font-size: 18px; font-weight: normal; margin: 0; margin-top: 15px; margin-bottom: 15px; letter-spacing: 2px; padding: 2px 8px; background: #eee; display:inline-block;">{{ $password }}</p>
+                        <div><p style="font-family: monospace; font-size: 18px; font-weight: normal; margin: 0; margin-top: 15px; margin-bottom: 15px; letter-spacing: 2px; padding: 2px 8px; background: #eee; display:inline-block;">{{ $user->email }}</p></div>
+                        <div><p style="font-family: monospace; font-size: 18px; font-weight: normal; margin: 0; margin-top: 5px; margin-bottom: 15px; letter-spacing: 2px; padding: 2px 8px; background: #eee; display:inline-block;">{{ $password }}</p></div>
+                        <br />
+                        <br />
+                        <a href="{{ env('APP_URL') }}/login" target="_blank" style="text-align: center;border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff;">Login</a>
                       </td>
                     </tr>
                   </table>
