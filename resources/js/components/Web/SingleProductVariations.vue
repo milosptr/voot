@@ -2,8 +2,8 @@
   <div>
     <div class="flex gap-10 mt-8">
       <Select v-if="variations.length" :label="currentLocale == 'is' ? 'Veldu' : 'Select'" :options="variations" :color="true" classes="min-w-150" :firstDefault="true" @selected="selectVariant($event)" />
-      <Select :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
-      <div class="w-auto flex flex-col items-center cursor-pointer">
+      <Select v-if="hasUser" :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
+      <div v-if="hasUser" class="w-auto flex flex-col items-center cursor-pointer">
         <label class="text-gray-500 font-medium hidden lg:block">
           {{ currentLocale == 'is' ? 'Uppáhaldsvörur' : 'Favourites' }}
         </label>
@@ -16,7 +16,7 @@
     <div v-if="error" class="mt-3 mb-3 text-sm border border-red-600 bg-red-400 text-white rounded-md px-4 py-2">
       {{ error }}
     </div>
-    <div class="flex items-center gap-2">
+    <div v-if="hasUser" class="flex items-center gap-2">
       <button type="submit" class="mt-8 w-full lg:w-1/2 text-center text-white border border-primary-lighter bg-primary-lighter px-6 py-2 font-medium rounded-md hover:bg-primary-light cursor-pointer shadow-sm" @click="addToCart">
         {{ addToCartLabel }}
       </button>
@@ -55,6 +55,9 @@ import Select from './common/Select.vue'
       currentLocale() {
         return window.current_locale
       },
+      hasUser() {
+        return this.user_id !== "0" || this.user_id === 0
+      }
     },
     mounted() {
       this.user_id = document.getElementById('single-product-variations').getAttribute('key')

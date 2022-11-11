@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.e977bedb.js",
+    "file": "assets/app.529980d7.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -8,7 +8,7 @@
     ],
     "css": [
       "assets/app.53991f58.css",
-      "assets/app.78eab326.css"
+      "assets/app.1033a5c0.css"
     ]
   },
   "resources/js/backend.js": {
@@ -20,22 +20,22 @@
     ],
     "css": [
       "assets/backend.9848d22f.css",
-      "assets/app.78eab326.css"
+      "assets/app.1033a5c0.css"
     ]
   },
   "_plugin-vue_export-helper.04c8ae2e.js": {
     "file": "assets/plugin-vue_export-helper.04c8ae2e.js"
   },
-  "resources/js/backend.css": {
-    "file": "assets/backend.9848d22f.css",
-    "src": "resources/js/backend.css"
-  },
   "resources/js/app.css": {
     "file": "assets/app.53991f58.css",
     "src": "resources/js/app.css"
   },
+  "resources/js/backend.css": {
+    "file": "assets/backend.9848d22f.css",
+    "src": "resources/js/backend.css"
+  },
   "resources/css/app.css": {
-    "file": "assets/app.78eab326.css",
+    "file": "assets/app.1033a5c0.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
