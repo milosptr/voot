@@ -200,7 +200,7 @@
     </div>
   </section>
 
-   <section class="py-20">
+  <section class="py-20">
     <div class="container mx-auto relative">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-10">
         <div class="w-full sm:w-2/5">
@@ -210,13 +210,13 @@
           </p>
         </div>
         <div class="w-full sm:w-2/5">
-          <form action="" method="POST">
+          <form action="/api/newsletter-registration" method="POST">
             <div class="relative flex items-center">
-              <input type="email" name="email" placeholder="Enter your email" class="shadow-sm focus:ring-primary-lighter focus:border-primary-lighter block w-full pr-24 py-3 border-gray-200 rounded-md">
+              <input type="email" name="user_email" placeholder="Sláðu inn netfangið þitt" class="shadow-sm focus:ring-primary-lighter focus:border-primary-lighter block w-full pr-24 py-3 border-gray-200 rounded-md">
               <div class="absolute inset-y-0 right-0 flex py-2 pr-2">
-                <kbd class="inline-flex items-center border border-primary-lighter bg-primary-lighter text-white rounded px-6 cursor-pointer font-sans font-medium">
-                  Join
-                </kbd>
+                <button type="submit" class="inline-flex items-center border border-primary-lighter bg-primary-lighter text-white rounded px-6 cursor-pointer font-sans font-medium">
+                  Vertu með
+                </button>
               </div>
             </div>
           </form>
