@@ -39,7 +39,7 @@ class Users extends Controller
       $user = User::find($id);
       $user->update($request->all());
 
-      return back();
+      return Redirect::back()->with('status', 'New user info saved!');
     }
 
     public function invoiceEmail(Request $request, $id)
