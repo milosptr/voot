@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Request;
 
 class LisaAxService {
   public $user;
@@ -112,7 +113,8 @@ class LisaAxService {
 
   public function send() {
     $curl = curl_init();
-    Log::info('Ok Lisa AX Ready: '. $this->requestURL);
+    $ip = Request::ip();
+    Log::info('Ok Lisa AX Ready: '. $this->requestURL. ' from IP '.$ip);
 
     curl_setopt_array($curl, array(
       CURLOPT_URL => $this->requestURL,
