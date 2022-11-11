@@ -17,7 +17,7 @@
             Láttu okkur bara vita netfangið þitt og við sendum þér tölvupóst með hlekk til að endurstilla lykilorð sem gerir þér kleift að velja nýjan.
         </div>
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ route('forgot_password_request') }}">
             @csrf
 
             <!-- Email Address -->

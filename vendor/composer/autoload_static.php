@@ -82,6 +82,7 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\Newsletter\\' => 18,
             'Spatie\\LaravelIgnition\\' => 23,
             'Spatie\\Ignition\\' => 16,
             'Spatie\\FlareClient\\' => 19,
@@ -151,6 +152,7 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         ),
         'D' => 
         array (
+            'DrewM\\MailChimp\\' => 16,
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'Doctrine\\Inflector\\' => 19,
@@ -310,6 +312,10 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Spatie\\Newsletter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-newsletter/src',
+        ),
         'Spatie\\LaravelIgnition\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/laravel-ignition/src',
@@ -458,6 +464,10 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
+        'DrewM\\MailChimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/drewm/mailchimp-api/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
@@ -541,6 +551,7 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         'App\\Console\\Commands\\FillInventory' => __DIR__ . '/../..' . '/app/Console/Commands/FillInventory.php',
         'App\\Console\\Commands\\SendEmailsCommand' => __DIR__ . '/../..' . '/app/Console/Commands/SendEmailsCommand.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
+        'App\\Events\\ForgotPassword' => __DIR__ . '/../..' . '/app/Events/ForgotPassword.php',
         'App\\Events\\OrderCreated' => __DIR__ . '/../..' . '/app/Events/OrderCreated.php',
         'App\\Events\\OrderUpdated' => __DIR__ . '/../..' . '/app/Events/OrderUpdated.php',
         'App\\Events\\UserPasswordReset' => __DIR__ . '/../..' . '/app/Events/UserPasswordReset.php',
@@ -566,6 +577,7 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         'App\\Http\\Controllers\\EmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmailController.php',
         'App\\Http\\Controllers\\InventoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/InventoryController.php',
         'App\\Http\\Controllers\\LocationsController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocationsController.php',
+        'App\\Http\\Controllers\\MailChimpController' => __DIR__ . '/../..' . '/app/Http/Controllers/MailChimpController.php',
         'App\\Http\\Controllers\\MembersInfoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MembersInfoController.php',
         'App\\Http\\Controllers\\NewsletterController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsletterController.php',
         'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
@@ -613,10 +625,12 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         'App\\Listeners\\SendCustomerPasswordResetEmail' => __DIR__ . '/../..' . '/app/Listeners/SendCustomerPasswordResetEmail.php',
         'App\\Listeners\\SendCustomerRegistrationEmail' => __DIR__ . '/../..' . '/app/Listeners/SendCustomerRegistrationEmail.php',
         'App\\Listeners\\SendCustomerVerificationEmail' => __DIR__ . '/../..' . '/app/Listeners/SendCustomerVerificationEmail.php',
+        'App\\Listeners\\SendForgotPasswordEmail' => __DIR__ . '/../..' . '/app/Listeners/SendForgotPasswordEmail.php',
         'App\\Listeners\\SendNewUserRegistrationEmail' => __DIR__ . '/../..' . '/app/Listeners/SendNewUserRegistrationEmail.php',
         'App\\Listeners\\SendOrderCreatedEmail' => __DIR__ . '/../..' . '/app/Listeners/SendOrderCreatedEmail.php',
         'App\\Listeners\\SendOrderUpdatedEmail' => __DIR__ . '/../..' . '/app/Listeners/SendOrderUpdatedEmail.php',
         'App\\Mail\\CustomerRegistered' => __DIR__ . '/../..' . '/app/Mail/CustomerRegistered.php',
+        'App\\Mail\\ForgotPassword' => __DIR__ . '/../..' . '/app/Mail/ForgotPassword.php',
         'App\\Mail\\OrderCreated' => __DIR__ . '/../..' . '/app/Mail/OrderCreated.php',
         'App\\Mail\\OrderCreatedCustomer' => __DIR__ . '/../..' . '/app/Mail/OrderCreatedCustomer.php',
         'App\\Mail\\OrderUpdated' => __DIR__ . '/../..' . '/app/Mail/OrderUpdated.php',
@@ -914,6 +928,9 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         'Dotenv\\Util\\Regex' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Regex.php',
         'Dotenv\\Util\\Str' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Util/Str.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'DrewM\\MailChimp\\Batch' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/Batch.php',
+        'DrewM\\MailChimp\\MailChimp' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/MailChimp.php',
+        'DrewM\\MailChimp\\Webhook' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/Webhook.php',
         'Egulias\\EmailValidator\\EmailLexer' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailLexer.php',
         'Egulias\\EmailValidator\\EmailParser' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailParser.php',
         'Egulias\\EmailValidator\\EmailValidator' => __DIR__ . '/..' . '/egulias/email-validator/src/EmailValidator.php',
@@ -4922,6 +4939,14 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         'Spatie\\LaravelIgnition\\Support\\StringComparator' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Support/StringComparator.php',
         'Spatie\\LaravelIgnition\\Views\\BladeSourceMapCompiler' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/BladeSourceMapCompiler.php',
         'Spatie\\LaravelIgnition\\Views\\ViewExceptionMapper' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/Views/ViewExceptionMapper.php',
+        'Spatie\\Newsletter\\Exceptions\\InvalidNewsletterList' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/Exceptions/InvalidNewsletterList.php',
+        'Spatie\\Newsletter\\Newsletter' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/Newsletter.php',
+        'Spatie\\Newsletter\\NewsletterFacade' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterFacade.php',
+        'Spatie\\Newsletter\\NewsletterList' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterList.php',
+        'Spatie\\Newsletter\\NewsletterListCollection' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterListCollection.php',
+        'Spatie\\Newsletter\\NewsletterPermissions' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterPermissions.php',
+        'Spatie\\Newsletter\\NewsletterServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NewsletterServiceProvider.php',
+        'Spatie\\Newsletter\\NullDriver' => __DIR__ . '/..' . '/spatie/laravel-newsletter/src/NullDriver.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\Attribute\\AsCommand' => __DIR__ . '/..' . '/symfony/console/Attribute/AsCommand.php',

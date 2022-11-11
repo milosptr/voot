@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '37caa25925be06465b478ae675c9d32635bd98cc',
+    'reference' => '20e24f5d0a33e8c77f87ccf105ecf9693fcf99de',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -122,6 +122,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '782ca5968ab8b954773518e9e49a6f892a34b2a8',
+    ),
+    'drewm/mailchimp-api' => 
+    array (
+      'pretty_version' => 'v2.5.4',
+      'version' => '2.5.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c6cdfab4ca6ddbc3b260913470bd0a4a5cb84c7a',
     ),
     'egulias/email-validator' => 
     array (
@@ -478,7 +487,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '37caa25925be06465b478ae675c9d32635bd98cc',
+      'reference' => '20e24f5d0a33e8c77f87ccf105ecf9693fcf99de',
     ),
     'laravel/sail' => 
     array (
@@ -1074,6 +1083,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '2b79cf6ed40946b64ac6713d7d2da8a9d87f612b',
+    ),
+    'spatie/laravel-newsletter' => 
+    array (
+      'pretty_version' => '4.11.0',
+      'version' => '4.11.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '25e456abecaba25e20d1c11e934bdc3f89601245',
     ),
     'symfony/console' => 
     array (

@@ -1,37 +1,38 @@
 <?php
 
-use App\Http\Controllers\AssetsUpload;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoriesController;
-use App\Http\Controllers\ColorsController;
-use App\Http\Controllers\ConfigController;
-use App\Http\Controllers\DocumentController;
-use App\Http\Controllers\EmailController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\LocationsController;
-use App\Http\Controllers\MembersInfoController;
-use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\ProductAssets;
-use App\Http\Controllers\ProductFavouriteController;
-use App\Http\Controllers\SettingsIconsController;
-use App\Http\Controllers\ProductInformationController;
-use App\Http\Controllers\Products;
-use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\SalesmanClientController;
-use App\Http\Controllers\StaffController;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\TermsPagesController;
-use App\Http\Controllers\Users;
-use App\Http\Controllers\Web\Tags;
-use App\Models\Inventory;
-use App\Models\Page;
-use App\Models\ProductCategory;
 use App\Models\Tag;
+use App\Models\Page;
 use App\Models\User;
+use App\Models\Inventory;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Users;
+use App\Models\ProductCategory;
+use App\Http\Controllers\Products;
+use App\Http\Controllers\Web\Tags;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AssetsUpload;
+use App\Http\Controllers\ProductAssets;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ColorsController;
+use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\LocationsController;
+use App\Http\Controllers\MailChimpController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\TermsPagesController;
+use App\Http\Controllers\MembersInfoController;
+use App\Http\Controllers\SettingsIconsController;
+use App\Http\Controllers\SalesmanClientController;
+use App\Http\Controllers\ProductFavouriteController;
+use App\Http\Controllers\ProductInformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +124,8 @@ Route::post('customer/{id}', [Users::class, 'update']);
 Route::post('customer/{id}/logo', [Users::class, 'logo']);
 Route::post('invoice-email/{id}', [Users::class, 'invoiceEmail']);
 Route::post('change-password/{id}', [Users::class, 'changePassword']);
+Route::post('forgot-password', [Users::class, 'forgotPassword'])->name('forgot_password_request');
+Route::get('forgot-password/{id}', [Users::class, 'forgotPassword'])->name('forgot_password_change');
 
 // Members info
 Route::get('members-info/{id}', [MembersInfoController::class, 'index']);
@@ -161,6 +164,7 @@ Route::post('/configs', [ConfigController::class, 'update']);
 
 // Newsletter
 Route::get('newsletter', [NewsletterController::class, 'index']);
+Route::post('newsletter-registration', [MailChimpController::class, 'store']);
 Route::post('newsletter', [NewsletterController::class, 'store']);
 Route::delete('newsletter/{id}', [NewsletterController::class, 'destroy']);
 

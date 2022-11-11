@@ -9,6 +9,7 @@ use App\Http\Controllers\Web\Products;
 use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\MailChimpController;
 use Illuminate\Support\Facades\Log;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -24,7 +25,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-Route::get('email-template', function() {  return view('emails.order-created'); });
+Route::get('email-template', function() {  return view('emails.forgot-password'); });
 
 Route::get('/login', function() {
   return view('auth.login');
@@ -34,18 +35,25 @@ Route::get('/register', function() {
   return view('auth.register');
 })->name('register');
 
+Route::get('/forgot-password', function() {
+  return view('auth.forgot-password');
+})->name('forgot_password');
+
+Route::get('/password-reset', function() {
+  return view('web.pages.status-page');
+});
+
 Route::get('/registration-pending', function() {
   return view('auth.registration-pending');
+});
+
+Route::get('newsletter-registration', function() {
+  return view('web.pages.status-page');
 });
 
 Route::get('/registration-thanks', function() {
   return view('auth.registration-thanks');
 });
-
-Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
-    ->middleware('guest')
-    ->name('password.request');
-
 
 // Customer routes
 Route::prefix('/app')->middleware(['auth'])->group(function () {

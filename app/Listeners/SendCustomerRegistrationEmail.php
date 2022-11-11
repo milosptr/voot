@@ -22,7 +22,7 @@ class SendCustomerRegistrationEmail
         Mail::to($recipient)
           ->send(new CustomerRegistered($event->user));
       } catch (\Throwable $th) {
-        Log::error('SendNewUserRegistrationEmail error: '. $th->getMessage());
+        Log::error('SendCustomerRegistrationEmail error: '. $th->getMessage());
       }
     }
 }

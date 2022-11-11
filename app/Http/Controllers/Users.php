@@ -6,12 +6,16 @@ use App\Models\User;
 use App\Models\Asset;
 use Illuminate\Http\Request;
 use App\Events\UserPasswordReset;
+use App\Events\ForgotPassword;
 use App\Events\UserVerified;
 use App\Http\Resources\UserResource;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class Users extends Controller
 {
@@ -71,6 +75,28 @@ class Users extends Controller
       UserPasswordReset::dispatch($user, $password);
 
       return back();
+    }
+
+    public function forgotPassword(Request $request, $id = null)
+    {
+      if($id === null) {
+        $user = User::where('email', $request->get('email'))->get()->first();
+        if(isset($user)) {
+          ForgotPassword::dispatch($user);
+          return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Athugaðu tölvupóstinn þinn og staðfestu endurstillingu lykilorðsins.');
+        }
+        return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Enginn notandi fannst með uppgefið netfang.');
+      }
+      try {
+        $user = User::find($id);
+        $password = User::resetPassword();
+        $user->update(['password' => Hash::make($password)]);
+        UserPasswordReset::dispatch($user, $password);
+        return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Við höfum sent þér tölvupóstinn sem inniheldur nýja lykilorðið þitt.');
+      } catch(Exception $e) {
+        Log::error('Something went wrong changing the user password (forgotPassword) '. $e->getMessage());
+        return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Eitthvað fór úrskeiðis við að breyta lykilorðinu þínu. Vinsamlegast reyndu aftur.');
+      }
     }
 
     public function changePassword(Request $request, $id)

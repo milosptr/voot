@@ -356,16 +356,12 @@ input#sale_price {
 }
 
 .homepage-hero-image > div {
-  opacity: 0;
-  visibility: hidden;
-  background-color: rgba(33, 75, 118, .65)!important;
-  transition: opacity .3s ease-in-out;
+  background-color: rgba(33, 75, 118, .45)!important;
 }
 
-@media (min-width: 500px) {
-  .homepage-hero-image:hover > div {
-    visibility: visible;
-    opacity: 1;
+@media (max-width: 500px) {
+  .homepage-hero-image > div {
+    display: none;
   }
 }
 

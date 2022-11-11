@@ -56,6 +56,11 @@
                 </button>
               </div>
             </form>
+            <a href="/forgot-password" class="relative flex text-sm mt-4">
+              <span class="px-2 bg-white text-gray-500">
+                Forgot password?
+              </span>
+            </a>
           </div>
         </div>
         <div class="mt-6">

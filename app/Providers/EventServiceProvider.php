@@ -6,6 +6,7 @@ use App\Events\OrderCreated;
 use App\Events\OrderUpdated;
 use App\Events\UserVerified;
 use App\Events\UserPasswordReset;
+use App\Events\ForgotPassword;
 use App\Listeners\CreateOrderInAX;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendOrderCreatedEmail;
@@ -15,6 +16,7 @@ use App\Listeners\SendCustomerOrderCreatedEmail;
 use App\Listeners\SendCustomerVerificationEmail;
 use App\Listeners\SendCustomerPasswordResetEmail;
 use App\Listeners\SendCustomerRegistrationEmail;
+use App\Listeners\SendForgotPasswordEmail;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -44,6 +46,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         UserVerified::class => [
           SendCustomerVerificationEmail::class,
+        ],
+        ForgotPassword::class => [
+          SendForgotPasswordEmail::class,
         ]
     ];
 
