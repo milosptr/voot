@@ -29,6 +29,7 @@ class OrderCreated extends Mailable
     public function build()
     {
       $isCustomer = false;
-      return $this->subject('Ný pöntun frá Voot')->view('emails.order-created', compact('isCustomer'));
+      $subject = 'Ný pöntun frá ' . $this->order->user->name . ' #' . $this->order->id;
+      return $this->subject($subject)->view('emails.order-created', compact('isCustomer'));
     }
 }
