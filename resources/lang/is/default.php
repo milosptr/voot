@@ -21,7 +21,7 @@ return [
   'homepage_title' => 'Þrautreyndar rekstrarvörur fyrir sjó og land',
   'homepage_about' => "Voot býður upp á þrautreyndar rekstrarvörur fyrir sjó og land á hagstæðu verði, allt á einum stað",
 
-  'newsletter_title' => 'Taka Þátt í Fréttabréfi',
+  'newsletter_title' => 'Taka þátt í fréttabréfi',
   'newsletter_desc' => 'Skráðu þig á póstlistann og fáðu nýjustu fréttir samstundis.',
 
   'about_voot_title' => 'Um Voot',
@@ -31,7 +31,7 @@ return [
   'about_p3' => 'Starfsmenn leggja mikla áherslu á að veita viðskiptavinum vandaða ráðgjöf og góða þjónustu. Liður í því er að aðstoða viðskiptavini við að meta hver þörf þeirra er hverju sinni og afhenda vörur hratt og örugglega.',
   'about_p4' => 'Voot rekur verslanir í Reykjavík (Skarfagarði 4), Ólafsvík (Ólafsbraut 19) og á Akureyri (Norðurtanga 1).   ',
   'about_p5' => 'Við framleiðum auk þess öryggis- og vinnufatnað undir merkjum Mar Wear fyrir þá sem þurfa slitsterk , þægileg og vönduð föt við vinnu.  Má þar nefna m.a sjóklæðnað og stígvél fyrir kröfuharða sjómenn sem og vinnslu- og þrifafatnað sem standast ströngustu kröfur.',
-  'about_p6' => 'Við bjóðum auðvitað ennþá upp á hágæða beitu sem við fáum frá traustum alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og þá þar nefna makríl, síld, smokkfisk, loðnu og karfahausa.',
+  'about_p6' => 'Við bjóðum upp á hágæða beitu sem við fáum frá, traustum Íslenskum og alþjóðlegum birgjum, afgreiðum allar pantanir samdægurs og sendum hvert á land sem er. Þú færð fjölda beitutegunda hjá okkur og þá þar nefna makríl, síld, smokkfisk, loðnu og karfahausa.',
   'about_staff_title' => 'Starfsfólk',
 
   'our_brand_title' => 'Vörumerkin okkar',

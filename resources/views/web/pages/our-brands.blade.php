@@ -46,12 +46,12 @@
 
 
       <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">Mustad</h2>
-      <p class="leading-normal mt-3 mb-10">Mustad er öllum línuveiðisjómönnum um allt land vel þekkt, enda er merkið lang þekktasta vörumerki í heimi varðandi línuveiðar. Voot er umboðsaðili Mustad á íslandi og bjóðum við uppá króka til línuveiða og handfæraveiða.</p>
+      <p class="leading-normal mt-3 mb-10">Mustad er öllum línuveiðisjómönnum um allt land vel þekkt, enda er merkið lang þekktasta vörumerki í heimi varðandi línuveiðar. Voot er umboðsaðili Mustad króka á Íslandi og bjóðum við uppá króka til línuveiða og handfæraveiða.</p>
 
 
 
       <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">PIG</h2>
-      <p class="leading-normal mt-3 mb-10">Voot er stoltur söluaðili New Pig á íslandi. Ameríska fyrirtækið New Pig sérhæfir sig í því að bæta öryggi vinnustaða með öflugu úrvali af mengunarvörnum í ýmsum útfærslum. Hjá Voot færðu gott úrval af m.a uppsogsmottum og dreglum.</p>
+      <p class="leading-normal mt-3 mb-10">Voot er stoltur söluaðili New Pig á Íslandi. Ameríska fyrirtækið New Pig sérhæfir sig í því að bæta öryggi vinnustaða með öflugu úrvali af mengunarvörnum í ýmsum útfærslum. Hjá Voot færðu gott úrval af m.a uppsogsmottum og dreglum.</p>
       <!-- <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal mt-10">Sprintus</h2> -->
       <!-- <p class="leading-normal mt-3"></p> -->
       <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">FBK</h2>

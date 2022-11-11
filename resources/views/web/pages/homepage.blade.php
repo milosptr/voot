@@ -165,10 +165,10 @@
         <div class="w-full sm:w-2/5">
           <form action="" method="POST">
             <div class="relative flex items-center">
-              <input type="email" name="email" placeholder="Enter your email" class="shadow-sm focus:ring-primary-lighter focus:border-primary-lighter block w-full pr-24 py-3 border-gray-200 rounded-md">
+              <input type="email" name="email" placeholder="Sláðu inn netfangið þitt" class="shadow-sm focus:ring-primary-lighter focus:border-primary-lighter block w-full pr-24 py-3 border-gray-200 rounded-md">
               <div class="absolute inset-y-0 right-0 flex py-2 pr-2">
                 <kbd class="inline-flex items-center border border-primary-lighter bg-primary-lighter text-white rounded px-6 cursor-pointer font-sans font-medium">
-                  Join
+                  Vertu með
                 </kbd>
               </div>
             </div>

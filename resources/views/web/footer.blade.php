@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="w-full flex border-t border-gray-500 pt-6 mt-6">
-      <h6 class="text-gray-100 font-light text-sm"> Voot ehf. {{ date('Y') }}. © All rights reserved.</h6>
+      <h6 class="text-gray-100 font-light text-sm"> Voot ehf. {{ date('Y') }}. © Allur réttur áskilinn..</h6>
     </div>
   </div>
 </footer>
