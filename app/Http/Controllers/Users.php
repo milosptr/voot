@@ -74,7 +74,7 @@ class Users extends Controller
 
       UserPasswordReset::dispatch($user, $password);
 
-      return back();
+      return Redirect::back()->with('status', 'New password sent to the customer!');
     }
 
     public function forgotPassword(Request $request, $id = null)
@@ -115,7 +115,7 @@ class Users extends Controller
 
       UserVerified::dispatch($user);
 
-      return back();
+      return Redirect::back()->with('status', 'User verified!');
     }
 
     public function destroy($id)

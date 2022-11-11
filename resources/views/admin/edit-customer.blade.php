@@ -5,6 +5,22 @@
 @section('content')
 @section('page-title', 'Edit customer')
   <section>
+    @if(!empty(Session::get('status')))
+      <div class="border-l-4 border-green-400 bg-green-100 p-4 mb-10 shadow-sm">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <svg class="h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path style="color: rgb(34, 197, 94);" fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" fill="currentColor" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-green-700">
+              {{ Session::get('status') }}
+            </p>
+          </div>
+        </div>
+      </div>
+    @endif
     <form method="POST" action="/api/customer/{{ $customer->id }}" class="flex flex-col sm:flex-row gap-8">
       <div class="w-2/3">
         <div class="bg-white overflow-hidden shadow rounded-lg">

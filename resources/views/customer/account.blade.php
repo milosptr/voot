@@ -22,7 +22,6 @@
     </div>
   </div>
   <script>
-    console.log('hello world')
     let url = window.location.href
     let newUrl = url.split('?')[0]
     history.pushState({}, null, newUrl)

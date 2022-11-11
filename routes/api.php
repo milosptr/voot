@@ -15,6 +15,7 @@ use App\Http\Controllers\AssetsUpload;
 use App\Http\Controllers\ProductAssets;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\CartController;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StaffController;
