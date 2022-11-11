@@ -34,8 +34,8 @@ return [
   'shipping_date' => 'Dagsetning sendingar',
   'shipping_method' => 'Sendingar aðferð',
   'customer_note' => 'Athugasemd viðskiptavinar',
-  'update_order' => 'Uppfærðu röð',
-  'reorder' => 'Endurraða',
+  'update_order' => 'Vista',
+  'reorder' => 'Sömu pöntun aftur',
   'delivery' => 'Senda',
   'pickup' => 'Sækja',
 

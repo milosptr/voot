@@ -29,7 +29,7 @@
                   <p class="text-base text-gray-800">{{ $location['email'] }}</p>
                 </div>
             </div>
-            <div class="mt-5 sm:mt-16 flex"><a href="" class="pr-12"><img src="/images/face-star.svg" alt="facebook"></a> <a href="" class="pr-12 ml-6"><img src="/images/ins-star.svg" alt="instagram"></a> <a href="" class="pr-12 ml-6"><img src="/images/in-star.svg" alt="linkedin"></a></div>
+            <div class="mt-5 sm:mt-16 flex"><a href="https://www.facebook.com/vootehf" class="pr-12"><img src="/images/face-star.svg" alt="facebook"></a> <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fvoot-ehf%3Ffbclid%3DIwAR0lDyDOSUoq7DZcs82ue8RCP6coEVpztKYmfilC8lTkWxTN_MLV3LP4zBE&h=AT0cLo8tShyXY_UO3hGhwcyRA-b2Ek7s2LYb4xKizihrDZOqiQr0kiyh2vnGQE50CPO9U_MiiaICvJvb4k098r_P_GMspPeSYXF9sc3EBIJY-y2TMS3N8NXISkeSs_yjWPkxxCmz" class="pr-12 ml-6"><img src="/images/in-star.svg" alt="linkedin"></a></div>
           </div>
       </article>
       <article class="w-full lg:w-3/4 lg:pl-20 bg-white mt-10 sm:mt-0 rounded-md overflow-hidden"><iframe width="100%" height="600" id="gmap_canvas" class="rounded-md overflow-hidden" src="https://maps.google.com/maps?q={{ $urlAddress }}&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe></article>
