@@ -15,7 +15,7 @@ class LisaAxService {
   {
     // test port 1456
     // live port 1458
-    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
+    $this->requestURL = 'http://192.168.120.83:1456/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
@@ -112,6 +112,7 @@ class LisaAxService {
 
   public function send() {
     $curl = curl_init();
+    Log::info('Ok Lisa AX Ready: '. $this->requestURL);
 
     curl_setopt_array($curl, array(
       CURLOPT_URL => $this->requestURL,
