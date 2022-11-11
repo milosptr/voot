@@ -5,7 +5,7 @@
 @section('content')
   <section>
     <div class="container mx-auto">
-      <h2 class="text-4xl sm:text-6xl font-medium tracking-wide font-lora pt-12 sm:pt-20">{{ __('header.services') }}</h2>
+      <h2 class="text-4xl sm:text-6xl font-medium tracking-wide font-lora pt-12 sm:pt-20 capitalize">{{ __('header.services') }}</h2>
     </div>
   </section>
 

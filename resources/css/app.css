@@ -35,6 +35,10 @@
   font-weight: 500;
 }
 
+.small-caps {
+  font-variant: small-caps;
+}
+
 .single-article-product {
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;

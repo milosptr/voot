@@ -25,11 +25,11 @@
               </div>
             </div>
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'about' ? 'font-medium' : '' }}">{{ __('header.about') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'services' ? 'font-medium' : '' }}">{{ __('header.services') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.brands') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'brands' ? 'font-medium' : '' }}">{{ __('header.our_brands') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'all_products' ? 'font-medium' : '' }}">{{ __('header.products') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md font-light {{ $route === 'contact' ? 'font-medium' : '' }}">{{ __('header.contact') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'about' ? 'font-semibold' : '' }}">{{ __('header.about') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'services' ? 'font-semibold' : '' }}">{{ __('header.services') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.brands') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'brands' ? 'font-semibold' : '' }}">{{ __('header.our_brands') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'all_products' ? 'font-semibold' : '' }}">{{ __('header.products') }}</a>
+            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'contact' ? 'font-semibold' : '' }}">{{ __('header.contact') }}</a>
           </div>
         </div>
       </div>
