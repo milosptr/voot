@@ -16,7 +16,7 @@ class LisaAxService {
   {
     // test port 1456
     // live port 1458
-    $this->requestURL = 'http://192.168.120.83:1456/LisaAxServices.asmx';
+    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
@@ -113,7 +113,7 @@ class LisaAxService {
 
   public function send() {
     $curl = curl_init();
-    $ip = Request::ip();
+    $ip = Request::server('SERVER_ADDR') . (' (should be 212.44.101.122)');
     Log::info('Ok Lisa AX Ready: '. $this->requestURL. ' from IP '.$ip);
 
     curl_setopt_array($curl, array(
@@ -128,8 +128,8 @@ class LisaAxService {
       CURLOPT_POSTFIELDS => $this->body,
       CURLOPT_HTTPHEADER => array(
         'Content-Type: text/xml',
-        'X-Forwarded-For: 212.44.101.99',
-        'Host: 212.44.101.99'
+        'X-Forwarded-For: 212.44.101.122',
+        'Host: 212.44.101.122'
       ),
     ));
 
