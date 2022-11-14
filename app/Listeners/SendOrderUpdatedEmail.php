@@ -18,9 +18,10 @@ class SendOrderUpdatedEmail
      */
     public function handle(OrderUpdated $event)
     {
-      $email =  $event->order->user->invoice_email ?:  $event->order->user->email;
-      $recepients = explode(';', $email);
-      foreach ($recepients as $recipient) {
+      $email = explode(';', $event->order->user->email);
+      $invoiceEmail = $event->order->user->invoice_email ? explode(';', $event->order->user->invoice_email) : [];
+      $recipients = array_merge($email, $invoiceEmail);
+      foreach ($recipients as $recipient) {
         try {
           Mail::to($recipient)->send(new OrderUpdatedEmail($event->order, $event->remarks));
           Log::info('Mail sent (OrderUpdated) to client for updated order #' . $event->order->id . ' to email address '. $recipient);

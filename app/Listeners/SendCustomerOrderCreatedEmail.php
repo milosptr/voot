@@ -18,7 +18,9 @@ class SendCustomerOrderCreatedEmail
     public function handle(OrderCreated $event)
     {
       try {
-        $recipients = $event->order->user->invoice_email ? [$event->order->user->invoice_email]: explode(';', $event->order->user->email);
+        $email = explode(';', $event->order->user->email);
+        $invoiceEmail = $event->order->user->invoice_email ? explode(';', $event->order->user->invoice_email) : [];
+        $recipients = array_merge($email, $invoiceEmail);
         foreach ($recipients as $recipient) {
           if(!empty($recipient)) {
             Email::create([
