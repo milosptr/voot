@@ -7,7 +7,6 @@
         @php
           $currentProduct = App\Models\Product::find($product->id);
           $featuredImage = isset($currentProduct) ? $currentProduct->featuredImage : NULL;
-
         @endphp
         <div class="h-10 w-10 rounded-md bg-center bg-contain bg-no-repeat" style="background-image: url('/{{ isset($featuredImage) ? $featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
       @endif

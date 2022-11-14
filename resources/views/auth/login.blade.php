@@ -10,18 +10,18 @@
             <img class="h-12 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
           </a>
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-            Log in to your account
+            Innskráning
           </h2>
         </div>
 
          @error('email')
               <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 text-xs font-semibold" role="alert">
-                <strong class="font-semibold text-sm">Email or password is invalid</strong>
+                <strong class="font-semibold text-sm">Netfang eða lykilorð er ógilt</strong>
               </div>
           @enderror
           @error('password')
               <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4 text-xs font-semibold" role="alert">
-                <strong class="font-semibold text-sm">">Email or password is invalid</strong>
+                <strong class="font-semibold text-sm">">Netfang eða lykilorð er ógilt</strong>
               </div>
           @enderror
 
@@ -31,7 +31,7 @@
               @csrf
               <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">
-                  Email address
+                  Netfang
                 </label>
                 <div class="mt-1">
                   <input id="email" name="email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -40,10 +40,10 @@
 
               <div class="space-y-1">
                 <label for="password" class="block text-sm font-medium text-gray-700">
-                  Password
+                  Lykilorð
                 </label>
                 <div class="mt-1">
-                  <input id="password" name="password" type="password" placeholder="password" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  <input id="password" name="password" type="password" placeholder="Lykilorð" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 </div>
               </div>
 
@@ -52,13 +52,13 @@
                 @endif
               <div>
                 <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-light hover:bg-primary focus:outline-none duration-300 transition-all ease-in-out">
-                  Log in
+                  Skrá inn
                 </button>
               </div>
             </form>
             <a href="/forgot-password" class="relative flex text-sm mt-4">
               <span class="px-2 bg-white text-gray-500">
-                Forgot password?
+                Gleymt lykilorð?
               </span>
             </a>
           </div>
@@ -70,13 +70,13 @@
             </div>
             <div class="relative flex justify-center text-sm">
               <span class="px-2 bg-white text-gray-500">
-                Don't have an account
+                Ekki með aðgang
               </span>
             </div>
           </div>
           <div class="mt-6">
             <a href="/register" class="w-full flex justify-center py-2 px-4 rounded-md shadow-sm text-sm font-medium text-black border-1 border-solid border-primary-light  focus:outline-none">
-              Register
+              Nýskráning
             </a>
           </div>
         </div>

@@ -10,24 +10,24 @@
             <img class="h-12 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
           </div>
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-            Create an Account
+            Búðu til reikning
           </h2>
         </div>
 
         <div class="mt-8">
           @error('email')
               <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-xs font-semibold" role="alert">
-                <strong class="font-semibold text-sm">Email is invalid</strong>
+                <strong class="font-semibold text-sm">Netfangið er ógilt</strong>
               </div>
           @enderror
           @error('password')
               <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-xs font-semibold" role="alert">
-                <strong class="font-semibold text-sm">Password is invalid</strong>
+                <strong class="font-semibold text-sm">Lykilorð er ógilt</strong>
               </div>
           @enderror
           @error('ssn')
               <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-xs font-semibold" role="alert">
-                <strong class="font-semibold text-sm">Social Security Number is required</strong>
+                <strong class="font-semibold text-sm">Kennitala er krafist</strong>
               </div>
           @enderror
           <div class="mt-6">
@@ -35,7 +35,7 @@
               @csrf
               <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">
-                  Email address
+                  Netfang
                 </label>
                 <div class="mt-1">
                   <input id="email" name="email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -44,7 +44,7 @@
               <div class="flex justify-between items-center">
                 <div class="w-full pr-3">
                   <label for="name" class="block text-sm font-medium text-gray-700">
-                    Full Name
+                    Fullt nafn
                   </label>
                   <div class="mt-1">
                     <input id="name" name="name" type="text" autocomplete="name" placeholder="John Doe" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="w-full pl-3">
                   <label for="phone" class="block text-sm font-medium text-gray-700">
-                    Phone
+                    Sími
                   </label>
                   <div class="mt-1">
                     <input id="phone" name="phone" type="phone" autocomplete="phone" placeholder="+354 xxx xxxx" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -63,18 +63,18 @@
               <div class="flex justify-between items-center">
                 <div class="w-full pr-3">
                   <label for="street" class="block text-sm font-medium text-gray-700">
-                    Street Address
+                    Heimilisfang
                   </label>
                   <div class="mt-1">
-                    <input id="street" name="street" type="text" autocomplete="street" placeholder="Street 00" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="street" name="street" type="text" autocomplete="street" placeholder="Heimilisfang" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
                 <div class="w-full pl-3">
                   <label for="city" class="block text-sm font-medium text-gray-700">
-                    City
+                    Borg
                   </label>
                   <div class="mt-1">
-                    <input id="city" name="city" type="text" autocomplete="city" placeholder="City" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="city" name="city" type="text" autocomplete="city" placeholder="Borg" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@
                   </div>
                   <div class="w-full pl-3">
                     <label for="country" class="block text-sm font-medium text-gray-700">
-                      Country
+                      Land
                     </label>
                     <div class="mt-1">
                       <select name="country" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 sm:text-sm">
@@ -109,15 +109,15 @@
               <div class="flex justify-between items-center">
                 <div class="w-full pr-3">
                   <label for="ssn" class="block text-sm font-medium text-gray-700">
-                    SSN
+                    Kennitala
                   </label>
                   <div class="mt-1">
-                    <input id="ssn" name="ssn" type="ssn" autocomplete="ssn" placeholder="Social Security Number" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <input id="ssn" name="ssn" type="ssn" autocomplete="ssn" placeholder="Kennitala" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
                 <div class="w-full pl-3">
                   <label for="password" class="block text-sm font-medium text-gray-700">
-                    Password
+                    Lykilorð
                   </label>
                   <div class="mt-1">
                     <input id="password" name="password" type="password" placeholder="········" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -126,7 +126,7 @@
               </div>
               <div class="w-full">
                 <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-light hover:bg-primary focus:outline-none duration-300 transition-all ease-in-out">
-                  Register
+                  Nýskráning
                 </button>
               </div>
             </form>
@@ -139,13 +139,13 @@
             </div>
             <div class="relative flex justify-center text-sm">
               <span class="px-2 bg-white text-gray-500">
-                Already have an account
+                Er nú þegar með reikning
               </span>
             </div>
           </div>
           <div class="mt-6">
             <a href="/login" class="w-full flex justify-center py-2 px-4 rounded-md shadow-sm text-sm font-medium text-black border-1 border-solid border-primary-light  focus:outline-none">
-              Login
+              Skrá inn
             </a>
           </div>
         </div>

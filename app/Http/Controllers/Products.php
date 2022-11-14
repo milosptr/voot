@@ -20,7 +20,6 @@ use App\Models\ProductInformation;
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\CartProducts;
 use App\Http\Resources\ProductAsset;
-use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductWithCategories;
 use App\Http\Resources\Products as ResourcesProducts;
 
@@ -56,6 +55,7 @@ class Products extends Controller
 
       if($request->has('type') && $request->get('type') === 'json')
         return $query->get();
+
 
       return view('components.product.list', compact('products'));
     }
