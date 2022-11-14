@@ -1,7 +1,16 @@
 <tr onclick="window.open('/backend/products/edit/{{ isset($product->product_id) ? $product->product_id : $product->id }}')" class="cursor-pointer hover:bg-gray-50">
   <td class="px-6 py-4 whitespace-nowrap">
     <div class="flex items-center">
-      <div class="h-10 w-10 rounded-md bg-center bg-contain bg-no-repeat" style="background-image: url('/{{ $product->featuredImage !== null ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
+      @if(isset($product->featured_image))
+        <div class="h-10 w-10 rounded-md bg-center bg-contain bg-no-repeat" style="background-image: url('/{{ $product->featuredImage !== null ? $product->featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
+      @else
+        @php
+          $currentProduct = App\Models\Product::find($product->id);
+          $featuredImage = isset($currentProduct) ? $currentProduct->featuredImage : NULL;
+
+        @endphp
+        <div class="h-10 w-10 rounded-md bg-center bg-contain bg-no-repeat" style="background-image: url('/{{ isset($featuredImage) ? $featuredImage->file_path : 'images/product-placeholder.png' }}')"></div>
+      @endif
     </div>
   </td>
   <td class="px-6 py-4 whitespace-nowrap">
