@@ -1,6 +1,6 @@
 <template>
   <div class="">
-     <div v-for="product in products" :key="product.id">
+     <div v-for="product in products" :key="product.id" class="pb-16">
         <div v-if="!product.edit" class="flex items-center gap-4 border-b border-gray-200 text-gray-700 py-1 px-3">
           <img :src="productFeaturedImage(product)" width="24" :alt="product.name" />
           <a :href="'/product/'+ product.slug" target="_blank">{{ product.name }} <span class="font-medium">x {{ product.qty }}</span></a>
