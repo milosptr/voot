@@ -10,11 +10,11 @@
             <img class="h-12 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
           </a>
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-            Endur stilla lykilorð
+            Endurstilla lykilorð
           </h2>
         </div>
         <div class="mt-4 mb-4 text-sm text-gray-600">
-            Láttu okkur bara vita netfangið þitt og við sendum þér tölvupóst með hlekk til að endurstilla lykilorð sem gerir þér kleift að velja nýjan.
+            Skráðu inn netfangið þitt og við sendum þér tölvupóst með slóð til að endurstilla lykilorðið. Þú getur svo valið nýtt lykilorð.
         </div>
 
         <form method="POST" action="{{ route('forgot_password_request') }}">
@@ -32,7 +32,7 @@
 
             <div class="mt-6">
               <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-light hover:bg-primary focus:outline-none duration-300 transition-all ease-in-out">
-                Senda endurstilla hlekk
+                Senda slóð til að endurstilla lykilorð
               </button>
             </div>
         </form>
