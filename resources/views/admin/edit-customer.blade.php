@@ -53,7 +53,7 @@
             <div class="flex flex-col sm:flex-row gap-5 mt-6">
               <div class="w-full">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" name="email" id="email" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->email }}" required="">
+                <input type="email" name="email" id="email" class="mt-1 block w-full shadow-sm sm:text-sm rounded-md {{ str_contains($customer->email, ';') ? 'border-red-400' : 'border-gray-300' }}" value="{{ $customer->email }}" required="">
               </div>
               <div class="w-full">
                 <label for="invoice_email" class="block text-sm font-medium text-gray-700">Invoice Email</label>
