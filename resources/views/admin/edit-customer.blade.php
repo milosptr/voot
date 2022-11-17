@@ -21,6 +21,27 @@
         </div>
       </div>
     @endif
+    @if(str_contains($customer->email, ';'))
+      <div class="rounded-md bg-red-50 shadow-sm border border-red-100 p-4 mb-10">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <!-- Heroicon name: mini/x-circle -->
+            <svg class="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="ml-3">
+            <h3 class="text-sm font-medium text-red-800">This user has invalid email!</h3>
+            <div class="mt-2 text-sm text-red-700">
+              <ul role="list" class="list-disc space-y-1 pl-5">
+                <li>You can add only <strong>one</strong> and <strong>unique</strong> email in this field</li>
+                <li>Multiple emails should go into <strong>Invoice Email</strong> field</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endif
     <form method="POST" action="/api/customer/{{ $customer->id }}" class="flex flex-col sm:flex-row gap-8">
       <div class="w-2/3">
         <div class="bg-white overflow-hidden shadow rounded-lg">
@@ -32,7 +53,7 @@
             <div class="flex flex-col sm:flex-row gap-5 mt-6">
               <div class="w-full">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="text" name="email" id="email" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->email }}" required="">
+                <input type="email" name="email" id="email" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" value="{{ $customer->email }}" required="">
               </div>
               <div class="w-full">
                 <label for="invoice_email" class="block text-sm font-medium text-gray-700">Invoice Email</label>
