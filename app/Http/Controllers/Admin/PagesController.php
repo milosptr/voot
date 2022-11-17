@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Users;
 use App\Http\Resources\Categories;
 use App\Http\Resources\Products;
+use App\Models\Email;
 use App\Models\Inventory;
 use App\Models\Order;
 use App\Models\Product;
@@ -98,6 +99,12 @@ class PagesController extends Controller
     {
       $customer = User::find($id);
       return view('admin.edit-customer', compact('customer'));
+    }
+
+    public function sentEmails()
+    {
+      $emails = Email::orderBy('id', 'DESC')->paginate(25);
+      return view('admin.sent-emails', compact('emails'));
     }
 
 }

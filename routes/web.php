@@ -99,6 +99,7 @@ Route::prefix('/backend')->middleware(['admin'])->group(function () {
   Route::get('/orders/{id}', [PagesController::class, 'editOrder']);
 
   Route::get('/settings', [PagesController::class, 'settings'])->name('settings');
+  Route::get('/settings/sent-emails', [PagesController::class, 'sentEmails'])->name('sentEmails');
   Route::get('/settings/clients', [PagesController::class, 'clients'])->name('customers');
   Route::get('/settings/my-clients', [PagesController::class, 'myClients'])->name('my-clients');
   Route::get('/settings/clients/{id}', [PagesController::class, 'editCustomer'])->name('customer-edit');

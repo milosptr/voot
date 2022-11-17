@@ -46,6 +46,10 @@
   </svg>
   Customers
 </a>
+<a href="/backend/settings/sent-emails" class="text-gray-300 hover:bg-primary-lighter hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+  <svg xmlns="http://www.w3.org/2000/svg" class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" fill="currentColor" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M32,96V200a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V96L128,32Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path><line x1="110.5" y1="152" x2="34.5" y2="205.7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><line x1="221.5" y1="205.7" x2="145.5" y2="152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line><polyline points="224 96 145.5 152 110.5 152 32 96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline></svg>
+  Sent Emails
+</a>
 
 <a href="/backend/settings" class="text-gray-300 hover:bg-primary-lighter hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md">
   <svg class="text-gray-400 group-hover:text-gray-300 mr-3 flex-shrink-0 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
