@@ -2,7 +2,7 @@
   <div>
     <div class="flex gap-10 mt-8">
       <Select v-if="variations.length" :label="currentLocale == 'is' ? 'Veldu' : 'Select'" :options="variations" :color="true" classes="min-w-150" :firstDefault="true" @selected="selectVariant($event)" />
-      <Select v-if="hasUser" :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
+      <SearchableSelect v-if="hasUser" :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
       <div v-if="hasUser" class="w-auto flex flex-col items-center cursor-pointer">
         <label class="text-gray-500 font-medium hidden lg:block">
           {{ currentLocale == 'is' ? 'Uppáhaldsvörur' : 'Favourites' }}
@@ -27,9 +27,10 @@
 <script>
 import SingleProductVariationsItem from './SingleProductVariationsItem.vue'
 import Select from './common/Select.vue'
+import SearchableSelect from './common/SearchableSelect.vue'
 
   export default {
-  components: { SingleProductVariationsItem, Select },
+  components: { SingleProductVariationsItem, Select, SearchableSelect },
     data: () => ({
       variations: [],
       selected: null,

@@ -25,7 +25,7 @@
           <div class="ml-auto">
             <select class="block w-full pl-3 pr-8 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
               @change="updateProductQty($event, product)">
-              <option v-for="option in Array.from({length: 100}, (_, i) => i + 1)" :key="option" :value="option" :selected="product.qty === option">
+              <option v-for="option in Array.from({length: 1000}, (_, i) => i + 1)" :key="option" :value="option" :selected="product.qty === option">
                 {{ option }}
               </option>
             </select>
