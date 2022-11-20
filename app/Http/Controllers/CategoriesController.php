@@ -57,10 +57,12 @@ class CategoriesController extends Controller
   {
     foreach($request->all() as $order)
     {
-      $product = Product::find($order['product_id']);
-      if($product === NULL) continue;
-      $product->category_order = $order['category_order'];
-      $product->save();
+      if(isset($order['product_id'])) {
+        $product = Product::find($order['product_id']);
+        if($product === NULL) continue;
+        $product->category_order = $order['category_order'];
+        $product->save();
+      }
     }
     return true;
   }
