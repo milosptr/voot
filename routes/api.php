@@ -95,7 +95,7 @@ Route::delete('favourites/{product}/{user}', [ProductFavouriteController::class,
 
 // Assets
 Route::post('/assets', [AssetsUpload::class, 'upload'])->name('uploadAsset');
-Route::post('/assets/new-product', [AssetsUpload::class, 'newProductUpload'])->name('uploadAsset');
+Route::post('/assets/new-product', [AssetsUpload::class, 'newProductUpload'])->name('uploadProductAsset');
 Route::delete('assets/{id}', [ProductAssets::class, 'destroy']);
 
 // Documents
