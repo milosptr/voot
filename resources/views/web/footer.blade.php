@@ -29,7 +29,7 @@
       </div>
       <div class="w-full sm:w-1/3 ml-auto mt-6 sm:mt-0">
         <div class="flex items-center justify-center">
-            <img src="/images/awards/awards.png" width="100%" alt="fyrirmyndar voot" />
+            <img src="/images/awards/awards.webp" width="100%" alt="fyrirmyndar voot" loading="lazy" />
         </div>
       </div>
     </div>
