@@ -68,30 +68,6 @@
     </div>
   </div>
 
-  {{-- <section id="categories" class="my-20">
-    <div class="container">
-      <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide mb-10">
-        {{ __('default.categories') }}
-      </h2>
-      @php
-        $categories = App\Models\Category::where('parent_id', 0)->where('available', 1)->orderBy('order')->get();
-      @endphp
-      <div class="grid grid-cols-3 sm:grid-cols-{{ count($categories) }} gap-6 sm:gap-10">
-        @foreach($categories as $category)
-          @php $image = isset($category->image) ? $category->image->file_path : ''; @endphp
-          <a href="/{{ $category->slug }}" class="block single-article-product cursor-pointer order-{{ $category->order }}">
-            <div class="w-full mx-auto">
-              <img src="/images/categories/{{ $category->slug }}.svg" alt="{{ $category->slug }}" width="100%" />
-            </div>
-            <div class="text-sm sm:text-lg font-medium text-center mt-3 text-gray-800 tracking-wide leading-normal">
-              {{ $category->translatedName }}
-            </div>
-          </a>
-        @endforeach
-      </div>
-    </div>
-  </section> --}}
-
   <section class="my-20 relative z-10">
     <div class="container mx-auto">
       <div class="flex flex-col sm:flex-row justify-between items-center border-b border-gray-100 pb-4">
