@@ -21,13 +21,13 @@
             <div class="flex items-center space-x-6 lg:space-x-8">
               <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-10">
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-5.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-5.webp" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Útgerðir
                   </div>
                 </div>
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-3.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-3.webp" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Hótel og veitingarekstur
                   </div>
@@ -35,13 +35,13 @@
               </div>
               <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:-mt-20">
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-2.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-2.webp" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Strandveiðar
                   </div>
                 </div>
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-4.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-4.webp" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Bændur
                   </div>
@@ -49,13 +49,13 @@
               </div>
               <div class="flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8 mt-20 sm:mt-32">
                 <div class="homepage-hero-image w-32 sm:w-56 h-32 sm:h-80 rounded-lg overflow-hidden relative">
-                  <img src="/images/homepage/homepage-6.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-6.webp" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Matvælavinnslur
                   </div>
                 </div>
                 <div class="homepage-hero-image w-32 sm:w-52 h-32 sm:h-80 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100 relative">
-                  <img src="/images/homepage/homepage-1.jpg" alt="" class="w-full h-full object-center object-cover">
+                  <img src="/images/homepage/homepage-1.webp" alt="" class="w-full h-full object-center object-cover">
                   <div class="absolute left-0 top-0 w-full h-full bg-gray-900 bg-opacity-70 z-10 flex items-center justify-center text-center text-white text-2xl font-bold">
                     Verktakar
                   </div>
