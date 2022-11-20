@@ -21,7 +21,8 @@ class Products extends Controller
 
   public function search(Request $request)
     {
-
+      if($request->get('q') === null)
+        return back();
       $query = Product::query();
       $categories = Category::tree();
       $q = $request->get('q');

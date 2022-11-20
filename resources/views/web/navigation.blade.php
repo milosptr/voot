@@ -43,7 +43,7 @@
                 <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
               </svg>
             </div>
-            <form action="{{  LaravelLocalization::localizeURL('/products/search') }}" method="GET" class="sm:mr-16">
+            <form action="/products/search" method="GET" class="sm:mr-16">
               <input id="search" name="q" class="block w-full pl-10 pr-3 py-2 font-light border border-transparent border-gray-200 rounded-md leading-5 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none" placeholder="{{ __('header.search') }}" type="search">
             </form>
           </div>
