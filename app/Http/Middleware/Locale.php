@@ -15,13 +15,13 @@ class Locale
      */
     public function handle($request, Closure $next)
     {
-        if ($request->method() === 'GET') {
-            $segment = $request->segment(1);
-            if($segment === null || in_array($segment, config('app.available_locales'))) {
-              session(['locale' => $segment]);
-              app()->setLocale($segment);
-            }
-        }
+//         if ($request->method() === 'GET') {
+//             $segment = $request->segment(1);
+//             if($segment === null || in_array($segment, config('app.available_locales'))) {
+//               session(['locale' => $segment]);
+//               app()->setLocale($segment);
+//             }
+//         }
 
         return $next($request);
     }
