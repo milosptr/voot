@@ -66,7 +66,7 @@ class Order extends Model
       $skus = array_column($this->order, 'sku');
       $products = [];
       foreach($skus as $sku) {
-        $pv = ProductVariation::where('product_variations.sku', $sku)->get()->first();
+        $pv = ProductVariation::where('sku', $sku)->get()->first();
         $inventory = Inventory::where('sku', $sku)->get()->first();
         $product = $pv ? $pv->product : Product::where('sku', $sku)->get()->first();
         Log::info('$sku');
