@@ -83,7 +83,7 @@ class Users extends Controller
         $user = User::where('email', $request->get('email'))->get()->first();
         if(isset($user)) {
           ForgotPassword::dispatch($user);
-          return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Athugaðu tölvupóstinn þinn og staðfestu endurstillingu lykilorðsins.');
+          return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Athugaðu tölvupóstinn þinn og staðfestu endurstillingu lykilorðsins. Vinsamlegast athugaðu að tölvupósturinn gæti hafa endað í rusl hólfinu.');
         }
         return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Enginn notandi fannst með uppgefið netfang.');
       }
@@ -92,7 +92,7 @@ class Users extends Controller
         $password = User::resetPassword();
         $user->update(['password' => Hash::make($password)]);
         UserPasswordReset::dispatch($user, $password);
-        return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Við höfum sent þér tölvupóstinn sem inniheldur nýja lykilorðið þitt.');
+        return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Við höfum sent þér tölvupóstinn sem inniheldur nýja lykilorðið þitt. Vinsamlegast athugaðu að tölvupósturinn gæti hafa endað í rusl hólfinu.');
       } catch(Exception $e) {
         Log::error('Something went wrong changing the user password (forgotPassword) '. $e->getMessage());
         return Redirect::to('/password-reset?title=Endurstilla lykilorð&status=Eitthvað fór úrskeiðis við að breyta lykilorðinu þínu. Vinsamlegast reyndu aftur.');

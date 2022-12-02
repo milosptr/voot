@@ -65,7 +65,7 @@ return [
   'address' => 'Heimilisfang',
 
   'thanks_title' => 'Takk fyrir pöntunina',
-  'thanks_subtitle' => 'Farðu aftur í vörurnar eða athugaðu stöðu pöntunarinnar',
+  'thanks_subtitle' => 'Farðu aftur í vörurnar eða athugaðu stöðu pöntunarinnar.',
   'thanks_check_btn' => 'Skoða pöntun',
   'thanks_goback_btn' => 'Skoða fleiri vörur',
 ];

@@ -72,15 +72,11 @@
           @endif
           <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         </a>
-        <a href="{{ auth()->user() != NULL ? '/backend' : route('login') }}" class="ml-4 text-gray-600 hover:text-primary-light" aria-label="Login" >
+        <a href="{{ auth()->user() != NULL ? '/backend' : route('login') }}" class="small-caps uppercase font-semibold ml-4 text-gray-600 hover:text-primary-light" aria-label="Login" >
           @if(auth()->user() != NULL)
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="128" cy="96" r="64" opacity="0.2"></circle><circle cx="128" cy="96" r="64" fill="none" stroke="#000000" stroke-miterlimit="10" stroke-width="20"></circle><path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"></path></svg>
+            mitt svæði
           @else
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256">
-              <rect width="256" height="256" fill="none"></rect>
-              <circle cx="128" cy="96" r="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"></circle>
-              <path d="M31,216a112,112,0,0,1,194,0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"></path>
-            </svg>
+            innskráning
           @endif
         </a>
         <div id="open-menu-btn" class="sm:hidden ml-4 text-gray-600 hover:text-primary-light">

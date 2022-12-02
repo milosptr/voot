@@ -67,7 +67,7 @@
       </script>
       @vite('resources/js/app.js')
   </head>
-  <body>
+  <body class="voot">
     @if(!Route::is('login') && !Route::is('register') && !Route::is('forgot_password'))
       @include('web.navigation')
     @endif

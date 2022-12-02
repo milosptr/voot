@@ -7,19 +7,19 @@
   font-weight: 400;
 }
 
-h1, h2, h3, h4, h5 {
+.voot h1, .voot h2, .voot h3, .voot h4, .voot h5 {
   font-variant: small-caps;
   text-transform: lowercase;
 }
 
-a.bg-primary-light,
-button {
+.voot a.bg-primary-light,
+.voot button {
   font-variant: small-caps;
   text-transform: uppercase;
 }
 
-.single-article-category h4,
-.single-article-product h4 {
+.voot .single-article-category h4,
+.voot .single-article-product h4 {
   font-variant: unset;
   text-transform: unset;
 }
