@@ -76,7 +76,8 @@ class Order extends Model
             'id' => 9999999,
             'name' => 'Missing product: '.$sku,
             'qty' => $order['qty'],
-            'quantity' => $order['qty']
+            'quantity' => $order['qty'],
+            'media' => [],
           ];
           array_push($products, $tempProduct);
           continue;
