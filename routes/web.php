@@ -25,7 +25,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-Route::get('email-template', function() {  return view('emails.forgot-password'); });
+Route::get('email-template', function() {  return view('emails.new-user-registration'); });
 
 Route::get('/login', function() {
   return view('auth.login');

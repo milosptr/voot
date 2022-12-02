@@ -69,7 +69,7 @@ class LisaAxService {
           <tem:CreateSalesOrder>
             <tem:order>
               <tem:CustomerID>'.$customer->key.'VOB</tem:CustomerID>
-              <tem:Comments>Customer desired delivery address: '.$order->shipping_address.'</tem:Comments>
+              <tem:Comments>#'.$order->id.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
               <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
               <tem:PaymModeCode>STGR</tem:PaymModeCode>
@@ -77,7 +77,7 @@ class LisaAxService {
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>VS</tem:DlvModeCode>
                 <tem:Name>'.$company->name.'</tem:Name>
-                <tem:Address>'.$customer->address.'</tem:Address>
+                <tem:Address>'.$order->shipping_address.'</tem:Address>
                 <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>
                 <tem:Country>'.$customer->country.'</tem:Country>
                 <tem:ContactName>'.$customer->name.'</tem:ContactName>

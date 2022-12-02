@@ -116,7 +116,8 @@
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; " valign="top">
                         <h1 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">Ný notendaskráning</h1>
-                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Þú ert með nýjan viðskiptavin skráðan á vefsíðu Voot. Viðskiptavinur hefur stöðu í bið og allar pantanir hans komast ekki í AX kerfið, í staðinn verða pantanir í bið þar til einn af söluaðilum samþykkir það.</p>
+                        <p style="font-family: sans-serif; font-size: 16px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 5px;"><strong>Viðskiptavinur: </strong> {{ $customer->name }} ({{ $customer->email }})</p>
+                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 15px; margin-bottom: 15px;">Þú ert með nýjan viðskiptavin skráðan á vefsíðu Voot. Viðskiptavinur hefur stöðu í bið og allar pantanir hans komast ekki í AX kerfið, í staðinn verða pantanir í bið þar til einn af söluaðilum samþykkir það.</p>
                         <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Þú getur staðfest viðskiptavininn hér:</p>
                         <a href="{{ env('APP_URL') }}/backend/settings/clients/{{ $customer->id }}" target="_blank" style="text-align: center;border: solid 1px #214b76; border-radius: 5px; box-sizing: border-box; cursor: pointer; display: block; font-size: 14px; font-weight: bold; margin: 0 auto; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #214b76; border-color: #214b76; color: #ffffff; margin: 25px 0 16px 0;">
                           Staðfestu viðskiptavin

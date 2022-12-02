@@ -34,24 +34,24 @@
     computed: {
       settingsTitle() {
         if(this.page === 1)
-          return 'Product Icons'
+          return 'Vörutákn'
         if(this.page === 2)
-          return 'Product Translation'
+          return 'Erlendar þýðingar á vörum'
         if(this.page === 3)
-          return 'Staff Members'
+          return 'Starfsfólk'
         if(this.page === 4)
-          return 'Locations'
+          return 'Staðsetningar'
         if(this.page === 5)
-          return 'Config'
+          return 'Viðtakendur pantana'
         if(this.page === 6)
-          return 'Terms Pages'
+          return 'Skilmálasíður'
         if(this.page === 7)
-          return 'Newsletter Offer'
+          return 'Fréttabréf/Tilboð'
         if(this.page === 8)
-          return 'Homepage Products'
+          return 'Vörur á upphafssíðu'
         if(this.page === 9)
-          return 'Colors'
-        return 'Select settings page from the left menu'
+          return 'Litir'
+        return 'Veldu stillingarsíðu í vinstri valmyndinni'
       }
     },
     mounted() {
@@ -78,8 +78,8 @@
       saved() {
         document.body.insertAdjacentHTML('beforeend', `
           <div class="success-alert fixed right-0 top-0 mt-10 m-10 shadow bg-green-100 border-l-4 border-green-400 text-green-700 px-4 py-3 rounded" role="alert">
-            <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline">Your settings are saved.</span>
+            <strong class="font-bold">Árangur!</strong>
+            <span class="block sm:inline">Stillingar þínar eru vistaðar.</span>
           </div>
         `)
         setTimeout(() => {
