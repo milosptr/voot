@@ -23,12 +23,7 @@
             </div>
           </div>
           <div class="ml-auto">
-            <select class="block w-full pl-3 pr-8 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
-              @change="updateProductQty($event, product)">
-              <option v-for="option in Array.from({length: 1000}, (_, i) => i + 1)" :key="option" :value="option" :selected="product.qty === option">
-                {{ option }}
-              </option>
-            </select>
+            <input type="number" v-model="product.qty" @blur="updateProductQty(product)" class="block w-32 pl-3 pr-3 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md appearance-none" />
           </div>
           <div class="ml-0 sm:ml-8 text-red-400 cursor-pointer" @click="removeProduct(index)">
             <img :src="'/images/trash.svg'" alt="remove" class="w-5 h-5" />
@@ -236,11 +231,12 @@
       getSKU(product) {
         return product.product_variations ? product.product_variations.sku : product.sku
       },
-      updateProductQty(e, product) {
+      updateProductQty(product) {
         const sku = this.getSKU(product)
         const currentQty = this.cart.find((c) => c.sku === sku).qty
-        axios.post('/api/add-to-cart', { user_id: this.user_id, sku, qty: e.target.value - currentQty })
-          .then((r) => location.reload() )
+        if(currentQty !== product.qty)
+          axios.post('/api/add-to-cart', { user_id: this.user_id, sku, qty: product.qty - currentQty })
+            .then((r) => location.reload() )
       },
       removeProduct(index) {
        this.cart.splice(index, 1)
