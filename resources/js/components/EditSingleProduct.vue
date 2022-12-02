@@ -49,6 +49,7 @@
               <option value="9">Kassi / Boxes</option>
               <option value="10">Balli / Packs</option>
               <option value="11">Brúsi / Cans</option>
+              <option value="12">Búnt / Bundle</option>
             </select>
           </div>
         </div>
