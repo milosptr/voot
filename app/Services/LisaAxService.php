@@ -34,7 +34,8 @@ class LisaAxService {
     $orderId = null;
     if(isset($xml->Body) && isset($xml->Body->CreateSalesOrderResponse) && isset($xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult) && isset($xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult->SalesOrdID)) {
       $orderId = (string) $xml->Body->CreateSalesOrderResponse->CreateSalesOrderResult->SalesOrdID;
-      $order->update(['order_id' => $orderId]);
+      if($orderId !== 'Advania.Axapta.Portal.Entities.AxContainer')
+        $order->update(['order_id' => $orderId]);
     }
 
     return $orderId;
