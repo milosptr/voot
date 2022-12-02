@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ActivityLog;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -68,6 +69,7 @@ class Order extends Model
         $pv = ProductVariation::where('product_variations.sku', $sku)->get()->first();
         $inventory = Inventory::where('sku', $sku)->get()->first();
         $product = $pv ? $pv->product : Product::where('sku', $sku)->get()->first();
+        Log::info($product);
         if($inventory && isset($inventory->name) && isset($product->name)) {
           $product->name = $inventory->name;
         }
