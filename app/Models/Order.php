@@ -69,12 +69,7 @@ class Order extends Model
         $pv = ProductVariation::where('sku', $sku)->get()->first();
         $inventory = Inventory::where('sku', $sku)->get()->first();
         $product = $pv ? $pv->product : Product::where('sku', $sku)->get()->first();
-        Log::info('$sku');
-        Log::info($sku);
-        Log::info('$pv');
-        Log::info(json_encode($pv));
-        Log::info('$product');
-        Log::info(json_encode($product));
+        if(!isset($product)) continue;
         if($inventory && isset($inventory->name) && isset($product->name)) {
           $product->name = $inventory->name;
         }
