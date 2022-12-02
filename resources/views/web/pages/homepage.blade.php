@@ -92,18 +92,18 @@
           <p class="mt-6 font-light sm:h-20">
             {{ __('default.services_p1') }}
           </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="small-caps uppercase inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.explore_services') }}
           </a>
         </div>
         <div class="bg-gray-100 rounded-md p-10">
-          <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide">
+          <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide small-caps lowercase">
             {{ __('default.contact_title') }}
           </h2>
           <p class="mt-6 font-light sm:h-20">
             {{ __('default.contact_p1') }}
           </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="small-caps uppercase inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.contact_btn') }}
           </a>
         </div>

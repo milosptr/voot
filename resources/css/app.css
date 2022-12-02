@@ -7,6 +7,23 @@
   font-weight: 400;
 }
 
+h1, h2, h3, h4, h5 {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+
+a.bg-primary-light,
+button {
+  font-variant: small-caps;
+  text-transform: uppercase;
+}
+
+.single-article-category h4,
+.single-article-product h4 {
+  font-variant: unset;
+  text-transform: unset;
+}
+
 .font-lora {
   font-family: 'Lora', serif;
 }

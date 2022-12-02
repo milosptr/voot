@@ -36,8 +36,10 @@ class Category extends Model
       return Category::where('id', $this->parent_id)->first();
     }
 
-    public function subcategory()
+    public function subcategory($onlyAvailable = false)
     {
+      if($onlyAvailable)
+        return Category::where('parent_id', $this->id)->where('available', 1)->get();
       return Category::where('parent_id', $this->id)->get();
     }
 

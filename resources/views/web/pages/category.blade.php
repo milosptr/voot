@@ -20,7 +20,7 @@
           @include('web.common.categories-sidebar', ['categories' => $categories])
         </div>
         <div class="sm:w-3/4">
-          @if(!count($category->subcategory()) && count($products))
+          @if(!count($category->subcategory(true)) && count($products))
             @include('web.common.product-articles', ['products' => $products, 'sort' => true])
           @elseif(!count($products))
             <div class="">
@@ -32,7 +32,7 @@
               </a>
             </div>
           @else
-            @include('web.common.category-articles', ['categories' => $category->subcategory(), 'sort' => true])
+            @include('web.common.category-articles', ['categories' => $category->subcategory(true), 'sort' => true])
           @endif
         </div>
       </div>
