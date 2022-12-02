@@ -69,12 +69,21 @@ class Order extends Model
         $pv = ProductVariation::where('sku', $sku)->get()->first();
         $inventory = Inventory::where('sku', $sku)->get()->first();
         $product = $pv ? $pv->product : Product::where('sku', $sku)->get()->first();
-        if(!isset($product)) continue;
+        $order_key = array_search($sku, array_column($this->order, 'sku'));
+        $order = $this->order[$order_key];
+        if(!isset($product)) {
+          $tempProduct = [
+            'id' => 9999999,
+            'name' => 'Missing product: '.$sku,
+            'qty' => $order['qty'],
+            'quantity' => $order['qty']
+          ];
+          array_push($products, $tempProduct);
+          continue;
+        }
         if($inventory && isset($inventory->name) && isset($product->name)) {
           $product->name = $inventory->name;
         }
-        $order_key = array_search($sku, array_column($this->order, 'sku'));
-        $order = $this->order[$order_key];
         if($order) {
           $product->quantity = $order['qty'];
           $product->qty = $order['qty'];
