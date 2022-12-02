@@ -16,7 +16,7 @@ class LisaAxService {
   {
     // test port 1456
     // live port 1458
-    $this->requestURL = 'http://213.167.137.207:1456/LisaAxServices.asmx';
+    $this->requestURL = 'http://213.167.137.207:1458/LisaAxServices.asmx';
     $this->requestType = 'POST';
 
     return $this;
