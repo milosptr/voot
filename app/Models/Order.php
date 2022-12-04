@@ -37,6 +37,7 @@ class Order extends Model
       'note',
       'ax_status',
       'customer_key',
+      'salesman_id',
     ];
     public $timestamps = true;
 
@@ -47,6 +48,11 @@ class Order extends Model
     public function user()
     {
       return $this->belongsTo(User::class);
+    }
+
+    public function salesman()
+    {
+      return $this->belongsTo(User::class, 'salesman_id');
     }
 
     public function activityLog()

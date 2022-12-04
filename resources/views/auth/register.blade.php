@@ -93,7 +93,7 @@
                       Land
                     </label>
                     <div class="mt-1">
-                      <select name="country" class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 sm:text-sm">
+                      <select name="country" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 sm:text-sm">
                         <option value="IS" selected>Iceland</option>
                         <option value="US">United States</option>
                         <option value="UK">United Kingdom</option>

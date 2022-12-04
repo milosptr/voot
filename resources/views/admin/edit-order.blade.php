@@ -13,6 +13,15 @@
     <div class="w-1/2 bg-white overflow-hidden shadow rounded-lg">
       <div class="px-4 py-5 sm:p-6">
         <form action="/api/request-order/update/{{ $order->id }}" method="POST" class="flex flex-wrap">
+          <div class="w-full border-b border-gray-200 pb-3 mb-3">
+            <label for="order_salesman" class="block text-sm font-medium text-gray-500">Salesman</label>
+            <select id="order_salesman" name="salesman_id" class="mt-1 block w-full shadow-sm sm:text-sm py-2 px-4 border-gray-200 rounded-md">
+              <option value="">Óúthlutað</option>
+              @foreach(App\Models\User::where('role', 'admin')->get() as $key => $user)
+                <option value="{{ $user->id }}" {{ $order->salesman_id === $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
+              @endforeach
+            </select>
+          </div>
           <div class="w-full flex items-center justify-between">
             <div class="w-full">
               <label for="order_status" class="block text-sm font-medium text-gray-500">Order status</label>

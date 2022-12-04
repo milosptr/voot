@@ -16,9 +16,6 @@
             Customer
           </th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            Shipping to
-          </th>
-          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             Products
           </th>
           <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
@@ -26,6 +23,9 @@
           </th>
           <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
             AX Status
+          </th>
+          <th scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+            Salesman
           </th>
           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
             Created At
@@ -50,9 +50,6 @@
               {{ $order->user->name }}
             </td>
             <td class="px-6 py-3 whitespace-nowrap">
-              {{ $order->shipping_address }}
-            </td>
-            <td class="px-6 py-3 whitespace-nowrap">
               {{ count($order->order) }} {{ count($order->order) > 1 ? 'products' : 'product' }}
             </td>
             <td class="px-6 py-3 whitespace-nowrap text-center">
@@ -60,6 +57,13 @@
             </td>
             <td class="px-6 py-3 whitespace-nowrap text-center">
                 @include('components.order.ax-statuses', ['status' => $order->ax_status, 'class' => 'py-1 px-2 mb-1'])
+            </td>
+            <td class="px-6 py-3 whitespace-nowrap text-center">
+              @if(isset($order->salesman))
+                {{ $order->salesman->name }}
+              @else
+                <span class="text-gray-300">Óúthlutað</span>
+              @endif
             </td>
             <td class="px-6 py-3 whitespace-nowrap">
               {{ Carbon\Carbon::parse($order->created_at)->format('d.m.Y. H:s') }}

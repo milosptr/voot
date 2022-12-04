@@ -6,15 +6,16 @@ use Exception;
 use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Email;
 use App\Models\Order;
 use App\Models\Inventory;
 use App\Models\ActivityLog;
 use App\Events\OrderCreated;
 use App\Events\OrderUpdated;
-use App\Http\Resources\OrderWithProductsResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use App\Http\Resources\OrderWithProductsResource;
 
 class OrderController extends Controller
 {
@@ -67,8 +68,8 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
       $order = Order::find($id);
-      $originalOrder = $order->get(['order_status', 'shipping_address', 'shipping_date', 'note', 'order_id'])->first()->toArray();
-      $data = $request->only('order_status', 'order', 'shipping_address', 'shipping_date', 'note', 'order_id');
+      $originalOrder = Order::where('id', $id)->get(['order_status', 'shipping_address', 'shipping_date', 'note', 'order_id', 'salesman_id'])->first()->toArray();
+      $data = $request->only('order_status', 'order', 'shipping_address', 'shipping_date', 'note', 'order_id', 'salesman_id');
       ActivityLog::create([
         'user_id' => auth()->user()->id,
         'order_id' => $order->id,
@@ -76,6 +77,14 @@ class OrderController extends Controller
         'to' => json_encode($data)
       ]);
       $order->update($data);
+      if((int) $data['order_status'] === Order::STATUS_ACCEPTED && (int) $originalOrder['order_status'] !== (int) $data['order_status']) {
+        Email::create([
+          'to' => env('MAIL_USERNAME'),
+          'class' => 'App\Mail\OrderApproved',
+          'order_id' => $order->id,
+          'type' => Email::TYPE_SALESMAN,
+        ]);
+      }
       return back()->with('success', 'Order updated successfully!');
     }
 
