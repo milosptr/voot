@@ -163,6 +163,9 @@ Route::get('/config/{key}', [ConfigController::class, 'index']);
 Route::post('/config', [ConfigController::class, 'updateOrStore']);
 Route::post('/configs', [ConfigController::class, 'update']);
 
+// Emails
+Route::get('/resend-email/{id}', [EmailController::class, 'resendEmail']);
+
 // Newsletter
 Route::get('newsletter', [NewsletterController::class, 'index']);
 Route::post('newsletter-registration', [MailChimpController::class, 'store']);
