@@ -128,7 +128,7 @@ class LisaAxService {
       CURLOPT_CUSTOMREQUEST => $this->requestType,
       CURLOPT_POSTFIELDS => $this->body,
       CURLOPT_HTTPHEADER => array(
-        'Content-Type: text/xml',
+        'Content-Type: text/xml; charset=utf-8;',
         'X-Forwarded-For: 212.44.101.122',
         'Host: 212.44.101.122'
       ),
