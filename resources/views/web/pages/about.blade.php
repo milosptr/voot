@@ -85,66 +85,35 @@
   <section>
     <div class="container mx-auto border-t border-gray-200">
       <div class="pb-6 mb-6 sm:mt-32 sm:mb-16 sm:pb-16 flex flex-col sm:flex-row lg:justify-between border-b border-gray-200">
-        <article class="w-full lg:w-96 sm:pr-12 bg-white relative sm:border-r my-12 sm:my-0">
-          <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Reykjavík</h5>
+        @php
+          $locations = App\Models\Location::all();
+        @endphp
+        @foreach($locations as $location)
+        <article
+          class="w-full lg:w-96 sm:pr-12 bg-white relative sm:border-r my-12 sm:my-0
+          {{ $loop->index > 0 ? ' py-12 sm:py-0 border-t sm:border-t-0' : ''}}
+          "
+        >
+          <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">{{ $location->name }}</h5>
           <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
           <div class="con-fl justify-between">
             <div class="table-con">
                 <div class="contact-info-ispod-mape">
                   <p class="font-bold text-base text-gray-800 mt-3">{{ __('default.address') }}</p>
-                  <p class="text-base text-gray-800">Skarfagarðar 4, 104, Reykjavík, Ísland</p>
+                  <p class="text-base text-gray-800">{{ $location->address }}</p>
                 </div>
                 <div>
                   <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.phone') }}</p>
-                  <p class="text-base text-gray-800">+354 581 2222</p>
+                  <p class="text-base text-gray-800">{{ $location->phone }}</p>
                 </div>
                 <div>
                   <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.email') }}</p>
-                  <p class="text-base text-gray-800">voot@voot.is</p>
+                  <p class="text-base text-gray-800">{{ $location->email }}</p>
                 </div>
             </div>
           </div>
         </article>
-        <article class="w-full lg:w-96 sm:pl-12 bg-white relative sm:border-r py-12 sm:py-0 border-t sm:border-t-0">
-          <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Akureyri</h5>
-          <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
-          <div class="con-fl justify-between">
-            <div class="table-con">
-                <div class="contact-info-ispod-mape">
-                  <p class="font-bold text-base text-gray-800 mt-3">{{ __('default.address') }}</p>
-                  <p class="text-base text-gray-800">Norðurtangi 1, 600, Akureyri, Ísland</p>
-                </div>
-                <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.phone') }}</p>
-                  <p class="text-base text-gray-800">+354 841 1322</p>
-                </div>
-                <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.email') }}</p>
-                  <p class="text-base text-gray-800">akureyri@voot.is</p>
-                </div>
-            </div>
-          </div>
-        </article>
-        <article class="w-full lg:w-96 sm:pl-12 bg-white relative py-12 sm:py-0 border-t sm:border-t-0">
-          <h5 class="font-bold text-4xl sm:text-5xl text-gray-800 mb-6">Ólafsvík</h5>
-          <p class="font-bold text-base text-gray-800 inline-block mb-8 voot-contact relative">Voot ehf.</p>
-          <div class="con-fl justify-between">
-            <div class="table-con">
-                <div class="contact-info-ispod-mape">
-                  <p class="font-bold text-base text-gray-800 mt-3">{{ __('default.address') }}</p>
-                  <p class="text-base text-gray-800">Ólafsbraut 19, 355, Ólafsvík, Ísland</p>
-                </div>
-                <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.phone') }}</p>
-                  <p class="text-base text-gray-800">+354 841 1205</p>
-                </div>
-                <div>
-                  <p class="font-bold text-base text-gray-800 mt-4">{{ __('default.email') }}</p>
-                  <p class="text-base text-gray-800">olafsvik@voot.is</p>
-                </div>
-            </div>
-          </div>
-        </article>
+        @endforeach
       </div>
       <div class="mb-16">
         <h3 class="text-xl font-bold tracking-wide leading-normal">Reykjavík</h3>
