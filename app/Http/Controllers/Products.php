@@ -222,7 +222,7 @@ class Products extends Controller
         $inventory = Inventory::where('sku', $sku)->first();
         $product = Product::where('sku', $sku)->first();
         $pv = ProductVariation::where('sku', $sku)->first();
-
+        Log::info("Displaying cart products: ".$sku);
         if(!$product)
           $product = Product::find($pv->product_id);
         $product->product_variations = $pv;
