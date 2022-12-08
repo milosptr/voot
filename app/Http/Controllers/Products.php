@@ -22,6 +22,7 @@ use App\Http\Resources\CartProducts;
 use App\Http\Resources\ProductAsset;
 use App\Http\Resources\ProductWithCategories;
 use App\Http\Resources\Products as ResourcesProducts;
+use App\Models\Cart;
 
 class Products extends Controller
 {
@@ -216,13 +217,18 @@ class Products extends Controller
 
     public function cartProducts(Request $request)
     {
+      $cart = auth()->user()->cart;
+      $filteredCart = json_decode($cart->cart);
       $skus = explode(',',$request->get('p'));
       $products = array();
       foreach($skus as $sku) {
         $inventory = Inventory::where('sku', $sku)->first();
         $product = Product::where('sku', $sku)->first();
         $pv = ProductVariation::where('sku', $sku)->first();
-        Log::info("Displaying cart products: ".$sku);
+        if(!$product && !isset($pv) && !isset($pv->product_id)) {
+          $filteredCart = array_filter($filteredCart, function($item) use($sku) { return $item->sku != $sku; });
+          continue;
+        }
         if(!$product)
           $product = Product::find($pv->product_id);
         $product->product_variations = $pv;
@@ -230,7 +236,7 @@ class Products extends Controller
 
         array_push($products, $this->transformProductForCart($product));
       }
-
+      $cart->update(['cart' => json_encode($filteredCart)]);
       return $products;
     }
 
