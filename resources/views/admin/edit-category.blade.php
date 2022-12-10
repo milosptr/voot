@@ -45,7 +45,7 @@
                   $slugDuplicates = App\Models\Category::where('slug', $category->slug)->get()->count();
                 @endphp
                 @if($slugDuplicates > 1)
-                  <div class="text-red-500">{{ $slugDuplicates }} more categories have the same slug!</div>
+                  <div class="text-red-500 mt-2 text-sm font-semibold">{{ $slugDuplicates }} more categories have the same slug!</div>
                 @endif
               </div>
               <div class="mt-6">
