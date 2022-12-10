@@ -41,6 +41,12 @@
               <div class="mt-6">
                 <label for="slug" class="block text-sm font-medium text-gray-700">Category slug <span class="font-normal">(autofilled)</span></label>
                 <input type="text" name="slug" id="slug" value="{{ $category->slug }}" class="mt-1  block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
+                @php
+                  $slugDuplicates = App\Models\Category::where('slug', $category->slug)->get()->count();
+                @endphp
+                @if($slugDuplicates > 1)
+                  <div class="text-red-500">{{ $slugDuplicates }} more categories have the same slug!</div>
+                @endif
               </div>
               <div class="mt-6">
                 <label for="description" class="block text-sm font-medium text-gray-700">Description <span class="font-normal">(optional)</span></label>
