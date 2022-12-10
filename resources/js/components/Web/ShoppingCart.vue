@@ -2,9 +2,9 @@
   <div class="flex flex-col sm:flex-row items-start">
     <div class="w-full sm:w-2/3 pr-0 sm:pr-6">
       <div v-if="!cart.length" class="">
-        <h1>Shopping cart is empty. Please add some products!</h1>
-        <a href="/vorur" class="block w-2/5 mt-6 text-center text-gray-600 border border-gray-200  px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-200 cursor-pointer">
-          View Products
+        <div class="font-bold">Innkaupakarfan er tóm. Vinsamlegast bættu við nokkrum vörum!</div>
+        <a href="/vorur" class="small-caps uppercase block w-2/5 mt-6 text-center text-gray-600 border border-gray-200  px-6 py-2 text-sm font-normal rounded-md hover:bg-gray-200 cursor-pointer">
+          Skoða vörur
         </a>
       </div>
       <div v-for="(product, index) in products" :key="index"
@@ -41,7 +41,7 @@
     </div>
     <div v-if="products.length" class="w-full sm:w-1/3 pl-0 sm:pl-6">
       <div v-if="customer" class="bg-gray-100 rounded-md p-6">
-        <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 mb-6">{{ translateItem('customer_info') }}</h3>
+        <div class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 mb-6">{{ translateItem('customer_info') }}</div>
         <div class="flex items-center justify-between">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('name') }}:</p>
           <p v-if="companies.length > 1" class="text-sm text-gray-500" @change="selectDifferentCompany">
@@ -53,7 +53,11 @@
         </div>
         <div class="flex justify-between mt-3">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('address') }}:</p>
-          <p class="text-sm text-gray-500">{{ customer.street }}, {{ customer.city }} {{ customer.zip }}, {{ customer.country }}</p>
+          <p class="text-sm text-gray-500 text-right">{{ customer.street }}</p>
+        </div>
+        <div class="flex justify-between mt-3">
+          <p class="text-sm text-gray-500 font-medium">Borg, zip, land:</p>
+          <p class="text-sm text-gray-500 text-right">{{ customer.city }} {{ customer.zip }}, {{ customer.country }}</p>
         </div>
         <div class="flex justify-between mt-3">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('email') }}:</p>
@@ -67,7 +71,7 @@
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('ssn') }}:</p>
           <p class="text-sm text-gray-500">{{ customer.ssn }}</p>
         </div>
-        <h3 class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 my-6">{{ translateItem('order_info') }}</h3>
+        <div class="text-base font-medium text-gray-900 border-b border-gray-200 pb-3 my-6">{{ translateItem('order_info') }}</div>
         <div class="mt-3">
           <p class="text-sm text-gray-500 font-medium">{{ translateItem('shipping_method') }}:</p>
           <div class="flex gap-6 text-sm mt-3">
@@ -80,6 +84,14 @@
               <span>{{ translateItem('pickup') }}</span>
             </div>
           </div>
+        </div>
+        <div v-if="shippingMethod === 1" class="my-3">
+          <select
+            class="block w-full pl-3 pr-8 py-1.5 text-sm border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+            @change="updateShippingCode"
+          >
+            <option v-for="code in shippingCodes" :key="code.id" :value="code.id" :selected="selectedShippingCode === code.id">{{ code.name }}</option>
+          </select>
         </div>
         <div v-if="shippingMethod === 1">
           <div class="flex flex-col mt-3">
@@ -125,7 +137,7 @@
           </div>
           <div
             v-else
-            class="flex justify-center items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+            class="flex justify-center items-center small-caps uppercase px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
             @click="requestOrder"
           >
             {{ translateItem('request_order') }}
@@ -147,11 +159,18 @@
       user_id: null,
       customer: null,
       selectedCustomer: null,
+      selectedShippingCode: 'VM',
       products: [],
       companies: [],
       note: '',
       pickupLocation: 1,
       pickupLocations: [],
+      shippingCodes: [
+        { id: 'VM', name: 'Flytjandi' },
+        { id: 'HOP', name: 'Höpsnes' },
+        { id: 'SS', name: 'Sent með sölumanni' },
+        { id: 'PO', name: 'Póstur' },
+      ],
       shippingMethod: 1,
       changeShipping: false,
       newShippingAddress: null,
@@ -212,9 +231,13 @@
       },
       changeShippingMethod(method) {
         this.shippingMethod = method
+        this.selectedShippingCode = method === 1 ? 'VM' : 'VS'
       },
       calendarClick(e) {
         this.showCalendar = false
+      },
+      updateShippingCode(e) {
+        this.selectedShippingCode = e.target.value
       },
       featuredImage(product) {
         if(typeof product.product_variations === 'object' && product.product_variations?.file_path)
@@ -249,6 +272,7 @@
         const data = {
           shippingMethod: this.shippingMethod,
           shippingAddress: this.newShippingAddress,
+          shippingMethodCode: this.selectedShippingCode,
           shippingDate: this.shippingDate,
           pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : null,
           note: this.note,

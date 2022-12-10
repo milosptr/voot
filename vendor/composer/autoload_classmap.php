@@ -89,6 +89,7 @@ return array(
     'App\\Listeners\\SendOrderUpdatedEmail' => $baseDir . '/app/Listeners/SendOrderUpdatedEmail.php',
     'App\\Mail\\CustomerRegistered' => $baseDir . '/app/Mail/CustomerRegistered.php',
     'App\\Mail\\ForgotPassword' => $baseDir . '/app/Mail/ForgotPassword.php',
+    'App\\Mail\\OrderApproved' => $baseDir . '/app/Mail/OrderApproved.php',
     'App\\Mail\\OrderCreated' => $baseDir . '/app/Mail/OrderCreated.php',
     'App\\Mail\\OrderCreatedCustomer' => $baseDir . '/app/Mail/OrderCreatedCustomer.php',
     'App\\Mail\\OrderUpdated' => $baseDir . '/app/Mail/OrderUpdated.php',

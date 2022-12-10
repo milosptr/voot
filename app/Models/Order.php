@@ -31,6 +31,7 @@ class Order extends Model
       'order_status',
       'order',
       'shipping_method',
+      'shipping_method_code',
       'shipping_address',
       'shipping_date',
       'pickup_location',

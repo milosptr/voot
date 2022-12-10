@@ -33,6 +33,7 @@ class OrderController extends Controller
       $shippingDate = $request->get('shippingDate');
       $shippingNote = $request->get('note');
       $shippingMethod = $request->get('shippingMethod');
+      $shippingMethodCode = $request->get('shippingMethodCode');
       $pickupLocation = $request->get('pickupLocation');
       $customerKey = $request->get('customer_key');
       $status = Order::STATUS_REQUESTED;
@@ -48,6 +49,7 @@ class OrderController extends Controller
         'order_status' => $status,
         'order' => json_decode($cart->cart),
         'shipping_method' => $shippingMethod,
+        'shipping_method_code' => $shippingMethodCode,
         'shipping_address' => $shippingAddress,
         'shipping_date' => Carbon::parse($shippingDate),
         'pickup_location' => $pickupLocation,

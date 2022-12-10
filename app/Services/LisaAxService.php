@@ -61,6 +61,8 @@ class LisaAxService {
   {
     $customer = $order->user;
     $company = User::where('key', $order->customer_key)->where('ssn', $order->user->ssn)->first();
+    $DlvMethod = $order->shipping_method_code ? $order->shipping_method_code : 'VS';
+
     $this->body = '<soap:Envelope
         xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:tem="http://tempuri.org/">
@@ -75,7 +77,7 @@ class LisaAxService {
               <tem:PaymModeCode>STGR</tem:PaymModeCode>
               <tem:SSN>'.$customer->ssn.'</tem:SSN>
               <tem:DeliveryInfo>
-                <tem:DlvModeCode>VS</tem:DlvModeCode>
+                <tem:DlvModeCode>'.$DlvMethod.'</tem:DlvModeCode>
                 <tem:Name>'.$company->name.'</tem:Name>
                 <tem:Address>'.$order->shipping_address.'</tem:Address>
                 <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>

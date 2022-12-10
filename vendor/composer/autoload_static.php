@@ -631,6 +631,7 @@ class ComposerStaticInit50925250c24afb5f829e7b30a7dc0145
         'App\\Listeners\\SendOrderUpdatedEmail' => __DIR__ . '/../..' . '/app/Listeners/SendOrderUpdatedEmail.php',
         'App\\Mail\\CustomerRegistered' => __DIR__ . '/../..' . '/app/Mail/CustomerRegistered.php',
         'App\\Mail\\ForgotPassword' => __DIR__ . '/../..' . '/app/Mail/ForgotPassword.php',
+        'App\\Mail\\OrderApproved' => __DIR__ . '/../..' . '/app/Mail/OrderApproved.php',
         'App\\Mail\\OrderCreated' => __DIR__ . '/../..' . '/app/Mail/OrderCreated.php',
         'App\\Mail\\OrderCreatedCustomer' => __DIR__ . '/../..' . '/app/Mail/OrderCreatedCustomer.php',
         'App\\Mail\\OrderUpdated' => __DIR__ . '/../..' . '/app/Mail/OrderUpdated.php',
