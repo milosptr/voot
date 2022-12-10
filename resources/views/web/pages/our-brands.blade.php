@@ -11,12 +11,15 @@
 
   <section id="categories" class="mt-10 mb-20">
     <div class="container">
-      <div class="grid grid-cols-2 lg:grid-cols-5 gap-5 justify-items-center items-center mb-20">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center items-center mb-20">
         <img src="/images/brands/mar-wear.webp" class="h-32" alt="mar wear" />
-        <img src="/images/brands/matrix.png" class="h-16" alt="mar wear" />
-        <img src="/images/brands/mustad-fishing.png" class="h-20" alt="mar wear" />
-        <img src="/images/brands/new-pig.png" class="h-20" alt="mar wear" />
-        <img src="/images/brands/fbk.jpeg" class="h-20" alt="mar wear" />
+        <img src="/images/brands/matrix.png" class="h-16" alt="matrix" />
+        <img src="/images/brands/mustad-fishing.png" class="h-20" alt="mustad fishing" />
+        <img src="/images/brands/new-pig.png" class="h-20" alt="new pig" />
+        <img src="/images/brands/fbk.jpeg" class="h-20" alt="fbk" />
+        <img src="/images/brands/baltic.webp" class="h-20" alt="fbk" />
+        <img src="/images/brands/fladen.webp" class="" alt="fbk" />
+        <img src="/images/brands/hansen.webp" class="h-14" alt="fbk" />
       </div>
 
       <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">Mar Wear</h2>
@@ -56,7 +59,17 @@
       <!-- <p class="leading-normal mt-3"></p> -->
       <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">FBK</h2>
       <p class="leading-normal mt-3">Við bjóðum uppá vönduð og endingargóð hreinlætis áhöld frá danska framleiðandanum FBK. Vörurnar fást í mörgum litum og notkun þeirra í samræmi við litakerfi minnkar líkur á krossmengun. Áhöldin bera vottanir Evrópusambandsins, BRCGS og FDA.</p>
-      <p class="leading-normal mt-3">Í matvælaiðnaði skiptir höfuðmáli að geta fylgt reglum og stöðlum varðandi hreinlæti. Vottun BRCGS gefur fyrirtækjum viðurkennda vottun um um gæði, öryggi og ábyrgð. Vottunin verndar bæði fyrirtæki og neytendur og tryggir að ströngustu kröfu um matvælaöryggi sé fyllt. Fyrirtæki í matvælaiðnaði sem vilja t.d eiga viðskipti á alþjóðamarkaði ættu að huga að þessu og tryggja sér BRCGS vottun.</p>
+      <p class="leading-normal mt-3 mb-10">Í matvælaiðnaði skiptir höfuðmáli að geta fylgt reglum og stöðlum varðandi hreinlæti. Vottun BRCGS gefur fyrirtækjum viðurkennda vottun um um gæði, öryggi og ábyrgð. Vottunin verndar bæði fyrirtæki og neytendur og tryggir að ströngustu kröfu um matvælaöryggi sé fyllt. Fyrirtæki í matvælaiðnaði sem vilja t.d eiga viðskipti á alþjóðamarkaði ættu að huga að þessu og tryggja sér BRCGS vottun.</p>
+
+      <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">Fladen</h2>
+      <p class="leading-normal mt-3">Við bjóðum uppá meðfærilega og endingargóðan flotvinnufatnað frá sænska framleiðandanum Fladen. Vörur Fladen eru hannaðar og þróaðar í svíþjóð til að standast ströngustu kröfur ym öryggi og gæði.</p>
+      <p class="leading-normal mt-3 mb-10">Flotvinnufatnaðurinn frá Fladen er líklega einn sá vinsælasti á íslandi og er á viðráðanlegu verði án þess að slegið sé af öryggiskröfum. </p>
+
+      <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">Hansen Protection</h2>
+      <p class="leading-normal mt-3 mb-10">Við bjóðum uppá gott úrval af björgunarvestum frá norska framleiðandanum Hansen Protection. Frramleiðandinn býr yfir 140 ára reynslu af framleiðslu á hágæða öryggisfatnaði sem stenst ítrustu kröfur.</p>
+
+      <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">Baltic</h2>
+      <p class="leading-normal mt-3">Við höfum uppá að bjóða mjög breitt úrval af björgunar og flotvinnubúningum frá sænska framleiðandanum Baltic Lifejackets. Baltic leggur mikið uppúr sportlegri og flottri hönnun og hvort sem að þú ert að leita að björgunarvesti fyrir árbátinn í bústaðnum, eða fyrir áhöfnina á togaranum, þá eigum við það til.</p>
     </div>
   </section>
   @endsection
