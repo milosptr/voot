@@ -17,7 +17,7 @@
               $route = \Request::route()->getName();
             @endphp
             <div class="sm:hidden flex justify-between pt-4 pb-8">
-              <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.home') }}" aria-label="Home" >
+              <a href="/" aria-label="Home" >
                 <img class="block h-10 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
               </a>
               <div id="close-menu-btn">
@@ -25,11 +25,11 @@
               </div>
             </div>
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.about') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'about' ? 'font-semibold' : '' }}">{{ __('header.about') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'services' ? 'font-semibold' : '' }}">{{ __('header.services') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.brands') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'brands' ? 'font-semibold' : '' }}">{{ __('header.our_brands') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'all_products' ? 'font-semibold' : '' }}">{{ __('header.products') }}</a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'contact' ? 'font-semibold' : '' }}">{{ __('header.contact') }}</a>
+            <a href="/um-okkur" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'about' ? 'font-semibold' : '' }}">{{ __('header.about') }}</a>
+            <a href="/thjonusta" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'services' ? 'font-semibold' : '' }}">{{ __('header.services') }}</a>
+            <a href="/vorumerkin-okkar" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'brands' ? 'font-semibold' : '' }}">{{ __('header.our_brands') }}</a>
+            <a href="/vorur" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'all_products' ? 'font-semibold' : '' }}">{{ __('header.products') }}</a>
+            <a href="/hafa-samband" class="text-gray-600 hover:text-primary-light px-3 py-2 rounded-md text-xl small-caps {{ $route === 'contact' ? 'font-semibold' : '' }}">{{ __('header.contact') }}</a>
           </div>
         </div>
       </div>

@@ -36,10 +36,10 @@
         <div class="w-full sm:w-1/2">
           <img src="/images/pjon-map-dark.svg" class="w-full sm:w-4/5" alt="pjon map">
           <div class="flex gap-10 mt-5">
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}" class="w-48 mt-8 flex items-center justify-center py-2 px-4 rounded-md text-white text-center bg-primary border-1 border-solid border-primary hover:text-primary hover:bg-transparent ease-in-out duration-300">
+            <a href="/vorur" class="w-48 mt-8 flex items-center justify-center py-2 px-4 rounded-md text-white text-center bg-primary border-1 border-solid border-primary hover:text-primary hover:bg-transparent ease-in-out duration-300">
               {{ __('header.products') }}
             </a>
-            <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="w-48 mt-8 flex items-center justify-center py-2 px-4 rounded-md text-primary text-center bg-transparent border-1 border-solid border-primary hover:text-white hover:bg-primary ease-in-out duration-300">
+            <a href="/hafa-samband" class="w-48 mt-8 flex items-center justify-center py-2 px-4 rounded-md text-primary text-center bg-transparent border-1 border-solid border-primary hover:text-white hover:bg-primary ease-in-out duration-300">
               {{ __('header.contact') }}
             </a>
           </div>

@@ -10,7 +10,7 @@
           <h1 class="text-4xl sm:text-6xl font-medium text-primary tracking-wide font-lora uppercase">{{ __('default.homepage_title') }}</h1>
           <p class="mt-4 text-lg font-light text-gray-500">{{ __('default.homepage_about')  }}</p>
           <a
-            href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}"
+            href="/vorur"
             class="inline-block text-center bg-primary-light border border-transparent rounded-md py-3 px-8 mt-10 font-medium text-white hover:bg-primary"
             >
               {{ __('default.shop_now_button') }}
@@ -74,7 +74,7 @@
         <h2 class="text-4xl sm:text-5xl font-medium font-lora tracking-wide">
           {{ __('default.products') }}
         </h2>
-        <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.all_products') }}">{{ __('default.view_all_products') }}</a>
+        <a href="/vorur">{{ __('default.view_all_products') }}</a>
       </div>
       <div class="mt-6">
         @include('web.common.product-articles', ['products' => $products, 'ratio' => 'aspect-w-4 aspect-h-4'])
@@ -92,7 +92,7 @@
           <p class="mt-6 font-light sm:h-20">
             {{ __('default.services_p1') }}
           </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.services') }}" class="small-caps uppercase inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="/thjonusta" class="small-caps uppercase inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.explore_services') }}
           </a>
         </div>
@@ -103,7 +103,7 @@
           <p class="mt-6 font-light sm:h-20">
             {{ __('default.contact_p1') }}
           </p>
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.contact') }}" class="small-caps uppercase inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          <a href="/hafa-samband" class="small-caps uppercase inline-block mx-auto border border-primary py-2 px-12 text-sm rounded-md text-primary font-medium mt-12 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
              {{ __('default.contact_btn') }}
           </a>
         </div>

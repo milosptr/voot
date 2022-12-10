@@ -119,29 +119,50 @@ Route::get('/page/{slug}', function($slug) {
     return view('web.pages.404');
   return view('web.pages.single-page', compact('page'));
 });
-Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localize' ]], function () {
 
-  Route::get('/', [WebPages::class, 'index']);
-  Route::get('/homepage', [WebPages::class, 'homepage']);
+Route::get('/', [WebPages::class, 'index']);
+Route::get('/homepage', [WebPages::class, 'homepage']);
 
-  Route::get(LaravelLocalization::transRoute('routes.about'), [WebPages::class, 'about'])->name('about');
-  Route::get(LaravelLocalization::transRoute('routes.services'), [WebPages::class, 'services'])->name('services');
-  Route::get(LaravelLocalization::transRoute('routes.brands'), [WebPages::class, 'brands'])->name('brands');
-  Route::get(LaravelLocalization::transRoute('routes.contact'), [WebPages::class, 'contact'])->name('contact');
+Route::get('um-okkur', [WebPages::class, 'about'])->name('about');
+Route::get('thjonusta', [WebPages::class, 'services'])->name('services');
+Route::get('vorumerkin-okkar', [WebPages::class, 'brands'])->name('brands');
+Route::get('hafa-samband', [WebPages::class, 'contact'])->name('contact');
 
-  Route::get(LaravelLocalization::transRoute('routes.cart'), [WebPages::class, 'cart']);
-  Route::get(LaravelLocalization::transRoute('routes.thanks'), [WebPages::class, 'thanks']);
+Route::get('cart', [WebPages::class, 'cart']);
+Route::get('thanks', [WebPages::class, 'thanks']);
 
-  Route::get(LaravelLocalization::transRoute('routes.all_products'), [Products::class, 'all'])->name('all_products');
+Route::get('vorur', [Products::class, 'all'])->name('all_products');
 
-  Route::get('/tag/{slug}', [Tags::class, 'indexProducts'])->name('all.tag');
-  Route::get('products/search', [Products::class, 'search'])->name('products.search');
-  Route::get(LaravelLocalization::transRoute('routes.product_uncategorised'), [Products::class, 'uncategorised']);
+Route::get('/tag/{slug}', [Tags::class, 'indexProducts'])->name('all.tag');
+Route::get('products/search', [Products::class, 'search'])->name('products.search');
+Route::get('product/{product}', [Products::class, 'uncategorised']);
 
-  Route::get('/{category}', [Categories::class, 'index'])->name('category');
-  Route::get('/{category}/{product}', [Products::class, 'index'])->name('product');
+Route::get('/{category}', [Categories::class, 'index'])->name('category');
+Route::get('/{category}/{product}', [Products::class, 'index'])->name('product');
 
-});
+// Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localize' ]], function () {
+
+//   Route::get('/', [WebPages::class, 'index']);
+//   Route::get('/homepage', [WebPages::class, 'homepage']);
+
+//   Route::get(LaravelLocalization::transRoute('routes.about'), [WebPages::class, 'about'])->name('about');
+//   Route::get(LaravelLocalization::transRoute('routes.services'), [WebPages::class, 'services'])->name('services');
+//   Route::get(LaravelLocalization::transRoute('routes.brands'), [WebPages::class, 'brands'])->name('brands');
+//   Route::get(LaravelLocalization::transRoute('routes.contact'), [WebPages::class, 'contact'])->name('contact');
+
+//   Route::get(LaravelLocalization::transRoute('routes.cart'), [WebPages::class, 'cart']);
+//   Route::get(LaravelLocalization::transRoute('routes.thanks'), [WebPages::class, 'thanks']);
+
+//   Route::get(LaravelLocalization::transRoute('routes.all_products'), [Products::class, 'all'])->name('all_products');
+
+//   Route::get('/tag/{slug}', [Tags::class, 'indexProducts'])->name('all.tag');
+//   Route::get('products/search', [Products::class, 'search'])->name('products.search');
+//   Route::get(LaravelLocalization::transRoute('routes.product_uncategorised'), [Products::class, 'uncategorised']);
+
+//   Route::get('/{category}', [Categories::class, 'index'])->name('category');
+//   Route::get('/{category}/{product}', [Products::class, 'index'])->name('product');
+
+// });
 
 
 require __DIR__.'/auth.php';

@@ -109,7 +109,7 @@
           <div class="fixed w-full top-0 z-10 md:hidden bg-white border-b border-gray-200">
             <div class="flex justify-between items-center">
               <div class="flex-shrink-0 px-4 py-2 h-full flex items-center bg-primary">
-                <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.home') }}">
+                <a href="/">
                   <img class="block lg:hidden h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
                   <img class="hidden lg:block h-8 w-auto" src="/images/voot-logo-w.svg" alt="Workflow">
                 </a>
