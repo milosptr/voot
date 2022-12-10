@@ -6,7 +6,7 @@
     <div class="relative flex items-center justify-between h-16">
       <div class="flex items-center px-2 lg:px-0 h-full">
         <div class="flex-shrink-0 px-4 h-full flex items-center bg-primary">
-          <a href="{{ LaravelLocalization::getURLFromRouteNameTranslated(app()->getLocale(), 'routes.home') }}" aria-label="Home" >
+          <a href="/" aria-label="Home" >
             <img class="block lg:hidden h-8 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
             <img class="hidden lg:block h-8 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
           </a>
