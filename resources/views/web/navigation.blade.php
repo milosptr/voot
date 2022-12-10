@@ -62,14 +62,14 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#000000" viewBox="0 0 256 256" @click="addToFavourites"><rect width="256" height="256" fill="none"></rect><path d="M132.4,190.7l50.4,32c6.5,4.1,14.5-2,12.6-9.5l-14.6-57.4a8.7,8.7,0,0,1,2.9-8.8l45.2-37.7c5.9-4.9,2.9-14.8-4.8-15.3l-59-3.8a8.3,8.3,0,0,1-7.3-5.4l-22-55.4a8.3,8.3,0,0,0-15.6,0l-22,55.4a8.3,8.3,0,0,1-7.3,5.4L31.9,94c-7.7.5-10.7,10.4-4.8,15.3L72.3,147a8.7,8.7,0,0,1,2.9,8.8L61.7,209c-2.3,9,7.3,16.3,15,11.4l46.9-29.7A8.2,8.2,0,0,1,132.4,190.7Z" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></path></svg>
         </a>
         <a href="/cart" class="ml-4 text-gray-600 hover:text-primary-light relative" aria-label="Cart" >
-          {{-- @if(auth()->user())
+          @if(auth()->user())
             @php $inCart = App\Models\Cart::cartNumber(auth()->user()->id); @endphp
             @if($inCart)
               <div class="absolute right-0 top-0 items-center justify-center text-center w-4 h-4 text-xs font-medium -mt-2 -mr-2 bg-red-500 text-white rounded-full">
                 {{ $inCart }}
               </div>
             @endif
-          @endif --}}
+          @endif
           <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
         </a>
         <a href="{{ auth()->user() != NULL ? '/backend' : route('login') }}" class="small-caps uppercase font-semibold ml-4 text-gray-600 hover:text-primary-light" aria-label="Login" >
