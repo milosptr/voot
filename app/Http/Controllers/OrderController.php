@@ -13,8 +13,10 @@ use App\Models\ActivityLog;
 use App\Events\OrderCreated;
 use App\Events\OrderUpdated;
 use Illuminate\Http\Request;
+use App\Events\ResendOrderToAX;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Resources\OrderWithProductsResource;
 
 class OrderController extends Controller
@@ -128,10 +130,33 @@ class OrderController extends Controller
       return new OrderWithProductsResource($order);
     }
 
+    public function resendAXOrder($id)
+    {
+      $order = Order::find($id);
+      if($order) {
+        try {
+          ResendOrderToAX::dispatch($order);
+          Log::info('Resend AX order success to '.$id);
+          return Redirect::to('/backend/orders/'.$id)->with('status', 'Pöntun var send til AX!');
+        } catch(Exception $e) {
+
+          Log::error('Resend AX order: '. $e->getMessage());
+          return Redirect::to('/backend/orders/'.$id)->with('ERROR', 'Uuups! Pöntun fannst ekki!');
+        }
+      }
+      return Redirect::to('/backend/orders/'.$id)->with('ERROR', 'Uuups! Pöntun fannst ekki!');
+    }
+
     public function notify($id)
     {
       $order = Order::find($id);
-      OrderUpdated::dispatch($order);
+      try {
+        OrderUpdated::dispatch($order);
+        Log::info('Notify customer success: '.$id);
+      } catch(Exception $e) {
+        Log::error('Notify customer error: '. $e->getMessage());
+      }
+
       return back();
     }
 }

@@ -202,6 +202,15 @@ if(document.getElementById('openNotifyCustomerModal')) {
   })
 }
 
+if(document.getElementById('openResendAXOrderModal')) {
+  document.getElementById('openResendAXOrderModal').addEventListener('click', () => {
+    document.getElementById('resendAXOrderModal').classList.remove('hidden')
+  })
+  document.getElementById('closeResendAXOrderModal').addEventListener('click', () => {
+    document.getElementById('resendAXOrderModal').classList.add('hidden')
+  })
+}
+
 function searchProducts() {
   axios.post('/api/products/search', Object.fromEntries(new URLSearchParams(window.location.search)))
     .then((res) => {

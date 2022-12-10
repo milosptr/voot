@@ -110,6 +110,7 @@ Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('
 // Order
 Route::get('orders/{id}/reorder', [OrderController::class, 'reorder']);
 Route::get('orders/{id}/products', [OrderController::class, 'products']);
+Route::post('resend-ax-order/{id}', [OrderController::class, 'resendAXOrder']);
 Route::post('orders/{id}/notify', [EmailController::class, 'notifyCustomer']);
 Route::post('request-order/{id}', [OrderController::class, 'store']);
 Route::post('request-order/update/{id}', [OrderController::class, 'update']);

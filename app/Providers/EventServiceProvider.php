@@ -38,6 +38,9 @@ class EventServiceProvider extends ServiceProvider
           SendCustomerOrderCreatedEmail::class,
           CreateOrderInAX::class,
         ],
+        ResendOrderToAX::class => [
+          CreateOrderInAX::class,
+        ],
         OrderUpdated::class => [
           SendOrderUpdatedEmail::class,
         ],
