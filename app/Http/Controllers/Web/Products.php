@@ -9,6 +9,7 @@ use App\Services\PaginationService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Products as ResourcesProducts;
 use App\Models\ProductFavourite;
+use App\Models\ProductVariation;
 
 class Products extends Controller
 {
@@ -28,8 +29,11 @@ class Products extends Controller
       $q = $request->get('q');
 
       if($request->has('q'))
-        $query->whereLike(['name', 'sku', 'english_name'], $request->get('q'));
-
+        $query->where(function($qry) use($request) {
+          $variations = ProductVariation::whereLike('sku', $request->get('q'))->pluck('product_id');
+          $qry->whereLike(['name', 'sku', 'english_name'], $request->get('q'))
+              ->orWhereIn('id', $variations);
+        });
       $query->where('available', 1);
       $products = ResourcesProducts::collection($query->get());
 

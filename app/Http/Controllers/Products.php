@@ -40,7 +40,11 @@ class Products extends Controller
       }
 
       if($request->has('s')) {
-        $query->whereLike(['name', 'sku', 'english_name'], $request->get('s'));
+        $query->where(function($qry) use($request) {
+          $variations = ProductVariation::whereLike('sku', $request->get('s'))->pluck('product_id');
+          $qry->whereLike(['name', 'sku', 'english_name'], $request->get('s'))
+              ->orWhereIn('id', $variations);
+        });
       }
 
       if($request->has('ids')) {
