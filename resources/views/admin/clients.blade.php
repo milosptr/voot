@@ -43,5 +43,8 @@
         </tbody>
       </table>
     </div>
+    <div class="mt-10">
+      {{ $customers->links() }}
+    </div>
   </section>
 @endsection

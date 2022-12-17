@@ -94,7 +94,7 @@ class User extends Authenticatable
     public static function search($search = null, $html = false)
     {
       if (!$search) {
-        $customers = User::where('role', 'customer')->orderBy('name')->get();
+        $customers = User::where('role', 'customer')->orderBy('name')->paginate();
         return view('components.customer.list', compact('customers'));
       }
 
@@ -105,7 +105,7 @@ class User extends Authenticatable
       })
       ->where('role', 'customer')
       ->orderBy('id', 'DESC')
-      ->get();
+      ->paginate();
 
         if($html)
           return view('components.customer.list', compact('customers'));

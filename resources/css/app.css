@@ -423,3 +423,8 @@ input#sale_price {
     -webkit-transform: rotate(360deg);
   }
 }
+
+nav[role="navigation"] [aria-current="page"] span {
+  background-color: rgb(33, 75, 118);
+  color: #fff!important;
+}
