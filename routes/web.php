@@ -9,9 +9,6 @@ use App\Http\Controllers\Web\Products;
 use App\Http\Controllers\Web\WebPages;
 use App\Http\Controllers\Web\Categories;
 use App\Http\Controllers\Admin\PagesController;
-use App\Http\Controllers\MailChimpController;
-use Illuminate\Support\Facades\Log;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +22,12 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
-Route::get('email-template', function() {  return view('emails.new-user-registration'); });
+
+// Route::get('email-template', function() {
+//   $order = Order::find(137);
+//   $categories = ProductTrait::parseSortedProductsByCategory($order);
+//   return view('emails.order-created', compact('order','categories'));
+// });
 
 Route::get('/login', function() {
   return view('auth.login');

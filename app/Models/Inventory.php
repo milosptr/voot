@@ -14,5 +14,9 @@ class Inventory extends Model
     protected $table = 'inventory';
     public $timestamp = true;
 
+    public function product()
+    {
+      return $this->belongsTo('App\Models\Product');
+    }
 
 }

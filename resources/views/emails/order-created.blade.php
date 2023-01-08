@@ -9,6 +9,11 @@
       <title>Ný pöntun</title>
     @endif
     <style>
+    .truncate {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      }
       @media only screen and (max-width: 620px) {
         table.body h1 {
           font-size: 28px !important;
@@ -143,38 +148,25 @@
                          @else
                           <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; margin-top: 25px; margin-bottom: 15px;">Þér hefur borist ný pöntun frá heimasíðu Voot. Pöntun þín er eftirfarandi:</p>
                          @endif
-                         <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" width="100%">
-                          <tr>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Vörunúmer</td>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" valign="center">Nafn</td>
-                            <td style="font-family: sans-serif; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;text-align:center;" valign="center">Magn</td>
-                          </tr>
-                          @foreach($order->order as $o)
-                            @php
-                              $product = App\Models\Inventory::where('sku', $o['sku'])->first();
-                              $pv = App\Models\ProductVariation::where('sku', $o['sku'])->first();
-                              if(!$product || !$pv) {
-                                $product = App\Models\Product::where('sku', $o['sku'])->first();
-                                $pv = new stdClass;
-                                $pv->product = $product;
-                              }
-                            @endphp
+                         @foreach($categories as $key => $products)
+                          <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; margin-bottom: 16px;" width="100%">
                             <tr>
-                              <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
-                                {{ $o['sku'] }}
-                              </td>
-                              <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee; " valign="center">
-                                <a href="{{ env('APP_URL') }}/product/{{ $pv->product->slug }}" target="_blank" class="fs-13" style="text-decoration: none; display:block; font-family: sans-serif; font-weight: 500; margin: 0;padding: 6px 0;color: #1d68a7;">
-                                  {{ $product->name }}
-                                </a>
-                              </td>
-                              <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee;text-align:center;" valign="center">
-                                {{ $o['qty'] }}
-                              </td>
+                              <td style="font-family: sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: #333; vertical-align: center; border-bottom: 2px solid #eee; padding-bottom: 1px;" colspan="2" valign="center">{{ $key }}</td>
                             </tr>
-                          @endforeach
-                        </table>
-                        <p style="margin:0;border-top: 1px solid #eee;"></p>
+                            @foreach($products as $product)
+                              <tr>
+                                <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee;" valign="center">
+                                  <a href="{{ env('APP_URL') }}/product/{{ $product->slug }}" target="_blank" class="fs-13 truncate" style="max-width: 400px; text-decoration: none; display:block; font-family: sans-serif; font-weight: 500; margin: 0;padding: 6px 0;color: #1d68a7;">
+                                    {{ $product->qty }} x {{ $product->name }}
+                                  </a>
+                                </td>
+                                <td class="fs-13" style="font-family: sans-serif; vertical-align: center; border-bottom: 1px solid #eee; text-align:right;" valign="center">
+                                  {{ $product->sku }}
+                                </td>
+                              </tr>
+                            @endforeach
+                          </table>
+                        @endforeach
                         @if($order->note)
                         <p style="padding-top:15px; margin-top:0;"><span style="font-weight: 600;color:#555">Note:</span> {{ $order->note }}<p>
                         @endif

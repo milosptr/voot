@@ -3,6 +3,7 @@
 namespace App\Mail;
 
 use App\Models\Order;
+use App\Traits\ProductTrait;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -30,6 +31,7 @@ class OrderApproved extends Mailable
     {
       $isCustomer = false;
       $subject = 'Pöntun samþykkt ' . $this->order->user->name . ' #' . $this->order->id;
-      return $this->subject($subject)->view('emails.order-created', compact('isCustomer'));
+      $categories = ProductTrait::parseSortedProductsByCategory($this->order);
+      return $this->subject($subject)->view('emails.order-created', compact('isCustomer', 'categories'));
     }
 }
