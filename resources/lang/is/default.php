@@ -16,7 +16,7 @@ return [
   'view_all_products' => 'Allar Vörur',
   'back_to_categories' => 'Til baka',
   'related_products' => 'Skyldar Vörur',
-  'shop_now_button' => 'Verslaðu Núna',
+  'shop_now_button' => 'Pantaðu núna',
 
   'homepage_title' => 'Þrautreyndar rekstrarvörur fyrir sjó og land',
   'homepage_about' => "Voot býður upp á þrautreyndar rekstrarvörur fyrir sjó og land á hagstæðu verði, allt á einum stað",
