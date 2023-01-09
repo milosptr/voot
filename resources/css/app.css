@@ -19,7 +19,8 @@
 }
 
 .voot .single-article-category h4,
-.voot .single-article-product h4 {
+.voot .single-article-product h4,
+.voot .font-unset {
   font-variant: unset;
   text-transform: unset;
 }

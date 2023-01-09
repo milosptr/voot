@@ -5,7 +5,7 @@
 @section('content')
   <section class="mt-16 sm:mt-0">
     <div class="container mx-auto py-20 ">
-      <h2 class="text-2xl font-medium tracking-wide sm:w-2/3 leading-normal">{{ __('default.about_voot_short') }}</h2>
+      <h2 class="text-2xl font-unset font-medium tracking-wide sm:w-2/3 leading-normal">{{ __('default.about_voot_short') }}</h2>
     </div>
   </section>
 
