@@ -118,6 +118,13 @@ class Users extends Controller
       return Redirect::back()->with('status', 'User verified!');
     }
 
+    public function checkSSN($ssn)
+    {
+      if(User::where('ssn', $ssn)->count())
+        return true;
+      return false;
+    }
+
     public function destroy($id)
     {
       $user = User::find($id);

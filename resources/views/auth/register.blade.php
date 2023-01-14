@@ -31,8 +31,19 @@
               </div>
           @enderror
           <div class="mt-6">
-            <form id="register-me" action="/register-me" method="POST" class="space-y-6">
+            <form id="register-me" action="/register-me" method="POST" class="space-y-3">
               @csrf
+              <div id="account-exists-alert" class="hidden text-sm py-2 px-3 rounded-md bg-yellow-100 border border-yellow-400">
+                Reikningurinn með þessu kennitala er þegar til í kerfinu okkar. Þú getur fengið nýtt lykilorð fyrir reikninginn þinn með því <a href="/forgot-password">að smella hér</a>.
+              </div>
+              <div class="w-full">
+                <label for="ssn" class="block text-sm font-medium text-gray-700">
+                  Kennitala
+                </label>
+                <div class="mt-1">
+                  <input id="ssn" name="ssn" type="ssn" autocomplete="ssn" placeholder="Kennitala" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+              </div>
               <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">
                   Netfang
@@ -107,15 +118,7 @@
                </div>
 
               <div class="flex justify-between items-center">
-                <div class="w-full pr-3">
-                  <label for="ssn" class="block text-sm font-medium text-gray-700">
-                    Kennitala
-                  </label>
-                  <div class="mt-1">
-                    <input id="ssn" name="ssn" type="ssn" autocomplete="ssn" placeholder="Kennitala" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                  </div>
-                </div>
-                <div class="w-full pl-3">
+                <div class="w-full">
                   <label for="password" class="block text-sm font-medium text-gray-700">
                     Lykilorð
                   </label>

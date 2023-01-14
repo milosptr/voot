@@ -5,6 +5,7 @@ import { createApp } from 'vue'
 import SingleProductVariations from './components/Web/SingleProductVariations.vue'
 import GoogleMaps from './components/Web/GoogleMaps.vue'
 import ShoppingCart from './components/Web/ShoppingCart.vue'
+import axios from 'axios'
 
 const isResponsive =  !!('ontouchstart' in document.documentElement)
 
@@ -100,5 +101,18 @@ if(openMenuBtn && closeMenuBtn) {
   })
   closeMenuBtn.addEventListener('click', () => {
     navigation.classList.remove('active')
+  })
+}
+
+if(document.getElementById('register-me')) {
+  document.getElementById('ssn').addEventListener('change', (e) => {
+    axios.get(`/api/check-ssn/${e.target.value}`)
+    .then((res) => {
+      if(res.data) {
+        document.getElementById('account-exists-alert').classList.remove('hidden')
+      } else {
+        document.getElementById('account-exists-alert').classList.add('hidden')
+      }
+    })
   })
 }

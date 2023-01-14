@@ -128,6 +128,7 @@ Route::post('invoice-email/{id}', [Users::class, 'invoiceEmail']);
 Route::post('change-password/{id}', [Users::class, 'changePassword']);
 Route::post('forgot-password', [Users::class, 'forgotPassword'])->name('forgot_password_request');
 Route::get('forgot-password/{id}', [Users::class, 'forgotPassword'])->name('forgot_password_change');
+Route::get('/check-ssn/{ssn}', [Users::class, 'checkSSN']);
 
 // Members info
 Route::get('members-info/{id}', [MembersInfoController::class, 'index']);
