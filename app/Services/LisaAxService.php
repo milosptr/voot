@@ -116,9 +116,6 @@ class LisaAxService {
 
   public function send() {
     $curl = curl_init();
-    $ip = Request::server('SERVER_ADDR') . (' (should be 212.44.101.122)');
-    Log::info('Ok Lisa AX Ready: '. $this->requestURL. ' from IP '.$ip);
-
     curl_setopt_array($curl, array(
       CURLOPT_URL => $this->requestURL,
       CURLOPT_RETURNTRANSFER => true,

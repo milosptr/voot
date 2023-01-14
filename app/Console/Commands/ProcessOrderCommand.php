@@ -42,7 +42,6 @@ class ProcessOrderCommand extends Command
           continue;
         }
       }
-      Log::info('Orders to check'.count($orders));
       return Command::SUCCESS;
     }
 }
