@@ -39,6 +39,7 @@ class Order extends Model
       'ax_status',
       'customer_key',
       'salesman_id',
+      'processed'
     ];
     public $timestamps = true;
 

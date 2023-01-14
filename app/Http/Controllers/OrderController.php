@@ -31,41 +31,43 @@ class OrderController extends Controller
       if($cart === NULL)
         return response('Your shopping cart is empty, try again!', 422);
 
-      $shippingAddress = $request->get('shippingAddress');
-      $shippingDate = $request->get('shippingDate');
-      $shippingNote = $request->get('note');
-      $shippingMethod = $request->get('shippingMethod');
-      $shippingMethodCode = $request->get('shippingMethodCode');
-      $pickupLocation = $request->get('pickupLocation');
-      $customerKey = $request->get('customer_key');
-      $status = Order::STATUS_REQUESTED;
-
-      if($shippingAddress === NULL)
-        $shippingAddress = $customer->street . ', ' . $customer->city . ' ' . $customer->zip . ', ' . $customer->country;
-      if($customer->email_verified_at === NULL)
-        $status = Order::STATUS_PENDING;
-
-      $order = Order::create([
-        'user_id' => $customer->id,
-        'customer_key' => $customerKey,
-        'order_status' => $status,
-        'order' => json_decode($cart->cart),
-        'shipping_method' => $shippingMethod,
-        'shipping_method_code' => $shippingMethodCode,
-        'shipping_address' => $shippingAddress,
-        'shipping_date' => Carbon::parse($shippingDate),
-        'pickup_location' => $pickupLocation,
-        'note' => $shippingNote,
-      ]);
-
       try {
+        $shippingAddress = $request->get('shippingAddress');
+        $shippingDate = $request->get('shippingDate');
+        $shippingNote = $request->get('note');
+        $shippingMethod = $request->get('shippingMethod');
+        $shippingMethodCode = $request->get('shippingMethodCode');
+        $pickupLocation = $request->get('pickupLocation');
+        $customerKey = $request->get('customer_key');
+        $status = Order::STATUS_REQUESTED;
+
+        if($shippingAddress === NULL)
+          $shippingAddress = $customer->street . ', ' . $customer->city . ' ' . $customer->zip . ', ' . $customer->country;
+        if($customer->email_verified_at === NULL)
+          $status = Order::STATUS_PENDING;
+
+        $order = Order::create([
+          'user_id' => $customer->id,
+          'customer_key' => $customerKey,
+          'order_status' => $status,
+          'order' => json_decode($cart->cart),
+          'shipping_method' => $shippingMethod,
+          'shipping_method_code' => $shippingMethodCode,
+          'shipping_address' => $shippingAddress,
+          'shipping_date' => Carbon::parse($shippingDate),
+          'pickup_location' => $pickupLocation,
+          'note' => $shippingNote,
+          'processed' => 0,
+        ]);
+
         OrderCreated::dispatch($order);
+
+        $cart->delete();
       } catch(Exception $e) {
         Log::error("Order notification not dispatched properly: " . $e->getMessage());
         return back();
       }
 
-      $cart->delete();
       return response('Order successfuly requested!', 200);
     }
 

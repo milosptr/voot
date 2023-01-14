@@ -2,7 +2,7 @@
 
 namespace App\Listeners;
 
-use App\Events\OrderCreated;
+use App\Events\ProcessOrder;
 use App\Services\LisaAxService;
 use Illuminate\Support\Facades\Log;
 use Exception;
@@ -15,10 +15,10 @@ class CreateOrderInAX
      * @param  object  $event
      * @return void
      */
-    public function handle(OrderCreated $event)
+    public function handle(ProcessOrder $event)
     {
       if(env('APP_ENV') === 'local' && $event->order->user->email_verified_at === NULL)
-      return;
+        return;
 
       Log::info('Requesting order #'.$event->order->id.' to AX');
       try {
@@ -26,12 +26,12 @@ class CreateOrderInAX
           ->setBodyForOrderCreated($event->order)
           ->send();
         $orderId = LisaAxService::storeOrderId($response, $event->order);
-        $event->order->update(['ax_status' => 1]);
+        $event->order->update(['ax_status' => 1, 'processed' => 1]);
 
         Log::info('Order #'.$event->order->id.' created successfully in AX: '. $orderId);
       } catch(Exception $e) {
         Log::error('Trying to create order #'.$event->order->id.' in AX: '. $e->getMessage());
-        $event->order->update(['ax_status' => 0]);
+        $event->order->update(['ax_status' => 0, 'processed' => 0]);
       }
     }
 }
