@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.5d10f1df.js",
+    "file": "assets/app.66a4a0c9.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -8,7 +8,7 @@
     ],
     "css": [
       "assets/app.aa9bec2d.css",
-      "assets/app.13e1d3d2.css"
+      "assets/app.c92caba9.css"
     ]
   },
   "resources/js/backend.js": {
@@ -20,7 +20,7 @@
     ],
     "css": [
       "assets/backend.b17d7406.css",
-      "assets/app.13e1d3d2.css"
+      "assets/app.c92caba9.css"
     ]
   },
   "_plugin-vue_export-helper.04c8ae2e.js": {
@@ -35,7 +35,7 @@
     "src": "resources/js/app.css"
   },
   "resources/css/app.css": {
-    "file": "assets/app.13e1d3d2.css",
+    "file": "assets/app.c92caba9.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }
