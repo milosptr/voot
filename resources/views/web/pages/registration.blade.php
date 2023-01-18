@@ -8,7 +8,7 @@
         <div class="py-16 px-6 bg-white hover:shadow-xl hover:scale-105 ease-linear duration-300">
           <img src="/images/login-icon.svg" alt="login" width="32" />
           <h2 class="h-16 mt-2 text-3xl font-extrabold text-gray-900">Innskráning</h2>
-          <p class="mt-2 h-48">Skráðu þig inná pöntunarsíðuna.</p>
+          <p class="mt-2 h-24 md:h-48">Skráðu þig inná pöntunarsíðuna.</p>
           <a href="/login" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-light hover:bg-primary focus:outline-none duration-300 transition-all ease-in-out">
             Skrá inn
           </a>
