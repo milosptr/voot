@@ -24,10 +24,14 @@ use App\Http\Controllers\Admin\PagesController;
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index']);
 
 // Route::get('email-template', function() {
-//   $order = Order::find(137);
-//   $categories = ProductTrait::parseSortedProductsByCategory($order);
-//   return view('emails.order-created', compact('order','categories'));
+//   // $order = Order::find(137);
+//   // $categories = ProductTrait::parseSortedProductsByCategory($order);
+//   return view('emails.account-request-info');
 // });
+
+Route::get('/registration', function() {
+  return view('web.pages.registration');
+})->name('registration-page');
 
 Route::get('/login', function() {
   return view('auth.login');
@@ -36,6 +40,10 @@ Route::get('/login', function() {
 Route::get('/register', function() {
   return view('auth.register');
 })->name('register');
+
+Route::get('/get-account', function() {
+  return view('auth.get-account');
+})->name('get-account');
 
 Route::get('/forgot-password', function() {
   return view('auth.forgot-password');
@@ -104,9 +112,11 @@ Route::prefix('/backend')->middleware(['admin'])->group(function () {
   Route::get('/settings/sent-emails', [PagesController::class, 'sentEmails'])->name('sentEmails');
   Route::get('/settings/clients', [PagesController::class, 'clients'])->name('customers');
   Route::get('/settings/my-clients', [PagesController::class, 'myClients'])->name('my-clients');
+  Route::get('/settings/clients/new', [PagesController::class, 'newClient'])->name('newClient');
   Route::get('/settings/clients/{id}', [PagesController::class, 'editCustomer'])->name('customer-edit');
   Route::get('/settings/{page}', [PagesController::class, 'settings'])->name('settingsPage');
 
+  Route::get('/account-requests', [PagesController::class, 'accountRequests'])->name('accountRequests');
   Route::get('/account', function () {
     return view('customer.account');
   });

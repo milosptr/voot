@@ -4,7 +4,7 @@
 @section('content')
   <div class="min-h-screen flex">
     <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-      <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div class="mx-auto w-full max-w-lg lg:w-96">
         <div>
           <a href="/" class="h-20 w-24 flex items-center justify-center bg-primary">
             <img class="h-12 w-auto" src="/images/voot-logo-w.svg" alt="Voot">

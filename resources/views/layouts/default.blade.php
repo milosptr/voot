@@ -68,11 +68,11 @@
       @vite('resources/js/app.js')
   </head>
   <body class="voot">
-    @if(!Route::is('login') && !Route::is('register') && !Route::is('forgot_password'))
+    @if(!Route::is('login') && !Route::is('register') && !Route::is('forgot_password') && !Route::is('get-account'))
       @include('web.navigation')
     @endif
     @yield('content')
-    @if(!Route::is('login') && !Route::is('register') && !Route::is('forgot_password'))
+    @if(!Route::is('login') && !Route::is('register') && !Route::is('forgot_password')  && !Route::is('get-account'))
       @include('web.footer')
     @endif
     <script>

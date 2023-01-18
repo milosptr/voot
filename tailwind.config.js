@@ -38,6 +38,9 @@ module.exports = {
         },
         maxHeight: {
           '290' : '290px'
+        },
+        shadow: {
+          DEFAULT: 'filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15))'
         }
       },
     },

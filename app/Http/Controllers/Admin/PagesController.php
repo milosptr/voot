@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Users;
 use App\Http\Resources\Categories;
 use App\Http\Resources\Products;
+use App\Models\AccountRequest;
 use App\Models\Email;
 use App\Models\Inventory;
 use App\Models\Order;
@@ -104,6 +105,17 @@ class PagesController extends Controller
     {
       $emails = Email::orderBy('id', 'DESC')->paginate(25);
       return view('admin.sent-emails', compact('emails'));
+    }
+
+    public function accountRequests()
+    {
+      $requests = AccountRequest::orderBy('id', 'DESC')->paginate();
+      return view('admin.account-requests', compact('requests'));
+    }
+
+    public function newClient()
+    {
+      return view('admin.create-client');
     }
 
 }

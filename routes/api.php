@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountRequestController;
 use App\Models\Tag;
 use App\Models\Page;
 use App\Models\User;
@@ -122,6 +123,7 @@ Route::get('customer/{id}/companies', [Users::class, 'companies']);
 Route::get('customer/{id}/reset-password', [Users::class, 'resetPassword']);
 Route::get('customer/{id}/verify', [Users::class, 'verify']);
 Route::get('customer/{id}/delete', [Users::class, 'destroy']);
+Route::post('customer/new', [Users::class, 'create'])->name('createCustomer');
 Route::post('customer/{id}', [Users::class, 'update']);
 Route::post('customer/{id}/logo', [Users::class, 'logo']);
 Route::post('invoice-email/{id}', [Users::class, 'invoiceEmail']);
@@ -180,6 +182,10 @@ Route::get('/reports/orders', [ReportsController::class, 'orders']);
 // Salesman Clients
 Route::get('my-clients', [SalesmanClientController::class, 'forSalesman']);
 Route::post('my-clients', [SalesmanClientController::class, 'store']);
+
+// Account request
+Route::get('account-request/{id}/finish', [AccountRequestController::class, 'toggleStatus']);
+Route::post('account-request', [AccountRequestController::class, 'store']);
 
 //
 Route::post('/slugify', function(Request $request) {

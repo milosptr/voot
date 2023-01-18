@@ -200,7 +200,7 @@
       pickupLocations: [],
       shippingCodes: [
         { id: 'VM', name: 'Flytjandi' },
-        { id: 'HOP', name: 'Höpsnes' },
+        { id: 'HOP', name: 'Suðurnes' },
         { id: 'SS', name: 'Sent með sölumanni' },
         { id: 'PO', name: 'Póstur' },
       ],
@@ -307,7 +307,7 @@
           shippingAddress: this.newShippingAddress,
           shippingMethodCode: this.selectedShippingCode,
           shippingDate: this.shippingDate,
-          pickupLocation: this.shippingMethod === 2 ? this.shippingMethod : null,
+          pickupLocation: this.shippingMethod === 2 ? this.pickupLocation : null,
           note: this.note,
           customer_key: this.selectedCustomer
         }
@@ -333,7 +333,7 @@
             'ssn': 'Kennitala',
             'order_info': 'Upplýsingar um pöntun',
             'shipping_to': 'Afhendingarstaður',
-            'shipping_method': 'Afgreiðslumáti',
+            'shipping_method': 'Afhendingarmáti',
             'shipping_date': 'Afhendingardagsetning',
             'pickup_in': 'Sækja inn',
             'delivery': 'Senda',

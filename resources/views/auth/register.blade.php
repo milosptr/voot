@@ -4,14 +4,16 @@
 @section('content')
   <div class="min-h-screen flex">
     <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-      <div class="mx-auto w-full max-w-sm lg:w-96">
+      <div class="mx-auto w-full max-w-lg lg:w-full">
         <div>
-          <div class="h-20 w-24 flex items-center justify-center bg-primary">
+          <a href="/" class="h-20 w-24 flex items-center justify-center bg-primary">
             <img class="h-12 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
-          </div>
+          </a>
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
             Búðu til reikning
           </h2>
+          <p class="mt-2">Vinsamlegast athugið að það getur tekið allt að 2 virka daga að stofna nýja viðskiptavini í viðskipti hjá Voot.</p>
+          <p class="mt-2 font-medium">Vinsamlegast athugaðu að engin verð eru aðgengileg á pöntunarsíðunni.</p>
         </div>
 
         <div class="mt-8">
@@ -38,24 +40,34 @@
               </div>
               <div class="w-full">
                 <label for="ssn" class="block text-sm font-medium text-gray-700">
-                  Kennitala
+                  Kennitala fyrirtækis
                 </label>
                 <div class="mt-1">
                   <input id="ssn" name="ssn" type="ssn" autocomplete="ssn" placeholder="Kennitala" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 </div>
               </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-gray-700">
-                  Netfang
-                </label>
-                <div class="mt-1">
-                  <input id="email" name="email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <div class="flex justify-between items-center">
+                <div class="w-full pr-3">
+                  <label for="email" class="block text-sm font-medium text-gray-700">
+                    Netfang notanda
+                  </label>
+                  <div class="mt-1">
+                    <input id="email" name="email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  </div>
+                </div>
+                <div class="w-full pl-3">
+                  <label for="invoice_email" class="block text-sm font-medium text-gray-700">
+                    Netfang fr reikninga/bókhald
+                  </label>
+                  <div class="mt-1">
+                    <input id="invoice_email" name="invoice_email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  </div>
                 </div>
               </div>
               <div class="flex justify-between items-center">
                 <div class="w-full pr-3">
                   <label for="name" class="block text-sm font-medium text-gray-700">
-                    Fullt nafn
+                    Nafn skráningarsaðila
                   </label>
                   <div class="mt-1">
                     <input id="name" name="name" type="text" autocomplete="name" placeholder="John Doe" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -93,10 +105,10 @@
                <div class="flex justify-between items-center">
                   <div class="w-full pr-3">
                     <label for="zip" class="block text-sm font-medium text-gray-700">
-                      ZIP
+                      Postnúmer
                     </label>
                     <div class="mt-1">
-                      <input id="zip" name="zip" type="text" autocomplete="zip" placeholder="ZIP" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                      <input id="zip" name="zip" type="text" autocomplete="zip" placeholder="Postnúmer" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     </div>
                   </div>
                   <div class="w-full pl-3">

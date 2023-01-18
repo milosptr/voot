@@ -284,7 +284,6 @@ if(paginationPrev || paginationNext) {
 
 
 
-
 function debounce(func, wait) {
   let timeout;
 

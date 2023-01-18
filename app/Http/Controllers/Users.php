@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class Users extends Controller
 {
@@ -25,6 +25,13 @@ class Users extends Controller
       if($user)
         return new UserResource($user);
       return null;
+    }
+
+    public function create(Request $request)
+    {
+      $data = array_merge($request->all(), ['password' => Hash::make(Str::random(12))]);
+      $user = User::create($data);
+      return Redirect::to('/backend/settings/clients/'.$user->id);
     }
 
     public function search(Request $request)

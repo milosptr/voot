@@ -12,6 +12,9 @@
       @include('components.icons.search')
     </div>
   </div>
+  <div class="relative ml-2">
+    <a href="/backend/settings/clients/new" class="text-white border border-primary-lighter bg-primary-lighter group flex items-center ml-5 px-6 py-2 text-sm font-normal rounded-md hover:bg-primary-light">Create New</a>
+  </div>
 @endsection
   <section class="">
     <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

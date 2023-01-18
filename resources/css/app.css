@@ -429,3 +429,14 @@ nav[role="navigation"] [aria-current="page"] span {
   background-color: rgb(33, 75, 118);
   color: #fff!important;
 }
+
+input.appearance-none::-webkit-outer-spin-button,
+input.appearance-none::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input.appearance-none {
+  -moz-appearance: textfield;
+}

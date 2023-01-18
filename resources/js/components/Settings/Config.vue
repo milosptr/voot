@@ -1,6 +1,6 @@
 <template>
   <div class="mt-6">
-    <div v-for="(c,i) in config" class="" :key="i">
+    <div v-for="(c,i) in config" class="mb-4" :key="i">
       <label :for="'config-'+i" class="block text-sm font-medium text-gray-700 capitalize">
         {{ parseLabel(c.key) }}
       </label>

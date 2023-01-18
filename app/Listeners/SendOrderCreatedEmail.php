@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Email;
 use App\Models\Config;
 use App\Events\OrderCreated;
+use App\Models\Location;
 use Illuminate\Support\Facades\Log;
 
 class SendOrderCreatedEmail
@@ -20,10 +21,12 @@ class SendOrderCreatedEmail
     {
       try {
         $config = Config::where('key', 'order_recipients')->orderBy('id', 'DESC')->get()->first();
+        $location = $event->order->pickup_location ? Location::find($event->order->pickup_location) : null;
         $defaultRecipients = isset($config['value']) ? explode(';', $config['value']) : ['milosptr@icloud.com'];
+        $locationEmail = $location ? [$location->email] : [];
         $salesmans = $event->order->user->salesman->pluck('email')->all();
         $salesmans = is_array($salesmans) ? $salesmans : [];
-        $recipients = array_merge($salesmans, $defaultRecipients);
+        $recipients = array_merge($salesmans, $defaultRecipients, $locationEmail);
 
         foreach ($recipients as $recipient) {
           if(!empty($recipient)) {
