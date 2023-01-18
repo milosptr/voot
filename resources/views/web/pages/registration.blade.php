@@ -4,7 +4,7 @@
 @section('content')
   <section class="py-20">
     <div class="container">
-      <div class="grid grid-cols-3">
+      <div class="grid grid-cols-1 md:grid-cols-3">
         <div class="py-16 px-6 bg-white hover:shadow-xl hover:scale-105 ease-linear duration-300">
           <img src="/images/login-icon.svg" alt="login" width="32" />
           <h2 class="h-16 mt-2 text-3xl font-extrabold text-gray-900">Innskráning</h2>
