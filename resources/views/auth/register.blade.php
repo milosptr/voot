@@ -36,7 +36,7 @@
             <form id="register-me" action="/register-me" method="POST" class="space-y-3">
               @csrf
               <div id="account-exists-alert" class="hidden text-sm py-2 px-3 rounded-md bg-yellow-100 border border-yellow-400">
-                Reikningurinn með þessu kennitala er þegar til í kerfinu okkar. Þú getur fengið nýtt lykilorð fyrir reikninginn þinn með því <a href="/forgot-password">að smella hér</a>.
+                Reikningurinn með þessu kennitala er þegar til í kerfinu okkar. Þú getur fengið nýtt lykilorð fyrir reikninginn þinn með því <a href="/get-account">að smella hér</a>.
               </div>
               <div class="w-full">
                 <label for="ssn" class="block text-sm font-medium text-gray-700">
