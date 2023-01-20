@@ -10,10 +10,11 @@
             <img class="h-12 w-auto" src="/images/voot-logo-w.svg" alt="Voot">
           </a>
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-            Búðu til reikning
+            Komdu i viðskipti
           </h2>
           <p class="mt-2">Vinsamlegast athugið að það getur tekið allt að 2 virka daga að stofna nýja viðskiptavini í viðskipti hjá Voot.</p>
           <p class="mt-2 font-medium">Vinsamlegast athugaðu að engin verð eru aðgengileg á pöntunarsíðunni.</p>
+          <p class="mt-2 font-medium">Við reynum að lágmarka pappirsnotkun og allir reikningar eru sendir rafrænt, því er nauðsynlegt að gefa upp tölvupóst sem reikningar sendast á.</p>
         </div>
 
         <div class="mt-8">
@@ -36,7 +37,7 @@
             <form id="register-me" action="/register-me" method="POST" class="space-y-3">
               @csrf
               <div id="account-exists-alert" class="hidden text-sm py-2 px-3 rounded-md bg-yellow-100 border border-yellow-400">
-                Reikningurinn með þessu kennitala er þegar til í kerfinu okkar. Þú getur fengið nýtt lykilorð fyrir reikninginn þinn með því <a href="/get-account">að smella hér</a>.
+                Þessi kennitala er nú þegar skráð hjá okkur. Þú getur fengið lykilorð fyrir aðgang með Því <a href="/get-account">að smella hér</a>.
               </div>
               <div class="w-full">
                 <label for="ssn" class="block text-sm font-medium text-gray-700">
@@ -57,7 +58,7 @@
                 </div>
                 <div class="w-full pl-3">
                   <label for="invoice_email" class="block text-sm font-medium text-gray-700">
-                    Netfang fr reikninga/bókhald
+                    Netfang f. reikninga/bókhald
                   </label>
                   <div class="mt-1">
                     <input id="invoice_email" name="invoice_email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -67,7 +68,7 @@
               <div class="flex justify-between items-center">
                 <div class="w-full pr-3">
                   <label for="name" class="block text-sm font-medium text-gray-700">
-                    Nafn skráningarsaðila
+                    Nafn skráningar aðila
                   </label>
                   <div class="mt-1">
                     <input id="name" name="name" type="text" autocomplete="name" placeholder="John Doe" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">

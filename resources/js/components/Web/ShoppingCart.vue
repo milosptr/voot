@@ -200,7 +200,7 @@
       pickupLocations: [],
       shippingCodes: [
         { id: 'VM', name: 'Flytjandi' },
-        { id: 'HOP', name: 'Suðurnes' },
+        { id: 'HOP', name: 'Hópsnes (Suðurnes)' },
         { id: 'SS', name: 'Sent með sölumanni' },
         { id: 'PO', name: 'Póstur' },
       ],

@@ -12,7 +12,7 @@
           <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
             Núverandi viðskiptavinur
           </h2>
-          <p class="mt-2 font-medium">Vinsamlegast athugaðu að engin verð eru aðgengileg á pöntunarsíðunni.</p>
+          <p class="mt-2 font-medium">Vinsamlegast athugaðu að engin verð eru aðgengileg á pöntunarsíðunni. Verðfyrirspurnir er hæg að senda á <a href="mailto:soludeild@voot.is">soludeild@voot.is</a></p>
         </div>
 
         <div class="mt-8">
@@ -61,7 +61,7 @@
               <div class="flex justify-between items-center">
                 <div class="w-full pr-3">
                   <label for="name" class="block text-sm font-medium text-gray-700">
-                    Nafn skráningarsaðila
+                    Nafn skráningar aðila
                   </label>
                   <div class="mt-1">
                     <input id="name" name="name" type="text" autocomplete="name" placeholder="John Doe" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
