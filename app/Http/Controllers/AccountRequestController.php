@@ -33,7 +33,7 @@ class AccountRequestController extends Controller
         Log::error('AccountRequestController::class email error' .$e->getMessage());
       }
 
-      return Redirect::to('/password-reset?title=Beðið var um reikning&status=Við fengum reikningsbeiðni þína og við erum að vinna í að senda þér nýju innskráningarskilríkin. Við munum hafa samband við þig rass fljótt og hægt er.');
+      return Redirect::to('/password-reset?title=Ósk um aðgang&status=Við hðfum móttekið beiðni þína og munum senda þér lykilorð til innskráningar eins fjótt og auðið er.');
     } catch(Exception $e) {
       Log::error('AccountRequestController::class ' .$e->getMessage());
       return Redirect::to('/password-reset?title=Eitthvað fór úrskeiðis&status=Vinsamlegast reyndu aftur eða hafðu samband við söludeild okkar.');
