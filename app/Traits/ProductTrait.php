@@ -15,13 +15,15 @@ trait ProductTrait {
   * @param ProductVariation $variant
   * @return string
   */
-  public static function getProductName($inventory, $variant)
+  public static function getProductName($inventory, $variant, $product)
   {
     try {
       if(isset($inventory) && isset($inventory->name))
-      return $inventory->name;
+        return $inventory->name;
       if(isset($variant) && isset($variant->product))
         return $variant->product->name;
+      if($product && isset($product))
+        return $product->name;
       return '';
     } catch(Exception $e) {
       Log::error('ProductTrait::getProductName error: '. $e->getMessage());
@@ -83,10 +85,12 @@ trait ProductTrait {
         $singleProduct = new stdClass;
         $inventory = Inventory::where('sku', $order['sku'])->first();
         $variant = ProductVariation::where('sku', $order['sku'])->first();
+        $originalProduct = Product::where('sku', $order['sku'])->first();
         $product = isset($inventory) && $inventory->product_id ? $inventory->product : Product::where('sku', $order['sku'])->first();
+        $product = $product ? $product : $originalProduct;
 
         $singleProduct->category = self::getProductPrimaryCategoryName($product, $variant);
-        $singleProduct->name = self::getProductName($inventory, $variant);
+        $singleProduct->name = self::getProductName($inventory, $variant, $product);
         $singleProduct->product_id = self::getProductID($product, $variant);
         $singleProduct->qty = $order['qty'];
         $singleProduct->sku = $order['sku'];
