@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Events\OrderCreated;
 use App\Events\OrderUpdated;
 use App\Events\ProcessOrder;
+use App\Events\ResendOrderToAX;
 use App\Events\UserVerified;
 use App\Events\ForgotPassword;
 use App\Events\UserPasswordReset;
