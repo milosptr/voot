@@ -12,8 +12,8 @@ use App\Models\Inventory;
 use App\Models\ActivityLog;
 use App\Events\OrderCreated;
 use App\Events\OrderUpdated;
+use App\Events\ProcessOrder;
 use Illuminate\Http\Request;
-use App\Events\ResendOrderToAX;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -137,7 +137,7 @@ class OrderController extends Controller
       $order = Order::find($id);
       if($order) {
         try {
-          ResendOrderToAX::dispatch($order);
+          ProcessOrder::dispatch($order);
           Log::info('Resend AX order success to '.$id);
           return Redirect::to('/backend/orders/'.$id)->with('status', 'Pöntun var send til AX!');
         } catch(Exception $e) {
