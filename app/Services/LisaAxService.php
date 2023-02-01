@@ -61,6 +61,7 @@ class LisaAxService {
   {
     $customer = $order->user;
     $company = User::where('key', $order->customer_key)->where('ssn', $order->user->ssn)->first();
+    $companyName = ($company && isset($company)) ? $company->name : $customer->name;
     $DlvMethod = $order->shipping_method_code ? $order->shipping_method_code : 'VS';
 
     $this->body = '<soap:Envelope
@@ -78,7 +79,7 @@ class LisaAxService {
               <tem:SSN>'.$customer->ssn.'</tem:SSN>
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>'.$DlvMethod.'</tem:DlvModeCode>
-                <tem:Name>'.$company && isset($company) ? $company->name : $customer->name.'</tem:Name>
+                <tem:Name>'.$companyName.'</tem:Name>
                 <tem:Address>'.$order->shipping_address.'</tem:Address>
                 <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>
                 <tem:Country>'.$customer->country.'</tem:Country>
