@@ -78,7 +78,7 @@ class LisaAxService {
               <tem:SSN>'.$customer->ssn.'</tem:SSN>
               <tem:DeliveryInfo>
                 <tem:DlvModeCode>'.$DlvMethod.'</tem:DlvModeCode>
-                <tem:Name>'.$company->name.'</tem:Name>
+                <tem:Name>'.$company && isset($company) ? $company->name : $customer->name.'</tem:Name>
                 <tem:Address>'.$order->shipping_address.'</tem:Address>
                 <tem:Zipcode>'.$customer->zip.'</tem:Zipcode>
                 <tem:Country>'.$customer->country.'</tem:Country>
