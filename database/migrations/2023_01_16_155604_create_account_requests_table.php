@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('account_requests', function (Blueprint $table) {
             $table->id();
-            $table->integer('ssn');
+            $table->bigInteger('ssn');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
             $table->string('company');
-            $table->integer('company_ssn');
+            $table->bigInteger('company_ssn');
             $table->boolean('finished')->default(0);
             $table->timestamps();
         });
