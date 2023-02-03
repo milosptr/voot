@@ -244,6 +244,10 @@
           .then((res) => {
             this.customer = res.data.data
             this.selectedCustomer = this.customer.key
+            if(this.customer.name.toLowerCase().includes('visir')
+            || this.customer.email.includes('visir')) {
+              this.selectedShippingCode = 'HOP'
+            }
           })
         axios.get('/api/locations')
           .then((res) => {
