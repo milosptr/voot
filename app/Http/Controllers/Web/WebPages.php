@@ -54,6 +54,18 @@ class WebPages extends Controller
       return view('web.pages.cart', compact('cart'));
     }
 
+    public function checkout()
+    {
+      if(auth()->user() === NULL)
+        return redirect()->intended('/login?back=checkout');
+        $cart = Cart::where('user_id', auth()->user()->id)->first();
+      if($cart) {
+        $companies = auth()->user()->companies;
+        return view('web.pages.checkout', compact('cart', 'companies'));
+      }
+      return redirect()->intended('/cart');
+    }
+
     public function thanks()
     {
       return view('web.pages.thanks');

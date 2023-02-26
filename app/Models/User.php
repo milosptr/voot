@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Exception;
 use App\Models\ActivityLog;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Facades\Hash;
-use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Products;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -115,6 +115,37 @@ class User extends Authenticatable
     public function getCompaniesAttribute()
     {
       return User::where('ssn', $this->ssn)->get();
+    }
+
+    public function getCustomerShippingAddress()
+    {
+      $street = $this->street ? ($this->street . ', ') : '';
+      $city =  ($this->city && $this->zip) ? ($this->city . ' ' . $this->zip . ', ') : '';
+      $country = $this->country;
+      return $street.$city.$country;
+    }
+
+    public function getCartItems()
+    {
+      $filteredCart = json_decode($this->cart->cart, true);
+      $products = array();
+      foreach($filteredCart as $item) {
+        try {
+          $inventory = Inventory::where('sku', $item['sku'])->first();
+          $product = Product::where('sku', $item['sku'])->first();
+          $pv = ProductVariation::where('sku', $item['sku'])->first();
+          if(!$product && !isset($pv) && !isset($pv->product_id))
+            continue;
+          if(!$product)
+            $product = Product::find($pv->product_id);
+          $product->name = isset($inventory->name) ? $inventory->name : $product->name;
+          array_push($products, Products::transformProductForCheckout($product, $item['qty']));
+        } catch(Exception $e) {
+          Log::error('User::getCartItems' . $e->getMessage());
+          continue;
+        }
+      }
+      return $products;
     }
 
     public static function resetPassword()

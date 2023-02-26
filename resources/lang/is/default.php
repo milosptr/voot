@@ -54,6 +54,8 @@ return [
   'add_to_cart' => 'Bæta í körfu',
   'login_to_order' => 'Skráðu þig inn til að panta',
 
+  'checkout_title' => 'Útskráningarsíða',
+
   'product_information' => 'Upplýsingar um vöru',
   'standards_and_approvals' => 'Öryggisstaðlar og fleira',
   'downloads' => 'Tækniblöð',

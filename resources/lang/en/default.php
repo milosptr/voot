@@ -48,6 +48,8 @@ return [
     'add_to_cart' => 'Add to Cart',
     'login_to_order' => 'Login to order',
 
+    'checkout_title' => 'Checkout',
+
     'product_information' => 'Product Information',
     'standards_and_approvals' => 'Standards and Approvals',
     'downloads' => 'Downloads',

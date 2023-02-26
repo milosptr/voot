@@ -5,6 +5,7 @@ import { createApp } from 'vue'
 import SingleProductVariations from './components/Web/SingleProductVariations.vue'
 import GoogleMaps from './components/Web/GoogleMaps.vue'
 import ShoppingCart from './components/Web/ShoppingCart.vue'
+import Checkout from './components/Web/Checkout.vue'
 import axios from 'axios'
 
 const isResponsive =  !!('ontouchstart' in document.documentElement)
@@ -27,6 +28,13 @@ if(document.getElementById('shopping-cart-app')) {
     components: { ShoppingCart },
     template: `<ShoppingCart />`
   }).mount("#shopping-cart-app")
+}
+
+if(document.getElementById('checkout-app')) {
+  createApp({
+    components: { Checkout },
+    template: `<Checkout />`
+  }).mount("#checkout-app")
 }
 
 const subcategories = document.querySelectorAll('[data-open-subcategory]')
