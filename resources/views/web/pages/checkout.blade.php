@@ -11,8 +11,8 @@
 
   <section id="checkout-section" class="pb-24 bg-gray-50">
     <div class="container mx-auto">
-      <form class="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16" action="/api/v2/request-order/{{ auth()->user()->id }}" method="POST">
-        <div class="mt-6">
+      <form class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16" action="/api/v2/request-order/{{ auth()->user()->id }}" method="POST">
+        <div class="mt-6 order-2 sm:order-1">
           <div class="">
             <div class="text-lg font-bold text-gray-900">Upplýsingar um viðskiptavin</div>
 
@@ -177,7 +177,7 @@
             <button type="submit" class="w-full flex justify-center items-center small-caps uppercase px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer">Panta</button>
           </div>
         </div>
-        <div>
+        <div class="order-1 sm:order-2">
           <div class="sticky top-0 rounded-md bg-white border border-gray-300 p-6">
             <div class="flex justify-between items-center">
               <div class="text-lg font-bold text-gray-900">Innkaupakarfa</div>
@@ -188,7 +188,7 @@
                 <div class="py-2 flex items-center gap-4">
                   <img src="/{{$product['featured_image']}}" onerror="this.src='/images/placeholder.png';this.onerror='';" class="aspect-1 w-10">
                   <div>
-                    <div>{{ $product['name'] }}<span class="font-medium"> x {{ $product['qty'] }}</span></div>
+                    <a href="{{ $product['slug'] }}" target="_blank">{{ $product['name'] }}<span class="font-medium"> x {{ $product['qty'] }}</span></a>
                     <div class="font-medium text-sm">{{ $product['sku'] }}</div>
                   </div>
                 </div>
