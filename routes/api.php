@@ -114,6 +114,7 @@ Route::get('orders/{id}/products', [OrderController::class, 'products']);
 Route::post('resend-ax-order/{id}', [OrderController::class, 'resendAXOrder']);
 Route::post('orders/{id}/notify', [EmailController::class, 'notifyCustomer']);
 Route::post('request-order/{id}', [OrderController::class, 'store']);
+Route::post('v2/request-order/{id}', [OrderController::class, 'storeOrder']);
 Route::post('request-order/update/{id}', [OrderController::class, 'update']);
 Route::post('request-order/change/{id}', [OrderController::class, 'change']);
 
@@ -188,7 +189,7 @@ Route::get('account-request/{id}/finish', [AccountRequestController::class, 'tog
 Route::post('account-request', [AccountRequestController::class, 'store']);
 
 //
-Route::post('/slugify', function(Request $request) {
-  $slugify = new Slugify();
-  return response(['slug' => $slugify->slugify($request->get('name'), '-')], 200);
+Route::post('/slugify', function (Request $request) {
+    $slugify = new Slugify();
+    return response(['slug' => $slugify->slugify($request->get('name'), '-')], 200);
 });

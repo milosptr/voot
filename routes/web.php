@@ -141,6 +141,7 @@ Route::get('vorumerkin-okkar', [WebPages::class, 'brands'])->name('brands');
 Route::get('hafa-samband', [WebPages::class, 'contact'])->name('contact');
 
 Route::get('cart', [WebPages::class, 'cart']);
+Route::get('checkout', [WebPages::class, 'checkout']);
 Route::get('thanks', [WebPages::class, 'thanks']);
 
 Route::get('vorur', [Products::class, 'all'])->name('all_products');

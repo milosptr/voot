@@ -259,6 +259,22 @@ class Products extends Controller
       ];
     }
 
+    public static function transformProductForCheckout($product, $qty)
+    {
+      return [
+        'id' => $product->id,
+        'name' => $product->name,
+        'description' => $product->description,
+        'sku' => $product->sku,
+        'slug' => $product->slug,
+        'categories' => $product->categories,
+        'media' => $product->media,
+        'featured_image' => $product->featured_image->file_path,
+        'product_variations' => $product->product_variations,
+        'qty' => $qty,
+      ];
+    }
+
     public function destroy($id)
     {
       $product = Product::find($id);

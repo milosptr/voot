@@ -440,3 +440,29 @@ input.appearance-none::-webkit-inner-spin-button {
 input.appearance-none {
   -moz-appearance: textfield;
 }
+
+.checkout-section input:disabled {
+  background-color: #f5f5f5;
+}
+
+label[for^="delivery-method--"] {
+  background-color: #fdfdfd;
+}
+label[for^="delivery-method--"] > svg {
+  display: none;
+}
+label[for^="delivery-method--"] .delivery-content {
+  opacity: 0.5;
+}
+
+label.delivery-method-active > svg {
+  display: block;
+}
+
+label.delivery-method-active {
+  border-color: #4f46e5;
+  background-color: #fff;
+}
+label.delivery-method-active .delivery-content {
+  opacity: 1;
+}

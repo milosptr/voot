@@ -23,7 +23,6 @@ class CreateOrdersTable extends Migration
             $table->string('shipping_address')->nullable();
             $table->datetime('shipping_date')->nullable();
             $table->integer('pickup_location')->nullable();
-            $table->text('note')->nullable();
 
             $table->timestamps();
 
