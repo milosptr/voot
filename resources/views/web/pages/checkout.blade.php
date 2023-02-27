@@ -130,8 +130,11 @@
                 <label for="deliveryMethods" class="block text-sm font-medium text-gray-700">Nafn / Fyrirtæki</label>
                 <div class="mt-1">
                   <select id="deliveryMethods" name="shippingMethodCode" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                    @php
+                      $defaultDeliveryMethod = auth()->user()->defaultDeliveryOption();
+                    @endphp
                     @foreach(App\Traits\DeliveryMethodsTrait::get() as $company)
-                      <option value="{{ $company['id'] }}">{{ $company['name'] }}</option>
+                      <option value="{{ $company['id'] }}" {{ $defaultDeliveryMethod === $company['id'] ? 'selected="true"' : '' }}>{{ $company['name'] }}</option>
                     @endforeach
                   </select>
                 </div>

@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Cart;
+use App\Models\Location;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
@@ -56,6 +57,7 @@ class OrderTest extends TestCase
     {
         $customer = User::factory()->create();
         $products = Product::factory()->count(5)->create();
+        Location::factory()->count(3)->create();
         foreach ($products as $product) {
             $this->actingAs($customer)->post('/api/add-to-cart', [
               'sku' => $product->sku,
@@ -65,6 +67,9 @@ class OrderTest extends TestCase
         }
         $cart = Cart::where('user_id', $customer->id)->first();
         $this->assertNotNull($cart);
+
+        $pickupLocation = Location::find(1);
+        $pickupLocationAddress = $pickupLocation->fullAddress();
 
         $checkout = [
           "customerKey" => null,
@@ -86,7 +91,7 @@ class OrderTest extends TestCase
         $this->assertEquals($order->order_status, Order::STATUS_REQUESTED);
         $this->assertEquals($order->shipping_method, Order::PICKUP);
         $this->assertEquals($order->shipping_method_code, 'VM');
-        $this->assertNull($order->shipping_address);
+        $this->assertEquals($order->shipping_address, $pickupLocationAddress);
         $this->assertNotNull($order->shipping_date);
         $this->assertNull($order->note);
         $this->assertEquals($order->pickup_location, "1");
@@ -97,6 +102,7 @@ class OrderTest extends TestCase
     {
         $customer = User::factory()->create();
         $products = Product::factory()->count(5)->create();
+        Location::factory()->count(3)->create();
         foreach ($products as $product) {
             $this->actingAs($customer)->post('/api/add-to-cart', [
               'sku' => $product->sku,
@@ -120,6 +126,9 @@ class OrderTest extends TestCase
         $response = $this->actingAs($customer)->post('/api/v2/request-order/'.$customer->id, $checkout);
         $response->assertStatus(302);
 
+        $pickupLocation = Location::find(2);
+        $pickupLocationAddress = $pickupLocation->fullAddress();
+
         $cart = Cart::where('user_id', $customer->id)->first();
         $this->assertNull($cart);
 
@@ -128,7 +137,7 @@ class OrderTest extends TestCase
         $this->assertEquals($order->order_status, Order::STATUS_REQUESTED);
         $this->assertEquals($order->shipping_method, Order::PICKUP);
         $this->assertEquals($order->shipping_method_code, 'VM');
-        $this->assertNull($order->shipping_address);
+        $this->assertEquals($order->shipping_address, $pickupLocationAddress);
         $this->assertNotNull($order->shipping_date);
         $this->assertNull($order->note);
         $this->assertEquals($order->pickup_location, "2");

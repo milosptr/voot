@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Resources\OrderWithProductsResource;
+use App\Models\Location;
 
 class OrderController extends Controller
 {
@@ -50,11 +51,14 @@ class OrderController extends Controller
                 $status = Order::STATUS_PENDING;
             }
             if ($shippingMethod === Order::PICKUP) {
-                $shippingAddress = null;
                 $pickupLocation = $pickupLocation ?? 1;
+                $pickup = Location::find($pickupLocation);
+                $shippingAddress = $pickup->fullAddress();
             } else {
                 $pickupLocation = null;
             }
+
+            $shippingMethodCode =
 
             $order = Order::create([
               'user_id' => $customer->id,

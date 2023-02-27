@@ -57,102 +57,113 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-      return $this->role === 'admin';
+        return $this->role === 'admin';
     }
 
     public function cart()
     {
-      return $this->hasOne(Cart::class);
+        return $this->hasOne(Cart::class);
     }
 
     public function orders()
     {
-      return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
 
     public function activityLogs()
     {
-      return $this->hasMany(ActivityLog::class);
+        return $this->hasMany(ActivityLog::class);
     }
 
     public function favourites()
     {
-      return $this->belongsToMany(Product::class, 'product_favourites')->orderByPivot('id', 'DESC');
+        return $this->belongsToMany(Product::class, 'product_favourites')->orderByPivot('id', 'DESC');
     }
 
     public function clients()
     {
-      return $this->hasMany(SalesmanClient::class, 'salesman_id');
+        return $this->hasMany(SalesmanClient::class, 'salesman_id');
     }
 
     public function salesman()
     {
-      return $this->hasMany(SalesmanClient::class, 'client_id')
-        ->leftJoin('users', 'users.id', '=', 'salesman_clients.salesman_id');
+        return $this->hasMany(SalesmanClient::class, 'client_id')
+          ->leftJoin('users', 'users.id', '=', 'salesman_clients.salesman_id');
     }
 
     public static function search($search = null, $html = false)
     {
-      if (!$search) {
-        $customers = User::where('role', 'customer')->orderBy('name')->paginate();
-        return view('components.customer.list', compact('customers'));
-      }
+        if (!$search) {
+            $customers = User::where('role', 'customer')->orderBy('name')->paginate();
+            return view('components.customer.list', compact('customers'));
+        }
 
-      $customers = User::where(function($q) use($search) {
-        $q->where('name', 'LIKE', '%'.$search."%")
-        ->orWhere('phone', 'LIKE', '%'.$search.'%')
-        ->orWhere('key', 'LIKE', '%'.$search.'%');
-      })
-      ->where('role', 'customer')
-      ->orderBy('id', 'DESC')
-      ->paginate();
+        $customers = User::where(function ($q) use ($search) {
+            $q->where('name', 'LIKE', '%'.$search."%")
+            ->orWhere('phone', 'LIKE', '%'.$search.'%')
+            ->orWhere('key', 'LIKE', '%'.$search.'%');
+        })
+        ->where('role', 'customer')
+        ->orderBy('id', 'DESC')
+        ->paginate();
 
-        if($html)
-          return view('components.customer.list', compact('customers'));
+        if ($html) {
+            return view('components.customer.list', compact('customers'));
+        }
         return $customers;
     }
 
     public function getCompaniesAttribute()
     {
-      return User::where('ssn', $this->ssn)->get();
+        return User::where('ssn', $this->ssn)->get();
     }
 
     public function getCustomerShippingAddress()
     {
-      $street = $this->street ? ($this->street . ', ') : '';
-      $city =  ($this->city && $this->zip) ? ($this->city . ' ' . $this->zip . ', ') : '';
-      $country = $this->country;
-      return $street.$city.$country;
+        $street = $this->street ? ($this->street . ', ') : '';
+        $city =  ($this->city && $this->zip) ? ($this->city . ' ' . $this->zip . ', ') : '';
+        $country = $this->country;
+        return $street.$city.$country;
     }
 
     public function getCartItems()
     {
-      $filteredCart = json_decode($this->cart->cart, true);
-      $products = array();
-      foreach($filteredCart as $item) {
-        try {
-          $inventory = Inventory::where('sku', $item['sku'])->first();
-          $product = Product::where('sku', $item['sku'])->first();
-          $pv = ProductVariation::where('sku', $item['sku'])->first();
-          if(!$product && !isset($pv) && !isset($pv->product_id))
-            continue;
-          if(!$product)
-            $product = Product::find($pv->product_id);
-          $product->name = isset($inventory->name) ? $inventory->name : $product->name;
-          array_push($products, Products::transformProductForCheckout($product, $item['qty']));
-        } catch(Exception $e) {
-          Log::error('User::getCartItems' . $e->getMessage());
-          continue;
+        $filteredCart = json_decode($this->cart->cart, true);
+        $products = array();
+        foreach ($filteredCart as $item) {
+            try {
+                $inventory = Inventory::where('sku', $item['sku'])->first();
+                $product = Product::where('sku', $item['sku'])->first();
+                $pv = ProductVariation::where('sku', $item['sku'])->first();
+                if (!$product && !isset($pv) && !isset($pv->product_id)) {
+                    continue;
+                }
+                if (!$product) {
+                    $product = Product::find($pv->product_id);
+                }
+                $product->name = isset($inventory->name) ? $inventory->name : $product->name;
+                array_push($products, Products::transformProductForCheckout($product, $item['qty']));
+            } catch(Exception $e) {
+                Log::error('User::getCartItems' . $e->getMessage());
+                continue;
+            }
         }
-      }
-      return $products;
+        return $products;
     }
 
     public static function resetPassword()
     {
-      $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
-      $password = substr($random, 0, 10);
+        $random = str_shuffle('abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ234567890!$%^&!$%^&');
+        $password = substr($random, 0, 10);
 
-      return $password;
+        return $password;
+    }
+
+    public function defaultDeliveryOption()
+    {
+        if (strpos($this->email, 'visir') !== false || strpos($this->name, 'visir') !== false) {
+            return 'HOP';
+        }
+        return false;
     }
 }
