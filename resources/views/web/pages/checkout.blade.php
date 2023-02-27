@@ -191,7 +191,7 @@
                 <div class="py-2 flex items-center gap-4">
                   <img src="/{{$product['featured_image']}}" onerror="this.src='/images/placeholder.png';this.onerror='';" class="aspect-1 w-10">
                   <div>
-                    <a href="{{ $product['slug'] }}" target="_blank">{{ $product['name'] }}<span class="font-medium"> x {{ $product['qty'] }}</span></a>
+                    <a href="{{ $product['url'] }}" target="_blank">{{ $product['name'] }}<span class="font-medium"> x {{ $product['qty'] }}</span></a>
                     <div class="font-medium text-sm">{{ $product['sku'] }}</div>
                   </div>
                 </div>
