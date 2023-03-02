@@ -22,7 +22,7 @@
                 <div class="mt-1">
                   <select id="selectedCustomer" name="customerKey" class="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     @foreach($companies as $company)
-                      <option value="{{ $company->key }}">{{ $company->name }}</option>
+                      <option value="{{ $company->key }}" {{ $company->id === auth()->user()->id ? 'selected' : '' }}>{{ $company->name }}</option>
                     @endforeach
                   </select>
                 </div>
