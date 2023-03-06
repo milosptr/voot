@@ -4,10 +4,11 @@
     tag="ul"
     :list="categories"
     :group="{ name: 'g1', put: (toSortable, fromSortable, draggedElement) => topLevelContainerFilter(toSortable, fromSortable, draggedElement) }"
+    @end="$emit('changed')"
     item-key="name"
   >
     <template #item="{ element }">
-      <li :class="[ element.parent_id ? 'pl-5' : 'pl-0' ]">
+      <li :class="{'hidden': !showUnavailable && !element.available}">
         <div class="flex justify-between items-center cursor-pointer bg-white border-b border-gray-100 hover:bg-gray-50">
           <div class="py-1 pl-4 whitespace-nowrap">
            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#454545" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><circle cx="60" cy="60" r="8"></circle><circle cx="128" cy="60" r="8"></circle><circle cx="196" cy="60" r="8"></circle><circle cx="60" cy="128" r="8"></circle><circle cx="128" cy="128" r="8"></circle><circle cx="196" cy="128" r="8"></circle><circle cx="60" cy="196" r="8"></circle><circle cx="128" cy="196" r="8"></circle><circle cx="196" cy="196" r="8"></circle></svg>
@@ -16,12 +17,26 @@
             <div v-if="element.featured_image" class="w-8 h-8 rounded-full bg-center bg-cover bg-no-repeat" :style="`background-image: url('/${element.featured_image.file_path}');`"></div>
             <div v-else class="w-8 h-8 rounded-full bg-center bg-cover bg-no-repeat" style="background: #eee;"></div>
           </div>
-          <div class="w-1/3 mr-auto py-1 whitespace-nowrap">
-            <div class="font-medium text-gray-700">
-              {{ element.name }}
-            </div>
-            <div class="text-xs font-light text-gray-400">
-              {{ element.slug }}
+          <div class="w-1/3 mr-auto py-1 whitespace-nowrap" @click="changeCategory(element)">
+            <div class="flex items-start gap-2">
+              <div>
+                <div class="font-medium text-gray-700">
+                  {{ element.name }}
+                </div>
+                <div class="text-xs font-light text-gray-400">
+                  {{ element.slug }}
+                </div>
+              </div>
+              <div class="group relative">
+                <img v-if="element.children.length" :src="'/images/subcategories-icon.svg'" width="16" height="16" class="mt-1" alt="Subcategories" />
+                <div class="absolute hidden group-hover:block left-4 top-0 py-2 px-3 rounded-lg shadow-md bg-white z-10">
+                  <div class="flex flex-col gap-2 w-full">
+                    <div v-for="c in element.children" :key="c.id" class="text-sm w-full">
+                      {{ c.name }}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="w-24 text-center py-1 whitespace-nowrap">
@@ -48,7 +63,7 @@
             </div>
           </div>
         </div>
-        <CategoriesItem :categories="element.children" />
+        <!-- <CategoriesItem :categories="element.children" /> -->
       </li>
     </template>
   </draggable>
@@ -64,9 +79,17 @@ export default {
     categories: {
       required: true,
       type: Array
+    },
+    showUnavailable: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
+    changeCategory(category) {
+      if(category.children.length)
+        this.$emit('changeCategory', category.id, category)
+    },
     deleteCategory(id) {
       axios.delete('/api/product-categories/' + id)
         .then((res) => {
@@ -79,6 +102,7 @@ export default {
     topLevelContainerFilter(toSortable, fromSortable, draggedElement) {
       let isElement = (fromSortable.options.group.name === 'g1');
       let notContainerOrTopLevel = (toSortable.el.classList.contains('top__level') || !draggedElement.classList.contains('g1'))
+      console.log('smth')
 
       return isElement && notContainerOrTopLevel;
     }

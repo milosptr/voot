@@ -53,11 +53,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Product Categories
 Route::get('product-categories', [CategoriesController::class, 'all']);
+Route::get('product-categories/parent/{id}', [CategoriesController::class, 'byParent']);
 Route::get('product-categories/{id}', [CategoriesController::class, 'index']);
 Route::post('product-category', [CategoriesController::class, 'store']);
 Route::post('product-category/{id}', [CategoriesController::class, 'update']);
 Route::post('product-category-order', [CategoriesController::class, 'reorder']);
 Route::post('sorted-categories', [CategoriesController::class, 'sortCategories']);
+Route::post('v2/sorted-categories', [CategoriesController::class, 'sortCategoriesv2']);
 Route::delete('product-categories/{id}', [CategoriesController::class, 'destroy']);
 
 // Product icons
