@@ -11,15 +11,15 @@
 
   <section id="categories" class="mt-10 mb-20">
     <div class="container">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center items-center mb-20">
-        <img src="/images/brands/mar-wear.webp" class="h-32" alt="mar wear" />
-        <img src="/images/brands/matrix.png" class="h-16" alt="matrix" />
-        <img src="/images/brands/mustad-fishing.png" class="h-20" alt="mustad fishing" />
-        <img src="/images/brands/new-pig.png" class="h-20" alt="new pig" />
-        <img src="/images/brands/fbk.jpeg" class="h-20" alt="fbk" />
-        <img src="/images/brands/baltic.webp" class="h-20" alt="baltic" />
-        <img src="/images/brands/fladen.webp" class="" alt="fladen" />
-        <img src="/images/brands/hansen.webp" class="h-14" alt="hansen" />
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center items-center mb-20"></a>
+        <a href="http://www.marwear.is" target="_blank"><img src="/images/brands/mar-wear.webp" class="h-32" alt="mar wear" /></a>
+        <a href="https://www.matrix-lubricants.com/" target="_blank"><img src="/images/brands/matrix.png" class="h-16" alt="matrix" /></a>
+        <a href="https://mustadautoline.com/" target="_blank"><img src="/images/brands/mustad-fishing.png" class="h-20" alt="mustad fishing" /></a>
+        <a href="https://www.newpig.com/" target="_blank"><img src="/images/brands/new-pig.png" class="h-20" alt="new pig" /></a>
+        <a href="http://en.fbk.dk/" target="_blank"><img src="/images/brands/fbk.jpeg" class="h-20" alt="fbk" /></a>
+        <a href="https://baltic.se/en/" target="_blank"><img src="/images/brands/baltic.webp" class="h-20" alt="baltic" /></a>
+        <a href="https://fladenfishing.se/en/" target="_blank"><img src="/images/brands/fladen.webp" class="" alt="fladen" /></a>
+        <a href="https://www.hansenprotection.no/en/" target="_blank"><img src="/images/brands/hansen.webp" class="h-14" alt="hansen" /></a>
       </div>
 
       <div class="grid grid-col-1 lg:grid-cols-2 gap-8">
