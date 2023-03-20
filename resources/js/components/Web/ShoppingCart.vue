@@ -31,7 +31,7 @@
       </div>
       <div v-if="cart.length" class="flex justify-end">
         <a href="/checkout" class="inline-block mt-4 small-caps uppercase px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700 cursor-pointer">
-          Útskráning
+          Panta
         </a>
       </div>
     </div>
