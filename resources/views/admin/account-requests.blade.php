@@ -40,7 +40,7 @@
                   <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $account->name }}</td>
                   <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $account->ssn }}</td>
                   <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                    {{ $account->email }}<br>{{ $account->invoice_email }}
+                    {{ $account->email }}<br><span class="text-indigo-800">{{ $account->invoice_email }}</span>
                   </td>
                   <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $account->phone }}</td>
                   <td class="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">{{ $account->company }}</td>

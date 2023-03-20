@@ -13,6 +13,7 @@ class AccountRequest extends Model
     protected $fillable = [
       'name',
       'email',
+      'invoice_email',
       'phone',
       'ssn',
       'company',

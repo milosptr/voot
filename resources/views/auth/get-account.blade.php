@@ -23,7 +23,7 @@
                 Reikningurinn með þessu kennitala er þegar til í kerfinu okkar. Þú getur fengið nýtt lykilorð fyrir reikninginn þinn með því <a href="/forgot-password">að smella hér</a>.
               </div>
               <div class="flex justify-between items-center">
-                <div class="w-full pr-3">
+                <div class="w-full">
                   <label for="company" class="block text-sm font-medium text-gray-700">
                     Nafn fyrirtækis
                   </label>
@@ -31,7 +31,9 @@
                     <input id="company" name="company" type="text" autocomplete="company" placeholder="Nafn fyrirtækis" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
-                <div class="w-full pl-3">
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="w-full pr-3">
                   <label for="company_ssn" class="block text-sm font-medium text-gray-700">
                     Kennitala fyrirtækis
                   </label>
@@ -39,9 +41,7 @@
                     <input id="company_ssn" name="company_ssn" type="number" autocomplete="company_ssn" placeholder="Fyrirtæki kennitala" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
-              </div>
-              <div class="flex justify-between items-center">
-                <div class="w-full pr-3">
+                <div class="w-full pl-3">
                   <label for="ssn" class="block text-sm font-medium text-gray-700">
                     Kennitala þin
                   </label>
@@ -49,12 +49,22 @@
                     <input id="ssn" name="ssn" type="number" autocomplete="ssn" placeholder="Kennitala" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
-                <div class="w-full pl-3">
+              </div>
+              <div class="flex justify-between items-center">
+                <div class="w-full pr-3">
                   <label for="email" class="block text-sm font-medium text-gray-700">
                     Netfang notanda
                   </label>
                   <div class="mt-1">
                     <input id="email" name="email" type="email" autocomplete="email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                  </div>
+                </div>
+                <div class="w-full pl-3">
+                  <label for="invoice_email" class="block text-sm font-medium text-gray-700">
+                    Netfang f. reikninga/bókhald
+                  </label>
+                  <div class="mt-1">
+                    <input id="invoice_email" name="invoice_email" type="email" autocomplete="invoice_email" placeholder="user@email.com" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                   </div>
                 </div>
               </div>
