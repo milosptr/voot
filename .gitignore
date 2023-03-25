@@ -14,8 +14,20 @@ yarn-error.log
 .DS_Store
 composer.lock
 .phpunit.database.checkum
+.env
+.env.*
+.idea
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Ignore directories that should not be tracked
-/vendor/*
-/node_modules/*
 /public/build/
+/vendor
+/node_modules
+/storage/app/*
+/storage/debugbar
+/storage/framework/*
+/storage/logs
+/bootstrap/cache
