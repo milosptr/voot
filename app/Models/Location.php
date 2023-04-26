@@ -10,11 +10,11 @@ class Location extends Model
     use HasFactory;
 
     protected $fillable = [
-      'name', 'address', 'city', 'zip', 'state', 'country', 'phone', 'email'
+      'name', 'address', 'city', 'zip', 'state', 'country', 'phone', 'email', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'
     ];
 
     public function fullAddress()
     {
-      return $this->address . ', ' . $this->zip . ', ' . $this->city . ', ' . $this->country;
+        return $this->address . ', ' . $this->zip . ', ' . $this->city . ', ' . $this->country;
     }
 }
