@@ -87,6 +87,7 @@
           <a href="/login?back={{ request()->path() }}" class="block mt-8 sm:w-1/2 lg:w-2/3 text-center text-white border border-primary-lighter bg-primary-lighter px-6 py-2 font-medium rounded-md hover:bg-primary-light cursor-pointer shadow-sm">
             {{ __('default.login_to_order') }}
           </a>
+
         @endif
       </div>
     </div>

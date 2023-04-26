@@ -7,11 +7,13 @@ use App\Events\OrderUpdated;
 use App\Events\ProcessOrder;
 use App\Events\UserVerified;
 use App\Events\ForgotPassword;
+use App\Events\RequestPriceEvent;
 use App\Events\UserPasswordReset;
 use App\Listeners\CreateOrderInAX;
 use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendOrderCreatedEmail;
 use App\Listeners\SendOrderUpdatedEmail;
+use App\Listeners\SendRequestPriceEmail;
 use App\Listeners\SendForgotPasswordEmail;
 use App\Listeners\SendNewUserRegistrationEmail;
 use App\Listeners\SendCustomerOrderCreatedEmail;
@@ -52,6 +54,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ForgotPassword::class => [
           SendForgotPasswordEmail::class,
+        ],
+        RequestPriceEvent::class => [
+          SendRequestPriceEmail::class,
         ]
     ];
 

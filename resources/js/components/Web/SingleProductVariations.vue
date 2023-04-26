@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div class="flex gap-10 mt-8">
+    <div class="flex flex-col sm:flex-row gap-4 sm:gap-10 mt-8">
       <Select v-if="variations.length" :label="currentLocale == 'is' ? 'Veldu' : 'Select'" :options="variations" :color="true" classes="min-w-150" :firstDefault="true" @selected="selectVariant($event)" />
-      <SearchableSelect v-if="hasUser" :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
+      <SearchableSelect class="sm:w-32" :label="quantityTranslated" :options="qtyOptions" :firstDefault="true" @selected="qty = $event.value" />
+      <div v-if="!hasUser">
+        <div @click="addToCartRequest" class="w-full text-center small-caps uppercase inline-block mx-auto border border-primary py-2.5 px-6 text-sm rounded-md text-primary font-medium mt-2 sm:mt-7 cursor-pointer hover:bg-primary hover:text-white ease-in-out duration-300">
+          Bættu vöru við tilboð
+        </div>
+      </div>
       <div v-if="hasUser" class="w-auto flex flex-col items-center cursor-pointer">
         <label class="text-gray-500 font-medium hidden lg:block">
           {{ currentLocale == 'is' ? 'Uppáhaldsvörur' : 'Favourites' }}
@@ -100,6 +105,13 @@ import SearchableSelect from './common/SearchableSelect.vue'
         this.error = null
         axios.post('/api/add-to-cart', { user_id: this.user_id, sku: this.selected ? this.selected.sku : this.defaultSKU, qty: this.qty })
           .then((r) => location.reload() )
+      },
+      addToCartRequest() {
+        axios.post('/api/request/add-to-cart', {
+          product_sku: this.selected ? this.selected.sku : this.defaultSKU,
+          quantity: this.qty,
+        })
+        .then((r) => location.reload() )
       }
     }
   }
