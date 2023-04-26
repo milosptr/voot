@@ -66,6 +66,8 @@ return [
   'phone' => 'Simi',
   'address' => 'Heimilisfang',
 
+  'opening_hours' => 'Opnunartími',
+
   'thanks_title' => 'Takk fyrir pöntunina',
   'thanks_subtitle' => 'Farðu aftur í vörurnar eða athugaðu stöðu pöntunarinnar.',
   'thanks_check_btn' => 'Skoða pöntun',
