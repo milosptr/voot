@@ -35,6 +35,7 @@ use App\Http\Controllers\SettingsIconsController;
 use App\Http\Controllers\SalesmanClientController;
 use App\Http\Controllers\ProductFavouriteController;
 use App\Http\Controllers\ProductInformationController;
+use App\Http\Controllers\RequestPriceCartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +110,11 @@ Route::delete('/documents/{id}', [DocumentController::class, 'destroy'])->name('
 // Cart
 Route::post('/add-to-cart', [CartController::class, 'store'])->name('addToCart');
 Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('removeFromCart');
+
+// Request Price Cart
+Route::get('/request/remove-from-cart/{id}', [RequestPriceCartController::class, 'destroy'])->name('removeFromRequestPriceCart');
+Route::post('/request/add-to-cart', [RequestPriceCartController::class, 'store'])->name('addToRequestPriceCart');
+Route::post('/request/ask-for-price', [RequestPriceCartController::class, 'askForPrice'])->name('askForPrice');
 
 // Order
 Route::get('orders/{id}/reorder', [OrderController::class, 'reorder']);
