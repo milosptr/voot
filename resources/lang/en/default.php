@@ -60,6 +60,8 @@ return [
     'phone' => 'Phone',
     'address' => 'Address',
 
+    'opening_hours' => 'Opening Hours',
+
     'thanks_title' => 'Thank you for your order!',
     'thanks_subtitle' => 'Go back to the products or check the status of your order',
     'thanks_check_btn' => 'Check Order',
