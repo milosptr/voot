@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Viðskiptavinur óskar eftir verð</title>
+    <title>Viðskiptavinur óskar eftir verði</title>
     <style>
         .truncate {
             white-space: nowrap;
@@ -155,7 +155,7 @@
                                             valign="top">
                                             <h1
                                                 style="font-family: 'Tahoma',sans-serif; font-size: 26px; font-weight: bold; text-align: left; margin: 0; margin-bottom: 15px;">
-                                                Viðskiptavinur óskar eftir verð</h1>
+                                                Viðskiptavinur óskar eftir verði</h1>
                                             @foreach ($categories as $key => $products)
                                                 <table role="presentation" border="0" cellpadding="0"
                                                     cellspacing="0"
