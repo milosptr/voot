@@ -1,4 +1,4 @@
-<div class="pt-6">
+{{-- <div class="pt-6">
     <div class="max-w-7xl mx-auto flex items-center py-4 px-4 sm:px-6 lg:px-8">
         <div class="rounded-md bg-blue-100 p-4 w-full">
             <div class="flex">
@@ -21,4 +21,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
