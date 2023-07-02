@@ -73,7 +73,8 @@ class PagesController extends Controller
     public function editOrder($id)
     {
         $order = Order::find($id);
-        return view('admin.edit-order', compact('order'));
+        $shippingMethod = ShippingMethod::find($order->shipping_method_code);
+        return view('admin.edit-order', compact('order', 'shippingMethod'));
     }
 
     public function settings()
