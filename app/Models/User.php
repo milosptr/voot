@@ -33,7 +33,8 @@ class User extends Authenticatable
         'country',
         'phone',
         'logo',
-        'email_verified_at'
+        'email_verified_at',
+        'default_shipping_id'
     ];
 
     /**

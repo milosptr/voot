@@ -12,6 +12,7 @@
     <Newsletter v-if="page === 7" @saved="saved" />
     <HomepageProducts v-if="page === 8" @saved="saved" />
     <Colors v-if="page === 9" @saved="saved" />
+    <ShippingMethods v-if="page === 10" @saved="saved" />
   </div>
 </template>
 
@@ -25,9 +26,10 @@
   import Newsletter from './Settings/Newsletter.vue'
   import HomepageProducts from './Settings/HomepageProducts.vue'
   import Colors from './Settings/Colors.vue'
+  import ShippingMethods from './Settings/ShippingMethods.vue'
 
   export default {
-    components: { ProductIcons, ProductTranslation, Staff, Locations, Config, TermsPages, Newsletter, HomepageProducts, Colors },
+    components: { ProductIcons, ProductTranslation, Staff, Locations, Config, TermsPages, Newsletter, HomepageProducts, Colors, ShippingMethods },
     data: () => ({
       page: 0,
     }),
@@ -51,6 +53,8 @@
           return 'Vörur á upphafssíðu'
         if(this.page === 9)
           return 'Litir'
+        if(this.page === 10)
+          return 'Sendingaraðferðir'
         return 'Veldu stillingarsíðu í vinstri valmyndinni'
       }
     },
@@ -73,6 +77,8 @@
         this.page = 8
       if(location.pathname.includes('colors'))
         this.page = 9
+      if(location.pathname.includes('shipping-methods'))
+        this.page = 10
     },
     methods: {
       saved() {

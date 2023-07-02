@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AccountRequestController;
 use App\Models\Tag;
 use App\Models\Page;
 use App\Models\User;
@@ -32,10 +31,12 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\TermsPagesController;
 use App\Http\Controllers\MembersInfoController;
 use App\Http\Controllers\SettingsIconsController;
+use App\Http\Controllers\AccountRequestController;
 use App\Http\Controllers\SalesmanClientController;
+use App\Http\Controllers\ShippingMethodController;
 use App\Http\Controllers\ProductFavouriteController;
-use App\Http\Controllers\ProductInformationController;
 use App\Http\Controllers\RequestPriceCartController;
+use App\Http\Controllers\ProductInformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -195,6 +196,12 @@ Route::post('my-clients', [SalesmanClientController::class, 'store']);
 // Account request
 Route::get('account-request/{id}/finish', [AccountRequestController::class, 'toggleStatus']);
 Route::post('account-request', [AccountRequestController::class, 'store']);
+
+// Shipping methods
+Route::get('shipping-methods', [ShippingMethodController::class, 'index']);
+Route::post('shipping-methods', [ShippingMethodController::class, 'store']);
+Route::post('shipping-methods/{id}', [ShippingMethodController::class, 'update']);
+Route::delete('shipping-methods/{id}', [ShippingMethodController::class, 'destroy']);
 
 //
 Route::post('/slugify', function (Request $request) {
