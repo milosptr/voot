@@ -122,19 +122,31 @@
                                 value="{{ $customer->country }}">
                         </div>
                     </div>
-                    <div class="sm:w-1/2 mt-6">
-                        <label for="country" class="block text-sm font-medium text-gray-700">Default shipping</label>
-                        <select name="default_shipping_id"
-                            class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            value="{{ $customer->default_shipping_id }}">
-                            <option value="null" readonly disabled>Choose shipping</option>
-                            @foreach ($shippingMethods as $method)
-                                <option value="{{ $method->id }}"
-                                    {{ $customer->default_shipping_id === $method->id ? 'selected' : '' }}>
-                                    {{ $method->name }}</option>
-                            @endforeach
-                        </select>
-                        {{ $customer->default_shipping_id }}
+                    <div class="flex flex-col sm:flex-row gap-5 mt-6">
+                        <div class="sm:w-1/2 mt-6">
+                            <label for="country" class="block text-sm font-medium text-gray-700">Default
+                                shipping</label>
+                            <select name="default_shipping_id"
+                                class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                value="{{ $customer->default_shipping_id }}">
+                                <option value="null" readonly disabled>Choose shipping</option>
+                                @foreach ($shippingMethods as $method)
+                                    <option value="{{ $method->id }}"
+                                        {{ $customer->default_shipping_id === $method->id ? 'selected' : '' }}>
+                                        {{ $method->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="sm:w-1/2 mt-6">
+                            <label for="manager" class="block text-sm font-medium text-gray-700">Is this account a
+                                manager? {{ $customer->manager }}</label>
+                            <select name="manager"
+                                class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                value="{{ $customer->manager }}">
+                                <option value="0" {{ $customer->manager === 0 ? 'selected' : '' }}>No</option>
+                                <option value="1" {{ $customer->manager === 1 ? 'selected' : '' }}>Yes</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="flex flex-wrap mt-10">
                         <button type="submit"

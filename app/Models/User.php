@@ -15,6 +15,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const USER = 0;
+    const MANAGER = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -34,7 +37,7 @@ class User extends Authenticatable
         'phone',
         'logo',
         'email_verified_at',
-        'default_shipping_id'
+        'default_shipping_id',
     ];
 
     /**
@@ -59,6 +62,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role === 'admin';
+    }
+
+    public function isManager()
+    {
+        return $this->manager == self::MANAGER;
     }
 
     public function cart()
@@ -90,6 +98,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(SalesmanClient::class, 'client_id')
           ->leftJoin('users', 'users.id', '=', 'salesman_clients.salesman_id');
+    }
+
+    public function getGroupedOrders()
+    {
+        if($this->key != null) {
+            $ids = User::where('ssn', $this->ssn)->orWhere('key', 'like', '%'.$this->key.'%')->pluck('id');
+            return Order::whereIn('user_id', $ids)->orderBy('id', 'DESC')->get();
+        }
+        return [];
     }
 
     public static function search($search = null, $html = false)
@@ -150,6 +167,16 @@ class User extends Authenticatable
             }
         }
         return $products;
+    }
+
+    public function getSubAccountsAttribute()
+    {
+        if($this->key != null) {
+            return User::where('role', 'customer')->where('id', '<>', $this->id)->where(function ($q) {
+                return $q->where('ssn', $this->ssn)->orWhere('key', 'like', '%'.$this->key.'%');
+            })->get();
+        }
+        return [];
     }
 
     public static function resetPassword()
