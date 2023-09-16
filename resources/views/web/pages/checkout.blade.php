@@ -20,9 +20,12 @@
 
     <section id="checkout-section" class="pb-24 bg-gray-50">
         <div class="container mx-auto">
-            @include('common.info', [
-                'message' => 'Þú ert að panta fyrir annan notanda. Vinsamlegast athugaðu: Nafn / Fyrirtæki',
-            ])
+            @if ($orderForUser)
+                @include('common.info', [
+                    'message' => 'Þú ert að panta fyrir annan notanda. Vinsamlegast athugaðu: Nafn / Fyrirtæki',
+                ])
+            @endif
+
             <form class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"
                 action="/api/v2/request-order/{{ auth()->user()->id }}" method="POST">
                 <div class="mt-6 order-2 sm:order-1">

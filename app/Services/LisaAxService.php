@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Models\Location;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
@@ -65,6 +66,8 @@ class LisaAxService
         $customer = $order->user;
         $company = User::where('key', $order->customer_key)->where('ssn', $order->user->ssn)->first();
         $companyName = ($company && isset($company)) ? $company->name : $customer->name;
+        $location = $order->pickup_location ? Location::find($order->pickup_location) : null;
+        $warehouse = $location ? $location->warehouse : 'VOB';
         $DlvMethod = $order->shipping_method_code ? $order->shipping_method_code : 'VS';
 
         $this->body = '<soap:Envelope
@@ -74,7 +77,7 @@ class LisaAxService
         <soap:Body>
           <tem:CreateSalesOrder>
             <tem:order>
-              <tem:CustomerID>'.$customer->key.'VOB</tem:CustomerID>
+              <tem:CustomerID>'.$customer->key.$warehouse.'</tem:CustomerID>
               <tem:Comments>#'.$order->id.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
               <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>

@@ -58,8 +58,6 @@ class OrderController extends Controller
                 $pickupLocation = null;
             }
 
-            $shippingMethodCode =
-
             $order = Order::create([
               'user_id' => $customer->id,
               'customer_key' => $customerKey,
