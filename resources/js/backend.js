@@ -19,7 +19,7 @@ import EditOrder from './components/EditOrder.vue'
 import EditSingleProduct from './components/EditSingleProduct.vue'
 import MembersInfo from './components/MembersInfo.vue'
 import MyClients from './components/MyClients.vue'
-import { CKEditor } from '@ckeditor/ckeditor5-vue'
+import AdminClients from './components/AdminClients.vue'
 import store from './store'
 
 if (document.getElementById('variations-app')) {
@@ -124,6 +124,13 @@ if (document.getElementById('my-clients-section')) {
   })
     .use(store)
     .mount('#my-clients-section')
+}
+
+if (document.getElementById('adminClientsSection')) {
+  createApp({
+    components: { AdminClients },
+    template: `<AdminClients />`
+  }).mount('#adminClientsSection')
 }
 
 // JS

@@ -36,6 +36,27 @@ class Users extends Controller
         return Redirect::to('/backend/settings/clients/'.$user->id);
     }
 
+    public function getClients(Request $request)
+    {
+        $search = $request->get('search');
+        $columnsToSearch = ['name', 'phone', 'key', 'ssn', 'email'];
+        $query = User::query();
+
+        if($search) {
+            $query->where(function ($q) use ($search, $columnsToSearch) {
+                foreach ($columnsToSearch as $column) {
+                    $q->orWhere($column, 'LIKE', '%' . $search . '%');
+                }
+            });
+        }
+
+        $results = $query
+              ->orderBy('email_verified_at')
+              ->paginate();
+
+        return $results;
+    }
+
     public function search(Request $request)
     {
         if($request->has('s')) {

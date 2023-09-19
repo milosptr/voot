@@ -164,6 +164,7 @@ Route::post('pages', [TermsPagesController::class, 'store']);
 Route::post('pages/{id}', [TermsPagesController::class, 'destroy']);
 
 // Clients
+Route::get('clients', [Users::class, 'getClients']);
 Route::post('clients/search', [Users::class, 'search']);
 
 // Color
