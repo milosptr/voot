@@ -43,11 +43,14 @@ class Users extends Controller
         $query = User::query();
 
         if($search) {
-            $query->where(function ($q) use ($search, $columnsToSearch) {
-                foreach ($columnsToSearch as $column) {
-                    $q->orWhere($column, 'LIKE', '%' . $search . '%');
-                }
-            });
+            $searchWords = explode(' ', $search);
+            foreach($columnsToSearch as $column) {
+                $query->orWhere(function ($q) use ($searchWords, $column) {
+                    foreach ($searchWords as $word) {
+                        $q->where($column, 'LIKE', '%' . $word . '%');
+                    }
+                });
+            }
         }
 
         $results = $query
