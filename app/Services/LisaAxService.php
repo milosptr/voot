@@ -114,7 +114,7 @@ class LisaAxService
       </soap:Envelope>
     ';
 
-        dd($this->body);
+        Log::info('Requesting order body: '.$this->body);
 
         return $this;
     }
