@@ -70,7 +70,7 @@ class LisaAxService
         $warehouse = $location ? $location->warehouse : 'VOB';
         $DlvMethod = $order->shipping_method_code ? $order->shipping_method_code : 'VS';
 
-        $this->body = '<soap:Envelope
+        $this->body = '<?xml version="1.0" encoding="UTF-8"?><soap:Envelope
         xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
         xmlns:tem="http://tempuri.org/">
         <soap:Header/>
