@@ -7,8 +7,13 @@
                 <span
                     class="font-medium">{{ isset($_GET['page']) && $_GET['page'] > 1 ? ($_GET['page'] - 1) * $pagination['per_page'] : '1' }}</span>
                 to
-                <span
-                    class="font-medium">{{ isset($_GET['page']) ? $_GET['page'] * $pagination['per_page'] : $pagination['per_page'] }}</span>
+                <span class="font-medium">
+                    @if ($pagination['last_page'] == $pagination['current_page'])
+                        {{ $pagination['total'] }}
+                    @else
+                        {{ isset($_GET['page']) ? $_GET['page'] * $pagination['per_page'] : $pagination['per_page'] }}
+                    @endif
+                </span>
                 af
                 <span class="font-medium">{{ $pagination['total'] }}</span>
                 niðursötðum
