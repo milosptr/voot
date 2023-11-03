@@ -8,42 +8,42 @@ import ShoppingCart from './components/Web/ShoppingCart.vue'
 import Checkout from './components/Web/Checkout.vue'
 import axios from 'axios'
 
-const isResponsive =  !!('ontouchstart' in document.documentElement)
+const isResponsive = !!('ontouchstart' in document.documentElement)
 
-if(document.getElementById('single-product-variations')) {
+if (document.getElementById('single-product-variations')) {
   createApp({
     components: { SingleProductVariations },
     template: `<SingleProductVariations />`
-  }).mount("#single-product-variations")
+  }).mount('#single-product-variations')
 }
-if(document.getElementById('google-maps-component')) {
+if (document.getElementById('google-maps-component')) {
   createApp({
     components: { GoogleMaps },
     template: `<GoogleMaps />`
-  }).mount("#google-maps-component")
+  }).mount('#google-maps-component')
 }
 
-if(document.getElementById('shopping-cart-app')) {
+if (document.getElementById('shopping-cart-app')) {
   createApp({
     components: { ShoppingCart },
     template: `<ShoppingCart />`
-  }).mount("#shopping-cart-app")
+  }).mount('#shopping-cart-app')
 }
 
-if(document.getElementById('checkout-app')) {
+if (document.getElementById('checkout-app')) {
   createApp({
     components: { Checkout },
     template: `<Checkout />`
-  }).mount("#checkout-app")
+  }).mount('#checkout-app')
 }
 
 const subcategories = document.querySelectorAll('[data-open-subcategory]')
-if(subcategories && subcategories) {
+if (subcategories && subcategories) {
   subcategories.forEach((s) => {
     s.addEventListener('click', (e) => {
       const subcategoryEl = e.target.closest('div').querySelector('[data-open-subcategory]')
       const subcategory = subcategoryEl ? subcategoryEl.dataset['openSubcategory'] : null
-      if(subcategory) {
+      if (subcategory) {
         document.querySelector(`[data-subcategory="${subcategory}"]`).classList.toggle('categories-sidebar-opened')
         e.target.closest('svg').classList.toggle('accordion-open')
       }
@@ -52,31 +52,31 @@ if(subcategories && subcategories) {
 }
 
 const productGallery = document.getElementById('single-product-bigimage')
-if(productGallery) {
+if (productGallery) {
   const options = {
     inlinePane: 500,
     containInline: true,
     hoverBoundingBox: true,
-    paneContainer: document.querySelector('.drift-zoom-pane'),
+    paneContainer: document.querySelector('.drift-zoom-pane')
   }
 
-  if(document.getElementById('single-product-gallery')) {
+  if (document.getElementById('single-product-gallery')) {
     document.getElementById('single-product-gallery').addEventListener('click', (e) => {
-      if(e.target.dataset.image) {
-        document.querySelector('.single-product-bigimage-url').style = `background-image: url('${e.target.dataset.image}')`
+      if (e.target.dataset.image) {
+        document.querySelector(
+          '.single-product-bigimage-url'
+        ).style = `background-image: url('${e.target.dataset.image}')`
         document.querySelector('.single-product-bigimage-url').dataset.zoom = `${e.target.dataset.image}`
 
-        if(!isResponsive)
-          new Drift(document.querySelector('.single-product-bigimage-url'), options);
+        if (!isResponsive) new Drift(document.querySelector('.single-product-bigimage-url'), options)
       }
     })
-    if(!isResponsive)
-      new Drift(document.querySelector('.single-product-bigimage-url'), options)
+    if (!isResponsive) new Drift(document.querySelector('.single-product-bigimage-url'), options)
   }
 }
 
 const searchBtn = document.getElementById('open-search-btn')
-if(searchBtn) {
+if (searchBtn) {
   searchBtn.addEventListener('click', (e) => {
     document.getElementById('nav-search').classList.toggle('hidden')
     searchBtn.classList.toggle('hidden')
@@ -86,16 +86,29 @@ if(searchBtn) {
 
 const paginationPrev = document.getElementById('pagination--prev')
 const paginationNext = document.getElementById('pagination--next')
-if(paginationPrev || paginationNext) {
+if (paginationPrev || paginationNext) {
   paginationPrev.addEventListener('click', (e) => {
-    const current = e.target.dataset.current
-    if(current - 1)
-      window.open(`?page=${current - 1}`, '_self')
+    const page = e.target.dataset.current - 1
+    if (page) {
+      const hasQuery = location.search.includes('q')
+      const search = location.search.includes('page')
+        ? location.search.replace(/page=\d+/, `page=${page}`)
+        : hasQuery
+        ? `${location.search}&page=${page}`
+        : `?page=${page}`
+      location.search = search
+    }
   })
   paginationNext.addEventListener('click', (e) => {
     const current = e.target.dataset.current
-    const page = parseInt(current) + 1;
-    window.open(`?page=${page}`, '_self')
+    const page = parseInt(current) + 1
+    const hasQuery = location.search.includes('q')
+    const search = location.search.includes('page')
+      ? location.search.replace(/page=\d+/, `page=${page}`)
+      : hasQuery
+      ? `${location.search}&page=${page}`
+      : `?page=${page}`
+    location.search = search
   })
 }
 
@@ -103,7 +116,7 @@ const navigation = document.getElementById('main-menu')
 const openMenuBtn = document.getElementById('open-menu-btn')
 const closeMenuBtn = document.getElementById('close-menu-btn')
 
-if(openMenuBtn && closeMenuBtn) {
+if (openMenuBtn && closeMenuBtn) {
   openMenuBtn.addEventListener('click', () => {
     navigation.classList.add('active')
   })
@@ -112,11 +125,10 @@ if(openMenuBtn && closeMenuBtn) {
   })
 }
 
-if(document.getElementById('register-me')) {
+if (document.getElementById('register-me')) {
   document.getElementById('ssn').addEventListener('change', (e) => {
-    axios.get(`/api/check-ssn/${e.target.value}`)
-    .then((res) => {
-      if(res.data) {
+    axios.get(`/api/check-ssn/${e.target.value}`).then((res) => {
+      if (res.data) {
         document.getElementById('account-exists-alert').classList.remove('hidden')
       } else {
         document.getElementById('account-exists-alert').classList.add('hidden')
