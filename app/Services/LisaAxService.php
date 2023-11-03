@@ -77,7 +77,7 @@ class LisaAxService
         <soap:Body>
           <tem:CreateSalesOrder>
             <tem:order>
-              <tem:CustomerID>'.$customer->key.'VOB</tem:CustomerID>
+              <tem:CustomerID>'.$customer->key.$warehouse.'</tem:CustomerID>
               <tem:Comments>#'.$order->id.'</tem:Comments>
               <tem:SalesResponsibleID>VEFUR</tem:SalesResponsibleID>
               <tem:ReferenceNumber>REFCUSTID'.$customer->id.'</tem:ReferenceNumber>
@@ -113,6 +113,8 @@ class LisaAxService
         </soap:Body>
       </soap:Envelope>
     ';
+
+        dd($this->body);
 
         return $this;
     }
