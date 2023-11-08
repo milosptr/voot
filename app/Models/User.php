@@ -71,7 +71,7 @@ class User extends Authenticatable
 
     public function cart()
     {
-        return $this->hasOne(Cart::class);
+        return $this->hasMany(Cart::class);
     }
 
     public function orders()
@@ -146,9 +146,10 @@ class User extends Authenticatable
 
     public function getCartItems()
     {
-        $filteredCart = json_decode($this->cart->cart, true);
+        $subaccount = isset($_COOKIE['order_for_user']) ? $_COOKIE['order_for_user'] : null;
+        $cart = Cart::where('user_id', $this->id)->where('subaccount_id', $subaccount)->get();
         $products = array();
-        foreach ($filteredCart as $item) {
+        foreach ($cart as $item) {
             try {
                 $inventory = Inventory::where('sku', $item['sku'])->first();
                 $product = Product::where('sku', $item['sku'])->first();
@@ -160,7 +161,7 @@ class User extends Authenticatable
                     $product = Product::find($pv->product_id);
                 }
                 $product->name = isset($inventory->name) ? $inventory->name : $product->name;
-                array_push($products, Products::transformProductForCheckout($product, $item['qty']));
+                array_push($products, Products::transformProductForCheckout($product, $item['quantity']));
             } catch(Exception $e) {
                 Log::error('User::getCartItems' . $e->getMessage());
                 continue;

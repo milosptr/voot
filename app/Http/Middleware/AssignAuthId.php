@@ -26,6 +26,12 @@ class AssignAuthId
             return $response->withCookie(cookie('auth_id', $authId, 60 * 24 * 30));
         }
 
+        $user = auth()->user();
+        if (!$user) {
+            $response = $next($request);
+            return $response->withCookie(cookie()->forget('order_for_user'));
+        }
+
         return $next($request);
     }
 }

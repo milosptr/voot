@@ -88,7 +88,7 @@
                 </a>
                 @if (auth()->user())
                     <a href="/cart" class="ml-4 text-gray-600 hover:text-primary-light relative" aria-label="Cart">
-                        @php $inCart = App\Models\Cart::cartNumber(auth()->user()->id); @endphp
+                        @php $inCart = App\Models\Cart::cartNumber(auth()->user()->id, isset($_COOKIE['order_for_user']) ? $_COOKIE['order_for_user'] : null); @endphp
                         @if ($inCart)
                             <div
                                 class="absolute right-0 top-0 items-center justify-center text-center w-4 h-4 text-xs font-medium -mt-2 -mr-2 bg-red-500 text-white rounded-full">

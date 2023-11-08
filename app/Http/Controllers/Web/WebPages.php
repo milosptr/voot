@@ -52,7 +52,8 @@ class WebPages extends Controller
         if(auth()->user() === null) {
             return redirect()->intended('/login?back=cart');
         }
-        $cart = Cart::where('user_id', auth()->user()->id)->first();
+        $subaccount = isset($_COOKIE['order_for_user']) ? $_COOKIE['order_for_user'] : null;
+        $cart = Cart::where('user_id', auth()->user()->id)->where('subaccount_id', $subaccount)->get();
         return view('web.pages.cart', compact('cart'));
     }
 

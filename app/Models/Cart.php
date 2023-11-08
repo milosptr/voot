@@ -2,28 +2,46 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\HasUUID;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Cart extends Model
 {
-    use HasFactory;
+    use HasFactory, HasUUID;
 
     protected $guarded = ['id'];
-    protected $fillable = ['user_id', 'cart'];
+    protected $fillable = ['user_id', 'sku', 'quantity', 'comment', 'subaccount_id'];
     public $timestamps = true;
 
-    public $cast = [
-      'cart' => 'json',
-    ];
-
-
-    public static function cartNumber($id) {
-      $cart =  Cart::where('user_id', $id)->first();
-      if($cart && json_decode($cart->cart))
-        return count(json_decode($cart->cart, true));
-      return 0;
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
+    public function subaccount()
+    {
+        return $this->belongsTo(User::class, 'subaccount_id');
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'sku', 'sku');
+    }
+
+    public static function cartNumber($user_id, $subaccount)
+    {
+        $user = User::find($user_id);
+        $subaccount = $user::find($subaccount);
+
+        if ($subaccount) {
+            $cart = Cart::where('user_id', $user_id)
+                        ->where('subaccount_id', $subaccount->id)
+                        ->get();
+        } else {
+            $cart = Cart::where('user_id', $user_id)->whereNull('subaccount_id')->get();
+        }
+
+        return $cart->count();
+    }
 }

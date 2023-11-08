@@ -223,31 +223,37 @@ class Products extends Controller
         return Color::all();
     }
 
-    public function cartProducts(Request $request)
+    public function cartProducts()
     {
-        $cart = auth()->user()->cart;
-        $filteredCart = json_decode($cart->cart);
-        $skus = explode(',', $request->get('p'));
+        $user_id = auth()->user()->id;
+        $subaccount = isset($_COOKIE['order_for_user']) ? $_COOKIE['order_for_user'] : null;
+        $cart = Cart::where('user_id', $user_id)->where('subaccount_id', $subaccount)->get();
+        $skus = array_column($cart->toArray(), 'sku');
         $products = array();
+
         foreach ($skus as $sku) {
             $inventory = Inventory::where('sku', $sku)->first();
             $product = Product::where('sku', $sku)->first();
             $pv = ProductVariation::where('sku', $sku)->first();
+
             if (!$product && !isset($pv) && !isset($pv->product_id)) {
-                $filteredCart = array_filter($filteredCart, function ($item) use ($sku) {
-                    return $item->sku != $sku;
-                });
                 continue;
             }
+
             if (!$product) {
                 $product = Product::find($pv->product_id);
             }
+
+            if (!$product) {
+                continue;
+            }
+
+
             $product->product_variations = $pv;
-            $product->name = isset($inventory->name) ? $inventory->name : $product->name;
 
             array_push($products, $this->transformProductForCart($product));
         }
-        $cart->update(['cart' => json_encode($filteredCart)]);
+
         return $products;
     }
 
