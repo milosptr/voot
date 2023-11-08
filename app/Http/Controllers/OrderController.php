@@ -29,10 +29,13 @@ class OrderController extends Controller
             return response('Customer not found, login and try again.', 422);
         }
 
-        $cart = $customer->cart;
-        if ($cart === null) {
+        $subaccount = isset($_COOKIE['order_for_user']) ? $_COOKIE['order_for_user'] : null;
+        $carts = $customer->cart()->where('subaccount_id', $subaccount);
+
+        if ($carts->count() == 0) {
             return response('Your shopping cart is empty, try again!', 422);
         }
+        $carts = $carts->get();
 
         try {
             $shippingAddress = $request->get('shippingAddress');
@@ -58,11 +61,19 @@ class OrderController extends Controller
                 $pickupLocation = null;
             }
 
+            $formatedCart = [];
+            foreach ($carts as $item) {
+                $formatedCart[] = [
+                  'sku' => $item->sku,
+                  'qty' => $item->quantity,
+                ];
+            }
+
             $order = Order::create([
-              'user_id' => $customer->id,
+              'user_id' => $subaccount ? $subaccount : $customer->id,
               'customer_key' => $customerKey,
               'order_status' => $status,
-              'order' => json_decode($cart->cart),
+              'order' => $formatedCart,
               'shipping_method' => $shippingMethod,
               'shipping_method_code' => $shippingMethodCode,
               'shipping_address' => $shippingAddress,
@@ -72,7 +83,10 @@ class OrderController extends Controller
               'processed' => 0,
             ]);
             OrderCreated::dispatch($order);
-            $cart->delete();
+
+            $carts->each(function ($cart) {
+                $cart->delete();
+            });
         } catch(Exception $e) {
             Log::error("Order notification not dispatched/stored properly: " . $e->getMessage());
             return back();

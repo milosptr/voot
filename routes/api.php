@@ -110,7 +110,8 @@ Route::delete('/documents/{id}', [DocumentController::class, 'destroy'])->name('
 
 // Cart
 Route::post('/add-to-cart', [CartController::class, 'store'])->name('addToCart');
-Route::post('/add-to-cart/{user_id}', [CartController::class, 'update'])->name('removeFromCart');
+Route::post('/update-cart/{cart_id}', [CartController::class, 'updateCart'])->name('updateCart');
+Route::delete('/remove-cart/{cart_id}', [CartController::class, 'destroy'])->name('removeFromCart');
 
 // Request Price Cart
 Route::get('/request/remove-from-cart/{id}', [RequestPriceCartController::class, 'destroy'])->name('removeFromRequestPriceCart');

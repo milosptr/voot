@@ -5,56 +5,73 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
     public function store(Request $request)
     {
-      $request->validate([
-        'user_id' => 'required',
-      ]);
+        $request->validate([
+          'user_id' => 'required',
+        ]);
 
-      $cart = Cart::where('user_id', $request->get('user_id'))->first();
-      $user = User::find($request->get('user_id'));
+        $user = User::find($request->get('user_id'));
 
-      if ($user == NULL)
-        return response("Sorry, we cannot find you in our customers database, please call us for more info!", 422);
-      if ($cart == null) {
-          $data = [
-            'user_id' => $user->id,
-            'cart' => json_encode(array([ 'sku' => $request->get('sku'), 'qty' => $request->get('qty') ]))
-          ];
-          return Cart::create($data);
-      }
+        if ($user == null || !auth()->user()) {
+            return response("Sorry, we cannot find you in our customers database, please call us for more info!", 422);
+        }
 
-      $cartData = json_decode($cart->cart);
+        $subaccount = isset($_COOKIE['order_for_user']) ? $_COOKIE['order_for_user'] : null;
+        $data = [
+          'sku' => $request->get('sku'),
+          'quantity' => $request->get('qty'),
+          'comment' => $request->get('comment'),
+          'subaccount_id' => $subaccount,
+          'user_id' => $user->id,
+        ];
 
-      $existingIndex = array_search($request->get('sku'), array_column($cartData, 'sku'));
-      if($existingIndex !== false) {
-        $cartData[$existingIndex]->qty = (int) $cartData[$existingIndex]->qty + (int) $request->get('qty');
-      } else {
-        array_push($cartData, [ 'sku' => $request->get('sku'), 'qty' => $request->get('qty') ]);
-      }
+        $existingCart = Cart::where('user_id', $user->id)
+                            ->where('sku', $request->get('sku'))
+                            ->where('subaccount_id', $subaccount)
+                            ->first();
 
-      return $cart->update(['cart' => $cartData]);
+        try {
+            if ($existingCart) {
+                $existingCart->update(['quantity' => $existingCart->quantity + $request->get('qty')]);
+                return response()->json([
+                  'message' => 'Product added to cart successfully!'
+                ]);
+            } else {
+                Cart::create($data);
+                return response()->json([
+                  'message' => 'Product added to cart successfully!'
+                ]);
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+              'message' => $e->getMessage()
+            ]);
+        }
     }
 
     public function update($user_id, Request $request)
     {
-      $cart = Cart::where('user_id', $user_id)->first();
-      $cart->update(['cart' => $request->all()]);
-      return $cart;
+        $cart = Cart::where('user_id', $user_id)->first();
+        $cart->update(['cart' => $request->all()]);
+        return $cart;
     }
 
-    public function destroy($user_id, $sku)
+    public function updateCart($cart_id, Request $request)
     {
-      $cart = Cart::where('user_id', $user_id)->first();
-      $cartData = array_filter(json_decode($cart->cart, TRUE), function($i) use ($sku) {
-        return $i['sku'] !== $sku;
-      });
-      $cartData = array_map(function($i) { return $i;}, $cartData);
-      dd($cart->cart);
-      $cart->cart = $cartData;
-      return $cart->save();
+        $cart = Cart::find($cart_id);
+        $cart->update($request->only('quantity'));
+        return $cart;
+    }
+
+    public function destroy($cart_id)
+    {
+        $cart = Cart::find($cart_id);
+        return $cart->delete();
     }
 }
