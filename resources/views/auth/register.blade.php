@@ -176,7 +176,9 @@
                                 </div>
                             </div>
                             <div class="w-full">
-                                <div class="g-recaptcha my-4" data-sitekey="{{ config('services.recaptcha.site_key') }}">
+                                <div class=" my-4">
+                                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}">
+                                    </div>
                                 </div>
                                 <script src='https://www.google.com/recaptcha/api.js'></script>
 
