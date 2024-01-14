@@ -27,23 +27,20 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      *
      * @throws \Illuminate\Validation\ValidationException
+     * @throws \Exception
      */
     public function store(Request $request)
     {
-        $recaptchaResponse = $request->input('g-recaptcha-response');
-        $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
-            'secret' => config('services.recaptcha.secret_key'),
-            'response' => $recaptchaResponse,
-            'remoteip' => $request->ip(),
-        ]);
-
-        if (!$response->json()['success']) {
-            // Handle failed captcha here (e.g., return back with an error message)
-            return back()->withErrors(['captcha' => 'ReCAPTCHA verification failed.']);
+        try {
+            if ($request->get('captcha') != '3' ) {
+                throw new \Exception('captcha');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['captcha' => 'Vinsamlegast reyndu aftur']);
         }
 
         $request->validate([

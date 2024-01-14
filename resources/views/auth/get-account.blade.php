@@ -15,10 +15,10 @@
                     <p class="mt-2 font-medium">Vinsamlegast athugaðu að engin verð eru aðgengileg á pöntunarsíðunni.
                         Verðfyrirspurnir er hæg að senda á <a href="mailto:soludeild@voot.is">soludeild@voot.is</a></p>
                 </div>
-                @if ($errors->has('captcha') or true)
+                @if ($errors->has('captcha'))
                     <div class="rounded-md bg-red-50 p-4 mt-4">
                         <div class="text-sm font-medium text-red-800">
-                            Þú verður að staðfesta að þú sért ekki vél með því að smella á reitinn hér fyrir neðan.
+                            Þú verður að staðfesta að þú sért ekki vél með því að svara því sem er 1 + 2 í síðasta reitnum.
                         </div>
                     </div>
                 @endif
@@ -110,13 +110,22 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="w-full">
-                                <div class=" my-4">
-                                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.site_key') }}">
-                                    </div>
+                                <label for="captcha" class="block text-sm font-medium text-gray-700">
+                                    Öryggisspurning
+                                </label>
+                                <div class="mt-1">
+                                    <input
+                                        type="text"
+                                        id="captcha"
+                                        name="captcha"
+                                        placeholder="Hvað er 1 + 2?"
+                                        required
+                                        class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                    />
                                 </div>
-                                <script src='https://www.google.com/recaptcha/api.js'></script>
+                            </div>
+                            <div class="w-full">
                                 <button type="submit"
                                     class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-light hover:bg-primary focus:outline-none duration-300 transition-all ease-in-out">
                                     Fáðu lykilorð

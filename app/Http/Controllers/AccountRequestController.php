@@ -17,18 +17,14 @@ class AccountRequestController extends Controller
     public function store(Request $request)
     {
         try {
-            $recaptchaResponse = $request->input('g-recaptcha-response');
-            $response = Http::post('https://www.google.com/recaptcha/api/siteverify', [
-                'secret' => config('services.recaptcha.secret_key'),
-                'response' => $recaptchaResponse,
-                'remoteip' => $request->ip(),
-            ]);
-
-            if (!$response->json()['success']) {
-                // Handle failed captcha here (e.g., return back with an error message)
-                return back()->withErrors(['captcha' => 'ReCAPTCHA verification failed.']);
+            if ($request->get('captcha') != '3' ) {
+                throw new \Exception('captcha');
             }
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->withErrors(['captcha' => 'Vinsamlegast reyndu aftur']);
+        }
 
+        try {
             $data = $request->only(['name','email','invoice_email','phone','ssn','company','company_ssn','simi']);
             $request = AccountRequest::create($data);
 
